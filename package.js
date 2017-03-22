@@ -8,6 +8,7 @@ Package.describe({
 Package.onUse(function(api) {
     api.versionsFrom('1.4.1.1');
     api.use([
+        'jquery',
         'coffeescript',
         'ecmascript',
         'underscore',
@@ -26,5 +27,21 @@ Package.onUse(function(api) {
 });
 
 Package.onTest(function(api) {
-     api.use('ecmascript');
+    api.use([
+        'jquery',
+        'coffeescript',
+        'ecmascript',
+        'underscore',
+        'templating',
+        'session',
+        'less',
+        'random',
+        'rocketchat:lib',
+        'rocketchat:ui-message',
+        'vue:vue@1.0.8',
+        'mike:mocha',
+        'practicalmeteor:chai',
+        'practicalmeteor:sinon'
+    ]);
+
 });
