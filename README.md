@@ -15,6 +15,6 @@ All'interno di questa repository viene raccolto il codice sia dell'SDK che dell'
 
 # Install monolith
 
-- `git@github.com:NPE-Developers/monolith.git package/monolith`
+- `git clone git@github.com:NPE-Developers/monolith.git packages/monolith`
 
 - `meteor add monolith`
