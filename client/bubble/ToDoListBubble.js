@@ -2,10 +2,10 @@
     * Created by Francesco Bazzerla on 21/03/17.
     */
 
-import "../component/widget/checklist/view/ChecklistWidgetView.js";
-import "..component/widget/text/view/TextWidgetView.js";
+import {ChecklistWidgetView} from "../component/widget/checklist/view/ChecklistWidgetView"
+import {TextWidgetView} from "../component/widget/text/view/TextWidgetView";
 
-class ToDoListBubble extends BaseBubble{
+export class ToDoListBubble extends BaseBubble{
 
     /**
      * @type {TextWidgetView}

@@ -1,8 +1,10 @@
-    /**
-    * Created by Francesco Bazzerla on 21/03/2017.
-    */
+/**
+* Created by Francesco Bazzerla on 21/03/2017.
+*/
 
-class ChecklistWidgetView extends BaseWidget{
+import {BaseWidget} from '../../BaseWidget.js'
+
+export class ChecklistWidgetView extends BaseWidget{
 
     /**
      * @constructor
@@ -10,11 +12,11 @@ class ChecklistWidgetView extends BaseWidget{
      */
     constructor(){
         super();
-        if (new.target === ChecklistWidgetView) {
+        if (this instanceof ChecklistWidgetView) {
             throw new TypeError("Cannot construct ChecklistWidgetView instances directly");
         }
     }
-    
+
     addOption(option,onClick = function(){},onLongClick = function(){}){}
     set useSelectionMark(useMark) {}
     set selectionColor(color) {}

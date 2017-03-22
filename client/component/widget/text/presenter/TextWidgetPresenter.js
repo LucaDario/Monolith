@@ -3,7 +3,7 @@
  * Version 1.0.0 -
  */
 
-class TextWidgetPresenter {
+export class TextWidgetPresenter {
 
     /**
      * @type {Object}

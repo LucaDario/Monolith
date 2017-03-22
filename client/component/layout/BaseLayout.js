@@ -2,7 +2,10 @@
  * Base abstract class which represents a generic layout.
  * Created by Riccardo Montagnin on 21/03/2017.
  */
-class BaseLayout extends BaseComponent{
+
+import {BaseComponent} from "../BaseComponent"
+
+export class BaseLayout extends BaseComponent{
 
     /**
      * @type {Array}: List of items that are contained inside the layout.
@@ -14,7 +17,7 @@ class BaseLayout extends BaseComponent{
      */
     constructor(){
         super();
-        if (new.target === BaseLayout) {
+        if (this instanceof BaseLayout) {
             throw new TypeError("Cannot construct BaseLayout instances directly");
         }
         this._items = [];

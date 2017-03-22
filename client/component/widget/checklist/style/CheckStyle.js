@@ -1,8 +1,8 @@
-    /**
-    * Created by Francesco Bazzerla on 21/03/2017.
-    */
+/**
+ * Created by Francesco Bazzerla on 21/03/2017.
+ */
 
-class CheckStyle extends BaseWidget{
+export class CheckStyle {
     /**
      * @type {String}
      */

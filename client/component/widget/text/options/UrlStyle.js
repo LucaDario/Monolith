@@ -3,7 +3,7 @@
  * Version 1.0.0 -
  */
 
-class UrlStyle {
+export class UrlStyle {
 
     /**
      * @type {boolean}

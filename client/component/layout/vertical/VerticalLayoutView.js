@@ -2,7 +2,9 @@
  * Created by Stefano Lia on 21/03/2017
  * Version 1.0.0 - 1.0.0
  */
-class VerticalLayoutView extends BaseLayout{
+import {BaseLayout} from "../BaseLayout"
+
+export class VerticalLayoutView extends BaseLayout{
 
     /**
      * @constructor
@@ -19,9 +21,9 @@ class VerticalLayoutView extends BaseLayout{
      */
     renderView(){
 
-        var text = "";
-        for (var i = 0; i < this._items.length; i++) {
-            text +[i].renderView() + "</li>"
+        let text = "";
+        for (let i = 0; i < this._items.length; i++) {
+            text +=  "<li>" + [i].renderView() + "</li>";
         }
         return "<ul class='list-unstyled'>" + text + "</ul>";
     }

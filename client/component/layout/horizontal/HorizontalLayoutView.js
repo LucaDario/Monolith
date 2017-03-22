@@ -2,7 +2,9 @@
  * Created by Stefano Lia on 21/03/2017
  * Version 1.0.0 - 1.0.0
  * */
-class HorizontalLayoutView extends BaseLayout{
+import {BaseLayout} from '../BaseLayout'
+
+export class HorizontalLayoutView extends BaseLayout{
 
     /**
      * @constructor

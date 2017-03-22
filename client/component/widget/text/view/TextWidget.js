@@ -3,7 +3,9 @@
  * Version 1.0.0 - 
  */
 
-class TextWidget extends TextWidgetView {
+import {TextWidgetView} from './TextWidgetView'
+
+export class TextWidget extends TextWidgetView {
 
     /**
      * @type {Object}

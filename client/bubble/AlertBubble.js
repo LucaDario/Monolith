@@ -4,9 +4,9 @@
  */
 
 
-import "..component/widget/text/view/TextWidgetView.js";
+import "..component/widget/text/view/TextWidgetView;
 
-class AlertBubble extends BaseBubble{
+export class AlertBubble extends BaseBubble{
 
     /**
      * @type {Object}

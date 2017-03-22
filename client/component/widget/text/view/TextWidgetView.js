@@ -3,12 +3,14 @@
  * Version 1.0.0 -
  */
 
-class TextWidgetView extends BaseWidget{
+import {BaseWidget} from '../../BaseWidget'
+
+export class TextWidgetView extends BaseWidget{
     constructor(){
         //noinspection JSAnnotator,JSAnnotator,JSAnnotator
         super();
         //noinspection JSPotentiallyInvalidConstructorUsage
-        if (new.target === TextWidgetView) {
+        if (this instanceof TextWidgetView) {
             throw new TypeError("Cannot construct TextWidgetView instances directly");
         }
     }

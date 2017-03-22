@@ -1,7 +1,7 @@
 /**
  * Created by Riccardo Montagnin on 21/03/2017.
  */
-class ListWidgetPresenter {
+export class ListWidgetPresenter {
 
     /**
      * @type {Object}
