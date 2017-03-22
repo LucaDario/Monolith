@@ -1,4 +1,9 @@
-# Install rocket.chat (MAC OSX)
+# Monolith
+
+Monolith (in codice "C5") è il capitolato da sviluppare scelto dal nostro team, gli NPE Developers.
+All'interno di questa repository viene raccolto il codice sia dell'SDK che dell'applicazione.
+
+# Install rocket.chat (MAC OSX / LINUX)
 
 - `curl https://install.meteor.com/ | sh`
 
@@ -6,15 +11,10 @@
 
 - `cd Rocket.chat`
 
-- `meteor` (first time it downloads and installs all the packages)
+- `meteor npm install`
 
-# Develop with rocket.chat
+# Install monolith
 
-- `meteor`
+- `git@github.com:NPE-Developers/monolith.git package/monolith`
 
-# Create rocket.chat package
-
-```
-meteor create --package uni2017
-meteor add uni2017
-```
+- `meteor add monolith`
