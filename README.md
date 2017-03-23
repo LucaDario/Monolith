@@ -15,6 +15,8 @@ All'interno di questa repository viene raccolto il codice sia dell'SDK che dell'
 
 # Install monolith
 
+Apri un terminale nella cartella in cui sono presenti i sorgenti di Rocket.Chat ed esegui questi comandi:   
+
 - `git clone git@github.com:NPE-Developers/monolith.git packages/monolith`
 
 - `meteor add monolith`
