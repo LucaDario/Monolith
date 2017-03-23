@@ -2,6 +2,9 @@
  * Created by Francesco Bazzerla on 21/03/2017.
  */
 
+import {ChecklistWidgetView} from '../view/ChecklistWidgetView.js';
+import {CheckStyle} from '../style/CheckStyle.js';
+
 export class ChecklistWidgetPresenter{
 
     /**

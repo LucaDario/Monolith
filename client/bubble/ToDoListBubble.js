@@ -2,8 +2,9 @@
     * Created by Francesco Bazzerla on 21/03/17.
     */
 
-import {ChecklistWidgetView} from "../component/widget/checklist/view/ChecklistWidgetView"
-import {TextWidgetView} from "../component/widget/text/view/TextWidgetView";
+import {ChecklistWidgetView} from '../component/widget/checklist/view/ChecklistWidgetView.js';
+import {TextWidgetView} from '../component/widget/text/view/TextWidgetView.js';
+import {BaseBubble} from './BaseBubble.js';
 
 export class ToDoListBubble extends BaseBubble{
 
