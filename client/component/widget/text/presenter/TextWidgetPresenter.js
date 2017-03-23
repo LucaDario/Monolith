@@ -92,7 +92,7 @@ export class TextWidgetPresenter {
             html= '{{#markdown}}' + this._textstyle.getText() + '{{/markdown}}';
         }
         else {
-            html= this._textstyle.getText();
+            html= '<p>' + this._textstyle.getText() + '</p>';
         }
         return html;
     }
