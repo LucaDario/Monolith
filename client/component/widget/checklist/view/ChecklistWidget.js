@@ -2,8 +2,8 @@
  * Created by Francesco Bazzerla on 21/03/2017.
  */
 
-import {ChecklistWidgetView} from './ChecklistWidgetView.js'
-import {ChecklistWidgetPresenter} from '../presenter/ChecklistWidgetPresenter.js';
+import {ChecklistWidgetView} from './ChecklistWidgetView'
+import {ChecklistWidgetPresenter} from '../presenter/ChecklistWidgetPresenter';
 
 export class ChecklistWidget extends ChecklistWidgetView{
 

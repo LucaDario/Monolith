@@ -2,7 +2,7 @@
 * Created by Francesco Bazzerla on 21/03/2017.
 */
 
-import {BaseWidget} from '../../BaseWidget.js'
+import {BaseWidget} from '../../BaseWidget'
 
 export class ChecklistWidgetView extends BaseWidget{
 

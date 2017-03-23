@@ -2,8 +2,8 @@
  * Created by Francesco Bazzerla on 21/03/2017.
  */
 
-import {ChecklistWidgetView} from '../view/ChecklistWidgetView.js';
-import {CheckStyle} from '../style/CheckStyle.js';
+import {ChecklistWidgetView} from '../view/ChecklistWidgetView';
+import {CheckStyle} from '../style/CheckStyle';
 
 export class ChecklistWidgetPresenter{
 
