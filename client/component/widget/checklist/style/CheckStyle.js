@@ -1,20 +1,23 @@
 /**
- * Created by Francesco Bazzerla on 21/03/2017.
+ * This class contains the style options for a ChecklistWidget.
+ * Created by Francesco Bazzerla on 21/03/17.
+ * Version 1.0.0 -
  */
 
 export class CheckStyle {
     /**
-     * @type {String}
+     * @type {String}: It represents the symbol used to check an item
      */
     _selectionCharacter;
 
     /**
-     * @type {boolean}
+     * @type {boolean}: Check-mark will be shown by a symbol if this field is true; if this field is false the check-mark
+     * wiil be shown by a color
      */
     _useSelectionMark;
 
     /**
-     * @type {String}
+     * @type {String}: It represents the color of the check-mark if _useSelectionMark is false
      */
     _selectionColor;
 
@@ -24,7 +27,7 @@ export class CheckStyle {
      * Constructor of CheckStyle
      */
     constructor(){
-        this._useSelectionMark = false;
+        this._useSelectionMark = true;
         this._selectionColor = "green";
         this._selectionCharacter = "";
     }
@@ -34,7 +37,7 @@ export class CheckStyle {
      * _selectionCharacter setter
      * @param character {String}
      */
-    set selectionCharacter(character) {
+    setSelectionCharacter(character) {
         if(typeof(character) !== String){
             throw new TypeError("Cannot set select character. String value required.");
         }
@@ -46,7 +49,7 @@ export class CheckStyle {
      * _useSelectionMark setter
      * @param useMark {boolean}
      */
-    set useSelectionMark(useMark) {
+    setUseSelectionMark(useMark) {
         if(typeof(useMark) !== "boolean"){
             throw new TypeError("Cannot set select mark. Boolean value required.");
         }
@@ -58,7 +61,7 @@ export class CheckStyle {
      * _selectionColor setter
      * @param color {String}
      */
-    set selectionColor(color){
+    setSelectionColor(color){
         if(typeof(color) !== String){
             throw new TypeError("Cannot set selection color. String value required.");
         }
@@ -70,7 +73,7 @@ export class CheckStyle {
      * _selectionCharacter getter
      * @return {String}
      */
-    get selectionCharacter() {
+    getSelectionCharacter() {
         return this._selectionCharacter;
     }
 
@@ -79,7 +82,7 @@ export class CheckStyle {
      * _useSelectionMark getter
      * @return {boolean}
      */
-    get useSelectionMark() {
+    getUseSelectionMark() {
         return this._useSelectionMark;
     }
 
@@ -88,7 +91,7 @@ export class CheckStyle {
      * _selectionColor getter
      * @return {String}
      */
-    get selectionColor(){
+    getSelectionColor(){
         return this._selectionColor;
     }
 }

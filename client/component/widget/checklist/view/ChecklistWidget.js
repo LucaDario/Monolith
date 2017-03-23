@@ -1,6 +1,9 @@
 /**
- * Created by Francesco Bazzerla on 21/03/2017.
+ * The concrete class of ChecklistWidget.
+ * Created by Francesco Bazzerla on 21/03/17.
+ * Version 1.0.0 -
  */
+
 
 import {ChecklistWidgetView} from './ChecklistWidgetView'
 import {ChecklistWidgetPresenter} from '../presenter/ChecklistWidgetPresenter';
@@ -8,7 +11,7 @@ import {ChecklistWidgetPresenter} from '../presenter/ChecklistWidgetPresenter';
 export class ChecklistWidget extends ChecklistWidgetView{
 
     /**
-     * @type {ChecklistWidgetPresenter}
+     * @type {Object}: Presenter of ChecklistWidget
      */
     _presenter;
 
@@ -25,7 +28,7 @@ export class ChecklistWidget extends ChecklistWidgetView{
     /**
      *@method
      * It allows you to add a new item into checklist
-     * @param option {CheckOption}
+     * @param option {Object}
      * @param onClick {function}
      * @param onLongClick {function}
      */
@@ -38,8 +41,8 @@ export class ChecklistWidget extends ChecklistWidgetView{
      *Sets the visualization of tick with a character or with a color.
      * @param useMark {boolean}
      */
-    set useSelectionMark(useMark){
-        this._presenter.useSelectionMark(useMark);
+    setUseSelectionMark(useMark){
+        this._presenter.setUseSelectionMark(useMark);
     }
 
     /**
@@ -47,24 +50,24 @@ export class ChecklistWidget extends ChecklistWidgetView{
      *Sets the color of checkmarks.
      * @param color {String}
      */
-    set selectionColor(color) {
-        this._presenter.selectionColor(color);
+    setSelectionColor(color) {
+        this._presenter.setSelectionColor(color);
     }
 
     /**
      * @method
-     *Sets the font of checkmarks.
+     *Sets the symbol of checkmarks.
      * @param character {String}
      */
-    set selectionCharacter(character){
-        this._presenter.selectionCharacter(character);
+    setSelectionCharacter(character){
+        this._presenter.setSelectionCharacter(character);
     }
 
     /**
      *@method
      *It allows you to check an item on the checklist or to remove a tick from it.
      * @param checked {boolean}
-     * @param position {number}
+     * @param position {Number}
      */
     setChecked(checked,position){
         this._presenter.setChecked(checked,position);
@@ -75,8 +78,8 @@ export class ChecklistWidget extends ChecklistWidgetView{
      *Sets the completion message appears when all of the list options are checked.
      * @param message {String}
      */
-    set completionMessage(message){
-        this._presenter.completionMessage(message);
+    setCompletionMessage(message){
+        this._presenter.setCompletionMessage(message);
     }
 
     /**
@@ -97,19 +100,14 @@ export class ChecklistWidget extends ChecklistWidgetView{
     }
 
     /**
-     * @event onItemClicked
-     *
-     * @param itemId {String}
+     * Events
      */
+    // TODO : IMPLEMENT EVENTS
+
     onItemClicked(itemId){
 
     }
 
-    /**
-     * @event onItemLongClicked
-     *
-     * @param itemId {String}
-     */
     onItemLongClicked(itemId){
 
     }

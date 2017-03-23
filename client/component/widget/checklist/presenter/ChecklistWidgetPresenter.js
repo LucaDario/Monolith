@@ -1,36 +1,40 @@
 /**
- * Created by Francesco Bazzerla on 21/03/2017.
+ * The presenter of ChecklistWidget.
+ * Created by Francesco Bazzerla on 21/03/17.
+ * Version 1.0.0 -
  */
+
 
 import {ChecklistWidgetView} from '../view/ChecklistWidgetView';
 import {CheckStyle} from '../style/CheckStyle';
+import {CheckOption} from '../option/CheckOption';
 
 export class ChecklistWidgetPresenter{
 
     /**
-     * @type {ChecklistWidgetView}
+     * @type {Object}: ChecklistWidget element for the presenter
      */
     _view;
 
     /**
-     * @type {Array}
+     * @type {Array}: It contains all items of the checklist
      */
     _options;
 
     /**
-     * @type {CheckStyle}
+     * @type {Object}: CheckStyle element that allows you to personalize check-marks
      */
     _style;
 
     /**
-     * @type {String}
+     * @type {String}: It contains the completion message of the checklist
      */
     _completionMessage;
 
     /**
      * @constructor
      * Constructor of ChecklistWidgetPresenter
-     * @param view {ChecklistWidgetView}
+     * @param view {Object}
      * the view associated with the presenter
      */
     constructor(view){
@@ -44,7 +48,7 @@ export class ChecklistWidgetPresenter{
      * @method
      * It allows you to add a new item into the checklist assigning its also the events for normal or long click on
      * check.
-     * @param option {CheckOption}
+     * @param option {Object}
      * @param onClick {function}
      * @param onLongClick {function}
      */
@@ -64,11 +68,11 @@ export class ChecklistWidgetPresenter{
 
     /**
      *@method
-     *Sets the font of checkmarks.
+     *Sets the symbol of checkmarks.
      * @param character {String}
      */
-    set selectionCharacter(character){
-        this._style.selectionCharacter(character);
+    setSelectionCharacter(character){
+        this._style.setSelectionCharacter(character);
     }
 
     /**
@@ -76,8 +80,8 @@ export class ChecklistWidgetPresenter{
      *Sets the visualization of tick with a character or with a color.
      * @param useMark {boolean}
      */
-    set useSelectionMark(useMark){
-        this._style.useSelectionMark(useMark);
+    setUseSelectionMark(useMark){
+        this._style.setUseSelectionMark(useMark);
     }
 
     /**
@@ -85,8 +89,8 @@ export class ChecklistWidgetPresenter{
      *Sets the color of checkmarks.
      * @param color {String}
      */
-    set selectionColor(color){
-        this._style.selectionColor(color);
+    setSelectionColor(color){
+        this._style.setSelectionColor(color);
     }
 
     /**
@@ -94,7 +98,7 @@ export class ChecklistWidgetPresenter{
      *Sets the completion message appears when all of the list options are checked.
      * @param message {String}
      */
-    set completionMessage(message){
+    setCompletionMessage(message){
         this._completionMessage = message;
     }
 
@@ -105,7 +109,4 @@ export class ChecklistWidgetPresenter{
     renderView(){
         // TODO: Implement this
     }
-
-
-
 }

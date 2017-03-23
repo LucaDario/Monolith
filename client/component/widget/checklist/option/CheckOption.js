@@ -1,30 +1,32 @@
 /**
+ * This class represents an item of a checklist.
  * Created by Francesco Bazzerla on 21/03/17.
+ * Version 1.0.0 -
  */
 
 export class CheckOption {
     /**
-     * @type {String}
+     * @type {String}: Item's id of a checklist
      */
     _id;
 
     /**
-     * @type {boolean}
+     * @type {boolean}: It represents if an item is checked
      */
     _isChecked;
 
     /**
-     * @type {function}
+     * @type {function}: It's a function that will be executed after a normal click on item
      */
     _onClick;
 
     /**
-     * @type {function}
+     * @type {function}: It's a function that will be executed after a long click on item
      */
     _onLongClick;
 
     /**
-     * @type {String}
+     * @type {String}: It represents the text associated to an item of a checklist
      */
     _text;
 
@@ -46,7 +48,7 @@ export class CheckOption {
      * _id getter
      * @return {String}
      */
-    get id(){
+    getId(){
         return this._id;
     }
 
@@ -55,7 +57,7 @@ export class CheckOption {
      * _onClick getter
      * @return {function}
      */
-    get onClick(){
+    getOnClick(){
         return this._onClick;
     }
 
@@ -64,7 +66,7 @@ export class CheckOption {
      * _isChecked getter
      * @return {boolean}
      */
-    get isChecked(){
+    isChecked(){
         return this._isChecked;
     }
 
@@ -82,7 +84,7 @@ export class CheckOption {
      * _text getter
      * @return {String}
      */
-    get text(){
+    getText(){
         return this._text;
     }
 
@@ -91,7 +93,7 @@ export class CheckOption {
      * _id setter
      * @param id {String}
      */
-    set id(id) {
+    setId(id) {
         if(typeof(id) !== String){
             throw new TypeError("Cannot set item's id. String value required.");
         }
@@ -115,7 +117,7 @@ export class CheckOption {
      * _onClick setter
      * @param action {function}
      */
-    set onClick(action) {
+    setOnClick(action) {
         if(typeof(action) !== "function"){
             throw new TypeError("Cannot set onClick function. Function required.");
         }
@@ -127,7 +129,7 @@ export class CheckOption {
      * _onLongClick setter
      * @param action {function}
      */
-    set onLongClick(action) {
+    setOnLongClick(action) {
         if(typeof(action) !== "function"){
             throw new TypeError("Cannot set onLongClick function. Function required.");
         }
@@ -139,7 +141,7 @@ export class CheckOption {
      * _text setter
      * @param text {String}
      */
-    set text(text){
+    setText(text){
         if(typeof(text) !== String){
             throw new TypeError("Cannot set item's text. String value required.");
         }
