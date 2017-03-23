@@ -94,5 +94,6 @@ export class TextWidgetPresenter {
         else {
             html= this._textstyle.getText();
         }
+        return html;
     }
 }
