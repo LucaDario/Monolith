@@ -1,4 +1,5 @@
 /**
+ * This class contains the visual options for the text in a TextWidget
  * Created by Diego on 21/03/17
  * Version 1.0.0 -
  */
@@ -6,32 +7,35 @@
 export class TextStyle {
 
     /**
-     * @type {number}
+     * @type {number} : the size of the text
      */
     _size;
 
     /**
-     * @type {string}
+     * @type {string} : the color of the text
      */
     _color;
 
     /**
-     * @type {string}
+     * @type {string} : the text itself
      */
     _text;
 
     /**
-     * @type {boolean}
+     * @type {boolean} : set at true this boolean indicates that the text is to be formatted, at false otherwise
      */
     _formatted;
 
     /**
      * @return {Object}
+     * The constructor of TextStyle
      */
     constructor() {}
 
     /**
-     * @param {number} size
+     * @method
+     * Allows to set the size of the text contained in the TextWidget
+     * @param size {number}
      */
     setSize(size) {
         if (typeof size == "number")
@@ -41,7 +45,9 @@ export class TextStyle {
     }
 
     /**
-     * @param {string} color
+     * @method
+     * Allows to set the color of the text in the TextWidget
+     * @param color {string}
      */
     setColor(color) {
         if (typeof color == "string")
@@ -51,7 +57,9 @@ export class TextStyle {
     }
 
     /**
-     * @param {string} text
+     * @method
+     * Allows to set the text in the TextWidget
+     * @param text {string}
      */
     setText(text) {
         if (typeof text == "string")
@@ -61,7 +69,9 @@ export class TextStyle {
     }
 
     /**
-     * @param {boolean} formatted
+     * @method
+     * Allows to choose if format the text contained in the TextWidget with markdown or not
+     * @param formatted {boolean}
      */
     setFormatted(formatted) {
         if (typeof formatted == "boolean")
@@ -71,28 +81,32 @@ export class TextStyle {
     }
 
     /**
-     * @return {Number}
+     * @method
+     * returns the size of the text
      */
     getSize() {
         return _size;
     }
 
     /**
-     * @return {string}
+     * @method
+     * returns the color of the text
      */
     getColor() {
         return _color;
     }
 
     /**
-     * @return {string}
+     * @method
+     * returns the text itself
      */
     getText() {
         return _text;
     }
 
     /**
-     * @return {boolean}
+     * @method
+     * returns the boolean that represents if the text is formatted or not
      */
     isFormatted() {
         return _formatted;
