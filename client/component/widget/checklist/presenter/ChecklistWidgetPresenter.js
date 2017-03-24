@@ -58,6 +58,23 @@ export class ChecklistWidgetPresenter{
 
     /**
      *@method
+     * It allows you to remove an item from a checklist
+     * @param id {String,number} If it's an Integer value the method removes the item in the specified position.
+     * If it's a String value the method removes the item with the specified id.
+     */
+    removeOption(id){
+        if(Number.isInteger(id)){
+            let optionsFirstSlice = this._options.slice(0,id-1);
+            let optionsSecondSlice = this._options.slice(id+1,this._options.length);
+            this._options = optionsFirstSlice.concat(optionsSecondSlice);
+        }
+        else{
+            //TODO: search item by id
+        }
+    }
+
+    /**
+     *@method
      *It allows you to check an item on the checklist or to remove a tick from it.
      * @param checked {boolean}
      * @param position {number}
@@ -107,6 +124,40 @@ export class ChecklistWidgetPresenter{
      * Generates HTML CSS JS needed to display the widget.
      */
     renderView(){
-        // TODO: Implement this
+        // TODO: CSS checkbox style (mark, symbol , color) and completionMessage
+        let html = '';
+        let mark = '';
+        let symbol = '';
+        let color = '';
+        let completionMessage = '';
+
+        if(!this._style.getUseSelectionMark()){
+            mark = '';
+            color = this._style.getSelectionColor();
+            symbol = this._style.getSelectionCharacter();
+        }
+        else{
+            mark = '';
+        }
+
+        for(let i of this._options){
+            let check = '';
+            if(this._options[i].isChecked()){
+                check = ' checked="checked"';
+            }
+            let id = this._options[i].getId();
+            let text = this._options[i].getText();
+            html = html +
+                    '<div class="checkbox">' +
+                        '<label for="' + id + '">' +
+                            '<input type="checkbox" id="' + id + '"' + check + '/>' +
+                            text +
+                        '</label>' +
+                    '</div>';
+        }
+        if(html !== '') {
+            html = '<div class="container">' + html + '</div>';
+        }
+        return html;
     }
 }

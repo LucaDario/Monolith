@@ -30,6 +30,14 @@ export class ChecklistWidgetView extends BaseWidget{
 
     /**
      *@method
+     * It allows you to remove an item from a checklist
+     * @param id {String,number} If it's an Integer value the method removes the item in the specified position.
+     * If it's a String value the method removes the item with the specified id.
+     */
+    removeOption(id){}
+
+    /**
+     *@method
      *Sets the visualization of tick with a character or with a color.
      * @param useMark {Boolean}
      */

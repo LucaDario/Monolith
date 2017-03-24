@@ -9,12 +9,12 @@ import {BaseBubble} from './BaseBubble';
 export class ToDoListBubble extends BaseBubble{
 
     /**
-     * @type {TextWidgetView}
+     * @type {Object}
      */
     _textView;
 
     /**
-     * @type {ChecklistWidgetView}
+     * @type {Object}
      */
     _checklist;
 
