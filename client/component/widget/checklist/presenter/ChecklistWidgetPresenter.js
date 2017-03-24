@@ -64,12 +64,39 @@ export class ChecklistWidgetPresenter{
      */
     removeOption(id){
         if(Number.isInteger(id)){
-            let optionsFirstSlice = this._options.slice(0,id-1);
-            let optionsSecondSlice = this._options.slice(id+1,this._options.length);
-            this._options = optionsFirstSlice.concat(optionsSecondSlice);
+            if(id>=1) {
+                if(id === this._options.length-1){
+                    this._options = this._options.slice(0,this._options.length-1);
+                }
+                else{
+                    let optionsFirstSlice = this._options.slice(0, id - 1);
+                    let optionsSecondSlice = this._options.slice(id + 1, this._options.length);
+                    this._options = optionsFirstSlice.concat(optionsSecondSlice);
+                }
+            }
+            if(id==0){
+                this._options = this._options.slice(1, this._options.length);
+            }
         }
         else{
-            //TODO: search item by id
+            for(let i of this._options){
+                if(this._options[i].getId() === id){
+                    if(i >= 1) {
+                        if(i === this._options.length-1){
+                            this._options = this._options.slice(0,this._options.length-1);
+                        }
+                        else{
+                            let optionsFirstSlice = this._options.slice(0, i - 1);
+                            let optionsSecondSlice = this._options.slice(i + 1, this._options.length);
+                            this._options = optionsFirstSlice.concat(optionsSecondSlice);
+                        }
+                    }
+                    if(i === 0){
+                        this._options = this._options.slice(1, this._options.length);
+                    }
+                    break;
+                }
+            }
         }
     }
 
