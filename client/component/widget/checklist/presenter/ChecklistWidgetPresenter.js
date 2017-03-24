@@ -176,14 +176,11 @@ export class ChecklistWidgetPresenter{
             let text = this._options[i].getText();
             html = html +
                     '<div class="checkbox">' +
-                        '<label for="' + id + '">' +
                             '<input type="checkbox" id="' + id + '"' + check + '/>' +
-                            text +
-                        '</label>' +
+                            '<label for="' + id + '">' +
+                                text +
+                            '</label>' +
                     '</div>';
-        }
-        if(html !== '') {
-            html = '<div class="container">' + html + '</div>';
         }
         return html;
     }
