@@ -14,6 +14,7 @@ class MarkdownBubble extends BaseBubble{
      * Constructor of MarkdownBubble
      */
     constructor(){
+        super();
         this._textView = new TextWidgetView();
     }
 

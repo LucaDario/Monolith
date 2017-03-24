@@ -4,7 +4,7 @@
  */
 
 
-import "..component/widget/text/view/TextWidgetView;
+import "..component/widget/text/view/TextWidgetView";
 
 export class AlertBubble extends BaseBubble{
 
@@ -19,6 +19,7 @@ export class AlertBubble extends BaseBubble{
     _messageView;
 
     constructor() {
+        super();
         this._titleView = new TextWidgetView();
         this._messageView = new TextWidgetView();
     }

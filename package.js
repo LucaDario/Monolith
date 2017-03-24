@@ -1,8 +1,13 @@
 Package.describe({
-    name: 'Monolith',
+    name: 'monolith',
     version: '0.0.1',
     summary: 'An interactive bubble provider',
     git: 'https://github.com/NPE-Developers/monolith'
+});
+
+Npm.depends({
+    "can": "3.5.1",
+    "dependency-injection-es6": "1.2.1"
 });
 
 Package.onUse(function(api) {
