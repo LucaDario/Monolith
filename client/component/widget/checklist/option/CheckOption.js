@@ -1,7 +1,7 @@
 /**
  * This class represents an item of a checklist.
  * Created by Francesco Bazzerla on 21/03/17.
- * Version 1.0.0 -
+ * Version 1.0.0 - 1.0.0
  */
 
 export class CheckOption {

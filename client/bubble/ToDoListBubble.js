@@ -1,6 +1,8 @@
-    /**
-    * Created by Francesco Bazzerla on 21/03/17.
-    */
+/**
+ * Concrete bubble ToDoListBubble.
+ * Created by Francesco Bazzerla on 21/03/17.
+ * Version 1.0.0 -
+ */
 
 import {ChecklistWidgetView} from '../component/widget/checklist/view/ChecklistWidgetView';
 import {TextWidgetView} from '../component/widget/text/view/TextWidgetView';
@@ -26,6 +28,8 @@ export class ToDoListBubble extends BaseBubble{
         super();
         this._textView = new TextWidgetView();
         this._checklist = new ChecklistWidgetView();
+        super.addComponent(this._textView);
+        super.addComponent(this._checklist);
     }
 
     /**
@@ -81,5 +85,14 @@ export class ToDoListBubble extends BaseBubble{
      */
     setTextSize(size){
         this._textView.setTextSize(size);
+    }
+
+    /**
+     * @method
+     * Generates HTML CSS JS needed to display the widget.
+     * @return {String}
+     */
+    renderView(){
+        super.layout.renderView();
     }
 }

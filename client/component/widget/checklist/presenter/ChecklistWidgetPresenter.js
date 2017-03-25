@@ -1,7 +1,7 @@
 /**
  * The presenter of ChecklistWidget.
  * Created by Francesco Bazzerla on 21/03/17.
- * Version 1.0.0 -
+ * Version 1.0.0 - 1.0.0
  */
 
 
@@ -149,6 +149,7 @@ export class ChecklistWidgetPresenter{
     /**
      * @method
      * Generates HTML CSS JS needed to display the widget.
+     * @return {String}
      */
     renderView(){
         // TODO: CSS checkbox style (mark, symbol , color) and completionMessage

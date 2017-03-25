@@ -1,7 +1,7 @@
 /**
  * This class contains the style options for a ChecklistWidget.
  * Created by Francesco Bazzerla on 21/03/17.
- * Version 1.0.0 -
+ * Version 1.0.0 - 1.0.0
  */
 
 export class CheckStyle {
