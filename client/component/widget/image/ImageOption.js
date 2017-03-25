@@ -32,6 +32,8 @@ export class ImageOptions {
     }
 
     /**
+     * @method
+     * this method allows to set the path where is present the image
      * @param {string} path
      */
 
@@ -40,6 +42,8 @@ export class ImageOptions {
     }
 
     /**
+     * @method
+     * this method allows to set the width of the image
      * @param {number} width
      */
 
@@ -49,10 +53,24 @@ export class ImageOptions {
     }
 
     /**
+     * @method
+     * this method allows to set the height of the image
      * @param {number} height
      */
 
     setHeight(height) {
         this._height= height;
+    }
+
+    /**
+     * @method
+     * this method allows to set the height of the image
+     * @param {number} height
+     * @return {string}
+     */
+
+
+    returnPath () {
+        return this._path;
     }
 }
