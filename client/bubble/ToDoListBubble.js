@@ -74,7 +74,7 @@ export class ToDoListBubble extends BaseBubble{
      * It allows you to set the color of ToDoListBubble's url
      * @param color {String}
      */
-    setUrlHighLightColor(color){
+    setUrlHighlightColor(color){
         this._textView.setUrlHighlightColor(color);
     }
 
