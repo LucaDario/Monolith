@@ -134,9 +134,10 @@ class ButtonWidgetPresenter {
         let html= '';
 
         //maybe here using an id is better so not every button is the same
-        html= '<div class="container"> ' +
-            '<button class="button" type="button">'+ this.getText() +'</button>' +
-            '</div>';
+        html= '<button type="button" class="btn btn-primary" id="btn-widget">'+ this.getText() +'</button>' +
+        '<style>' +
+            '#btn-widget{background-color:' + this._graphics.getColor() + '}' +
+        '</style>';
 
         return html;
     }
