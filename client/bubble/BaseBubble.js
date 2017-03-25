@@ -8,7 +8,7 @@ import {VerticalLayoutView} from '../component/layout/vertical/VerticalLayoutVie
 
 export class BaseBubble{
     /**
-     * @type {Object}
+     * @type {Object}: VerticalLayout which contains and place component on bubble.
      */
     layout;
 

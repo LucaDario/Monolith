@@ -1,7 +1,7 @@
 /**
  * Concrete bubble ToDoListBubble.
  * Created by Francesco Bazzerla on 21/03/17.
- * Version 1.0.0 -
+ * Version 1.0.0 - 1.0.0
  */
 
 import {ChecklistWidgetView} from '../component/widget/checklist/view/ChecklistWidgetView';
@@ -11,12 +11,12 @@ import {BaseBubble} from './BaseBubble';
 export class ToDoListBubble extends BaseBubble{
 
     /**
-     * @type {Object}
+     * @type {Object}: The TextWidget which represents bubble's information.
      */
     _textView;
 
     /**
-     * @type {Object}
+     * @type {Object}: The ChecklistWidget which represents the checklist.
      */
     _checklist;
 
