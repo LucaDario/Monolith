@@ -38,7 +38,7 @@ export class TextStyle {
      * @param size {number}
      */
     setSize(size) {
-        if (typeof size == "number")
+        if (typeof size === "number")
             this._size=size;
         else
             throw new TypeError("Parameter size type must be a number");
@@ -50,10 +50,11 @@ export class TextStyle {
      * @param color {string}
      */
     setColor(color) {
-        if (typeof color == "string")
+        let pat= new RegExp('#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$');
+        if (typeof color === "string" && pat.test(color))
             this._color=color;
         else
-            throw new TypeError("Parameter color type must be a string");
+            throw new TypeError("Parameter color type must be a string that represents a hex color code");
     }
 
     /**
@@ -62,7 +63,7 @@ export class TextStyle {
      * @param text {string}
      */
     setText(text) {
-        if (typeof text == "string")
+        if (typeof text === "string")
             this._text=text;
         else
             throw new TypeError("Parameter text type must be a string");
@@ -74,7 +75,7 @@ export class TextStyle {
      * @param formatted {boolean}
      */
     setFormatted(formatted) {
-        if (typeof formatted == "boolean")
+        if (typeof formatted === "boolean")
             this._formatted=formatted;
         else
             throw new TypeError("Parameter formatted type must be a boolean");

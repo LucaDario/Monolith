@@ -41,10 +41,11 @@ class ButtonGraphics {
      * @param color {string}
      */
     setColor(color) {
-        if (typeof color == "string")
+        let pat= new RegExp('#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$');
+        if (typeof color === "string" && pat.test(color))
             this._color = color;
         else
-            throw new TypeError("Parameter color type must be a string");
+            throw new TypeError("Parameter color type must be a string that represents a hex color code");
     }
 
     /**
@@ -61,7 +62,7 @@ class ButtonGraphics {
      * @param height {number}
      */
     setHeight(height) {
-        if (typeof height == "number")
+        if (typeof height === "number")
             this._height = height;
         else
             throw new TypeError("Parameter height type must be a number");
@@ -81,7 +82,7 @@ class ButtonGraphics {
      * @param width {number}
      */
     setWidth(width) {
-        if (typeof width == "number")
+        if (typeof width === "number")
             this._width = width;
         else
             throw new TypeError("Parameter width type must be a number");
