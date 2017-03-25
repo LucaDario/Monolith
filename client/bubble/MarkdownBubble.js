@@ -27,5 +27,16 @@ class MarkdownBubble extends BaseBubble{
     setText(text){
         this._textView.setText(text);
     }
+
+    /**
+     * @method
+     * Generates HTML CSS JS needed to display the bubble.
+     * @param
+     * @return (String) which represents the HTML and CSS for the bubble.
+     */
+
+    renderView(){
+        super.layout.renderView();
+    }
 }
 
