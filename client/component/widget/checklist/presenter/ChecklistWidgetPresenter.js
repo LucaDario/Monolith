@@ -66,6 +66,7 @@ export class ChecklistWidgetPresenter{
         this._options.push(new CheckOption(option,onClick,onLongClick));
     }
 
+    //TODO: test it
     /**
      *@method
      * It allows you to remove an item from a checklist
@@ -173,21 +174,24 @@ export class ChecklistWidgetPresenter{
         let symbol = '';
         let color = '';
         let completionMessage = '';
-        let check ='';
 
         /**
          * Generate html
          */
         for(let i in this._options){
-            check = '';
+            let check = '';
+            let id = this._options[i].getId();
             if(this._options[i].isChecked()){
                 check = ' checked="checked"';
             }
             let text = this._options[i].getText();
-            html = '<label>' +
-                        '<input type="checkbox" ' + check + '/>' +
+            html = html +
+                '<div class="checkbox-m">' +
+                    '<input type="checkbox" id="' + id + '"' + check + '/>' +
+                        '<label>' +
                             text +
-                    '</label>';
+                        '</label>' +
+                '</div>';
         }
 
         /**
@@ -206,9 +210,32 @@ export class ChecklistWidgetPresenter{
             symbol = this._style.getSelectionCharacter();
         }
         else{
-            mark = '\2714';
+            mark = '\\2714';
         }
-        //TODO: update DOM element
+
+        //TODO: completionMessage
+
+        if(mark === ''){
+            //TODO: update DOM element
+            /*
+             I will create CSS of the html generated before with color
+
+             var x = document.createElement("STYLE");
+             var t = document.createTextNode(".checkbox div {clear: both;overflow: hidden;} checkbox label {width: 100%;border-radius: 5px;border: 1px solid #D1D3D4;font-weight: normal;} .checkbox input[type=\"checkbox\"]:empty {display: none;} .checkbox input[type=\"checkbox\"]:empty ~ label {position: relative;line-height: 2em;text-indent: 3.25em;margin-top: 2em;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;} .checkbox input[type=\"checkbox\"]:empty ~ label:before {position: absolute;display: block;top: 0;bottom: 0;left: 0;content: '';width: 2em;background: #D1D3D4;border:1px solid #333;border-radius: 5px;} .checkbox input[type=\"checkbox\"]:hover:not(:checked) ~ label {color: #333;} .checkbox input[type=\"checkbox\"]:hover:not(:checked) ~ label:before {content: '';text-indent: .6em;color: #C2C2C2;} .checkbox input[type=\"checkbox\"]:checked ~ label {color: #777;} .checkbox input[type=\"checkbox\"]:checked ~ label:before {content: '';text-indent: .6em;color: #333;background-color: #ccc;}.checkbox input[type=\"checkbox\"]:focus ~ label:before {box-shadow: 0 0 0 3px #999;} .checkbox-m input[type=\"checkbox\"]:checked ~ label:before {color: #fff;background-color: green;}");
+             x.appendChild(t);
+             document.head.appendChild(x);
+             */
+        }
+        else{
+            /*
+             I will create CSS of the html generated before with check
+
+             var x = document.createElement("STYLE");
+             var t = document.createTextNode(".checkbox div {clear: both;overflow: hidden;} checkbox label {width: 100%;border-radius: 5px;border: 1px solid #D1D3D4;font-weight: normal;} .checkbox input[type=\"checkbox\"]:empty {display: none;} .checkbox input[type=\"checkbox\"]:empty ~ label {position: relative;line-height: 2em;text-indent: 3.25em;margin-top: 2em;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;} .checkbox input[type=\"checkbox\"]:empty ~ label:before {position: absolute;display: block;top: 0;bottom: 0;left: 0;content: '';width: 2em;background: #fff;border:1px solid #333;border-radius: 5px;} .checkbox input[type=\"checkbox\"]:hover:not(:checked) ~ label {color: #333;} .checkbox input[type=\"checkbox\"]:hover:not(:checked) ~ label:before {content: '';text-indent: .6em;color: #fff;} .checkbox input[type=\"checkbox\"]:checked ~ label {color: #777;} .checkbox input[type=\"checkbox\"]:checked ~ label:before {content: '\\2714';text-indent: .6em;color: #333;background-color: #ccc;}.checkbox input[type=\"checkbox\"]:focus ~ label:before {box-shadow: 0 0 0 3px #999;} .checkbox-m input[type=\"checkbox\"]:checked ~ label:before {color: #333;background-color: #fff;}");
+             x.appendChild(t);
+             document.head.appendChild(x);
+             */
+        }
 
         return renderer(this._map);
     }

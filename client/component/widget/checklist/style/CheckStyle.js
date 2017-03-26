@@ -29,7 +29,7 @@ export class CheckStyle {
     constructor(){
         this._useSelectionMark = true;
         this._selectionColor = "green";
-        this._selectionCharacter = "";
+        this._selectionCharacter = "\\2714";
     }
 
     /**
