@@ -16,6 +16,7 @@ export class TextWidget extends TextWidgetView {
     /**
      * @constructor
      * The constructor of TextWidget
+     * @return {Object}
      */
     constructor(){
         //noinspection JSAnnotator
@@ -71,6 +72,7 @@ export class TextWidget extends TextWidgetView {
     /**
      * @method
      * Returns the HTML, CSS and JS needed to render the TextWidget
+     * @return {Object}
      */
     renderView() {
         return this._presenter.renderView();

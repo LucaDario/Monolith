@@ -11,6 +11,7 @@ export class TextWidgetView extends BaseWidget{
     /**
      * @constructor
      * The constructor of TextWidgetView
+     * @return {Object}
      */
     constructor(){
         //noinspection JSAnnotator,JSAnnotator,JSAnnotator

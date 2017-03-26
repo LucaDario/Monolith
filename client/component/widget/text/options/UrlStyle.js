@@ -16,6 +16,11 @@ export class UrlStyle {
      */
     _highlightColor;
 
+    /**
+     * @constructor
+     * The constructor of UrlStyle
+     * @return {Object}
+     */
     constructor() {}
 
     /**
@@ -46,6 +51,7 @@ export class UrlStyle {
     /**
      * @method
      * returns the boolean that represents if the URLs in the textare to be highlighted or not
+     * @return {boolean}
      */
     isHighlightEnabled() {
         return _highlight;
@@ -54,6 +60,7 @@ export class UrlStyle {
     /**
      * @method
      * returns the color of the highlighted URLs
+     * @return {string}
      */
     getHighlighColor() {
         return _highlightColor;
