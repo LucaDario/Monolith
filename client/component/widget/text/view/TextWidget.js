@@ -5,6 +5,7 @@
  */
 
 import {TextWidgetView} from './TextWidgetView'
+import {TextWidgetPresenter} from '../presenter/TextWidgetPresenter';
 
 export class TextWidget extends TextWidgetView {
 
@@ -20,7 +21,7 @@ export class TextWidget extends TextWidgetView {
     constructor(){
         //noinspection JSAnnotator
         super();
-        this._presenter = new ListWidgetPresenter(this);
+        this._presenter = new TextWidgetPresenter(this);
     }
 
     /**

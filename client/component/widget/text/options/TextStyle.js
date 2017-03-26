@@ -102,7 +102,7 @@ export class TextStyle {
      * returns the text itself
      */
     getText() {
-        return _text;
+        return this._text;
     }
 
     /**

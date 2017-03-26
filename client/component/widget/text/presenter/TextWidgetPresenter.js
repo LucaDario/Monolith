@@ -4,6 +4,9 @@
  * Version 1.0.0 -
  */
 
+import {TextStyle} from '../options/TextStyle';
+import {UrlStyle} from '../options/UrlStyle';
+
 export class TextWidgetPresenter {
 
     /**
@@ -84,16 +87,8 @@ export class TextWidgetPresenter {
      */
     renderView() {
         // TODO: Implement this
-
-        let html= '';
-
-        if (this._textstyle.isFormatted()) {
-            api.use('markdown');
-            html= '{{#markdown}}' + this._textstyle.getText() + '{{/markdown}}';
-        }
-        else {
-            html= '<p>' + this._textstyle.getText() + '</p>';
-        }
-        return html;
+        let renderer = Monolith.can.stache("<h1>{{subject}}</h1>");
+        let map = new Monolith.can.DefineMap({subject: this._textstyle.getText()});
+        return renderer(map);
     }
 }

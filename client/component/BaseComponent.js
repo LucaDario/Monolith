@@ -8,9 +8,9 @@ export class BaseComponent {
      * Public constructor. If called directly it will produce an exception as this class is abstract.
      */
     constructor() {
-        if (this instanceof BaseComponent) {
+        /*if (this instanceof BaseComponent) {
             throw new TypeError("Cannot construct BaseComponent instances directly");
-        }
+        }*/
     }
 
     /**
