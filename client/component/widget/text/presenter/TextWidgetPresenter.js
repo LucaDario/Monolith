@@ -28,6 +28,7 @@ export class TextWidgetPresenter {
      * @constructor
      * The constructor of TextWidgetPresenter
      * @param {Object} view
+     * @return {Object}
      */
     constructor(view) {
         this._view= view;
@@ -84,6 +85,7 @@ export class TextWidgetPresenter {
     /**
      * @method
      * Returns the HTML, CSS and JS needed to render the TextWidget
+     * @return {Object}
      */
     renderView() {
         // TODO: Implement this

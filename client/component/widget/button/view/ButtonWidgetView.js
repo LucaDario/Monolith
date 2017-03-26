@@ -11,6 +11,7 @@ class ButtonWidgetView extends BaseWidget {
     /**
      * @constructor
      * Constructor of ButtonWidgetView
+     * @return {Object}
      */
     constructor(){
         super();

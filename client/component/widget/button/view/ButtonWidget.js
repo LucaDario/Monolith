@@ -16,6 +16,7 @@ class ButtonWidget extends ButtonWidgetView {
     /**
      * @constructor
      * Constructor of ButtonWidget
+     * @return {Object}
      */
     constructor(){
         //noinspection JSAnnotator
@@ -88,6 +89,7 @@ class ButtonWidget extends ButtonWidgetView {
     /**
      * @method
      * Returns HTML, CSS and JS code that is necessary to display the ButtonWidget
+     * @return {Object}
      */
     renderView() {
         return this._presenter.renderView();

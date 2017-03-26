@@ -24,12 +24,14 @@ class ButtonGraphics {
     /**
      * @constructor
      * Constructor of ButtonGraphics.
+     * @return {Object}
      */
     constructor() {}
 
     /**
      * @method
      * Returns the color set for the ButtonGraphics.
+     * @return {string}
      */
     getColor() {
         return this._color;
@@ -51,6 +53,7 @@ class ButtonGraphics {
     /**
      * @method
      * Returns the height set for the ButtonGraphics.
+     * @return {number}
      */
     getHeight() {
         return this._height;
@@ -71,6 +74,7 @@ class ButtonGraphics {
     /**
      * @method
      * Returns the width set for the ButtonGraphics.
+     * @return {number}
      */
     getWidth() {
         return this._width;

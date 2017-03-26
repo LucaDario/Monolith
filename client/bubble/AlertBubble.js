@@ -37,4 +37,13 @@ export class AlertBubble extends BaseBubble{
     set messageView(message) {
         this._messageView.setText(message);
     }
+
+    /**
+     * @method
+     * Generates HTML CSS JS needed to display the bubble.
+     * @return {String}
+     */
+    renderView(){
+        super.layout.renderView();
+    }
 }

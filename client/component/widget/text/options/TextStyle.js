@@ -29,6 +29,7 @@ export class TextStyle {
     /**
      * @return {Object}
      * The constructor of TextStyle
+     * @return {Object}
      */
     constructor() {}
 
@@ -84,6 +85,7 @@ export class TextStyle {
     /**
      * @method
      * returns the size of the text
+     * @return {number}
      */
     getSize() {
         return _size;
@@ -92,6 +94,7 @@ export class TextStyle {
     /**
      * @method
      * returns the color of the text
+     * @return {string}
      */
     getColor() {
         return _color;
@@ -100,6 +103,7 @@ export class TextStyle {
     /**
      * @method
      * returns the text itself
+     * @return {string}
      */
     getText() {
         return this._text;
@@ -108,6 +112,7 @@ export class TextStyle {
     /**
      * @method
      * returns the boolean that represents if the text is formatted or not
+     * @return {boolean}
      */
     isFormatted() {
         return _formatted;

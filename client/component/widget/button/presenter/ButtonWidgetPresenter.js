@@ -40,6 +40,7 @@ class ButtonWidgetPresenter {
      * @constructor
      * Constructor of ButtonWidgetPresenter
      * @param {Object} view
+     * @return {Object}
      */
     constructor(view) {
         this._view= view;
@@ -65,6 +66,7 @@ class ButtonWidgetPresenter {
     /**
      * @method
      * Returns the text contained in the ButtonWidget.
+     * @return {string}
      */
     getText() {
         return this._text;
@@ -127,6 +129,7 @@ class ButtonWidgetPresenter {
     /**
      * @method
      * Returns HTML, CSS and JS code that is necessary to display the ButtonWidget
+     * @return {Object}
      */
     renderView() {
         // TODO: CSS and JS things here
