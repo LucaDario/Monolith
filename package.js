@@ -22,19 +22,42 @@ Package.onUse(function(api) {
       'less',
       'random',
       'rocketchat:lib',
-      'rocketchat:ui-message',
-      'vue:vue@1.0.8'
+      'rocketchat:ui-message'
     ]);
 
-    // api.mainModule('monolith.js');
-    api.addFiles('monolith.js');
-		
-		// Get all the project files
-		var clientFiles=getFilesFromFolder("monolith","client");
-		// Add all the .js project files
-		api.add_files(clientFiles[0],"client");
-		// Add all the .html, .css project files
-		api.addAssets(clientFiles[1],"client");
+    api.mainModule('monolith.js', 'client');
+    // api.addFiles('monolith.js');
+
+    api.addFiles([
+        'lib/_monolith.js',
+        'client/component/BaseComponent.js',
+        'client/component/layout/BaseLayout.js',
+        'client/component/layout/horizontal/HorizontalLayoutView.js',
+        'client/component/layout/vertical/VerticalLayoutView.js',
+        'client/component/widget/BaseWidget.js',
+        'client/component/widget/button/options/ButtonGraphics.js',
+        'client/component/widget/button/presenter/ButtonWidgetPresenter.js',
+        'client/component/widget/button/view/ButtonWidget.js',
+        'client/component/widget/button/view/ButtonWidgetView.js',
+        'client/component/widget/checklist/options/CheckOption.js',
+        'client/component/widget/checklist/presenter/ChecklistWidgetPresenter.js',
+        'client/component/widget/checklist/style/CheckStyle.js',
+        'client/component/widget/checklist/view/ChecklistWidget.js',
+        'client/component/widget/checklist/view/ChecklistWidgetView.js',
+        'client/component/widget/image/presenter/ImageWidgetPresenter.js',
+        'client/component/widget/image/view/ImageWidget.js',
+        'client/component/widget/image/view/ImageWidgetView.js',
+        'client/component/widget/image/ImageOption.js',
+        'client/component/widget/list/presenter/ListWidgetPresenter.js',
+        'client/component/widget/list/style/Indicator.js',
+        'client/component/widget/list/view/ListWidget.js',
+        'client/component/widget/list/view/ListWidgetView.js',
+        'client/component/widget/text/options/TextStyle.js',
+        'client/component/widget/text/options/UrlStyle.js',
+        'client/component/widget/text/presenter/TextWidgetPresenter.js',
+        'client/component/widget/text/view/TextWidget.js',
+        'client/component/widget/text/view/TextWidgetView.js',
+    ], 'client');
 });
 
 Package.onTest(function(api) {
@@ -46,56 +69,4 @@ Package.onTest(function(api) {
 			'practicalmeteor:sinon'
 		]);
 
-		var clientFiles=getFilesFromFolder("monolith","client");
-		api.add_files(clientFiles[0],"client");
-		api.addAssets(clientFiles[1],"client");
-
 });
-
-function getFilesFromFolder(packageName,folder){
-    // local imports
-    var _=Npm.require("underscore");
-    var fs=Npm.require("fs");
-    var path=Npm.require("path");
-    // helper function, walks recursively inside nested folders and return absolute filenames
-    function walk(folder){
-				var assets=[];
-        var filenames=[];
-        // get relative filenames from folder
-        var folderContent=fs.readdirSync(folder);
-        // iterate over the folder content to handle nested folders
-        _.each(folderContent,function(filename){
-            // build absolute filename
-            var absoluteFilename=folder+path.sep+filename;
-            // get file stats
-            var stat=fs.statSync(absoluteFilename);
-            if(stat.isDirectory()){
-                // directory case => add filenames fetched from recursive call
-                filenames=filenames.concat(walk(absoluteFilename)[0]);
-								assets=assets.concat(walk(absoluteFilename)[1]);
-            }
-            else{
-                // file case => simply add it
-                var extension = path.extname(absoluteFilename);
-								if (extension == '.html'){
-									// Add static asset
-									assets.push(absoluteFilename);
-								} else {
-									// Add other type of file
-									filenames.push(absoluteFilename);
-								}
-            }
-        });
-        return [filenames, assets];
-    }
-    // save current working directory (something like "/home/user/projects/my-project")
-    var cwd=process.cwd();
-    // chdir to our package directory
-		console.log(cwd + path.sep + '..' + path.sep + packageName);
-    process.chdir(cwd + path.sep + '..' + path.sep + packageName);
-    // launch initial walk
-    var result=walk(folder);
-    // restore previous cwd
-    process.chdir(cwd);
-    return result;
-}

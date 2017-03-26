@@ -4,6 +4,8 @@
  * Version 1.0.0 -
  */
 
+import {BaseWidget} from '../../BaseWidget';
+
 class ButtonWidgetView extends BaseWidget {
 
     /**

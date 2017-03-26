@@ -106,7 +106,7 @@ export class TextStyle {
      * @return {string}
      */
     getText() {
-        return _text;
+        return this._text;
     }
 
     /**

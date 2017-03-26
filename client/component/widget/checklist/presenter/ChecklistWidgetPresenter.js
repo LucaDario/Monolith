@@ -7,7 +7,7 @@
 
 import {ChecklistWidgetView} from '../view/ChecklistWidgetView';
 import {CheckStyle} from '../style/CheckStyle';
-import {CheckOption} from '../option/CheckOption';
+import {CheckOption} from '../options/CheckOption';
 
 export class ChecklistWidgetPresenter{
 
