@@ -70,7 +70,7 @@ export class TextWidgetPresenter {
      * @param color {string}
      */
     setUrlHighlightColor(color) {
-        this._urlstyle.setHighlighColor(color);
+        this._urlstyle.setHighlightColor(color);
     }
 
     /**
