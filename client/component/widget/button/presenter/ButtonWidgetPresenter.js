@@ -91,6 +91,8 @@ class ButtonWidgetPresenter {
      */
     setWidth(width) {
         this._graphics.setWidth(width);
+        this._dom.style.width = width;
+
     }
 
     /**
@@ -100,6 +102,7 @@ class ButtonWidgetPresenter {
      */
     setHeight(height) {
         this._graphics.setHeight(height);
+        this._dom.style.height = height;
     }
 
     /**
@@ -109,6 +112,7 @@ class ButtonWidgetPresenter {
      */
     setBackgroundColor(color) {
         this._graphics.setBackgroundColor(color);
+        this._dom.style.backgroundColor = color;
     }
 
     /**
@@ -159,6 +163,22 @@ class ButtonWidgetPresenter {
 
         this._map= map;
         this._dom= renderer(map);
+        // TODO: work in progress of damned long click
+        /*
+        this._dom.mouseup(function() {
+            clearTimeout(pressTimer);
+            if (f) {
+                //esegui funzione di click normale
+            }
+            f=false;
+            return false;
+        }).mousedown(function(){
+            // Set timeout
+            f=true;
+            pressTimer = window.setTimeout(function() {[esegui funzione di long click]}, [timer]);
+            return false;
+        });*/
 
-        return renderer(map);    }
+        return renderer(map);
+    }
 }
