@@ -12,6 +12,16 @@ import {CheckOption} from '../option/CheckOption';
 export class ChecklistWidgetPresenter{
 
     /**
+     * @type {Object}: DOM element that allows to change CSS
+     */
+    _dom;
+
+    /**
+     * @type {Object}: DefineMap element that allows to update view
+     */
+    _map;
+
+    /**
      * @type {Object}: ChecklistWidget element for the presenter
      */
     _view;
@@ -79,7 +89,7 @@ export class ChecklistWidgetPresenter{
             }
         }
         else{
-            for(let i of this._options){
+            for(let i in this._options){
                 if(this._options[i].getId() === id){
                     if(i >= 1) {
                         if(i === this._options.length-1){
@@ -152,37 +162,54 @@ export class ChecklistWidgetPresenter{
      * @return {String}
      */
     renderView(){
-        // TODO: CSS checkbox style (mark, symbol , color) and completionMessage
+        let DefineMap = require("can-define/map/map");
+        let renderer = stache(/*view.html*/);
+
+        /**
+         * Temporary variables
+         */
         let html = '';
         let mark = '';
         let symbol = '';
         let color = '';
         let completionMessage = '';
+        let check ='';
 
+        /**
+         * Generate html
+         */
+        for(let i in this._options){
+            check = '';
+            if(this._options[i].isChecked()){
+                check = ' checked="checked"';
+            }
+            let text = this._options[i].getText();
+            html = '<label>' +
+                        '<input type="checkbox" ' + check + '/>' +
+                            text +
+                    '</label>';
+        }
+
+        /**
+         *Replacement placeholders in html
+         */
+        this._map = new DefineMap({
+            checkbox: html
+        });
+
+        /**
+         * Modify the CSS according to the developer's preferences
+         */
         if(!this._style.getUseSelectionMark()){
             mark = '';
             color = this._style.getSelectionColor();
             symbol = this._style.getSelectionCharacter();
         }
         else{
-            mark = '';
+            mark = '\2714';
         }
+        //TODO: update DOM element
 
-        for(let i of this._options){
-            let check = '';
-            if(this._options[i].isChecked()){
-                check = ' checked="checked"';
-            }
-            let id = this._options[i].getId();
-            let text = this._options[i].getText();
-            html = html +
-                    '<div class="checkbox">' +
-                            '<input type="checkbox" id="' + id + '"' + check + '/>' +
-                            '<label for="' + id + '">' +
-                                text +
-                            '</label>' +
-                    '</div>';
-        }
-        return html;
+        return renderer(this._map);
     }
 }
