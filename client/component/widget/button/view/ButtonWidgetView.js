@@ -68,11 +68,4 @@ class ButtonWidgetView extends BaseWidget {
      * @param milliseconds {number}
      */
     setOnLongClickActionTimer(milliseconds) {}
-
-    /**
-     * Events
-     */
-
-    onclick() {}
-    onLongClick() {}
 }

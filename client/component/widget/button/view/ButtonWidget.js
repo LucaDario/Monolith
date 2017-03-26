@@ -94,14 +94,4 @@ class ButtonWidget extends ButtonWidgetView {
     renderView() {
         return this._presenter.renderView();
     }
-
-
-    /**
-     * Events
-     */
-    // TODO : IMPLEMENT EVENTS
-
-    onclick() {}
-
-    onLongClick() {}
 }

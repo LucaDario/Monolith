@@ -7,6 +7,16 @@
 class ButtonWidgetPresenter {
 
     /**
+     * @type {Object}: DOM element that allows to change CSS
+     */
+    _dom;
+
+    /**
+     * @type {Object}: DefineMap element that allows to update view
+     */
+    _map;
+
+    /**
      * @type {Object} : the ButtonWidgetView element for the presenter
      */
     _view;
@@ -57,8 +67,10 @@ class ButtonWidgetPresenter {
      * @param text {string}
      */
     setText(text) {
-        if (typeof text == "string")
+        if (typeof text === "string") {
             this._graphics.setText(text);
+            this._map.text = text;
+        }
         else
             throw new TypeError("Parameter text type must be a string");
     }
@@ -132,16 +144,21 @@ class ButtonWidgetPresenter {
      * @return {Object}
      */
     renderView() {
-        // TODO: CSS and JS things here
+        // TODO: events
 
-        let html= '';
-
-        //maybe here using an id is better so not every button is the same
-        html= '<button type="button" class="btn btn-primary" id="btn-widget">'+ this.getText() +'</button>' +
+        /*html= '<button type="button" class="btn btn-primary" id="btn-widget">'+ {{text}} +'</button>' +
         '<style>' +
             '#btn-widget{background-color:' + this._graphics.getColor() + '}' +
-        '</style>';
+        '</style>';*/
 
-        return html;
-    }
+        //path text idk
+        let renderer = Monolith.can.stache(/*view.html*/);
+        let map = new Monolith.can.DefineMap({
+            text: this.getText()
+        });
+
+        this._map= map;
+        this._dom= renderer(map);
+
+        return renderer(map);    }
 }
