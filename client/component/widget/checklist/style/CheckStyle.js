@@ -62,10 +62,13 @@ export class CheckStyle {
      * @param color {String}
      */
     setSelectionColor(color){
-        if(typeof(color) !== String){
-            throw new TypeError("Cannot set selection color. String value required.");
+        let pat= new RegExp('#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$');
+        if (typeof color === "string" && pat.test(color)) {
+            this._selectionColor = color;
         }
-        this._selectionColor = color;
+        else {
+            throw new TypeError("Parameter color type must be a string that represents a hex color code");
+        }
     }
 
     /**
