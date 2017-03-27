@@ -35,6 +35,7 @@ function renderize(message, wrapper_id) {
                         message.msg + ":\n" +
                         err.message
                     ));
+                    throw err;
                 }
 
                 renderized = true;
