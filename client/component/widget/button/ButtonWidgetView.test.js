@@ -1,15 +1,15 @@
 
-import {ButtonWidget} from './ButtonWidget'
+import {ButtonWidgetView} from './ButtonWidgetView'
 
-describe('ButtonWidget', function () {
-    it('Check that is instantiable', function () {
+describe('ButtonWidgetView', function () {
+    it('Check that is not instantiable', function () {
         // This code will be executed by the test driver when the app is started
         // in the correct mode
         expect(
             () => {
-                new ButtonWidget();
+                new ButtonWidgetView();
             }
-        ).to.not.throw();
+        ).to.throw();
     });
 
 });

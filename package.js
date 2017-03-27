@@ -72,8 +72,8 @@ Package.onTest(function(api) {
     ]);
 
     api.addFiles([
-        'client/bubble/AlertBubble.test.js',
         'client/bubble/BaseBubble.test.js',
+        'client/bubble/AlertBubble.test.js',
         'client/bubble/MarkdownBubble.test.js',
         'client/bubble/ToDoListBubble.test.js',
         'client/component/BaseComponent.test.js',
@@ -81,10 +81,15 @@ Package.onTest(function(api) {
         'client/component/layout/vertical/VerticalLayoutView.test.js',
         'client/component/layout/horizontal/HorizontalLayoutView.test.js',
         'client/component/widget/BaseWidget.test.js',
+        'client/component/widget/button/ButtonWidgetView.test.js',
         'client/component/widget/button/view/ButtonWidget.test.js',
+        'client/component/widget/checklist/ChecklistWidgetView.test.js',
         'client/component/widget/checklist/view/ChecklistWidget.test.js',
+        'client/component/widget/image/ImageWidgetView.test.js',
         'client/component/widget/image/view/ImageWidget.test.js',
+        'client/component/widget/list/ListWidgetView.test.js',
         'client/component/widget/list/view/ListWidget.test.js',
+        'client/component/widget/text/TextWidgetView.test.js',
         'client/component/widget/text/view/TextWidget.test.js',
     ], 'client');
 

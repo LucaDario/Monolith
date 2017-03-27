@@ -1,13 +1,13 @@
 
-import {TextWidget} from './TextWidget'
+import {TextWidgetView} from './TextWidgetView'
 
-describe('TextWidget', function () {
-    it('Check that is instantiable', function () {
+describe('TextWidgetView', function () {
+    it('Check that is not instantiable', function () {
         // This code will be executed by the test driver when the app is started
         // in the correct mode
         expect(
             () => {
-                new TextWidget();
+                new TextWidgetView();
             }
         ).to.throw();
     });

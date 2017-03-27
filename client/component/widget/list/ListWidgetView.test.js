@@ -1,5 +1,5 @@
 
-import {ListWidget} from './ListWidget'
+import {ListWidgetView} from './ListWidgetView'
 
 describe('ListWidgetView', function () {
     it('Check that is not instantiable', function () {

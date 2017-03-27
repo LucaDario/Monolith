@@ -10,7 +10,7 @@ describe('ImageWidgetView', function () {
             () => {
                 new ImageWidgetView();
             }
-        ).to.not.throw();
+        ).to.throw();
     });
 
 });
