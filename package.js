@@ -7,7 +7,9 @@ Package.describe({
 
 Npm.depends({
     "can": "3.5.1",
-    "dependency-injection-es6": "1.2.1"
+    "can-stache": "3.0.20",
+    "dependency-injection-es6": "1.2.1",
+    "es6-event-emitter" : "1.8.2",
 });
 
 Package.onUse(function(api) {
@@ -38,25 +40,25 @@ Package.onUse(function(api) {
         'client/component/widget/button/options/ButtonGraphics.js',
         'client/component/widget/button/presenter/ButtonWidgetPresenter.js',
         'client/component/widget/button/view/ButtonWidget.js',
-        'client/component/widget/button/view/ButtonWidgetView.js',
+        'client/component/widget/button/ButtonWidgetView.js',
         'client/component/widget/checklist/options/CheckOption.js',
         'client/component/widget/checklist/presenter/ChecklistWidgetPresenter.js',
         'client/component/widget/checklist/style/CheckStyle.js',
         'client/component/widget/checklist/view/ChecklistWidget.js',
-        'client/component/widget/checklist/view/ChecklistWidgetView.js',
+        'client/component/widget/checklist/ChecklistWidgetView.js',
         'client/component/widget/image/presenter/ImageWidgetPresenter.js',
         'client/component/widget/image/view/ImageWidget.js',
-        'client/component/widget/image/view/ImageWidgetView.js',
+        'client/component/widget/image/ImageWidgetView.js',
         'client/component/widget/image/options/ImageOption.js',
         'client/component/widget/list/presenter/ListWidgetPresenter.js',
         'client/component/widget/list/style/Indicator.js',
         'client/component/widget/list/view/ListWidget.js',
-        'client/component/widget/list/view/ListWidgetView.js',
+        'client/component/widget/list/ListWidgetView.js',
         'client/component/widget/text/options/TextStyle.js',
         'client/component/widget/text/options/UrlStyle.js',
         'client/component/widget/text/presenter/TextWidgetPresenter.js',
         'client/component/widget/text/view/TextWidget.js',
-        'client/component/widget/text/view/TextWidgetView.js',
+        'client/component/widget/text/TextWidgetView.js',
     ], 'client');
 });
 

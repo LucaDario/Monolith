@@ -4,7 +4,9 @@
  * Version 1.0.0 -
  */
 
-class ButtonWidgetPresenter {
+import {ButtonGraphics} from "../options/ButtonGraphics"
+
+export class ButtonWidgetPresenter {
 
     /**
      * @type {Object}: DOM element that allows to change CSS

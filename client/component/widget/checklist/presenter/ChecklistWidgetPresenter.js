@@ -5,7 +5,7 @@
  */
 
 
-import {ChecklistWidgetView} from '../view/ChecklistWidgetView';
+import {ChecklistWidgetView} from '../ChecklistWidgetView';
 import {CheckStyle} from '../style/CheckStyle';
 import {CheckOption} from '../options/CheckOption';
 

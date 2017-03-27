@@ -1,6 +1,10 @@
 /**
  * Created by Riccardo Montagnin on 21/03/2017.
  */
+
+import {ListWidgetView} from "../ListWidgetView"
+import {ListWidgetPresenter} from "../presenter/ListWidgetPresenter"
+
 export class ListWidget extends ListWidgetView{
 
     /**

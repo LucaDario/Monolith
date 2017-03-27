@@ -5,7 +5,7 @@
  */
 
 
-import {ChecklistWidgetView} from './ChecklistWidgetView'
+import {ChecklistWidgetView} from '../ChecklistWidgetView'
 import {ChecklistWidgetPresenter} from '../presenter/ChecklistWidgetPresenter';
 
 export class ChecklistWidget extends ChecklistWidgetView{
