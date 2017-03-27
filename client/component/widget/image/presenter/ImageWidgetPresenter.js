@@ -2,6 +2,8 @@
  * Created by Nicolo on 23/03/17
  * Version 1.0.0 -
  */
+import {ImageOption} from '../options/ImageOption'
+
 
 export class ImageWidgetPresenter {
 
@@ -19,9 +21,14 @@ export class ImageWidgetPresenter {
      * @type {Object}
      */
 
+    _map;
+
     constructor(view) {
         this._view= view;
         this._imageOption= new ImageOption();
+        this._map = new Monolith.can.DefineMap({
+            width: '',height: '', path:''
+        });
     }
 
 
@@ -72,8 +79,24 @@ export class ImageWidgetPresenter {
      */
 
     renderView() {
-        let html= '<p>  <img src="'+ returnPath() +'"> </p>';
-        return html;
+
+        let msg= '';
+        //if (this._textstyle.isFormatted()) {
+          //  let markdown = require( "markdown" ).markdown;
+            //msg=markdown.toHTML(this._textstyle.getText());
+        //}
+        //else
+          //  msg = this._textstyle.getText();
+
+        //.can.stache dovrebbe avere il path del file html MA js non ce la fa a farlo
+        let renderer = Monolith.can.stache("<div> <img src={{path}} width={{114}} height={{75}}> </div>");
+        this._map.path= this._imageOption.returnPath();
+        this._map.width= this._imageOption.returnWidth();
+        this._map.height= this._imageOption.returnHeight();
+
+        this._dom = renderer(this._map);
+
+        return this._dom
     }
 
 

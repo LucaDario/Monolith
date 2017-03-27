@@ -87,7 +87,8 @@ export class TextWidgetPresenter {
 
     // TODO: this is hard
     setUrlHighlightColor(color) {
-        this._urlstyle.setHighlightColor(color);
+        this._urlstyle.setHighlightColor(color)
+        $("a").each.style.backgroundColor = color;
     }
 
     /**

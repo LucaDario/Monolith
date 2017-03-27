@@ -53,6 +53,7 @@ export class ImageWidget extends ImageWidgetView {
     /**
      * @method
      * Returns the HTML, CSS and JS needed to render the ImageView
+     * @return {object}
      */
     renderView() {
         return this._presenter.renderView();
