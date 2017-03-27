@@ -72,6 +72,7 @@ Package.onTest(function(api) {
     ]);
 
     api.addFiles([
+        'lib/_monolith.js',
         'client/bubble/BaseBubble.test.js',
         'client/bubble/AlertBubble.test.js',
         'client/bubble/MarkdownBubble.test.js',
