@@ -31,7 +31,9 @@ export class TextStyle {
      * The constructor of TextStyle
      * @return {Object}
      */
-    constructor() {}
+    constructor() {
+        this._formatted = false;
+    }
 
     /**
      * @method
@@ -88,7 +90,7 @@ export class TextStyle {
      * @return {number}
      */
     getSize() {
-        return _size;
+        return this._size;
     }
 
     /**
@@ -97,7 +99,7 @@ export class TextStyle {
      * @return {string}
      */
     getColor() {
-        return _color;
+        return this._color;
     }
 
     /**
@@ -115,6 +117,6 @@ export class TextStyle {
      * @return {boolean}
      */
     isFormatted() {
-        return _formatted;
+        return this._formatted;
     }
 }

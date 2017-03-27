@@ -44,6 +44,9 @@ export class TextWidgetPresenter {
         this._view= view;
         this._textstyle= new TextStyle();
         this._urlstyle = new UrlStyle();
+        this._map = new Monolith.can.DefineMap({
+            text: ''
+        });
     }
 
     /**
@@ -53,7 +56,7 @@ export class TextWidgetPresenter {
      */
     setText(text) {
         this._textstyle.setText(text);
-        this._map.text= text;
+        this._map.text = text;
     }
 
     /**
@@ -110,18 +113,14 @@ export class TextWidgetPresenter {
             msg=markdown.toHTML(this._textstyle.getText());
         }
         else
-            msg= this._textstyle.getText();
+            msg = this._textstyle.getText();
 
         //.can.stache dovrebbe avere il path del file html MA js non ce la fa a farlo
         let renderer = Monolith.can.stache("<h1>{{text}}</h1>");
-        let map = new Monolith.can.DefineMap({
-            text: msg
-        });
+        this._map.text = msg;
 
+        this._dom = renderer(this._map);
 
-        this._map= map;
-        this._dom= renderer(map);
-
-        return renderer(map);
+        return this._dom
     }
 }

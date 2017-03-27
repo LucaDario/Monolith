@@ -47,7 +47,7 @@ Package.onUse(function(api) {
         'client/component/widget/image/presenter/ImageWidgetPresenter.js',
         'client/component/widget/image/view/ImageWidget.js',
         'client/component/widget/image/view/ImageWidgetView.js',
-        'client/component/widget/image/ImageOption.js',
+        'client/component/widget/image/options/ImageOption.js',
         'client/component/widget/list/presenter/ListWidgetPresenter.js',
         'client/component/widget/list/style/Indicator.js',
         'client/component/widget/list/view/ListWidget.js',
