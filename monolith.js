@@ -4,7 +4,7 @@
 
 
 RocketChat.callbacks.add('renderMessage', (message) => {
-    if(WidgetResolver.widgets[message.msg] !== null) {
+    if(WidgetResolver.widgets.hasOwnProperty(message.msg)) {
         let wrapper_id = 'wrapper_' + message._id;
         message.html = '<div id="' + wrapper_id + '"></div>';
         renderize(message, wrapper_id);
@@ -36,9 +36,9 @@ function renderize(message, wrapper_id) {
                         err.message
                     ));
                     throw err;
+                }finally {
+                    renderized = true;
                 }
-
-                renderized = true;
             }
         }
     }, 200);
