@@ -4,7 +4,7 @@
  * Version 1.0.0 -
  */
 
-import {BaseWidget} from '../../BaseWidget';
+import {BaseWidget} from '../BaseWidget';
 
 export class ButtonWidgetView extends BaseWidget {
 

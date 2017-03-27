@@ -4,7 +4,7 @@
  * Version 1.0.0 -
  */
 
-class ButtonGraphics {
+export class ButtonGraphics {
 
     /**
      * @type {string} : the color of the ButtonWidget.

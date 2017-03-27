@@ -4,7 +4,7 @@
  * Version 1.0.0 -
  */
 
-import {ButtonWidgetView} from './ButtonWidgetView';
+import {ButtonWidgetView} from '../ButtonWidgetView';
 
 export class ButtonWidget extends ButtonWidgetView {
 

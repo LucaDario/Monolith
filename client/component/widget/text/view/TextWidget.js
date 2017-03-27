@@ -4,7 +4,7 @@
  * Version 1.0.0 - 
  */
 
-import {TextWidgetView} from './TextWidgetView'
+import {TextWidgetView} from '../TextWidgetView'
 import {TextWidgetPresenter} from '../presenter/TextWidgetPresenter';
 
 export class TextWidget extends TextWidgetView {

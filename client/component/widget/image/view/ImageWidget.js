@@ -2,7 +2,7 @@
  * Created by nicolo on 25/03/17.
  */
 
-import {ImageWidgetView} from './ImageWidgetView'
+import {ImageWidgetView} from '../ImageWidgetView'
 import {ImageWidgetPresenter} from '../presenter/ImageWidgetPresenter'
 
 

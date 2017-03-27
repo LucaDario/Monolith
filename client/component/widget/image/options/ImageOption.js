@@ -4,7 +4,7 @@
  */
 
 
-export class ImageOptions {
+export class ImageOption {
     /**
      * @type {String}
      */

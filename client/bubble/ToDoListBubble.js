@@ -4,8 +4,8 @@
  * Version 1.0.0 - 1.0.0
  */
 
-import {ChecklistWidgetView} from '../component/widget/checklist/view/ChecklistWidgetView';
-import {TextWidgetView} from '../component/widget/text/view/TextWidgetView';
+import {ChecklistWidgetView} from '../component/widget/checklist/ChecklistWidgetView';
+import {TextWidgetView} from '../component/widget/text/TextWidgetView';
 import {BaseBubble} from './BaseBubble';
 
 export class ToDoListBubble extends BaseBubble{

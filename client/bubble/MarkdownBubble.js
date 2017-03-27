@@ -3,7 +3,8 @@
  * Version 1.0.0 - 1.0.0
  */
 
-import {BaseBubble} from './BaseBubble'
+import {TextWidgetView} from "../component/widget/text/TextWidgetView";
+import {BaseBubble} from "./BaseBubble"
 
 export class MarkdownBubble extends BaseBubble{
     /**

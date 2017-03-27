@@ -3,7 +3,7 @@
  */
 
 
-import {BaseWidget} from '../../BaseWidget'
+import {BaseWidget} from '../BaseWidget'
 
 export class ImageWidgetView extends BaseWidget{
 

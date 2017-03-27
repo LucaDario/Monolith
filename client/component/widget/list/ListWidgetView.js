@@ -2,7 +2,7 @@
  * Created by Riccardo Montagnin on 21/03/2017.
  */
 
-import {BaseWidget} from '../../BaseWidget'
+import {BaseWidget} from '../BaseWidget'
 
 export class ListWidgetView extends BaseWidget{
     constructor(){
