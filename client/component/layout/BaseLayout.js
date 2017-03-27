@@ -30,4 +30,12 @@ export class BaseLayout extends BaseComponent{
     addItem (component) {
         this._items.push(component);
     }
+
+    /**
+     *
+     * @returns {Array}
+     */
+    getItems(){
+        return this._items;
+    }
 }

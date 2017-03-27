@@ -16,10 +16,11 @@ Package.onUse(function(api) {
     api.versionsFrom('1.4.1.1');
     api.use([
         'jquery',
+        'urigo:static-templates',
+        'twbs:bootstrap',
         'coffeescript',
         'ecmascript',
         'underscore',
-        'templating',
         'session',
         'less',
         'random',
