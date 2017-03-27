@@ -150,15 +150,12 @@ export class ButtonWidgetPresenter {
      * @return {Object}
      */
     renderView() {
-        // TODO: events
+        // TODO: events, temporary Html to see button at work
 
-        /*html= '<button type="button" class="btn btn-primary" id="btn-widget">'+ {{text}} +'</button>' +
-        '<style>' +
-            '#btn-widget{background-color:' + this._graphics.getColor() + '}' +
-        '</style>';*/
+        Html= '<button type="button" class="btn btn-primary" id="btn-widget">'+ '{{text}}' +'</button>';
 
         //path text idk
-        let renderer = Monolith.can.stache(/*view.html*/);
+        let renderer = Monolith.can.stache(Html);
         let map = new Monolith.can.DefineMap({
             text: this.getText()
         });
@@ -166,20 +163,36 @@ export class ButtonWidgetPresenter {
         this._map= map;
         this._dom= renderer(map);
         // TODO: work in progress of damned long click
+
         /*
-        this._dom.mouseup(function() {
-            clearTimeout(pressTimer);
-            if (f) {
-                //esegui funzione di click normale
-            }
-            f=false;
-            return false;
-        }).mousedown(function(){
-            // Set timeout
-            f=true;
-            pressTimer = window.setTimeout(function() {[esegui funzione di long click]}, [timer]);
-            return false;
-        });*/
+        altro tentativo di longpress
+
+         var longpress = false;
+
+         $(".TPGSW-wrapper").on('click', function (e) {
+         (longpress) ?  e.preventDefault() : alert("clicked");
+         });
+
+         var startTime, endTime;
+         $(".TPGSW-wrapper").on('mousedown', function () {
+         startTime = new Date().getTime();
+         });
+
+         $(".TPGSW-wrapper").on('mouseup', function () {
+         endTime = new Date().getTime();
+
+         if (endTime - startTime < 250) {
+         longpress = false;
+         console.log('< 250');
+         }
+
+         });
+
+        dove 250 è il milliseconds before long click
+         TPGSW-wrapper è la classe del bottone
+
+         http://jsfiddle.net/arcm111/Makgq/ demo
+         */
 
         return renderer(map);
     }
