@@ -6,7 +6,7 @@
 
 import {BaseWidget} from '../../BaseWidget';
 
-class ButtonWidgetView extends BaseWidget {
+export class ButtonWidgetView extends BaseWidget {
 
     /**
      * @constructor
@@ -15,7 +15,7 @@ class ButtonWidgetView extends BaseWidget {
      */
     constructor(){
         super();
-        if (new.target === ButtonWidgetView) {
+        if (this.constructor ===  ButtonWidgetView) {
             throw new TypeError("Cannot construct ButtonWidgetView instances directly");
         }
     }

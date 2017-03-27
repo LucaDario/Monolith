@@ -6,7 +6,7 @@
 
 import {ButtonWidgetView} from './ButtonWidgetView';
 
-class ButtonWidget extends ButtonWidgetView {
+export class ButtonWidget extends ButtonWidgetView {
 
     /**
      * @type {Object} : The presenter of ButtonWidget

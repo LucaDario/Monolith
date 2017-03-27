@@ -7,7 +7,7 @@ import {BaseWidget} from '../../BaseWidget'
 export class ListWidgetView extends BaseWidget{
     constructor(){
         super();
-        if (this instanceof ListWidgetView) {
+        if (this.constructor === ListWidgetView) {
             throw new TypeError("Cannot construct ListWidgetView instances directly");
         }
     }

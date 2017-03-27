@@ -1,7 +1,10 @@
 /**
  * Created by Riccardo Montagnin on 21/03/2017.
  */
-export class ListWidget extends ListWidgetView{
+
+import {ListWidgetView} from './ListWidgetView'
+
+export class ListWidget extends ListWidgetView {
 
     /**
      * @type {Object}

@@ -11,9 +11,9 @@ export class BaseWidget extends BaseComponent{
      */
     constructor(){
         super();
-        /*if (this instanceof BaseWidget) {
+        if (this.constructor === BaseWidget) {
             throw new TypeError("Cannot construct BaseWidget instances directly");
-        }*/
+        }
     }
 
 }

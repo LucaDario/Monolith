@@ -5,19 +5,17 @@
 
 import {BaseWidget} from '../../BaseWidget'
 
-
-
-export class TextWidgetView extends BaseWidget{
+export class ImageWidgetView extends BaseWidget{
 
     /**
      * @constructor
-     * The constructor of TextWidgetView
+     * The constructor of ImageWidgetView
      */
     constructor() {
         //noinspection JSAnnotator,JSAnnotator,JSAnnotator
         super();
         //noinspection JSPotentiallyInvalidConstructorUsage
-        if (this instanceof ImageWidgetView) {
+        if (this.constructor ===  ImageWidgetView) {
             throw new TypeError("Cannot construct ImageWidgetView instances directly");
         }
     }

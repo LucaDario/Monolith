@@ -3,7 +3,9 @@
  * Version 1.0.0 - 1.0.0
  */
 
-class MarkdownBubble extends BaseBubble{
+import {BaseBubble} from './BaseBubble'
+
+export class MarkdownBubble extends BaseBubble{
     /**
      * @type {Object}
      */

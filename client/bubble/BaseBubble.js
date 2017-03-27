@@ -17,6 +17,9 @@ export class BaseBubble{
      * Constructor of BaseBubble
      */
     constructor(){
+        if(this.constructor === BaseBubble){
+            throw new TypeError("Cannot construct BaseBubble instances directly");
+        }
         layout = new VerticalLayoutView();
     }
 

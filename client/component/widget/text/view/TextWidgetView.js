@@ -17,9 +17,9 @@ export class TextWidgetView extends BaseWidget{
         //noinspection JSAnnotator,JSAnnotator,JSAnnotator
         super();
         //noinspection JSPotentiallyInvalidConstructorUsage
-        /*if (this instanceof TextWidgetView) {
+        if (this.constructor === TextWidgetView) {
             throw new TypeError("Cannot construct TextWidgetView instances directly");
-        }*/
+        }
     }
 
     /**

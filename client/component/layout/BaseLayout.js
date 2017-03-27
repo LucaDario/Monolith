@@ -17,7 +17,7 @@ export class BaseLayout extends BaseComponent{
      */
     constructor(){
         super();
-        if (this instanceof BaseLayout) {
+        if (this.constructor ===  BaseLayout) {
             throw new TypeError("Cannot construct BaseLayout instances directly");
         }
         this._items = [];

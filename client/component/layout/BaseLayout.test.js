@@ -1,7 +1,3 @@
-/**
- * Base abstract class which represents a generic component that will be used inside a bubble.
- * Created by Riccardo Montagnin on 21/03/2017.
- */
 
 import {BaseLayout} from './BaseLayout.js'
 

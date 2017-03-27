@@ -13,16 +13,16 @@ Npm.depends({
 Package.onUse(function(api) {
     api.versionsFrom('1.4.1.1');
     api.use([
-      'jquery',
-      'coffeescript',
-      'ecmascript',
-      'underscore',
-      'templating',
-      'session',
-      'less',
-      'random',
-      'rocketchat:lib',
-      'rocketchat:ui-message'
+        'jquery',
+        'coffeescript',
+        'ecmascript',
+        'underscore',
+        'templating',
+        'session',
+        'less',
+        'random',
+        'rocketchat:lib',
+        'rocketchat:ui-message'
     ]);
 
     api.mainModule('monolith.js', 'client');
@@ -61,12 +61,29 @@ Package.onUse(function(api) {
 });
 
 Package.onTest(function(api) {
-		api.use([
-			'jquery',
-			'ecmascript',
-			'practicalmeteor:mocha',
-			'practicalmeteor:chai',
-			'practicalmeteor:sinon'
-		]);
+    api.use([
+        'jquery',
+        'ecmascript',
+        'practicalmeteor:mocha',
+        'practicalmeteor:chai',
+        'practicalmeteor:sinon'
+    ]);
+
+    api.addFiles([
+        'client/bubble/AlertBubble.test.js',
+        'client/bubble/BaseBubble.test.js',
+        'client/bubble/MarkdownBubble.test.js',
+        'client/bubble/ToDoListBubble.test.js',
+        'client/component/BaseComponent.test.js',
+        'client/component/layout/BaseLayout.test.js',
+        'client/component/layout/vertical/VerticalLayoutView.test.js',
+        'client/component/layout/horizontal/HorizontalLayoutView.test.js',
+        'client/component/widget/BaseWidget.test.js',
+        'client/component/widget/button/view/ButtonWidget.test.js',
+        'client/component/widget/checklist/view/ChecklistWidget.test.js',
+        'client/component/widget/image/view/ImageWidget.test.js',
+        'client/component/widget/list/view/ListWidget.test.js',
+        'client/component/widget/text/view/TextWidget.test.js',
+    ], 'client');
 
 });

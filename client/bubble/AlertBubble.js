@@ -4,7 +4,7 @@
  */
 
 
-import "..component/widget/text/view/TextWidgetView";
+import {BaseBubble} from './BaseBubble'
 
 export class AlertBubble extends BaseBubble{
 
