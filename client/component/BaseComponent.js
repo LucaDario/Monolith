@@ -15,7 +15,7 @@ export class BaseComponent {
 
     /**
      * Renders the view of the component.
-     * @return {String} Returns the rendered view as a string.
+     * @return {DocumentFragment} Returns the rendered view as a string.
      */
     renderView() {}
 }

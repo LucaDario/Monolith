@@ -117,7 +117,8 @@ export class TextWidgetPresenter {
             msg = this._textstyle.getText();
 
         //.can.stache dovrebbe avere il path del file html MA js non ce la fa a farlo
-        let renderer = Monolith.can.stache("<h1>{{text}}</h1>");
+        import html from '../view/view.html';
+        let renderer = Monolith.can.stache(html);
         this._map.text = msg;
 
         this._dom = renderer(this._map);

@@ -64,13 +64,32 @@ export class ImageOption {
 
     /**
      * @method
-     * this method allows to set the height of the image
-     * @param {number} height
+     * this method return the path of the image
      * @return {string}
      */
 
 
     returnPath () {
         return this._path;
+    }
+
+    /**
+     * @method
+     * this method return the width of the image
+     * @return {number}
+     */
+
+    returnWidth () {
+        return this._width;
+    }
+
+    /**
+     * @method
+     * this method return the height of the image
+     * @return {number}
+     */
+
+    returnHeight () {
+        return this._height;
     }
 }
