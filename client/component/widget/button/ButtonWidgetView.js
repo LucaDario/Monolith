@@ -30,21 +30,21 @@ export class ButtonWidgetView extends BaseWidget {
     /**
      * @method
      * Allows to set the width of the ButtonWidget
-     * @param width {number}
+     * @param width {string}
      */
     setWidth(width) {}
 
     /**
      * @method
      * Allows to set the height of the ButtonWidget
-     * @param height {number}
+     * @param height {string}
      */
     setHeight(height) {}
 
     /**
      * @method
      * Allows to set the color of the ButtonWidget
-     * @param color {number}
+     * @param color {string}
      */
     setBackgroundColor(color) {}
 
