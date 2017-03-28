@@ -10,7 +10,7 @@ Npm.depends({
     "can-stache": "3.0.20",
     "dependency-injection-es6": "1.2.1",
     "es6-event-emitter" : "1.8.2",
-    "jquery.2" : "1.0.0"
+    "bootstrap-jquery" : "3.3.2"
 });
 
 Package.onUse(function(api) {
@@ -18,7 +18,7 @@ Package.onUse(function(api) {
     api.use([
         //'jquery',
         'urigo:static-templates',
-        'twbs:bootstrap',
+        //'twbs:bootstrap',
         'coffeescript',
         'ecmascript',
         'underscore',
