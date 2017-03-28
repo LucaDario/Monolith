@@ -12,11 +12,11 @@ export class ImageOption {
     _path;
 
     /**
-     * @type {number}
+     * @type {string}
      */
     _width;
     /**
-     * @type {number}
+     * @type {string}
      */
 
     _height;
@@ -26,9 +26,9 @@ export class ImageOption {
      */
 
     constructor(){
-        this._path= "/";
-        this._width= 0;
-        this._height= 0;
+        this._path= "/favicon.ico";
+        this._width= 50;
+        this._height= 30;
     }
 
     /**
@@ -76,7 +76,7 @@ export class ImageOption {
     /**
      * @method
      * this method return the width of the image
-     * @return {number}
+     * @return {string}
      */
 
     returnWidth () {
@@ -86,7 +86,7 @@ export class ImageOption {
     /**
      * @method
      * this method return the height of the image
-     * @return {number}
+     * @return {string}
      */
 
     returnHeight () {
