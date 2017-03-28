@@ -12,15 +12,32 @@ export class Indicator {
      */
     _color;
 
-    constructor(){}
+    constructor(){
+        this._character = '&#8226;';
+    }
 
-    get character() {
+    get characterBegin() {
+        return this._characterBegin;
+    }
+
+    get characterEnd() {
+        return this._characterEnd;
+    }
+
+    get character(){
         return this._character;
     }
-    set character(character) {
-        this._character = character;
-    }
 
+    setCharacterNumber(){
+        this._character = "decimal"
+    }
+    setCharacterPoint() {
+        this._character = "&#8226;";
+        //this._character = '&middot;';
+    }
+    setCharacterSign(){
+        this._character = "&ndash;";
+    }
     get color() {
         return this._color;
     }

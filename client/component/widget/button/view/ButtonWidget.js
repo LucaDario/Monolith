@@ -5,6 +5,7 @@
  */
 
 import {ButtonWidgetView} from '../ButtonWidgetView';
+import {ButtonWidgetPresenter} from '../presenter/ButtonWidgetPresenter';
 
 export class ButtonWidget extends ButtonWidgetView {
 
@@ -53,7 +54,7 @@ export class ButtonWidget extends ButtonWidgetView {
     /**
      * @method
      * Allows to set the color of the ButtonWidget
-     * @param color {number}
+     * @param color {string}
      */
     setBackgroundColor(color) {
         this._presenter.setBackgroundColor(color);

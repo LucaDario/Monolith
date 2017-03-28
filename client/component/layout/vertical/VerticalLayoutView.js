@@ -19,7 +19,7 @@ export class VerticalLayoutView extends BaseLayout{
     /**
      * @method
      * This function create HTML to render an Vertical Layout for a Bubble.
-     * @return {String} Returns the rendered view as a string.
+     * @return {DocumentFragment} Returns the rendered view as a string.
      */
     renderView(){
         if(this._dom === null) {

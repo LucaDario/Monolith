@@ -2,10 +2,10 @@
  * Created by nicolo on 25/03/17.
  */
 
-import {ImageWidgetView} from './ImageWidgetView'
+import {Exception} from './Exception';
 
 
-export class BadException  extends Exceptions{
+export class BadException  extends Exception{
 
 
 

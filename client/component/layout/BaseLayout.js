@@ -4,6 +4,7 @@
  */
 
 import {BaseComponent} from "../BaseComponent"
+import {Exception} from "../../exception/Exception"
 
 export class BaseLayout extends BaseComponent{
 
@@ -25,15 +26,18 @@ export class BaseLayout extends BaseComponent{
 
     /**
      * Adds an item to the layout.
-     * @param {Object} component: Component to be added to the layout.
+     * @param {BaseComponent} component: Component to be added to the layout.
      */
     addItem (component) {
+        if(component === this){
+            throw new Exception("Can't add itself");
+        }
         this._items.push(component);
     }
 
     /**
-     *
-     * @returns {Array}
+     * Gets the current items inside the layout.
+     * @returns {Array} components: Components added in the layout.
      */
     getItems(){
         return this._items;
