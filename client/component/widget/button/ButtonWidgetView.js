@@ -44,7 +44,7 @@ export class ButtonWidgetView extends BaseWidget {
     /**
      * @method
      * Allows to set the color of the ButtonWidget
-     * @param color {number}
+     * @param color {string}
      */
     setBackgroundColor(color) {}
 
