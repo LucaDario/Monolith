@@ -12,12 +12,12 @@ export class ButtonGraphics {
     _color;
 
     /**
-     * @type {number} : the height of the ButtonWidget.
+     * @type {string} : the height of the ButtonWidget.
      */
     _height;
 
     /**
-     * @type {number} : the width of the ButtonWidget.
+     * @type {string} : the width of the ButtonWidget.
      */
     _width;
 
@@ -53,7 +53,7 @@ export class ButtonGraphics {
     /**
      * @method
      * Returns the height set for the ButtonGraphics.
-     * @return {number}
+     * @return {string}
      */
     getHeight() {
         return this._height;
@@ -62,19 +62,19 @@ export class ButtonGraphics {
     /**
      * @method
      * Allows to set the height for the ButtonGraphics object.
-     * @param height {number}
+     * @param height {string}
      */
     setHeight(height) {
-        if (typeof height === "number")
+        if (typeof height === "string")
             this._height = height;
         else
-            throw new TypeError("Parameter height type must be a number");
+            throw new TypeError("Parameter height type must be a string");
     }
 
     /**
      * @method
      * Returns the width set for the ButtonGraphics.
-     * @return {number}
+     * @return {string}
      */
     getWidth() {
         return this._width;
@@ -83,12 +83,12 @@ export class ButtonGraphics {
     /**
      * @method
      * Allows to set the width for the ButtonGraphics object.
-     * @param width {number}
+     * @param width {string}
      */
     setWidth(width) {
-        if (typeof width === "number")
+        if (typeof width === "string")
             this._width = width;
         else
-            throw new TypeError("Parameter width type must be a number");
+            throw new TypeError("Parameter width type must be a string");
     }
 }

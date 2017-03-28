@@ -61,6 +61,8 @@ export class ButtonWidgetPresenter {
         this._millisecondsBeforeOnLongClickActs = 0;
         this._onClickAction = null;
         this._onLongClickAction = null;
+        this._map= null;
+        this._dom= null;
     }
 
     /**
@@ -70,7 +72,6 @@ export class ButtonWidgetPresenter {
      */
     setText(text) {
         if (typeof text === "string") {
-            this._graphics.setText(text);
             this._map.text = text;
         }
         else
@@ -89,7 +90,7 @@ export class ButtonWidgetPresenter {
     /**
      * @method
      * Allows to set the width of the ButtonWidget
-     * @param width {number}
+     * @param width {string}
      */
     setWidth(width) {
         this._graphics.setWidth(width);
@@ -100,7 +101,7 @@ export class ButtonWidgetPresenter {
     /**
      * @method
      * Allows to set the height of the ButtonWidget
-     * @param height {number}
+     * @param height {string}
      */
     setHeight(height) {
         this._graphics.setHeight(height);
@@ -110,10 +111,10 @@ export class ButtonWidgetPresenter {
     /**
      * @method
      * Allows to set the color of the ButtonWidget
-     * @param color {number}
+     * @param color {string}
      */
     setBackgroundColor(color) {
-        this._graphics.setBackgroundColor(color);
+        this._graphics.setColor(color);
         this._dom.style.backgroundColor = color;
     }
 
@@ -152,7 +153,7 @@ export class ButtonWidgetPresenter {
     renderView() {
         // TODO: events, temporary Html to see button at work
 
-        Html= '<button type="button" class="btn btn-primary" id="btn-widget">'+ '{{text}}' +'</button>';
+        Html= '<div class="button btn">' +'ciao' + '</div>';
 
         //path text idk
         let renderer = Monolith.can.stache(Html);
@@ -194,6 +195,6 @@ export class ButtonWidgetPresenter {
          http://jsfiddle.net/arcm111/Makgq/ demo
          */
 
-        return renderer(map);
+        return this._dom;
     }
 }
