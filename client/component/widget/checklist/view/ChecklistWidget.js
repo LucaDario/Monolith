@@ -103,7 +103,7 @@ export class ChecklistWidget extends ChecklistWidgetView{
     /**
      * @method
      *Generates HTML CSS JS needed to display the widget.
-     * @return {String}
+     * @return {Object}
      */
     renderView(){
         return this._presenter.renderView();

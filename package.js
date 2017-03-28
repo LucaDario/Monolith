@@ -10,12 +10,13 @@ Npm.depends({
     "can-stache": "3.0.20",
     "dependency-injection-es6": "1.2.1",
     "es6-event-emitter" : "1.8.2",
+    "jquery.2" : "1.0.0"
 });
 
 Package.onUse(function(api) {
     api.versionsFrom('1.4.1.1');
     api.use([
-        'jquery',
+        //'jquery',
         'urigo:static-templates',
         'twbs:bootstrap',
         'coffeescript',

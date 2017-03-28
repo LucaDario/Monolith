@@ -6,7 +6,7 @@
 RocketChat.callbacks.add('renderMessage', (message) => {
     if(WidgetResolver.widgets.hasOwnProperty(message.msg)) {
         let wrapper_id = 'wrapper_' + message._id;
-        message.html = '<div id="' + wrapper_id + '"></div>';
+        message.html = '<div class="container" id="' + wrapper_id + '"></div>';
         renderize(message, wrapper_id);
     }
     return message;
