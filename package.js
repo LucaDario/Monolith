@@ -10,6 +10,7 @@ Npm.depends({
     "can-stache": "3.0.20",
     "dependency-injection-es6": "1.2.1",
     "es6-event-emitter" : "1.8.2",
+    "marked": "0.3.6",
 });
 
 Package.onUse(function(api) {
