@@ -14,17 +14,10 @@ export class Indicator {
 
     constructor(){
         this._character = '&#8226;';
+        this._color = '#000';
     }
 
-    get characterBegin() {
-        return this._characterBegin;
-    }
-
-    get characterEnd() {
-        return this._characterEnd;
-    }
-
-    get character(){
+    getCharacter(){
         return this._character;
     }
 
@@ -38,10 +31,10 @@ export class Indicator {
     setCharacterSign(){
         this._character = "&ndash;";
     }
-    get color() {
+    getColor() {
         return this._color;
     }
-    set color(color) {
+    setColor(color) {
         this._color = color;
     }
 }

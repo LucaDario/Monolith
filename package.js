@@ -92,6 +92,8 @@ Package.onTest(function(api) {
         'client/component/widget/image/view/ImageWidget.test.js',
         'client/component/widget/list/ListWidgetView.test.js',
         'client/component/widget/list/view/ListWidget.test.js',
+        'client/component/widget/list/presenter/ListWidgetPresenter.js',
+        'client/component/widget/list/style/Indicator.js',
         'client/component/widget/text/TextWidgetView.test.js',
         'client/component/widget/text/view/TextWidget.test.js',
     ], 'client');
