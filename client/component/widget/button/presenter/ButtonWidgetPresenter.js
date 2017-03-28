@@ -90,7 +90,7 @@ export class ButtonWidgetPresenter {
     /**
      * @method
      * Allows to set the width of the ButtonWidget
-     * @param width {number}
+     * @param width {string}
      */
     setWidth(width) {
         this._graphics.setWidth(width);
@@ -101,7 +101,7 @@ export class ButtonWidgetPresenter {
     /**
      * @method
      * Allows to set the height of the ButtonWidget
-     * @param height {number}
+     * @param height {string}
      */
     setHeight(height) {
         this._graphics.setHeight(height);
@@ -114,7 +114,7 @@ export class ButtonWidgetPresenter {
      * @param color {string}
      */
     setBackgroundColor(color) {
-        this._graphics.setBackgroundColor(color);
+        this._graphics.setColor(color);
         this._dom.style.backgroundColor = color;
     }
 
@@ -152,8 +152,6 @@ export class ButtonWidgetPresenter {
      */
     renderView() {
         // TODO: events, temporary Html to see button at work
-
-        color= "#FFFFFF";
 
         Html= '<div class="button btn">' +'ciao' + '</div>';
 
