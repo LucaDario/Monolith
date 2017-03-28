@@ -31,16 +31,48 @@ export class ListWidgetPresenter {
         this._options.push(item);
     }
 
-    setCharacter(character){
-        this._indicator.setCharacter(character);
+    setCharacterNumber(){
+        this._indicator.setCharacterNumber();
+    }
+
+    setCharacterPoint(){
+        this._indicator.setCharacterPoint();
+    }
+
+    setCharacterSign(){
+        this._indicator.setCharacterSign();
     }
 
     setColor(color){
         this._indicator.setColor(color);
     }
-
     renderView(){
-        // TODO: Implement this
+        if(!this._map) {
+            //var DefineMap = require("can-define/map/map");
+            var renderer = Monolith.can.stache('<ul>' + '{{text}}' + '</ul>');
+            let html = "";
+            if (this._indicator.character == "decimal") {
+                for (let i = 1; i <= this._options.length; i++) {
+                    html = html + '<li>' + '<span>' + i + ') ' + '</span>' + this._options[i-1] + '</li>';
+                }
+            }
+            else {
+                for (let i = 0; i < this._options.length; i++) {
+                    html = html + '<li>' + '<span>' + this._indicator.character + ' ' + '</span>' + this._options[i] + '</li>';
+                }
+            }
+            html = $(html);
+            this._map = new Monolith.can.DefineMap({
+                text: html
+            });
+        }
+
+        if(!this._dom){
+            this._dom = renderer(this._map); // DOM OBJECT    <.... style = '.classe' .../>
+            //this._dom.style.color = this._indicator.color;
+        }
+
+        return this._dom;
     }
 
 

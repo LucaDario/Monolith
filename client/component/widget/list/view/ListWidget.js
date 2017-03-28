@@ -21,8 +21,15 @@ export class ListWidget extends ListWidgetView{
         this._presenter.addItem(item);
     }
 
-    setCharacter(character) {
-        this._presenter.setCharacter(character);
+    setCharacterNumber() {
+        this._presenter.setCharacterNumber();
+    }
+
+    setCharacterPoint() {
+        this._presenter.setCharacterPoint();
+    }
+    setCharacterSign() {
+        this._presenter.setCharacterSign();
     }
 
     setColor(color) {
