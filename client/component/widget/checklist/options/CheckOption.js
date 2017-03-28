@@ -142,7 +142,7 @@ export class CheckOption {
      * @param text {String}
      */
     setText(text){
-        if(typeof(text) !== String){
+        if(typeof(text) !== "string"){
             throw new TypeError("Cannot set item's text. String value required.");
         }
         this._text = text;
