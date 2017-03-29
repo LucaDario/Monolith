@@ -21,7 +21,9 @@ export class UrlStyle {
      * The constructor of UrlStyle
      * @return {Object}
      */
-    constructor() {}
+    constructor() {
+        this._highlight = false;
+    }
 
     /**
      * @method
@@ -30,7 +32,7 @@ export class UrlStyle {
      */
     setHighligh(highlight) {
         if (typeof highlight === "boolean")
-            this._highlight=highlight;
+            this._highlight = highlight;
         else
             throw new TypeError("Parameter highlight type must be a boolean");
     }
@@ -54,7 +56,7 @@ export class UrlStyle {
      * @return {boolean}
      */
     isHighlightEnabled() {
-        return _highlight;
+        return this._highlight;
     }
 
     /**
@@ -63,6 +65,6 @@ export class UrlStyle {
      * @return {string}
      */
     getHighlighColor() {
-        return _highlightColor;
+        return this._highlightColor;
     }
 }
