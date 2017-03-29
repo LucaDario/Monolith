@@ -34,6 +34,10 @@ Package.onUse(function(api) {
     // api.addFiles('monolith.js');
 
     api.addFiles([
+        'client/bubble/BaseBubble.js',
+        'client/bubble/AlertBubble.js',
+        'client/bubble/MarkdownBubble.js',
+        'client/bubble/ToDoListBubble.js',
         'lib/_monolith.js',
         'client/component/BaseComponent.js',
         'client/component/layout/BaseLayout.js',
