@@ -1,6 +1,5 @@
 .checkbox-m {
     clear: both;
-    overflow: auto;
     height:1.3em;
     font-size: 1em;
 }
@@ -57,13 +56,9 @@ label input[type="checkbox"]:checked ~ span:before {
     content: '\2714';
     text-indent: 0.05em;
     color: #333;
-    background-color: #ccc;
+    background-color: #fff;
 }
 label input[type="checkbox"]:focus ~ span:before {
     box-shadow: 0 0 0 3px #999;
-}
-label input[type="checkbox"]:checked ~ span:before {
-    color: #333;
-    background-color: #fff;
 }
 
