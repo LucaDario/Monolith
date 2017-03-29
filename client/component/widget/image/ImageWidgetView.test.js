@@ -14,3 +14,4 @@ describe('ImageWidgetView', function () {
     });
 
 });
+

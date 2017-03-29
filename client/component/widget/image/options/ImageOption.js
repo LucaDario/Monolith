@@ -26,9 +26,9 @@ export class ImageOption {
      */
 
     constructor(){
-        this._path= "/favicon.ico";
-        this._width= 50;
-        this._height= 30;
+        this._path= "/diocane.jpg";
+        this._width= 200;
+        this._height= 250;
     }
 
     /**
