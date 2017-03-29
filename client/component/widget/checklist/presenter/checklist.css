@@ -2,24 +2,26 @@
     clear: both;
     height:1.3em;
     font-size: 1em;
+    margin-top: .2em;
+
 }
 .checkbox-m label{
     width: 100%;
     height:1.3em;
     font-weight: normal;
-}
-label span{
-    padding-left:2em;
+    display:inline-block;
 }
 label input[type="checkbox"]:empty {
     display: none;
     height: 1.3em;
 }
-label input[type="checkbox"]:empty ~ span {
+
+.spanNorm{
+    padding-left:1em;
+}
+.spanEmpty{
     position: relative;
-    line-height: 1.04em;
     height:1.4em;
-    text-indent: 3em;
     margin-top: 1.4em;
     cursor: pointer;
     -webkit-user-select: none;
@@ -27,41 +29,34 @@ label input[type="checkbox"]:empty ~ span {
     -ms-user-select: none;
     user-select: none;
 }
+.spanNotCheck {
+    color: #333;
+}
+.spanCheck {
+    color: #777;
+}
 /*
  * label input[type="checkbox"]:empty ~ span:before
 */
-label input[type="checkbox"]:empty ~ span:before {
-    position: absolute;
-    display: block;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    font-size: .75em;
-    content: '';
-    width: 1.42em;
-    height:1.42em;
+.spanEmptyBef{
+    font-size: .85em;
+    width: 1.6em;
+    height:1.6em;
     background: #fff;
     border:1px solid #333;
     border-radius: 4px;
 }
-label input[type="checkbox"]:hover:not(:checked) ~ span {
-    color: #333;
-}
-label input[type="checkbox"]:hover:not(:checked) ~ span:before {
-    content: '';
-    text-indent: 0.05em;
+.spanNotCheckBef {
+    display:inline-block;
     color: #fff;
 }
-label input[type="checkbox"]:checked ~ span {
-    color: #777;
-}
-label input[type="checkbox"]:checked ~ span:before {
-    content: '\2714';
-    text-indent: 0.05em;
-    color: #333;
+.spanCheckBef {
+    text-indent: .3em;
+    display:inline-block;
+    overflow: hidden;
     background-color: #fff;
 }
-label input[type="checkbox"]:focus ~ span:before {
-    box-shadow: 0 0 0 3px #999;
-}
 
+.symbolSpanCheckBef{
+    color: #333;
+}

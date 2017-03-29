@@ -137,69 +137,49 @@ export class ChecklistWidgetPresenter{
         /**
          * Temporary variables
          */
-        let html = '';
-        let mark = '';
-        let symbol = '';
-        let color = '';
-        let completionMessage = '';
+        let symbol = this._style.getSelectionCharacter();
+        let color = this._style.getSelectionColor();
+        let completionMessage = this._completionMessage;
 
         /**
          * Generate html
          */
         for (let i in this._options) {
-            let check = '';
             let text = this._options[i].getText();
             let dom1 = document.createElement('div');
             dom1.setAttribute('class', 'checkbox-m');
             let dom2 = document.createElement('label');
             let dom3 = document.createElement('input');
+            let dom4 = document.createElement('div');
+            let dom5 = document.createElement('span');
+            let dom6 = document.createElement('span');
             dom3.type = 'checkbox';
-            if (this._options[i].isChecked()) {
-                dom3.setAttribute('checked', 'checked');
-            }
-            let dom4 = document.createElement('span');
             if (this._options[i].isChecked()){
-                dom3.setAttribute('class', 'check');
-                dom4.setAttribute('style','input[type="checkbox"]:checked ~ span:before {' +
-                    'content: "\\2714";' +
-                    'text-indent: 0.05em;' +
-                    'color: #333;' +
-                    'background-color: #blue;}');
+                dom3.setAttribute('checked', 'checked');
+                dom4.setAttribute('class','spanCheckBef spanEmptyBef');
+                dom6.setAttribute('class','symbolSpanCheckBef');
+                dom6.innerHTML = symbol;
+                dom5.setAttribute('class','spanCheck spanEmpty spanNorm');
             }
-            dom4.textContent = text;
+            else{
+                dom4.setAttribute('class','spanNotCheckBef spanEmptyBef');
+                dom5.setAttribute('class','spanNotCheck spanEmpty spanNorm');
+            }
+            dom5.textContent = text;
             dom2.appendChild(dom3);
+            dom4.appendChild(dom6);
             dom2.appendChild(dom4);
+            dom2.appendChild(dom5);
             dom1.appendChild(dom2);
             this._dom.appendChild(dom1);
         }
 
         /**
-         * Modify the CSS according to the developer's preferences
+         * Modify the CSS color of the checkbox according to the developer's preferences
          */
-        if (!this._style.getUseSelectionMark()) {
-            mark = '';
-            color = this._style.getSelectionColor();
-            symbol = this._style.getSelectionCharacter();
-        }
-        else {
-            mark = '\\2714';
-        }
+        this._dom.childNodes[0].childNodes[0].childNodes[1].style.backgroundColor = color;
+        this._dom.childNodes[0].childNodes[0].childNodes[1].childNodes[0].style.backgroundColor = color;
 
-
-
-        /*
-        if(mark === ''){
-            let x = document.createElement('STYLE');
-            let t = document.createTextNode('label span{padding-left:2em;}label span{padding-left:3em;}.checkbox-m label {width: 100%;border-radius: 5px;font-weight: normal;}.checkbox-m {clear: both;overflow: auto;height:3em;} label input[type=\"checkbox\"]:empty {display: none;} label input[type=\"checkbox\"]:empty ~ span {position: relative;line-height: 2em;text-indent: 3.25em;margin-top: 2em;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;} label input[type=\"checkbox\"]:empty ~ span:before {position: absolute;display: block;top: 0;bottom: 0;left: 0;content: \'\';width: 2em;height:2em;background: #D1D3D4;border:1px solid #333;border-radius: 5px;} label input[type=\"checkbox\"]:hover:not(:checked) ~ span {color: #333;} label input[type=\"checkbox\"]:hover:not(:checked) ~ span:before {content: \'\';text-indent: .5em;color: #C2C2C2;} label input[type=\"checkbox\"]:checked ~ span {color: #777;}  label input[type=\"checkbox\"]:checked ~ span:before {content: \'\';text-indent: .6em;color: #333;background-color: #ccc;} label input[type=\"checkbox\"]:focus ~ span:before {box-shadow: 0 0 0 3px #999;} label input[type=\"checkbox\"]:checked ~ span:before {color: #fff;background-color: green;}');
-            x.appendChild(t);
-            document.head.appendChild(x);
-        }
-        else{
-            let x = document.createElement("STYLE");
-            let t = document.createTextNode('label span{padding-left:3em;} .checkbox-m label{width: 100%; height:2em;font-weight: normal;}.checkbox-m {clear: both;overflow: auto;height:3em;} label input[type=\"checkbox\"]:empty {display: none;} label input[type=\"checkbox\"]:empty ~ span {position: relative;line-height: 2em;height:2em;text-indent: 3.25em;margin-top: 2em;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;} label input[type=\"checkbox\"]:empty ~ span:before {position: absolute;display: block;top: 0;bottom: 0;left: 0;content: \'\';width: 2em;height:2em;background: #D1D3D4;border:1px solid #333;border-radius: 5px;} label input[type=\"checkbox\"]:hover:not(:checked) ~ span {color: #333;} label input[type=\"checkbox\"]:hover:not(:checked) ~ span:before {content: \'\';text-indent: .4em;color: #C2C2C2;} label input[type=\"checkbox\"]:checked ~ span {color: #777;}  label input[type=\"checkbox\"]:checked ~ span:before {content: \'\\2714\';text-indent: .4em; color: #333;background-color: #ccc;} label input[type=\"checkbox\"]:focus ~ span:before {box-shadow: 0 0 0 3px #999;} label input[type=\"checkbox\"]:checked ~ span:before {color: #fff;background-color: green;}');
-            x.appendChild(t);
-            document.head.appendChild(x);
-        }*/
         return this._dom;
     }
 }
