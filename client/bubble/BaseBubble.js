@@ -10,7 +10,7 @@ export class BaseBubble{
     /**
      * @type {Object}: VerticalLayout which contains and place component on bubble.
      */
-    layout;
+    _layout;
 
     /**
      * @constructor
@@ -20,11 +20,11 @@ export class BaseBubble{
         if(this.constructor === BaseBubble){
             throw new TypeError("Cannot construct BaseBubble instances directly");
         }
-        layout = new VerticalLayoutView();
+        this._layout = new VerticalLayoutView();
     }
 
     addComponent(component){
-        this.layout.addItem(component);
+        this._layout.addItem(component);
     }
 
     /**
@@ -33,6 +33,6 @@ export class BaseBubble{
      * @return {String}
      */
     renderView(){
-        this.layout.renderView();
+        return this._layout.renderView();
     }
 }
