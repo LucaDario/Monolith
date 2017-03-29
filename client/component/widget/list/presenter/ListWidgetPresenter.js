@@ -3,6 +3,7 @@
  */
 
 import {Indicator} from "../style/Indicator";
+import "../view/ListWidget.css";
 
 export class ListWidgetPresenter {
 
@@ -46,19 +47,35 @@ export class ListWidgetPresenter {
     setColor(color){
         this._indicator.setColor(color);
     }
+
+    getCharacter(){
+        return this._indicator.getCharacter();
+    }
+
+    getColor(){
+        return this._indicator.getColor();
+    }
+
+    getOptions(){
+        return this._options;
+    }
+
     renderView(){
         if(!this._map) {
             //var DefineMap = require("can-define/map/map");
-            var renderer = Monolith.can.stache('<ul>' + '{{text}}' + '</ul>');
+            var renderer = Monolith.can.stache('<dl>' + '{{text}}' + '</dl>');
             let html = "";
-            if (this._indicator.character == "decimal") {
+            if (this._indicator.getCharacter() == "decimal") {
                 for (let i = 1; i <= this._options.length; i++) {
-                    html = html + '<li>' + '<span>' + i + ') ' + '</span>' + this._options[i-1] + '</li>';
+                    //<dd> <span> 1) </span> Example </dd>
+                    html = html + '<dd>' + '<span style="color:'+ this._indicator.getColor()+'">'
+                        + i + ') ' + '</span>' + this._options[i-1] + '</dd>';
                 }
             }
             else {
                 for (let i = 0; i < this._options.length; i++) {
-                    html = html + '<li>' + '<span>' + this._indicator.character + ' ' + '</span>' + this._options[i] + '</li>';
+                   html = html + '<dd>' + '<span style="color:'+ this._indicator.getColor()+'">'
+                       + this._indicator.getCharacter() + ' ' + '</span>' + this._options[i] + '</dd>';
                 }
             }
             html = $(html);

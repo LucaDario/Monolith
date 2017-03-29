@@ -36,6 +36,18 @@ export class ListWidget extends ListWidgetView{
         this._presenter.setColor(color);
     }
 
+    getColor(){
+        return this._presenter.getColor();
+    }
+
+    getOptions(){
+        return this._presenter.getOptions();
+    }
+
+    getCharacter(){
+        return this._presenter.getCharacter();
+    }
+
     renderView(){
         return this._presenter.renderView();
     }

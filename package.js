@@ -10,7 +10,7 @@ Npm.depends({
     "can-stache": "3.0.20",
     "dependency-injection-es6": "1.2.1",
     "es6-event-emitter" : "1.8.2",
-    "jquery.2" : "1.0.0",
+    "bootstrap-jquery" : "3.3.2",
     "marked": "0.3.6",
 });
 
@@ -19,7 +19,7 @@ Package.onUse(function(api) {
     api.use([
         //'jquery',
         'urigo:static-templates',
-        'twbs:bootstrap',
+        //'twbs:bootstrap',
         'coffeescript',
         'ecmascript',
         'underscore',
@@ -93,6 +93,8 @@ Package.onTest(function(api) {
         'client/component/widget/image/view/ImageWidget.test.js',
         'client/component/widget/list/ListWidgetView.test.js',
         'client/component/widget/list/view/ListWidget.test.js',
+        'client/component/widget/list/presenter/ListWidgetPresenter.js',
+        'client/component/widget/list/style/Indicator.js',
         'client/component/widget/text/TextWidgetView.test.js',
         'client/component/widget/text/view/TextWidget.test.js',
     ], 'client');
