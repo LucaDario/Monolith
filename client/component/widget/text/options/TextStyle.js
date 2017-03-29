@@ -32,6 +32,9 @@ export class TextStyle {
      * @return {Object}
      */
     constructor() {
+        this._size = 0;
+        this._color = "#000";
+        this._text = '';
         this._formatted = false;
     }
 

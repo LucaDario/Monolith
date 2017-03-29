@@ -327,6 +327,11 @@
       "resolved": "https://registry.npmjs.org/kefir/-/kefir-3.7.1.tgz",
       "from": "kefir@>=3.5.1 <4.0.0"
     },
+    "marked": {
+      "version": "0.3.6",
+      "resolved": "https://registry.npmjs.org/marked/-/marked-0.3.6.tgz",
+      "from": "marked@0.3.6"
+    },
     "micro-location": {
       "version": "0.1.5",
       "resolved": "https://registry.npmjs.org/micro-location/-/micro-location-0.1.5.tgz",

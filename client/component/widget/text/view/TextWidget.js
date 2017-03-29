@@ -73,7 +73,7 @@ export class TextWidget extends TextWidgetView {
     /**
      * @method
      * Returns the HTML, CSS and JS needed to render the TextWidget
-     * @return {Object}
+     * @return {Element}
      */
     renderView() {
         return this._presenter.renderView();
