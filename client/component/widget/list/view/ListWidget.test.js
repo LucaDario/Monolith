@@ -28,9 +28,9 @@ describe('ListWidget', function () {
         let list = new ListWidget();
         list.setCharacterNumber();
         expect(list.getCharacter()).to.be.eq('decimal');
-        list.setCharacterPoint();
+        list.setCharacterCircle();
         expect(list.getCharacter()).to.be.eq("&#8226;");
-        list.setCharacterSign();
+        list.setCharacterDash();
         expect(list.getCharacter()).to.be.eq("&ndash;");
         list.setColor("#0000FF");
         expect(list.getColor()).to.be.eq("#0000FF");
