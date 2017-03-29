@@ -1,5 +1,10 @@
 {
   "dependencies": {
+    "bootstrap-jquery": {
+      "version": "3.3.2",
+      "resolved": "https://registry.npmjs.org/bootstrap-jquery/-/bootstrap-jquery-3.3.2.tgz",
+      "from": "bootstrap-jquery@3.3.2"
+    },
     "can": {
       "version": "3.5.1",
       "resolved": "https://registry.npmjs.org/can/-/can-3.5.1.tgz",
@@ -321,6 +326,11 @@
       "version": "3.7.1",
       "resolved": "https://registry.npmjs.org/kefir/-/kefir-3.7.1.tgz",
       "from": "kefir@>=3.5.1 <4.0.0"
+    },
+    "marked": {
+      "version": "0.3.6",
+      "resolved": "https://registry.npmjs.org/marked/-/marked-0.3.6.tgz",
+      "from": "marked@0.3.6"
     },
     "micro-location": {
       "version": "0.1.5",
