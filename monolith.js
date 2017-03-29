@@ -6,19 +6,11 @@
 RocketChat.callbacks.add('renderMessage', (message) => {
     if(WidgetResolver.widgets.hasOwnProperty(message.msg)) {
         let wrapper_id = 'wrapper_' + message._id;
-        message.html = '<div class="container" id="' + wrapper_id + '"></div>';
+        message.html = '<div id="' + wrapper_id + '"></div>';
         renderize(message, wrapper_id);
     }
     return message;
 }, RocketChat.callbacks.priority.LOW, 'monolith');
-
-function delay(ms){
-    let start = new Date().getTime();
-    let end = start;
-    while(end < start + ms) {
-        end = new Date().getTime();
-    }
-}
 
 function renderize(message, wrapper_id) {
     setTimeout(() => {
