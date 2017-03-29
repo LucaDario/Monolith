@@ -61,7 +61,9 @@ export class ButtonWidgetPresenter {
         this._millisecondsBeforeOnLongClickActs = 0;
         this._onClickAction = null;
         this._onLongClickAction = null;
-        this._map= null;
+        this._map = new Monolith.can.DefineMap({
+            text: ''
+        });
         this._dom= null;
     }
 
@@ -72,7 +74,8 @@ export class ButtonWidgetPresenter {
      */
     setText(text) {
         if (typeof text === "string") {
-            this._map.text = text;
+            //this._map.text = text;
+            this._dom.innerHTML = text;
         }
         else
             throw new TypeError("Parameter text type must be a string");
@@ -151,18 +154,41 @@ export class ButtonWidgetPresenter {
      * @return {Object}
      */
     renderView() {
-        // TODO: events, temporary Html to see button at work
+        // TODO: work in progress, this one is just in plain js
 
         Html= '<div class="button btn">' +'ciao' + '</div>';
 
-        //path text idk
-        let renderer = Monolith.can.stache(Html);
-        let map = new Monolith.can.DefineMap({
-            text: this.getText()
-        });
+        let dom= document.createElement("div");
+        dom.innerHTML = "il testo va qui";
+        dom.className= "button btn";
+        let longpress = false;
 
-        this._map= map;
-        this._dom= renderer(map);
+        /*PROVIAMO A FAR ANDARE STO LONG PRESS VALA */
+        dom.onclick= function(e) {
+            (longpress) ?  e.preventDefault() : alert("clicked");
+        };
+
+        let startTime, endTime;
+        dom.onmousedown = function () {
+            startTime = new Date().getTime();
+        };
+
+        dom.onmouseup =  function () {
+            endTime = new Date().getTime();
+
+            if (endTime - startTime < 250) {
+                longpress = false;
+                console.log('click per< 250');
+            }
+
+            else {
+                longpress = true;
+                console.log('click per >= 250');
+            }
+
+        };
+
+
         // TODO: work in progress of damned long click
 
         /*
@@ -170,16 +196,16 @@ export class ButtonWidgetPresenter {
 
          var longpress = false;
 
-         $(".TPGSW-wrapper").on('click', function (e) {
+         dom.on('click', function (e) {
          (longpress) ?  e.preventDefault() : alert("clicked");
          });
 
          var startTime, endTime;
-         $(".TPGSW-wrapper").on('mousedown', function () {
+         dom.on('mousedown', function () {
          startTime = new Date().getTime();
          });
 
-         $(".TPGSW-wrapper").on('mouseup', function () {
+         dom.on('mouseup', function () {
          endTime = new Date().getTime();
 
          if (endTime - startTime < 250) {
@@ -195,6 +221,12 @@ export class ButtonWidgetPresenter {
          http://jsfiddle.net/arcm111/Makgq/ demo
          */
 
+        this._dom = dom;
+
         return this._dom;
+    }
+
+    _updateButton() {
+
     }
 }

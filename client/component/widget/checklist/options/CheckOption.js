@@ -139,7 +139,7 @@ export class CheckOption {
     /**
      * @method
      * _text setter
-     * @param text {String}
+     * @param text {string}
      */
     setText(text){
         if(typeof(text) !== "string"){
