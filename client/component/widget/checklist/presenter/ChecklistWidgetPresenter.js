@@ -4,10 +4,10 @@
  * Version 1.0.0 - 1.0.0
  */
 
-
 import {ChecklistWidgetView} from '../ChecklistWidgetView';
 import {CheckStyle} from '../style/CheckStyle';
 import {CheckOption} from '../options/CheckOption';
+import './checklist.css';
 
 export class ChecklistWidgetPresenter{
 
@@ -66,7 +66,9 @@ export class ChecklistWidgetPresenter{
      * @param onLongClick {function}
      */
     addOption(option,onClick,onLongClick){
-        this._options.push(new CheckOption(option,onClick,onLongClick));
+        option.setOnClick(onClick);
+        option.setOnLongClick(onLongClick);
+        this._options.push(option);
     }
 
     //TODO: test it
@@ -187,17 +189,19 @@ export class ChecklistWidgetPresenter{
             if(this._options[i].isChecked()){
                 check = ' checked="checked"';
             }
-            let text = this._options[i].getText();
+            let text = this._options[i].getText().toString();
             html = html +
                 '<div class="checkbox-m">' +
-                '<input type="checkbox" id="' + id + '"' + check + '/>' +
                 '<label>' +
-                text +
+                '<input type="checkbox"' + check + '/>' +
+                '<span>' + text + '</span>' +
                 '</label>' +
                 '</div>';
         }
 
         html = $(html);
+
+        //let renderer = Monolith.can.stache('<div class="checkbox">{{checkbox}}</div>');
 
         /**
          *Replacement placeholders in html
@@ -223,20 +227,22 @@ export class ChecklistWidgetPresenter{
             mark = '\\2714';
         }
 
-        //TODO: completionMessage
 
+
+        //TODO: completionMessage
+/*
         if(mark === ''){
             let x = document.createElement('STYLE');
-            let t = document.createTextNode('.checkbox div {clear: both;overflow: hidden;} .checkbox label {width: 100%;border-radius: 5px;border: 1px solid #D1D3D4;font-weight: normal;} .checkbox input[type="checkbox"]:empty {display: none;} .checkbox input[type="checkbox"]:empty ~ label {position: relative;line-height: 2em;text-indent: 3.25em;margin-top: 2em;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;} .checkbox input[type="checkbox"]:empty ~ label:before {position: absolute;display: block;top: 0;bottom: 0;left: 0;content: \'\';width: 2em;background: #D1D3D4;border:1px solid #333;border-radius: 5px;} .checkbox input[type="checkbox"]:hover:not(:checked) ~ label {color: #333;} .checkbox input[type="checkbox"]:hover:not(:checked) ~ label:before {content: \'\';text-indent: .6em;color: #C2C2C2;} .checkbox input[type="checkbox"]:checked ~ label {color: #777;} .checkbox input[type="checkbox"]:checked ~ label:before {content: \'\';text-indent: .6em;color: #333;background-color: #ccc;}.checkbox input[type="checkbox"]:focus ~ label:before {box-shadow: 0 0 0 3px #999;} .checkbox-m input[type="checkbox"]:checked ~ label:before {color: #fff;background-color: green;}');
+            let t = document.createTextNode('label span{padding-left:2em;}label span{padding-left:3em;}.checkbox-m label {width: 100%;border-radius: 5px;font-weight: normal;}.checkbox-m {clear: both;overflow: auto;height:3em;} label input[type=\"checkbox\"]:empty {display: none;} label input[type=\"checkbox\"]:empty ~ span {position: relative;line-height: 2em;text-indent: 3.25em;margin-top: 2em;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;} label input[type=\"checkbox\"]:empty ~ span:before {position: absolute;display: block;top: 0;bottom: 0;left: 0;content: \'\';width: 2em;height:2em;background: #D1D3D4;border:1px solid #333;border-radius: 5px;} label input[type=\"checkbox\"]:hover:not(:checked) ~ span {color: #333;} label input[type=\"checkbox\"]:hover:not(:checked) ~ span:before {content: \'\';text-indent: .5em;color: #C2C2C2;} label input[type=\"checkbox\"]:checked ~ span {color: #777;}  label input[type=\"checkbox\"]:checked ~ span:before {content: \'\';text-indent: .6em;color: #333;background-color: #ccc;} label input[type=\"checkbox\"]:focus ~ span:before {box-shadow: 0 0 0 3px #999;} label input[type=\"checkbox\"]:checked ~ span:before {color: #fff;background-color: green;}');
             x.appendChild(t);
             document.head.appendChild(x);
         }
         else{
             let x = document.createElement("STYLE");
-            let t = document.createTextNode(".checkbox div {clear: both;overflow: hidden;} checkbox label {width: 100%;border-radius: 5px;border: 1px solid #D1D3D4;font-weight: normal;} .checkbox input[type=\"checkbox\"]:empty {display: none;} .checkbox input[type=\"checkbox\"]:empty ~ label {position: relative;line-height: 2em;text-indent: 3.25em;margin-top: 2em;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;} .checkbox input[type=\"checkbox\"]:empty ~ label:before {position: absolute;display: block;top: 0;bottom: 0;left: 0;content: '';width: 2em;background: #D1D3D4;border:1px solid #333;border-radius: 5px;} .checkbox input[type=\"checkbox\"]:hover:not(:checked) ~ label {color: #333;} .checkbox input[type=\"checkbox\"]:hover:not(:checked) ~ label:before {content: '';text-indent: .6em;color: #C2C2C2;} .checkbox input[type=\"checkbox\"]:checked ~ label {color: #777;} .checkbox input[type=\"checkbox\"]:checked ~ label:before {content: '';text-indent: .6em;color: #333;background-color: #ccc;}.checkbox input[type=\"checkbox\"]:focus ~ label:before {box-shadow: 0 0 0 3px #999;} .checkbox-m input[type=\"checkbox\"]:checked ~ label:before {color: #fff;background-color: green;}");
+            let t = document.createTextNode('label span{padding-left:3em;} .checkbox-m label{width: 100%; height:2em;font-weight: normal;}.checkbox-m {clear: both;overflow: auto;height:3em;} label input[type=\"checkbox\"]:empty {display: none;} label input[type=\"checkbox\"]:empty ~ span {position: relative;line-height: 2em;height:2em;text-indent: 3.25em;margin-top: 2em;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;} label input[type=\"checkbox\"]:empty ~ span:before {position: absolute;display: block;top: 0;bottom: 0;left: 0;content: \'\';width: 2em;height:2em;background: #D1D3D4;border:1px solid #333;border-radius: 5px;} label input[type=\"checkbox\"]:hover:not(:checked) ~ span {color: #333;} label input[type=\"checkbox\"]:hover:not(:checked) ~ span:before {content: \'\';text-indent: .4em;color: #C2C2C2;} label input[type=\"checkbox\"]:checked ~ span {color: #777;}  label input[type=\"checkbox\"]:checked ~ span:before {content: \'\\2714\';text-indent: .4em; color: #333;background-color: #ccc;} label input[type=\"checkbox\"]:focus ~ span:before {box-shadow: 0 0 0 3px #999;} label input[type=\"checkbox\"]:checked ~ span:before {color: #fff;background-color: green;}');
             x.appendChild(t);
             document.head.appendChild(x);
-        }
+        }*/
         return this._dom;
     }
 }
