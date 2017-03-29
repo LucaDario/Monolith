@@ -13,7 +13,24 @@ export class ListWidgetView extends BaseWidget{
     }
 
     addItem(item) {};
-    setCharacter(character) {};
+    /**
+     * @method
+     * It changes the indicator of the list in numbers. The result will be an ordered list.
+     */
+    setCharacterNumber() {};
+    /**
+     * @method
+     * It changes the indicator of the list in circle. The result will be a list with circles.
+     */
+    setCharacterCircle() {};
+    /**
+     * @method
+     * It changes the indicator of the list in dash. The result will be a list with dashes.
+     */
+    setCharacterDash() {};
     setColor(color) {};
+    getColor(){}
+    getOptions(){}
+    getCharacter(){}
 
 }
