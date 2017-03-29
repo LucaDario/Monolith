@@ -3,6 +3,7 @@
  * Version 1.0.0 -
  */
 import {ImageOption} from '../options/ImageOption'
+import {Exception} from '../../../../exception/Exception'
 
 
 export class ImageWidgetPresenter {
@@ -78,15 +79,14 @@ export class ImageWidgetPresenter {
      * @return {object}
      */
 
+
+
+
+
     renderView() {
 
         let msg= '';
-        //if (this._textstyle.isFormatted()) {
-          //  let markdown = require( "markdown" ).markdown;
-            //msg=markdown.toHTML(this._textstyle.getText());
-        //}
-        //else
-          //  msg = this._textstyle.getText();
+
 
         //.can.stache dovrebbe avere il path del file html MA js non ce la fa a farlo
         let renderer = Monolith.can.stache('<div> <img src={{path}} width="{{width}}"  height="{{height}}" > </div>');
@@ -96,8 +96,18 @@ export class ImageWidgetPresenter {
 
         this._dom = renderer(this._map);
 
-        return this._dom
+
+        this._dom.firstChild.childNodes[1].onerror=function () { console.log (" errore nel immagine");
+            throw new Exception('Im Evil');};
+
+
+
+        return this._dom;
     }
+
+
+
+
 
 
 }
