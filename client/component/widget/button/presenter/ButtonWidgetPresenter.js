@@ -61,7 +61,9 @@ export class ButtonWidgetPresenter {
         this._millisecondsBeforeOnLongClickActs = 0;
         this._onClickAction = null;
         this._onLongClickAction = null;
-        this._map= null;
+        this._map = new Monolith.can.DefineMap({
+            text: ''
+        });
         this._dom= null;
     }
 
@@ -151,18 +153,18 @@ export class ButtonWidgetPresenter {
      * @return {Object}
      */
     renderView() {
-        // TODO: events, temporary Html to see button at work
+        // TODO: work in progress, this one is just in plain js
 
         Html= '<div class="button btn">' +'ciao' + '</div>';
 
-        //path text idk
-        let renderer = Monolith.can.stache(Html);
-        let map = new Monolith.can.DefineMap({
-            text: this.getText()
-        });
+        let dom= document.createElement("div");
+        dom.innerHTML = "{{text}}";
+        dom.className= "button btn";
+        dom.onclick = function() {
+            console.log("damn ye");
+        };
 
-        this._map= map;
-        this._dom= renderer(map);
+
         // TODO: work in progress of damned long click
 
         /*
@@ -194,6 +196,8 @@ export class ButtonWidgetPresenter {
 
          http://jsfiddle.net/arcm111/Makgq/ demo
          */
+
+        this._dom = dom;
 
         return this._dom;
     }
