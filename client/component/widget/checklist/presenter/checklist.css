@@ -27,6 +27,9 @@ label input[type="checkbox"]:empty ~ span {
     -ms-user-select: none;
     user-select: none;
 }
+/*
+ * label input[type="checkbox"]:empty ~ span:before
+*/
 label input[type="checkbox"]:empty ~ span:before {
     position: absolute;
     display: block;

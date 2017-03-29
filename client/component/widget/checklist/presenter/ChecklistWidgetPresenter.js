@@ -4,7 +4,6 @@
  * Version 1.0.0 - 1.0.0
  */
 
-import {ChecklistWidgetView} from '../ChecklistWidgetView';
 import {CheckStyle} from '../style/CheckStyle';
 import {CheckOption} from '../options/CheckOption';
 import './checklist.css';
@@ -12,49 +11,13 @@ import './checklist.css';
 export class ChecklistWidgetPresenter{
 
     /**
-     * @type {Object}: DOM element that allows to change CSS
+     * Public Constructor
      */
-    _dom;
-
-    /**
-     * @type {Object}: DefineMap element that allows to update view
-     */
-    _map;
-
-    /**
-     * @type {Object}: ChecklistWidget element for the presenter
-     */
-    _view;
-
-    /**
-     * @type {Array}: It contains all items of the checklist
-     */
-    _options;
-
-    /**
-     * @type {Object}: CheckStyle element that allows you to personalize check-marks
-     */
-    _style;
-
-    /**
-     * @type {String}: It contains the completion message of the checklist
-     */
-    _completionMessage;
-
-    /**
-     * @constructor
-     * Constructor of ChecklistWidgetPresenter
-     * @param view {Object}
-     * the view associated with the presenter
-     */
-    constructor(view){
-        this._view = view;
+    constructor(){
+        this._dom = null;
         this._options = [];
         this._style = new CheckStyle();
         this._completionMessage = '';
-        this._map = new Monolith.can.DefineMap({
-            checkbox: ''
-        });
     }
 
     /**
@@ -123,7 +86,7 @@ export class ChecklistWidgetPresenter{
      * @param position {number}
      */
     setChecked(checked,position){
-        this._options[position].setChecked(checked,position);
+        this._options[position].setChecked(checked);
     }
 
     /**
@@ -167,9 +130,9 @@ export class ChecklistWidgetPresenter{
      * Generates HTML CSS JS needed to display the widget.
      * @return {Object}
      */
-    renderView(){
-        let DefineMap = new Monolith.can.DefineMap;
-        let renderer = Monolith.can.stache('<div class="checkbox">{{checkbox}}</div>');
+    renderView() {
+        this._dom = document.createElement('div');
+        this._dom.setAttribute('class', 'checkbox');
 
         /**
          * Temporary variables
@@ -183,54 +146,48 @@ export class ChecklistWidgetPresenter{
         /**
          * Generate html
          */
-        for(let i in this._options){
+        for (let i in this._options) {
             let check = '';
-            let id = this._options[i].getId();
-            if(this._options[i].isChecked()){
-                check = ' checked="checked"';
+            let text = this._options[i].getText();
+            let dom1 = document.createElement('div');
+            dom1.setAttribute('class', 'checkbox-m');
+            let dom2 = document.createElement('label');
+            let dom3 = document.createElement('input');
+            dom3.type = 'checkbox';
+            if (this._options[i].isChecked()) {
+                dom3.setAttribute('checked', 'checked');
             }
-            let text = this._options[i].getText().toString();
-            html = html +
-                '<div class="checkbox-m">' +
-                '<label>' +
-                '<input type="checkbox"' + check + '/>' +
-                '<span>' + text + '</span>' +
-                '</label>' +
-                '</div>';
+            let dom4 = document.createElement('span');
+            if (this._options[i].isChecked()){
+                dom3.setAttribute('class', 'check');
+                dom4.setAttribute('style','input[type="checkbox"]:checked ~ span:before {' +
+                    'content: "\\2714";' +
+                    'text-indent: 0.05em;' +
+                    'color: #333;' +
+                    'background-color: #blue;}');
+            }
+            dom4.textContent = text;
+            dom2.appendChild(dom3);
+            dom2.appendChild(dom4);
+            dom1.appendChild(dom2);
+            this._dom.appendChild(dom1);
         }
-
-        html = $(html);
-
-        //let renderer = Monolith.can.stache('<div class="checkbox">{{checkbox}}</div>');
-
-        /**
-         *Replacement placeholders in html
-         */
-        this._map = new Monolith.can.DefineMap({
-            checkbox: html
-        });
-
-        /**
-         * Create DOM element
-         */
-        this._dom = renderer(this._map);
 
         /**
          * Modify the CSS according to the developer's preferences
          */
-        if(!this._style.getUseSelectionMark()){
+        if (!this._style.getUseSelectionMark()) {
             mark = '';
             color = this._style.getSelectionColor();
             symbol = this._style.getSelectionCharacter();
         }
-        else{
+        else {
             mark = '\\2714';
         }
 
 
 
-        //TODO: completionMessage
-/*
+        /*
         if(mark === ''){
             let x = document.createElement('STYLE');
             let t = document.createTextNode('label span{padding-left:2em;}label span{padding-left:3em;}.checkbox-m label {width: 100%;border-radius: 5px;font-weight: normal;}.checkbox-m {clear: both;overflow: auto;height:3em;} label input[type=\"checkbox\"]:empty {display: none;} label input[type=\"checkbox\"]:empty ~ span {position: relative;line-height: 2em;text-indent: 3.25em;margin-top: 2em;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;} label input[type=\"checkbox\"]:empty ~ span:before {position: absolute;display: block;top: 0;bottom: 0;left: 0;content: \'\';width: 2em;height:2em;background: #D1D3D4;border:1px solid #333;border-radius: 5px;} label input[type=\"checkbox\"]:hover:not(:checked) ~ span {color: #333;} label input[type=\"checkbox\"]:hover:not(:checked) ~ span:before {content: \'\';text-indent: .5em;color: #C2C2C2;} label input[type=\"checkbox\"]:checked ~ span {color: #777;}  label input[type=\"checkbox\"]:checked ~ span:before {content: \'\';text-indent: .6em;color: #333;background-color: #ccc;} label input[type=\"checkbox\"]:focus ~ span:before {box-shadow: 0 0 0 3px #999;} label input[type=\"checkbox\"]:checked ~ span:before {color: #fff;background-color: green;}');
