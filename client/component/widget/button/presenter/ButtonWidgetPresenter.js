@@ -127,6 +127,7 @@ export class ButtonWidgetPresenter {
      * @param action {Object}
      */
     setOnClickAction(action) {
+        //let _this = this;
         this._onClickAction = action;
     }
 
@@ -136,6 +137,7 @@ export class ButtonWidgetPresenter {
      * @param action {Object}
      */
     setOnLongClickAction(action) {
+        //let _this = this;
         this._onLongClickAction = action;
     }
 
@@ -145,6 +147,7 @@ export class ButtonWidgetPresenter {
      * @param milliseconds {number}
      */
     setOnLongClickActionTimer(milliseconds) {
+        //let _this= this;
         this._millisecondsBeforeOnLongClickActs = milliseconds;
     }
 
@@ -154,16 +157,16 @@ export class ButtonWidgetPresenter {
      * @return {Object}
      */
     renderView() {
-        // TODO: work in progress, this one is just in plain js
-
-        Html= '<div class="button btn">' +'ciao' + '</div>';
+        let _this = this;
 
         let dom= document.createElement("div");
-        dom.innerHTML = "il testo va qui";
+        dom.innerHTML = _this.getText();
         dom.className= "button btn";
         let longpress = false;
 
-        /*PROVIAMO A FAR ANDARE STO LONG PRESS VALA */
+        /*  this function is bound to the onclick of the button
+            it calls onClickAction and onLongClickAction
+         */
         dom.onclick= function(e) {
             (longpress) ?  e.preventDefault() : alert("clicked");
         };
@@ -176,57 +179,24 @@ export class ButtonWidgetPresenter {
         dom.onmouseup =  function () {
             endTime = new Date().getTime();
 
-            if (endTime - startTime < 250) {
+            if (endTime - startTime < _this._millisecondsBeforeOnLongClickActs) {
                 longpress = false;
-                console.log('click per< 250');
+                if (_this._onClickAction!==null) {
+                    _this._onClickAction();
+                }
             }
 
             else {
                 longpress = true;
-                console.log('click per >= 250');
+                if (_this._onLongClickAction!==null) {
+                    _this._onLongClickAction();
+                }
+
             }
 
         };
+        _this._dom = dom;
 
-
-        // TODO: work in progress of damned long click
-
-        /*
-        altro tentativo di longpress
-
-         var longpress = false;
-
-         dom.on('click', function (e) {
-         (longpress) ?  e.preventDefault() : alert("clicked");
-         });
-
-         var startTime, endTime;
-         dom.on('mousedown', function () {
-         startTime = new Date().getTime();
-         });
-
-         dom.on('mouseup', function () {
-         endTime = new Date().getTime();
-
-         if (endTime - startTime < 250) {
-         longpress = false;
-         console.log('< 250');
-         }
-
-         });
-
-        dove 250 è il milliseconds before long click
-         TPGSW-wrapper è la classe del bottone
-
-         http://jsfiddle.net/arcm111/Makgq/ demo
-         */
-
-        this._dom = dom;
-
-        return this._dom;
-    }
-
-    _updateButton() {
-
+        return _this._dom;
     }
 }
