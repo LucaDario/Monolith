@@ -105,7 +105,7 @@ export class ImageWidgetPresenter {
 
     renderView() {
 
-        if (!this_map) {
+        if (!this._map) {
 
             //.can.stache dovrebbe avere il path del file html MA js non ce la fa a farlo
             let renderer = Monolith.can.stache('<div> <img src="{{path}}" width="{{width}}" height="{{height}}" > </div>');
