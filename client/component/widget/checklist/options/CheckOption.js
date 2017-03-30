@@ -4,32 +4,9 @@
  * Version 1.0.0 - 1.0.0
  */
 
+import {TextWidget} from '../../text/view/TextWidget';
+
 export class CheckOption {
-    /**
-     * @type {String}: Item's id of a checklist
-     */
-    _id;
-
-    /**
-     * @type {boolean}: It represents if an item is checked
-     */
-    _isChecked;
-
-    /**
-     * @type {function}: It's a function that will be executed after a normal click on item
-     */
-    _onClick;
-
-    /**
-     * @type {function}: It's a function that will be executed after a long click on item
-     */
-    _onLongClick;
-
-    /**
-     * @type {String}: It represents the text associated to an item of a checklist
-     */
-    _text;
-
 
     /**
      * @constructor
@@ -40,7 +17,7 @@ export class CheckOption {
         this._isChecked = false;
         this._onClick = function(){};
         this._onLongClick = function(){};
-        this._text ="";
+        this._text = new TextWidget();
     }
 
     /**
@@ -82,10 +59,17 @@ export class CheckOption {
     /**
      * @method
      * _text getter
-     * @return {String}
+     * @return {Object}
      */
     getText(){
-        return this._text;
+        if(this._isChecked){
+            this._text.setTextColor('#777');
+        }
+        else{
+            this._text.setTextColor('#333');
+        }
+        this._text.setFormatText(true);
+        return this._text.renderView();
     }
 
     /**
@@ -142,9 +126,6 @@ export class CheckOption {
      * @param text {string}
      */
     setText(text){
-        if(typeof(text) !== "string"){
-            throw new TypeError("Cannot set item's text. String value required.");
-        }
-        this._text = text;
+        this._text.setText(text);
     }
 }

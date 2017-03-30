@@ -4,30 +4,16 @@
  * Version 1.0.0 - 1.0.0
  */
 
-import {ChecklistWidgetView} from '../component/widget/checklist/ChecklistWidgetView';
-import {TextWidgetView} from '../component/widget/text/TextWidgetView';
+import {ChecklistWidget} from '../component/widget/checklist/view/ChecklistWidget';
+import {TextWidget} from '../component/widget/text/view/TextWidget';
 import {BaseBubble} from './BaseBubble';
 
 export class ToDoListBubble extends BaseBubble{
 
-    /**
-     * @type {Object}: The TextWidget which represents bubble's information.
-     */
-    _textView;
-
-    /**
-     * @type {Object}: The ChecklistWidget which represents the checklist.
-     */
-    _checklist;
-
-    /**
-     * @constructor
-     * Constructor of ToDoListBubble
-     */
     constructor() {
         super();
-        this._textView = new TextWidgetView();
-        this._checklist = new ChecklistWidgetView();
+        this._textView = new TextWidget();
+        this._checklist = new ChecklistWidget();
         super.addComponent(this._textView);
         super.addComponent(this._checklist);
     }
@@ -35,12 +21,66 @@ export class ToDoListBubble extends BaseBubble{
     /**
      * @method
      * It allows you to add an item into checklist.
-     * @param item {String}
+     * @param item {Object}
      */
     addItem(item) {
-        this._checklist.addOption(item);
+        this._checklist.addOption(item,function(){},function(){});
     }
 
+    /**
+     * @method
+     * It allows you to remove an item into checklist.
+     * @param item {String}
+     */
+    removeItem(item) {
+        this._checklist.removeOption(id);
+    }
+
+    /**
+     *@method
+     *Sets the visualization of tick with a character or with a color.
+     * @param useMark {boolean}
+     */
+    setUseSelectionMark(useMark){
+        this._checklist.setUseSelectionMark(useMark);
+    }
+
+    /**
+     *@method
+     *Sets the color of checkmarks.
+     * @param color {String}
+     */
+    setSelectionColor(color) {
+        this._checklist.setSelectionColor(color);
+    }
+
+    /**
+     * @method
+     *Sets the symbol of checkmarks.
+     * @param character {String}
+     */
+    setSelectionCharacter(character){
+        this._checklist.setSelectionCharacter(character);
+    }
+
+    /**
+     *@method
+     *It allows you to check an item on the checklist or to remove a tick from it.
+     * @param checked {boolean}
+     * @param position {Number}
+     */
+    setChecked(checked,position){
+        this._checklist.setChecked(checked,position);
+    }
+
+    /**
+     *@method
+     *Sets the completion message appears when all of the list options are checked.
+     * @param message {String}
+     */
+    setCompletionMessage(message){
+        this._checklist.setCompletionMessage(message);
+    }
 
     /**
      * @method

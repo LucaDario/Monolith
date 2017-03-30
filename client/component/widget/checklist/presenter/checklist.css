@@ -1,58 +1,51 @@
 .checkbox-m {
     clear: both;
-    height:1.3em;
+    height:1.5em;
     font-size: 1em;
-    margin-top: .2em;
-
 }
 .checkbox-m label{
     width: 100%;
-    height:1.3em;
+    height:1.5em;
     font-weight: normal;
     display:inline-block;
-}
-label input[type="checkbox"]:empty {
-    display: none;
-    height: 1.3em;
-}
-
-.spanNorm{
-    padding-left:1em;
-}
-.spanEmpty{
-    position: relative;
-    height:1.4em;
-    margin-top: 1.4em;
     cursor: pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
 }
-.spanNotCheck {
-    color: #333;
+label input[type="checkbox"]:empty {
+    display: none;
+    height: 1.5em;
 }
-.spanCheck {
-    color: #777;
+
+
+.spanEmpty{
+    padding-left:1em;
+    height:100%;
+    cursor: pointer;
+    display: inline-block;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
-/*
- * label input[type="checkbox"]:empty ~ span:before
-*/
+
+
 .spanEmptyBef{
     font-size: .85em;
     width: 1.6em;
     height:1.6em;
     background: #fff;
+    display:inline-block;
     border:1px solid #333;
     border-radius: 4px;
 }
 .spanNotCheckBef {
-    display:inline-block;
     color: #fff;
 }
 .spanCheckBef {
     text-indent: .3em;
-    display:inline-block;
     overflow: hidden;
     background-color: #fff;
 }

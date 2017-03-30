@@ -11,11 +11,6 @@ import {ChecklistWidgetPresenter} from '../presenter/ChecklistWidgetPresenter';
 export class ChecklistWidget extends ChecklistWidgetView{
 
     /**
-     * @type {Object}: Presenter of ChecklistWidget
-     */
-    _presenter;
-
-    /**
      * @constructor
      * Constructor of ChecklistWidget
      */
@@ -28,12 +23,28 @@ export class ChecklistWidget extends ChecklistWidgetView{
     /**
      *@method
      * It allows you to add a new item into checklist
-     * @param option {Object}
+     * @param option {string}
+     * @param check {boolean}
+     */
+    addOption(option,check = false) {
+        this._presenter.addOption(option,check);
+    }
+
+    /**
+     * @method
+     * It allows you to assign to all items of the checklist the function that will be performed on normal click
      * @param onClick {function}
+     */
+    setOptionsOnClick(onClick){
+        this._presenter.setOptionsOnClick();
+    }
+    /**
+     * @method
+     * It allows you to assign to all items of the checklist the function that will be performed on long click
      * @param onLongClick {function}
      */
-    addOption(option,onClick = function(){},onLongClick = function(){}) {
-        this._presenter.addOption(option,onClick,onLongClick);
+    setOptionsOnLongClick(onLongClick){
+        this._presenter.setOptionsOnLongClick();
     }
 
     /**

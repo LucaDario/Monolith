@@ -22,19 +22,38 @@ export class ChecklistWidgetPresenter{
 
     /**
      * @method
-     * It allows you to add a new item into the checklist assigning its also the events for normal or long click on
-     * check.
-     * @param option {Object}
-     * @param onClick {function}
-     * @param onLongClick {function}
+     * It allows you to add a new item into the checklist
+     * @param optionText {string}
+     * @param check {boolean}
      */
-    addOption(option,onClick,onLongClick){
-        option.setOnClick(onClick);
-        option.setOnLongClick(onLongClick);
-        this._options.push(option);
+    addOption(optionText,check){
+        let opt = new CheckOption();
+        opt.setText(optionText);
+        opt.setChecked(check);
+        this._options.push(opt);
     }
 
-    //TODO: test it
+    /**
+     * @method
+     * It allows you to assign to all items of the checklist the function that will be performed on normal click
+     * @param onClick {function}
+     */
+    setOptionsOnClick(onClick){
+        for(let i in this._options) {
+            this._options[i].setOnClick(onClick);
+        }
+    }
+    /**
+     * @method
+     * It allows you to assign to all items of the checklist the function that will be performed on long click
+     * @param onLongClick {function}
+     */
+    setOptionsOnLongClick(onLongClick){
+        for(let i in this._options) {
+            this._options[i].setOnLongClick(onLongClick);
+        }
+    }
+
     /**
      *@method
      * It allows you to remove an item from a checklist
@@ -146,32 +165,30 @@ export class ChecklistWidgetPresenter{
          */
         for (let i in this._options) {
             let text = this._options[i].getText();
-            let dom1 = document.createElement('div');
-            dom1.setAttribute('class', 'checkbox-m');
-            let dom2 = document.createElement('label');
-            let dom3 = document.createElement('input');
-            let dom4 = document.createElement('div');
-            let dom5 = document.createElement('span');
-            let dom6 = document.createElement('span');
-            dom3.type = 'checkbox';
+            let div = document.createElement('div');
+            div.setAttribute('class', 'checkbox-m');
+            let label = document.createElement('label');
+            let input = document.createElement('input');
+            let box = document.createElement('div');
+            let symbolCheck = document.createElement('span');
+            input.type = 'checkbox';
             if (this._options[i].isChecked()){
-                dom3.setAttribute('checked', 'checked');
-                dom4.setAttribute('class','spanCheckBef spanEmptyBef');
-                dom6.setAttribute('class','symbolSpanCheckBef');
-                dom6.innerHTML = symbol;
-                dom5.setAttribute('class','spanCheck spanEmpty spanNorm');
+                input.setAttribute('checked', 'checked');
+                box.setAttribute('class','spanCheckBef spanEmptyBef');
+                symbolCheck.setAttribute('class','symbolSpanCheckBef');
+                symbolCheck.innerHTML = symbol;
+                text.setAttribute('class','spanEmpty');
             }
             else{
-                dom4.setAttribute('class','spanNotCheckBef spanEmptyBef');
-                dom5.setAttribute('class','spanNotCheck spanEmpty spanNorm');
+                box.setAttribute('class','spanNotCheckBef spanEmptyBef');
+                text.setAttribute('class','spanEmpty');
             }
-            dom5.textContent = text;
-            dom2.appendChild(dom3);
-            dom4.appendChild(dom6);
-            dom2.appendChild(dom4);
-            dom2.appendChild(dom5);
-            dom1.appendChild(dom2);
-            this._dom.appendChild(dom1);
+            label.appendChild(input);
+            box.appendChild(symbolCheck);
+            label.appendChild(box);
+            label.appendChild(text);
+            div.appendChild(label);
+            this._dom.appendChild(div);
         }
 
         /**
