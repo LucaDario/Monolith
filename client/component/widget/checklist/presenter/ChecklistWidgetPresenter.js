@@ -172,16 +172,16 @@ export class ChecklistWidgetPresenter{
             let box = document.createElement('div');
             let symbolCheck = document.createElement('span');
             input.type = 'checkbox';
-            if (this._options[i].isChecked()){
+            if (this._options[i].isChecked()) {
                 input.setAttribute('checked', 'checked');
-                box.setAttribute('class','spanCheckBef spanEmptyBef');
-                symbolCheck.setAttribute('class','symbolSpanCheckBef');
+                box.setAttribute('class', 'spanCheckBef spanEmptyBef');
+                symbolCheck.setAttribute('class', 'symbolSpanCheckBef');
                 symbolCheck.innerHTML = symbol;
-                text.setAttribute('class','spanEmpty');
+                text.setAttribute('class', 'spanEmpty');
             }
-            else{
-                box.setAttribute('class','spanNotCheckBef spanEmptyBef');
-                text.setAttribute('class','spanEmpty');
+            else {
+                box.setAttribute('class', 'spanNotCheckBef spanEmptyBef');
+                text.setAttribute('class', 'spanEmpty');
             }
             label.appendChild(input);
             box.appendChild(symbolCheck);
@@ -189,6 +189,32 @@ export class ChecklistWidgetPresenter{
             label.appendChild(text);
             div.appendChild(label);
             this._dom.appendChild(div);
+
+            /**
+             * Assign to all label the listener of html on click.
+             */
+            let startTime, endTime;
+
+            label.onmousedown = function () {
+                startTime = new Date().getTime();
+            };
+
+            label.onmouseup =  function () {
+                endTime = new Date().getTime();
+
+                if (endTime - startTime < 250) {
+                    // CALL FUNCTION onClick OF _options[i].
+                    // THIS FUNCTION WILL BE EXECUTE THE CODE ASSIGNED AND WILL EMIT AN EVENT TO THIS PRESENTER.
+                    // THIS PRESENTER THAT WILL RECEIVE THE EVENT WILL EXECUTE renderView().
+                    label.onclick = this._options[i].onClick();
+                }
+                else {
+                    // CALL FUNCTION onLongClick OF _options[i].
+                    // THIS FUNCTION WILL BE EXECUTE THE CODE ASSIGNED AND WILL EMIT AN EVENT TO THIS PRESENTER.
+                    // THIS PRESENTER THAT WILL RECEIVE THE EVENT WILL EXECUTE renderView().
+                    label.onclick = this._options[i].onLongClick();
+                }
+            };
         }
 
         /**
