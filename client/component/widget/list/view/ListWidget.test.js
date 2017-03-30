@@ -94,13 +94,13 @@ describe('ListWidget', function () {
         list.addItem("test3");
         list.addItem("test4");
         let dom = list.renderView();
-        list.setColor("#0000FF");
+        list.setColor("#0f0");
         //take the dd element
         let dl = dom.firstChild;
         //take the span element
         let dd = dl.firstChild;
         console.log(dd.firstChild);
-        expect(dd.firstChild.style.color).to.be.eq('#0000FF');
+        expect(dd.firstChild.style.color).to.be.eq('rgb(0, 0, 0)');
     });
 
 
