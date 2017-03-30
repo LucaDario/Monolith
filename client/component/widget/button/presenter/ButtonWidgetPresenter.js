@@ -61,9 +61,7 @@ export class ButtonWidgetPresenter {
         this._millisecondsBeforeOnLongClickActs = 0;
         this._onClickAction = null;
         this._onLongClickAction = null;
-        this._map = new Monolith.can.DefineMap({
-            text: ''
-        });
+        this._map = null;
         this._dom= null;
     }
 
@@ -74,7 +72,6 @@ export class ButtonWidgetPresenter {
      */
     setText(text) {
         if (typeof text === "string") {
-            //this._map.text = text;
             this._dom.innerHTML = text;
         }
         else
@@ -127,7 +124,6 @@ export class ButtonWidgetPresenter {
      * @param action {Object}
      */
     setOnClickAction(action) {
-        //let _this = this;
         this._onClickAction = action;
     }
 
@@ -137,7 +133,6 @@ export class ButtonWidgetPresenter {
      * @param action {Object}
      */
     setOnLongClickAction(action) {
-        //let _this = this;
         this._onLongClickAction = action;
     }
 
@@ -147,7 +142,6 @@ export class ButtonWidgetPresenter {
      * @param milliseconds {number}
      */
     setOnLongClickActionTimer(milliseconds) {
-        //let _this= this;
         this._millisecondsBeforeOnLongClickActs = milliseconds;
     }
 
@@ -160,15 +154,22 @@ export class ButtonWidgetPresenter {
         let _this = this;
 
         let dom= document.createElement("div");
-        dom.innerHTML = _this.getText();
         dom.className= "button btn";
+        dom.innerHTML = _this.getText();
+
+        //default dimensions of the button
+        dom.style.width= "70px";
+        dom.style.height= "40px";
+
         let longpress = false;
 
         /*  this function is bound to the onclick of the button
             it calls onClickAction and onLongClickAction
          */
         dom.onclick= function(e) {
-            (longpress) ?  e.preventDefault() : alert("clicked");
+            if (longpress) {
+                e.preventDefault();
+            }
         };
 
         let startTime, endTime;

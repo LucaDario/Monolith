@@ -69,8 +69,28 @@ export class ImageWidgetPresenter {
      * @return {string} path
      */
 
-    returnPath() {
-        this._imageOption.returnPath();
+    getPath() {
+        return this._imageOption.getPath();
+    }
+
+    /**
+     * @method
+     * this method return the width of the  image
+     * @return {number} width
+     */
+
+    getWidth() {
+        return this._imageOption.getWidth();
+    }
+
+    /**
+     * @method
+     * this method return the height of the  image
+     * @return {number} heigh
+     */
+
+    getHeight() {
+        return this._imageOption.getHeight();
     }
 
     /**
@@ -84,23 +104,17 @@ export class ImageWidgetPresenter {
 
 
     renderView() {
-
-        let msg= '';
-
-
-        //.can.stache dovrebbe avere il path del file html MA js non ce la fa a farlo
+            //.can.stache dovrebbe avere il path del file html MA js non ce la fa a farlo
         let renderer = Monolith.can.stache('<div> <img src="{{path}}" width="{{width}}" height="{{height}}" > </div>');
-        this._map.path= this._imageOption.returnPath();
-        this._map.width= this._imageOption.returnWidth();
-        this._map.height= this._imageOption.returnHeight();
-
-        this._dom = renderer(this._map);
-
-
+        this._map.path = this._imageOption.getPath();
+        this._map.width = this._imageOption.getWidth();
+        this._map.height = this._imageOption.getHeight();
+        if (!this._dom) {
+            this._dom = renderer(this._map);
+        };
         this._dom.firstChild.childNodes[1].onerror = function (e) {
             console.log(" errore nel immagine");
         };
-
         return this._dom;
     }
 };
