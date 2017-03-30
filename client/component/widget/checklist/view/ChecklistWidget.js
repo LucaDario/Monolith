@@ -23,11 +23,11 @@ export class ChecklistWidget extends ChecklistWidgetView{
     /**
      *@method
      * It allows you to add a new item into checklist
-     * @param option {string}
+     * @param optionText {string}
      * @param check {boolean}
      */
-    addOption(option,check = false) {
-        this._presenter.addOption(option,check);
+    addOption(optionText,check = false) {
+        this._presenter.addOption(optionText,check);
     }
 
     /**
