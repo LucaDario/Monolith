@@ -28,8 +28,8 @@ export class CheckStyle {
      */
     constructor(){
         this._useSelectionMark = true;
-        this._selectionColor = "green";
-        this._selectionCharacter = "\\2714";
+        this._selectionColor = '#fff';
+        this._selectionCharacter = '&#x2713;';
     }
 
     /**
@@ -65,6 +65,7 @@ export class CheckStyle {
         let pat= new RegExp('#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$');
         if (typeof color === "string" && pat.test(color)) {
             this._selectionColor = color;
+            this._selectionCharacter = '';
         }
         else {
             throw new TypeError("Parameter color type must be a string that represents a hex color code");

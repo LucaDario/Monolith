@@ -4,6 +4,7 @@
 
 import {ImageWidgetView} from '../ImageWidgetView'
 import {ImageWidgetPresenter} from '../presenter/ImageWidgetPresenter'
+import {Exception} from '../../../../exception/Exception'
 
 
 export class ImageWidget extends ImageWidgetView {
@@ -56,6 +57,7 @@ export class ImageWidget extends ImageWidgetView {
      * @return {object}
      */
     renderView() {
+        console.log("image widget renderView");
         return this._presenter.renderView();
     }
 }

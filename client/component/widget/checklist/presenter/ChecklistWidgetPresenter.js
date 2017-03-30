@@ -4,7 +4,6 @@
  * Version 1.0.0 - 1.0.0
  */
 
-import {ChecklistWidgetView} from '../ChecklistWidgetView';
 import {CheckStyle} from '../style/CheckStyle';
 import {CheckOption} from '../options/CheckOption';
 import './checklist.css';
@@ -12,66 +11,49 @@ import './checklist.css';
 export class ChecklistWidgetPresenter{
 
     /**
-     * @type {Object}: DOM element that allows to change CSS
+     * Public Constructor
      */
-    _dom;
-
-    /**
-     * @type {Object}: DefineMap element that allows to update view
-     */
-    _map;
-
-    /**
-     * @type {Object}: ChecklistWidget element for the presenter
-     */
-    _view;
-
-    /**
-     * @type {Array}: It contains all items of the checklist
-     */
-    _options;
-
-    /**
-     * @type {Object}: CheckStyle element that allows you to personalize check-marks
-     */
-    _style;
-
-    /**
-     * @type {String}: It contains the completion message of the checklist
-     */
-    _completionMessage;
-
-    /**
-     * @constructor
-     * Constructor of ChecklistWidgetPresenter
-     * @param view {Object}
-     * the view associated with the presenter
-     */
-    constructor(view){
-        this._view = view;
+    constructor(){
+        this._dom = null;
         this._options = [];
         this._style = new CheckStyle();
         this._completionMessage = '';
-        this._map = new Monolith.can.DefineMap({
-            checkbox: ''
-        });
     }
 
     /**
      * @method
-     * It allows you to add a new item into the checklist assigning its also the events for normal or long click on
-     * check.
-     * @param option {Object}
-     * @param onClick {function}
-     * @param onLongClick {function}
+     * It allows you to add a new item into the checklist
+     * @param optionText {string}
+     * @param check {boolean}
      */
-    addOption(option,onClick,onLongClick){
-        option.setOnClick(onClick);
-        option.setOnLongClick(onLongClick);
-        this._options.push(option);
+    addOption(optionText,check){
+        let opt = new CheckOption();
+        opt.setText(optionText);
+        opt.setChecked(check);
+        this._options.push(opt);
     }
 
-    //TODO: test it
+    /**
+     * @method
+     * It allows you to assign to all items of the checklist the function that will be performed on normal click
+     * @param onClick {function}
+     */
+    setOptionsOnClick(onClick){
+        for(let i in this._options) {
+            this._options[i].setOnClick(onClick);
+        }
+    }
+    /**
+     * @method
+     * It allows you to assign to all items of the checklist the function that will be performed on long click
+     * @param onLongClick {function}
+     */
+    setOptionsOnLongClick(onLongClick){
+        for(let i in this._options) {
+            this._options[i].setOnLongClick(onLongClick);
+        }
+    }
+
     /**
      *@method
      * It allows you to remove an item from a checklist
@@ -123,7 +105,7 @@ export class ChecklistWidgetPresenter{
      * @param position {number}
      */
     setChecked(checked,position){
-        this._options[position].setChecked(checked,position);
+        this._options[position].setChecked(checked);
     }
 
     /**
@@ -167,82 +149,54 @@ export class ChecklistWidgetPresenter{
      * Generates HTML CSS JS needed to display the widget.
      * @return {Object}
      */
-    renderView(){
-        let DefineMap = new Monolith.can.DefineMap;
-        let renderer = Monolith.can.stache('<div class="checkbox">{{checkbox}}</div>');
+    renderView() {
+        this._dom = document.createElement('div');
+        this._dom.setAttribute('class', 'checkbox');
 
         /**
          * Temporary variables
          */
-        let html = '';
-        let mark = '';
-        let symbol = '';
-        let color = '';
-        let completionMessage = '';
+        let symbol = this._style.getSelectionCharacter();
+        let color = this._style.getSelectionColor();
+        let completionMessage = this._completionMessage;
 
         /**
          * Generate html
          */
-        for(let i in this._options){
-            let check = '';
-            let id = this._options[i].getId();
-            if(this._options[i].isChecked()){
-                check = ' checked="checked"';
+        for (let i in this._options) {
+            let text = this._options[i].getText();
+            let div = document.createElement('div');
+            div.setAttribute('class', 'checkbox-m');
+            let label = document.createElement('label');
+            let input = document.createElement('input');
+            let box = document.createElement('div');
+            let symbolCheck = document.createElement('span');
+            input.type = 'checkbox';
+            if (this._options[i].isChecked()){
+                input.setAttribute('checked', 'checked');
+                box.setAttribute('class','spanCheckBef spanEmptyBef');
+                symbolCheck.setAttribute('class','symbolSpanCheckBef');
+                symbolCheck.innerHTML = symbol;
+                text.setAttribute('class','spanEmpty');
             }
-            let text = this._options[i].getText().toString();
-            html = html +
-                '<div class="checkbox-m">' +
-                '<label>' +
-                '<input type="checkbox"' + check + '/>' +
-                '<span>' + text + '</span>' +
-                '</label>' +
-                '</div>';
+            else{
+                box.setAttribute('class','spanNotCheckBef spanEmptyBef');
+                text.setAttribute('class','spanEmpty');
+            }
+            label.appendChild(input);
+            box.appendChild(symbolCheck);
+            label.appendChild(box);
+            label.appendChild(text);
+            div.appendChild(label);
+            this._dom.appendChild(div);
         }
-
-        html = $(html);
-
-        //let renderer = Monolith.can.stache('<div class="checkbox">{{checkbox}}</div>');
 
         /**
-         *Replacement placeholders in html
+         * Modify the CSS color of the checkbox according to the developer's preferences
          */
-        this._map = new Monolith.can.DefineMap({
-            checkbox: html
-        });
+        this._dom.childNodes[0].childNodes[0].childNodes[1].style.backgroundColor = color;
+        this._dom.childNodes[0].childNodes[0].childNodes[1].childNodes[0].style.backgroundColor = color;
 
-        /**
-         * Create DOM element
-         */
-        this._dom = renderer(this._map);
-
-        /**
-         * Modify the CSS according to the developer's preferences
-         */
-        if(!this._style.getUseSelectionMark()){
-            mark = '';
-            color = this._style.getSelectionColor();
-            symbol = this._style.getSelectionCharacter();
-        }
-        else{
-            mark = '\\2714';
-        }
-
-
-
-        //TODO: completionMessage
-/*
-        if(mark === ''){
-            let x = document.createElement('STYLE');
-            let t = document.createTextNode('label span{padding-left:2em;}label span{padding-left:3em;}.checkbox-m label {width: 100%;border-radius: 5px;font-weight: normal;}.checkbox-m {clear: both;overflow: auto;height:3em;} label input[type=\"checkbox\"]:empty {display: none;} label input[type=\"checkbox\"]:empty ~ span {position: relative;line-height: 2em;text-indent: 3.25em;margin-top: 2em;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;} label input[type=\"checkbox\"]:empty ~ span:before {position: absolute;display: block;top: 0;bottom: 0;left: 0;content: \'\';width: 2em;height:2em;background: #D1D3D4;border:1px solid #333;border-radius: 5px;} label input[type=\"checkbox\"]:hover:not(:checked) ~ span {color: #333;} label input[type=\"checkbox\"]:hover:not(:checked) ~ span:before {content: \'\';text-indent: .5em;color: #C2C2C2;} label input[type=\"checkbox\"]:checked ~ span {color: #777;}  label input[type=\"checkbox\"]:checked ~ span:before {content: \'\';text-indent: .6em;color: #333;background-color: #ccc;} label input[type=\"checkbox\"]:focus ~ span:before {box-shadow: 0 0 0 3px #999;} label input[type=\"checkbox\"]:checked ~ span:before {color: #fff;background-color: green;}');
-            x.appendChild(t);
-            document.head.appendChild(x);
-        }
-        else{
-            let x = document.createElement("STYLE");
-            let t = document.createTextNode('label span{padding-left:3em;} .checkbox-m label{width: 100%; height:2em;font-weight: normal;}.checkbox-m {clear: both;overflow: auto;height:3em;} label input[type=\"checkbox\"]:empty {display: none;} label input[type=\"checkbox\"]:empty ~ span {position: relative;line-height: 2em;height:2em;text-indent: 3.25em;margin-top: 2em;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;} label input[type=\"checkbox\"]:empty ~ span:before {position: absolute;display: block;top: 0;bottom: 0;left: 0;content: \'\';width: 2em;height:2em;background: #D1D3D4;border:1px solid #333;border-radius: 5px;} label input[type=\"checkbox\"]:hover:not(:checked) ~ span {color: #333;} label input[type=\"checkbox\"]:hover:not(:checked) ~ span:before {content: \'\';text-indent: .4em;color: #C2C2C2;} label input[type=\"checkbox\"]:checked ~ span {color: #777;}  label input[type=\"checkbox\"]:checked ~ span:before {content: \'\\2714\';text-indent: .4em; color: #333;background-color: #ccc;} label input[type=\"checkbox\"]:focus ~ span:before {box-shadow: 0 0 0 3px #999;} label input[type=\"checkbox\"]:checked ~ span:before {color: #fff;background-color: green;}');
-            x.appendChild(t);
-            document.head.appendChild(x);
-        }*/
         return this._dom;
     }
 }

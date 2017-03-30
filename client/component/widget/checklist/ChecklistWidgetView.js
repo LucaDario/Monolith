@@ -22,11 +22,23 @@ export class ChecklistWidgetView extends BaseWidget{
     /**
      *@method
      * It allows you to add a new item into checklist
-     * @param option {Object}
-     * @param onClick {Function}
-     * @param onLongClick {Function}
+     * @param optionText {string}
+     * @param check {boolean}
      */
-    addOption(option,onClick = function(){},onLongClick = function(){}){}
+    addOption(optionText,check){}
+
+    /**
+     * @method
+     * It allows you to assign to all items of the checklist the function that will be performed on normal click
+     * @param onClick {function}
+     */
+    setOptionsOnClick(onClick){}
+    /**
+     * @method
+     * It allows you to assign to all items of the checklist the function that will be performed on long click
+     * @param onLongClick {function}
+     */
+    setOptionsOnLongClick(onLongClick){}
 
     /**
      *@method
