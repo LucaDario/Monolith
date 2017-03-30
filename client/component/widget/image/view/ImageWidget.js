@@ -51,13 +51,38 @@ export class ImageWidget extends ImageWidgetView {
         this._presenter.setHeight(height);
     }
 
+
+    getPath () {
+        return this._presenter.getPath();
+    }
+
+    /**
+     * @method
+     * this method return the width of the image
+     * @return {string}
+     */
+
+    getWidth () {
+        return this._presenter.getWidth();
+    }
+
+    /**
+     * @method
+     * this method return the height of the image
+     * @return {string}
+     */
+
+    getHeight () {
+        return this._presenter.getHeight();
+    }
+
     /**
      * @method
      * Returns the HTML, CSS and JS needed to render the ImageView
      * @return {object}
      */
+
     renderView() {
-        console.log("image widget renderView");
         return this._presenter.renderView();
     }
 }
