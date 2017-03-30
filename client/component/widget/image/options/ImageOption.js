@@ -26,7 +26,7 @@ export class ImageOption {
      */
 
     constructor(){
-        this._path= "/diocane.jpg";
+        this._path= "/prova.jpg";
         this._width= 200;
         this._height= 250;
     }

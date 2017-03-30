@@ -57,11 +57,7 @@ export class ImageWidget extends ImageWidgetView {
      * @return {object}
      */
     renderView() {
-        try {
-            console.log('ciao');
-            let a=this._presenter.renderView();
-        }
-        catch (e) { console.log('ciao'); throw new Exception(e); }
-        return a;
+        console.log("image widget renderView");
+        return this._presenter.renderView();
     }
 }
