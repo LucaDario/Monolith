@@ -14,6 +14,7 @@ export class MarkdownBubble extends BaseBubble{
 
     /**
      * Public constructor
+     * @param text {string}: represents the string which has to be set in the Widget.
      */
     constructor(text){
         super();
@@ -28,7 +29,7 @@ export class MarkdownBubble extends BaseBubble{
     /**
      * @method
      * Set the text for a MarkdownBubble.
-     * @param {String}: represents the string which has to be set in the Widget.
+     * @param text {string}: represents the string which has to be set in the Widget.
      */
     setText(text){
         this._textView.setText(text);
