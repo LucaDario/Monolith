@@ -21,10 +21,11 @@ export class ToDoListBubble extends BaseBubble{
     /**
      * @method
      * It allows you to add an item into checklist.
-     * @param item {Object}
+     * @param item {string}
+     * @param check {boolean}
      */
-    addItem(item) {
-        this._checklist.addOption(item,function(){},function(){});
+    addItem(item,check = false) {
+        this._checklist.addOption(item,check);
     }
 
     /**
@@ -125,14 +126,5 @@ export class ToDoListBubble extends BaseBubble{
      */
     setTextSize(size){
         this._textView.setTextSize(size);
-    }
-
-    /**
-     * @method
-     * Generates HTML CSS JS needed to display the widget.
-     * @return {String}
-     */
-    renderView(){
-        super.layout.renderView();
     }
 }
