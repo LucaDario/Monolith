@@ -153,31 +153,35 @@ export class ButtonWidgetPresenter {
     renderView() {
         let _this = this;
 
-        let dom= document.createElement("div");
-        dom.className= "button btn";
-        dom.innerHTML = _this.getText();
+        let ldom= document.createElement("div");
+        ldom.className= "button btn";
+        ldom.innerHTML = _this.getText();
 
-        //default dimensions of the button
-        dom.style.width= "70px";
-        dom.style.height= "40px";
+        ldom.style.width= _this._graphics.getWidth();
+        ldom.style.height= _this._graphics.getHeight();
+
+        //this is the only way to make it work
+        let c = _this._graphics.getColor().split("");
+
+        ldom.style.backgroundColor= c[0] + c[1] + c[2] + c[3] + c[4] + c[5] + c[6];
 
         let longpress = false;
 
         /*  this function is bound to the onclick of the button
             it calls onClickAction and onLongClickAction
          */
-        dom.onclick= function(e) {
+        ldom.onclick= function(e) {
             if (longpress) {
                 e.preventDefault();
             }
         };
 
         let startTime, endTime;
-        dom.onmousedown = function () {
+        ldom.onmousedown = function () {
             startTime = new Date().getTime();
         };
 
-        dom.onmouseup =  function () {
+        ldom.onmouseup =  function () {
             endTime = new Date().getTime();
 
             if (endTime - startTime < _this._millisecondsBeforeOnLongClickActs) {
@@ -196,7 +200,7 @@ export class ButtonWidgetPresenter {
             }
 
         };
-        _this._dom = dom;
+        _this._dom = ldom;
 
         return _this._dom;
     }
