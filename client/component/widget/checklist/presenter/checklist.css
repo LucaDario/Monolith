@@ -1,11 +1,17 @@
+.checkbox{
+    margin-top: .5em;
+}
 .checkbox-m {
     clear: both;
     height:1.5em;
     font-size: 1em;
+    margin-bottom: .2em;
 }
-.checkbox-m label{
+.checkbox label{
+    clear: both;
     width: 100%;
-    height:1.5em;
+    vertical-align: top;
+    height:1.6em;
     font-weight: normal;
     display:inline-block;
     cursor: pointer;
@@ -21,10 +27,11 @@ label input[type="checkbox"]:empty {
 
 
 .spanEmpty{
-    padding-left:1em;
     height:100%;
+    padding-left: .5em;
     cursor: pointer;
     display: inline-block;
+    vertical-align: top;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -33,11 +40,12 @@ label input[type="checkbox"]:empty {
 
 
 .spanEmptyBef{
-    font-size: .85em;
-    width: 1.6em;
-    height:1.6em;
+    font-size: 1em;
+    width: 1.5em;
+    height:1.5em;
     background: #fff;
     display:inline-block;
+    vertical-align: top;
     border:1px solid #333;
     border-radius: 4px;
 }
@@ -49,7 +57,7 @@ label input[type="checkbox"]:empty {
     overflow: hidden;
     background-color: #fff;
 }
-
 .symbolSpanCheckBef{
     color: #333;
 }
+

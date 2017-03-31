@@ -27,8 +27,8 @@ export class ImageOption {
 
     constructor(){
         this._path= "/prova.jpg";
-        this._width= 200;
-        this._height= 250;
+        this._width= 250;
+        this._height= 210;
     }
 
     /**
@@ -69,7 +69,7 @@ export class ImageOption {
      */
 
 
-    returnPath () {
+    getPath () {
         return this._path;
     }
 
@@ -79,7 +79,7 @@ export class ImageOption {
      * @return {string}
      */
 
-    returnWidth () {
+    getWidth () {
         return this._width;
     }
 
@@ -89,7 +89,7 @@ export class ImageOption {
      * @return {string}
      */
 
-    returnHeight () {
+    getHeight () {
         return this._height;
     }
 }

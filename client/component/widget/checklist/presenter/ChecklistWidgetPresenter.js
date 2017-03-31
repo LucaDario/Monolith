@@ -189,10 +189,11 @@ export class ChecklistWidgetPresenter{
             label.appendChild(text);
             div.appendChild(label);
             this._dom.appendChild(div);
-
-            /**
-             * Assign to all label the listener of html on click.
-             */
+        }//THIS BRACKET WILL BE REMOVE WHEN THE CODE BELOW WILL BE COMPLETED.
+            //**
+             //* Assign to all label the listener of html on click.
+             //*/
+            /*
             let startTime, endTime;
 
             label.onmousedown = function () {
@@ -216,12 +217,30 @@ export class ChecklistWidgetPresenter{
                 }
             };
         }
+        */
 
         /**
          * Modify the CSS color of the checkbox according to the developer's preferences
          */
         this._dom.childNodes[0].childNodes[0].childNodes[1].style.backgroundColor = color;
         this._dom.childNodes[0].childNodes[0].childNodes[1].childNodes[0].style.backgroundColor = color;
+
+        /**
+         * Check if all items are checked and if all items are checked emit an EVENT representing completion of list
+         */
+        let completed = false;
+        for(let i in this._options){
+            if(this._options[i].isChecked()){
+                completed = true;
+            }
+            else{
+                completed = false;
+                break;
+            }
+        }
+        if(completed === true){
+            //EMIT EVENT COMPLETED
+        }
 
         return this._dom;
     }
