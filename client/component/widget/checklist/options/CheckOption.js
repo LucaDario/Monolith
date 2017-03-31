@@ -15,10 +15,9 @@ export class CheckOption {
         this._id = Math.round(Math.round(Number.MAX_SAFE_INTEGER)*Math.random()).toString();
         this._isChecked = false;
 
-        let click = function(){
+        this._onClick = function(){
             this._isChecked = !(this._isChecked);
         };
-        this._onClick = click.bind(this);
 
         this._onLongClick = function(){
             alert("Long click performed!");
@@ -70,12 +69,6 @@ export class CheckOption {
      * @return {Object}
      */
     getText(){
-        if(this._isChecked){
-            this._text.setTextColor('#777');
-        }
-        else{
-            this._text.setTextColor('#333');
-        }
         this._text.setFormatText(true);
         return this._text.renderView();
     }

@@ -183,18 +183,18 @@ export class ChecklistWidgetPresenter{
             let box = document.createElement('div');
             let symbolCheck = document.createElement('span');
             input.type = 'checkbox';
-
             if (this._options[i].isChecked()) {
                 input.setAttribute('checked', 'checked');
                 box.setAttribute('class', 'spanCheckBef spanEmptyBef');
+                box.style.backgroundColor = color;
                 symbolCheck.setAttribute('class', 'symbolSpanCheckBef');
                 symbolCheck.innerHTML = symbol;
-                text.setAttribute('class', 'spanEmpty');
+                symbolCheck.style.backgroundColor = color;
             }
             else {
                 box.setAttribute('class', 'spanNotCheckBef spanEmptyBef');
-                text.setAttribute('class', 'spanEmpty');
             }
+            text.setAttribute('class', 'spanEmpty');
             label.appendChild(input);
             box.appendChild(symbolCheck);
             label.appendChild(box);
@@ -228,12 +228,6 @@ export class ChecklistWidgetPresenter{
         }
 
         /**
-         * Modify the CSS color of the checkbox according to the developer's preferences
-         */
-        this._dom.childNodes[0].childNodes[0].childNodes[1].style.backgroundColor = color;
-        this._dom.childNodes[0].childNodes[0].childNodes[1].childNodes[0].style.backgroundColor = color;
-
-        /**
          * Check if all items are checked and if all items are checked emit an EVENT representing completion of list
          */
         let completed = false;
@@ -251,5 +245,42 @@ export class ChecklistWidgetPresenter{
         }
 
         return this._dom;
+    }
+
+    update() {
+        for (let i in this._options) {
+            let symbol = this._style.getSelectionCharacter();
+            let boxbgcolor = this._style.getSelectionColor();
+            console.log(this._options[i].isChecked());
+            if (this._options[i].isChecked()) {
+                this._dom.childNodes[i].childNodes[0].childNodes[1].setAttribute('class','spanCheckBef spanEmptyBef');
+                this._dom.childNodes[i].childNodes[0].childNodes[1].childNodes[0].setAttribute('class','symbolSpanCheckBef');
+                this._dom.childNodes[i].childNodes[0].childNodes[1].style.backgroundColor = boxbgcolor;
+                this._dom.childNodes[i].childNodes[0].childNodes[1].style.backgroundColor = boxbgcolor;
+                this._dom.childNodes[i].childNodes[0].childNodes[1].childNodes[0].innerHTML = symbol;
+            }
+            else{
+                this._dom.childNodes[i].childNodes[0].childNodes[1].setAttribute('class','spanNotCheckBef spanEmptyBef');
+                this._dom.childNodes[i].childNodes[0].childNodes[1].childNodes[0].innerHTML = '';
+                this._dom.childNodes[i].childNodes[0].childNodes[1].style.backgroundColor = '#fff';
+                this._dom.childNodes[i].childNodes[0].childNodes[1].style.backgroundColor = '#fff';
+            }
+        }
+        /**
+         * Check if all items are checked and if all items are checked emit an EVENT representing completion of list
+         */
+        let completed = false;
+        for (let i in this._options) {
+            if (this._options[i].isChecked()) {
+                completed = true;
+            }
+            else {
+                completed = false;
+                break;
+            }
+        }
+        if (completed === true) {
+            //EMIT EVENT COMPLETED
+        }
     }
 }

@@ -23,7 +23,7 @@ export class ChecklistWidget extends ChecklistWidgetView{
 
         this._event = container.resolve(ClickCheckEvent);
         let click = function () {
-            this._presenter.renderView();
+            this.update();
         };
         this._event.on('clickCheckEvent', click.bind(this));
     }
@@ -113,14 +113,6 @@ export class ChecklistWidget extends ChecklistWidgetView{
 
     /**
      * @method
-     *It allows you to throw the event onListCompleted().
-     */
-    emitOnListCompletedEvent(){
-
-    }
-
-    /**
-     * @method
      *Generates HTML CSS JS needed to display the widget.
      * @return {Object}
      */
@@ -128,16 +120,7 @@ export class ChecklistWidget extends ChecklistWidgetView{
         return this._presenter.renderView();
     }
 
-    /**
-     * Events
-     */
-    // TODO : IMPLEMENT EVENTS
-
-    onItemClicked(itemId){
-
-    }
-
-    onItemLongClicked(itemId){
-
+    update(){
+        this._presenter.update();
     }
 }

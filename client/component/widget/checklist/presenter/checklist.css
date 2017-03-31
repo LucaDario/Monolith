@@ -59,5 +59,6 @@ label input[type="checkbox"]:empty {
 }
 .symbolSpanCheckBef{
     color: #333;
+    background-color: inherit;
 }
 
