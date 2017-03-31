@@ -26,7 +26,12 @@ export class ButtonGraphics {
      * Constructor of ButtonGraphics.
      * @return {Object}
      */
-    constructor() {}
+    constructor() {
+        //default values
+        this._color = "#d3d3d3";
+        this._height = "40px";
+        this._width = "70px";
+    }
 
     /**
      * @method
