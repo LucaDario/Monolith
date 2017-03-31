@@ -162,8 +162,13 @@ export class ButtonWidgetPresenter {
 
         //this is the only way to make it work
         let c = _this._graphics.getColor().split("");
-
-        ldom.style.backgroundColor= c[0] + c[1] + c[2] + c[3] + c[4] + c[5] + c[6];
+        //two options for 3 or 6 hex number for color
+        if (c.length === 7) {
+            ldom.style.backgroundColor = c[0] + c[1] + c[2] + c[3] + c[4] + c[5] + c[6];
+        }
+        else {
+            ldom.style.backgroundColor = c[0] + c[1] + c[2] + c[3];
+        }
 
         let longpress = false;
 
