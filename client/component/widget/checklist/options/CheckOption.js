@@ -14,9 +14,12 @@ export class CheckOption {
     constructor(){
         this._id = Math.round(Math.round(Number.MAX_SAFE_INTEGER)*Math.random()).toString();
         this._isChecked = false;
-        this._onClick = function(){
-            this._isChecked = !this._isChecked;
+
+        let click = function(){
+            this._isChecked = !(this._isChecked);
         };
+        this._onClick = click.bind(this);
+
         this._onLongClick = function(){
             alert("Long click performed!");
         };
@@ -37,9 +40,9 @@ export class CheckOption {
      * _onClick getter
      * @return {function}
      */
-    onClick(){
+    onClick(event){
         this._onClick();
-        //HERE EMIT AN EVENT TO PRESENTER
+        event.emitClickCheckEvent();
     }
 
     /**
