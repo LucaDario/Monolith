@@ -7,7 +7,8 @@
 
 import {ChecklistWidgetView} from '../ChecklistWidgetView'
 import {ChecklistWidgetPresenter} from '../presenter/ChecklistWidgetPresenter';
-
+import {ClickCheckEvent} from '../../../../event/ClickCheckEvent';
+import {container, inject} from 'dependency-injection-es6';
 export class ChecklistWidget extends ChecklistWidgetView{
 
     /**
@@ -17,7 +18,14 @@ export class ChecklistWidget extends ChecklistWidgetView{
     constructor(){
         super();
         //TODO inject
-        this._presenter = new ChecklistWidgetPresenter(this);
+        this._presenter = new ChecklistWidgetPresenter();
+        this._presenter.setView(this);
+
+        this._event = container.resolve(ClickCheckEvent);
+        let click = function () {
+            this._presenter.renderView();
+        };
+        this._event.on('clickCheckEvent', click.bind(this));
     }
 
     /**

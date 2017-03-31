@@ -4,6 +4,7 @@
  * Version 1.0.0 - 1.0.0
  */
 
+import {container, singleton, inject} from 'dependency-injection-es6';
 import {CheckStyle} from '../style/CheckStyle';
 import {CheckOption} from '../options/CheckOption';
 import './checklist.css';
@@ -14,10 +15,20 @@ export class ChecklistWidgetPresenter{
      * Public Constructor
      */
     constructor(){
+        this._view = null;
         this._dom = null;
         this._options = [];
         this._style = new CheckStyle();
         this._completionMessage = '';
+    }
+
+    /**
+     * @method
+     * It allows you to add a reference of the view to the presenter
+     * @param view {Object}
+     */
+    setView(view){
+        this._view = view;
     }
 
     /**
@@ -172,6 +183,7 @@ export class ChecklistWidgetPresenter{
             let box = document.createElement('div');
             let symbolCheck = document.createElement('span');
             input.type = 'checkbox';
+
             if (this._options[i].isChecked()) {
                 input.setAttribute('checked', 'checked');
                 box.setAttribute('class', 'spanCheckBef spanEmptyBef');
@@ -189,35 +201,31 @@ export class ChecklistWidgetPresenter{
             label.appendChild(text);
             div.appendChild(label);
             this._dom.appendChild(div);
-        }//THIS BRACKET WILL BE REMOVE WHEN THE CODE BELOW WILL BE COMPLETED.
-            //**
-             //* Assign to all label the listener of html on click.
-             //*/
-            /*
-            let startTime, endTime;
 
+            /**
+             * Assign to all label the listener of html on click.
+             */
+            let startTime, endTime;
             label.onmousedown = function () {
                 startTime = new Date().getTime();
             };
-
-            label.onmouseup =  function () {
+            let foo = function () {
                 endTime = new Date().getTime();
-
                 if (endTime - startTime < 250) {
                     // CALL FUNCTION onClick OF _options[i].
                     // THIS FUNCTION WILL BE EXECUTE THE CODE ASSIGNED AND WILL EMIT AN EVENT TO THIS PRESENTER.
                     // THIS PRESENTER THAT WILL RECEIVE THE EVENT WILL EXECUTE renderView().
-                    label.onclick = this._options[i].onClick();
+                    this._options[i].onClick(this._view._event);
                 }
                 else {
                     // CALL FUNCTION onLongClick OF _options[i].
                     // THIS FUNCTION WILL BE EXECUTE THE CODE ASSIGNED AND WILL EMIT AN EVENT TO THIS PRESENTER.
                     // THIS PRESENTER THAT WILL RECEIVE THE EVENT WILL EXECUTE renderView().
-                    label.onclick = this._options[i].onLongClick();
+                    this._options[i].onLongClick();
                 }
             };
+            label.onmouseup = foo.bind(this);
         }
-        */
 
         /**
          * Modify the CSS color of the checkbox according to the developer's preferences
@@ -229,16 +237,16 @@ export class ChecklistWidgetPresenter{
          * Check if all items are checked and if all items are checked emit an EVENT representing completion of list
          */
         let completed = false;
-        for(let i in this._options){
-            if(this._options[i].isChecked()){
+        for (let i in this._options) {
+            if (this._options[i].isChecked()) {
                 completed = true;
             }
-            else{
+            else {
                 completed = false;
                 break;
             }
         }
-        if(completed === true){
+        if (completed === true) {
             //EMIT EVENT COMPLETED
         }
 
