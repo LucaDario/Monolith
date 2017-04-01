@@ -223,7 +223,7 @@ export class ChecklistWidgetPresenter{
                     // CALL FUNCTION onLongClick OF _options[i].
                     // THIS FUNCTION WILL BE EXECUTE THE CODE ASSIGNED AND WILL EMIT AN EVENT TO THIS PRESENTER.
                     // THIS PRESENTER THAT WILL RECEIVE THE EVENT WILL update() THE VIEW.
-                    this._options[i].onLongClick();
+                    this._options[i].onLongClick(this._view._event);
                 }
             };
             label.onmouseup = foo.bind(this);
@@ -253,7 +253,6 @@ export class ChecklistWidgetPresenter{
         for (let i in this._options) {
             let symbol = this._style.getSelectionCharacter();
             let boxbgcolor = this._style.getSelectionColor();
-            console.log(this._options[i].isChecked());
             if (this._options[i].isChecked()) {
                 this._dom.childNodes[i].childNodes[0].childNodes[1].setAttribute('class','spanCheckBef spanEmptyBef');
                 this._dom.childNodes[i].childNodes[0].childNodes[1].childNodes[0].setAttribute('class','symbolSpanCheckBef');

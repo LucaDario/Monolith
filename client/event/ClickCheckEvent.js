@@ -28,6 +28,16 @@ export class ClickCheckEvent extends EventEmitter{
     emitClickCheckEvent(){
         this.emit('clickCheckEvent');
     }
+
+    /**
+     * Public
+     * @method
+     * This method emit an event with 'clickCheckEvent'
+     */
+
+    emitLongClickCheckEvent(){
+        this.emit('longClickCheckEvent');
+    }
 }
 // Register the class as a singleton so that each instance that is injected is always the same
 container.registerAsSingleton(ClickCheckEvent);

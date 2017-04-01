@@ -18,9 +18,7 @@ export class CheckOption {
             this._isChecked = !(this._isChecked);
         };
 
-        this._onLongClick = function(){
-            alert('Long Click performed!')
-        };
+        this._onLongClick = function(){};
         this._text = '';
     }
 
@@ -57,8 +55,9 @@ export class CheckOption {
      * _onLongClick getter
      * return {function}
      */
-    onLongClick(){
+    onLongClick(event){
         this._onLongClick();
+        event.emitLongClickCheckEvent();
     }
 
     /**

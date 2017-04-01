@@ -20,12 +20,17 @@ export class ChecklistWidget extends ChecklistWidgetView{
         //TODO inject
         this._presenter = new ChecklistWidgetPresenter();
         this._presenter.setView(this);
-
         this._event = container.resolve(ClickCheckEvent);
+
         let click = function () {
             this.update();
         };
         this._event.on('clickCheckEvent', click.bind(this));
+
+        let longClick = function(){
+            console.log('Long Click Performed!');
+        };
+        this._event.on('longClickCheckEvent',longClick.bind(this));
     }
 
     /**
