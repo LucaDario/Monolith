@@ -3,7 +3,6 @@
  * Created by Francesco Bazzerla on 21/03/17.
  * Version 1.0.0 - 1.0.0
  */
-import {TextWidget} from '../../text/view/TextWidget';
 
 export class CheckOption {
 
@@ -20,9 +19,9 @@ export class CheckOption {
         };
 
         this._onLongClick = function(){
-            alert("Long click performed!");
+            alert('Long Click performed!')
         };
-        this._text = new TextWidget();
+        this._text = '';
     }
 
     /**
@@ -60,7 +59,6 @@ export class CheckOption {
      */
     onLongClick(){
         this._onLongClick();
-        //HERE EMIT AN EVENT TO PRESENTER
     }
 
     /**
@@ -69,8 +67,7 @@ export class CheckOption {
      * @return {Object}
      */
     getText(){
-        this._text.setFormatText(true);
-        return this._text.renderView();
+        return this._text;
     }
 
     /**
@@ -127,6 +124,6 @@ export class CheckOption {
      * @param text {string}
      */
     setText(text){
-        this._text.setText(text);
+        this._text = text;
     }
 }

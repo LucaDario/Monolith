@@ -194,11 +194,13 @@ export class ChecklistWidgetPresenter{
             else {
                 box.setAttribute('class', 'spanNotCheckBef spanEmptyBef');
             }
-            text.setAttribute('class', 'spanEmpty');
+            let textDiv = document.createElement('div');
+            textDiv.setAttribute('class', 'spanEmpty');
+            textDiv.innerHTML = text;
             label.appendChild(input);
             box.appendChild(symbolCheck);
             label.appendChild(box);
-            label.appendChild(text);
+            label.appendChild(textDiv);
             div.appendChild(label);
             this._dom.appendChild(div);
 
@@ -211,16 +213,16 @@ export class ChecklistWidgetPresenter{
             };
             let foo = function () {
                 endTime = new Date().getTime();
-                if (endTime - startTime < 250) {
+                if (endTime - startTime < 350) {
                     // CALL FUNCTION onClick OF _options[i].
                     // THIS FUNCTION WILL BE EXECUTE THE CODE ASSIGNED AND WILL EMIT AN EVENT TO THIS PRESENTER.
-                    // THIS PRESENTER THAT WILL RECEIVE THE EVENT WILL EXECUTE renderView().
+                    // THIS PRESENTER THAT WILL RECEIVE THE EVENT WILL update() THE VIEW.
                     this._options[i].onClick(this._view._event);
                 }
                 else {
                     // CALL FUNCTION onLongClick OF _options[i].
                     // THIS FUNCTION WILL BE EXECUTE THE CODE ASSIGNED AND WILL EMIT AN EVENT TO THIS PRESENTER.
-                    // THIS PRESENTER THAT WILL RECEIVE THE EVENT WILL EXECUTE renderView().
+                    // THIS PRESENTER THAT WILL RECEIVE THE EVENT WILL update() THE VIEW.
                     this._options[i].onLongClick();
                 }
             };
@@ -256,14 +258,14 @@ export class ChecklistWidgetPresenter{
                 this._dom.childNodes[i].childNodes[0].childNodes[1].setAttribute('class','spanCheckBef spanEmptyBef');
                 this._dom.childNodes[i].childNodes[0].childNodes[1].childNodes[0].setAttribute('class','symbolSpanCheckBef');
                 this._dom.childNodes[i].childNodes[0].childNodes[1].style.backgroundColor = boxbgcolor;
-                this._dom.childNodes[i].childNodes[0].childNodes[1].style.backgroundColor = boxbgcolor;
+                this._dom.childNodes[i].childNodes[0].childNodes[1].childNodes[0].style.backgroundColor = boxbgcolor;
                 this._dom.childNodes[i].childNodes[0].childNodes[1].childNodes[0].innerHTML = symbol;
             }
             else{
                 this._dom.childNodes[i].childNodes[0].childNodes[1].setAttribute('class','spanNotCheckBef spanEmptyBef');
                 this._dom.childNodes[i].childNodes[0].childNodes[1].childNodes[0].innerHTML = '';
                 this._dom.childNodes[i].childNodes[0].childNodes[1].style.backgroundColor = '#fff';
-                this._dom.childNodes[i].childNodes[0].childNodes[1].style.backgroundColor = '#fff';
+                this._dom.childNodes[i].childNodes[0].childNodes[1].childNodes[0].style.backgroundColor = '#fff';
             }
         }
         /**
