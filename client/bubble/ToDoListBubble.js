@@ -36,9 +36,11 @@ export class ToDoListBubble extends BaseBubble{
         super.addComponent(this._checklist);
 
         let longClick = () =>{
-            this.removeItem(optRem);
+
         };
-        this._checklist.getEventClick().on('longClickCheckEvent',longClick.bind(this,optRem));
+        this._checklist.getEventClick().on('longClickCheckEvent',(optRem)=>{
+            this.removeItem(optRem);
+        });
 
         // let checkComplete = (checkid) =>{
         //     if(checkid === this._checklist.getId()) {

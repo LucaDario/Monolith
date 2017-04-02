@@ -304,7 +304,6 @@ export class ChecklistWidgetPresenter{
         }
         if (completed === true) {
             let checkid = this.getId();
-            console.log(checkid);
             this._view.getEventComplete().emitChecklistComplete(checkid);
         }
     }

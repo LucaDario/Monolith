@@ -38,10 +38,9 @@ export class ChecklistWidget extends ChecklistWidgetView{
         this._eventClick = container.resolve(ClickCheckEvent);
         this._eventComplete = container.resolve(ChecklistComplete);
 
-        let click = function () {
+        this._eventClick.on('clickCheckEvent', ()=>{
             this.update();
-        };
-        this._eventClick.on('clickCheckEvent', click.bind(this));
+        });
     }
 
     /**
