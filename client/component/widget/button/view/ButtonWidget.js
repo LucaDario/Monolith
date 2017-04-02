@@ -6,6 +6,8 @@
 
 import {ButtonWidgetView} from '../ButtonWidgetView';
 import {ButtonWidgetPresenter} from '../presenter/ButtonWidgetPresenter';
+import {ClickButtonEvent} from '../../../../event/ClickButtonEvent';
+import {container, inject} from 'dependency-injection-es6';
 
 export class ButtonWidget extends ButtonWidgetView {
 
@@ -23,6 +25,8 @@ export class ButtonWidget extends ButtonWidgetView {
         //noinspection JSAnnotator
         super();
         this._presenter = new ButtonWidgetPresenter(this);
+        this._event = container.resolve(ClickButtonEvent);
+
     }
     /**
      * @method

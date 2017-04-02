@@ -193,6 +193,7 @@ export class ButtonWidgetPresenter {
                 longpress = false;
                 if (_this._onClickAction!==null) {
                     _this._onClickAction();
+                    _this._view._event.emitClickButtonEvent();
                 }
             }
 
@@ -200,6 +201,7 @@ export class ButtonWidgetPresenter {
                 longpress = true;
                 if (_this._onLongClickAction!==null) {
                     _this._onLongClickAction();
+                    _this._view._event.emitLongClickButtonEvent();
                 }
 
             }
