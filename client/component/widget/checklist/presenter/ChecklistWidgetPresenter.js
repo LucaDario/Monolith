@@ -156,6 +156,9 @@ export class ChecklistWidgetPresenter{
                 completed = false;
                 break;
             }
+
+            // Con completed = true iniziale
+            // completed &= this._options[i].isChecked();
         }
         if (completed === true) {
             this._view.getEventComplete().emitChecklistComplete(this.getId());
