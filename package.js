@@ -67,6 +67,8 @@ Package.onUse(function(api) {
         'client/component/widget/text/view/TextWidget.js',
         'client/component/widget/text/TextWidgetView.js',
     ], 'client');
+
+    api.export("Monolith", "client");
 });
 
 Package.onTest(function(api) {
