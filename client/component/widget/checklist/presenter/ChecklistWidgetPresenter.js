@@ -88,25 +88,32 @@ export class ChecklistWidgetPresenter{
      * @param check {boolean}:
      */
     addOption(optionText,check){
+        //Create new CheckOption and set its attributes
         let opt = new CheckOption();
         opt.setText(optionText);
         opt.setChecked(check);
         this._options.push(opt);
 
-        //Temp variables
+        //Temporary variables
         let symbol = this._style.getSelectionCharacter();
         let color = this._style.getSelectionColor();
-        let completionMessage = this._completionMessage;
         let text = opt.getText();
 
         //Generate html
         let div = document.createElement('div');
-        div.setAttribute('class', 'checkbox-m');
         let label = document.createElement('label');
         let input = document.createElement('input');
         let box = document.createElement('div');
         let symbolCheck = document.createElement('span');
+        let textDiv = document.createElement('div');
+
+        //set tag's attributes
+        div.setAttribute('class', 'checkbox-m');
+        textDiv.setAttribute('class', 'spanEmpty');
+        textDiv.innerHTML = text;
         input.type = 'checkbox';
+
+        //set the attributes of the checkbox
         if (opt.isChecked()) {
             input.setAttribute('checked', 'checked');
             box.setAttribute('class', 'spanCheckBef spanEmptyBef');
@@ -118,9 +125,7 @@ export class ChecklistWidgetPresenter{
         else {
             box.setAttribute('class', 'spanNotCheckBef spanEmptyBef');
         }
-        let textDiv = document.createElement('div');
-        textDiv.setAttribute('class', 'spanEmpty');
-        textDiv.innerHTML = text;
+
         label.appendChild(input);
         box.appendChild(symbolCheck);
         label.appendChild(box);
@@ -130,10 +135,10 @@ export class ChecklistWidgetPresenter{
 
         //Assign to all label the listener of html on click.
         let startTime, endTime;
-        label.onmousedown = function () {
+        label.onmousedown = ()=> {
             startTime = new Date().getTime();
         };
-        let foo = function () {
+        label.onmouseup = ()=>{
             endTime = new Date().getTime();
             if (endTime - startTime < 350) {
                 opt.onClick(this._view._eventClick);
@@ -144,25 +149,9 @@ export class ChecklistWidgetPresenter{
                 opt.onLongClick(this._view._eventClick);
             }
         };
-        label.onmouseup = foo.bind(this);
 
         //Check if all items are checked and if all items are checked emit an EVENT representing completion of list
-        let completed = false;
-        for (let i in this._options) {
-            if (this._options[i].isChecked()) {
-                completed = true;
-            }
-            else {
-                completed = false;
-                break;
-            }
-
-            // Con completed = true iniziale
-            // completed &= this._options[i].isChecked();
-        }
-        if (completed === true) {
-            this._view.getEventComplete().emitChecklistComplete(this.getId());
-        }
+        this._isComplete();
     }
 
     /**
@@ -173,38 +162,24 @@ export class ChecklistWidgetPresenter{
     removeOption(option){
         if(this._options.includes(option)) {
             let index = this._options.indexOf(option,this._options);
-            if (Number.isInteger(index)) {
-                if (index >= 1) {
-                    if (index === this._options.length - 1) {
-                        this._options = this._options.slice(0, this._options.length - 1);
-                    }
-                    else {
-                        let optionsFirstSlice = this._options.slice(0, index - 1);
-                        let optionsSecondSlice = this._options.slice(index + 1, this._options.length);
-                        this._options = optionsFirstSlice.concat(optionsSecondSlice);
-                    }
-                }
-                if (index == 0) {
-                    this._options = this._options.slice(1, this._options.length);
-                }
-            }
-            this._dom.removeChild(this._dom.childNodes[index]);
-
-            //Check if all items are checked and if all items are checked emit an EVENT representing completion of list
-            let completed = false;
-            for (let i in this._options) {
-                if (this._options[i].isChecked()) {
-                    completed = true;
+            if (index >= 1) {
+                if (index === this._options.length - 1) {
+                    this._options = this._options.slice(0, this._options.length - 1);
                 }
                 else {
-                    completed = false;
-                    break;
+                    let optionsFirstSlice = this._options.slice(0, index - 1);
+                    let optionsSecondSlice = this._options.slice(index + 1, this._options.length);
+                    this._options = optionsFirstSlice.concat(optionsSecondSlice);
                 }
             }
-            if (completed === true) {
-                this._view.getEventComplete().emitChecklistComplete(this.getId());
+            if (index == 0) {
+                this._options = this._options.slice(1, this._options.length);
             }
         }
+        this._dom.removeChild(this._dom.childNodes[index]);
+
+        //Check if all items are checked and if all items are checked emit an EVENT representing completion of list
+        this._isComplete();
     }
 
     /**
@@ -263,6 +238,21 @@ export class ChecklistWidgetPresenter{
     }
 
     /**
+     * Private
+     * @method
+     * It allows you to know if checklist is completed and if it's completed emit an event with checklistComplete
+     */
+    _isComplete(){
+        completed = true;
+        for (let i in this._options) {
+            completed &= this._options[i].isChecked();
+        }
+        if (completed === true) {
+            this._view.getEventComplete().emitChecklistComplete(this.getId());
+        }
+    }
+
+    /**
      * @method
      * Generates HTML CSS JS needed to display the widget.
      * @return {Object}:
@@ -295,19 +285,6 @@ export class ChecklistWidgetPresenter{
         }
 
         //Check if all items are checked and if all items are checked emit an EVENT representing completion of list
-        let completed = false;
-        for (let i in this._options) {
-            if (this._options[i].isChecked()) {
-                completed = true;
-            }
-            else {
-                completed = false;
-                break;
-            }
-        }
-        if (completed === true) {
-            let checkid = this.getId();
-            this._view.getEventComplete().emitChecklistComplete(checkid);
-        }
+        this._isComplete();
     }
 }
