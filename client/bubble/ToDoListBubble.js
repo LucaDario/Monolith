@@ -40,12 +40,16 @@ export class ToDoListBubble extends BaseBubble{
         };
         this._checklist.getEventClick().on('longClickCheckEvent',longClick.bind(this,optRem));
 
-        let checkComplete = () =>{
+        // let checkComplete = (checkid) =>{
+        //     if(checkid === this._checklist.getId()) {
+        //         alert(this._checklist.getCompletionMessage());
+        //     }
+        // };
+        this._checklist.getEventComplete().on('checklistComplete', (checkid) => {
             if(checkid === this._checklist.getId()) {
                 alert(this._checklist.getCompletionMessage());
             }
-        };
-        //this._checklist.getEventComplete().on('checklistComplete',checkComplete.bind(this));
+        });
     }
 
     /**

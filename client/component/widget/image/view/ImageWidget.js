@@ -8,18 +8,11 @@ import {Exception} from '../../../../exception/Exception'
 
 
 export class ImageWidget extends ImageWidgetView {
-
-    /**
-     * @type {Object} : The presenter needed by this class
-     */
-    _presenter;
-
     /**
      * @constructor
      * The constructor of TextWidget
      */
     constructor(){
-        //noinspection JSAnnotator
         super();
         this._presenter = new ImageWidgetPresenter(this);
     }
