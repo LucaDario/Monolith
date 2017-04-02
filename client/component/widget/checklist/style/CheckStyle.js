@@ -6,25 +6,27 @@
 
 export class CheckStyle {
     /**
-     * @type {String}: It represents the symbol used to check an item
+     * @type {string}
+     * It represents the symbol used to check an item
      */
     _selectionCharacter;
 
     /**
-     * @type {boolean}: Check-mark will be shown by a symbol if this field is true; if this field is false the check-mark
+     * @type {boolean}
+     * Check-mark will be shown by a symbol if this field is true; if this field is false the check-mark
      * wiil be shown by a color
      */
     _useSelectionMark;
 
     /**
-     * @type {String}: It represents the color of the check-mark if _useSelectionMark is false
+     * @type {string}
+     * It represents the color of the check-mark if _useSelectionMark is false
      */
     _selectionColor;
 
 
     /**
-     * @constructor
-     * Constructor of CheckStyle
+     * Public constructor
      */
     constructor(){
         this._useSelectionMark = true;
@@ -35,7 +37,7 @@ export class CheckStyle {
     /**
      * @method
      * _selectionCharacter setter
-     * @param character {String}
+     * @param character {string}:
      */
     setSelectionCharacter(character) {
         if(typeof(character) !== String){
@@ -47,7 +49,7 @@ export class CheckStyle {
     /**
      * @method
      * _useSelectionMark setter
-     * @param useMark {boolean}
+     * @param useMark {boolean}:
      */
     setUseSelectionMark(useMark) {
         if(typeof(useMark) !== "boolean"){
@@ -59,7 +61,7 @@ export class CheckStyle {
     /**
      * @method
      * _selectionColor setter
-     * @param color {String}
+     * @param color {string}:
      */
     setSelectionColor(color){
         let pat= new RegExp('#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$');
@@ -75,7 +77,7 @@ export class CheckStyle {
     /**
      * @method
      * _selectionCharacter getter
-     * @return {String}
+     * @return {string}:
      */
     getSelectionCharacter() {
         return this._selectionCharacter;
@@ -84,7 +86,7 @@ export class CheckStyle {
     /**
      * @method
      * _useSelectionMark getter
-     * @return {boolean}
+     * @return {boolean}:
      */
     getUseSelectionMark() {
         return this._useSelectionMark;
@@ -93,7 +95,7 @@ export class CheckStyle {
     /**
      * @method
      * _selectionColor getter
-     * @return {String}
+     * @return {string}:
      */
     getSelectionColor(){
         return this._selectionColor;
