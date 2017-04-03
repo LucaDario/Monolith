@@ -9,18 +9,21 @@ RocketChat.callbacks.add('renderMessage', (message) => {
     const regEx = /\[\S+\]/g;
     results = regEx.exec(message.msg);
     let bubbleType = null;
+    let messageText = '';
 
-    if(message.bubbleType !== 'undefined' && message.bubbleType !== null){
+    if(message.bubbleType != null){
         bubbleType = message.bubbleType;
+        messageText = message.msg;
     }
     else if(results !== null){
         bubbleType = results[0].replace(']', '').replace('[', '');
+        messageText = message.msg.replace(results[0], '');
     }
 
     if(bubbleType !== null){
         let wrapper_id = 'wrapper_' + message._id;
         message.html = '<div id="' + wrapper_id + '"></div>';
-        renderizeBubble(message.msg.replace(results[0], ''), wrapper_id, bubble_name);
+        renderizeBubble(messageText, wrapper_id, bubbleType);
     }
     else if(WidgetResolver.widgets.hasOwnProperty(message.msg)) {
         let wrapper_id = 'wrapper_' + message._id;
