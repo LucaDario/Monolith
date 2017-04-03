@@ -10,25 +10,25 @@ export class CheckOption {
 
     /**
      * @type {boolean}
-     *
+     * Represents the status of the option
      */
     _isChecked;
 
     /**
      * @type {string}
-     *
+     * Represents the id of the option
      */
     _id;
 
     /**
      * @type {string}
-     *
+     * Represents the text content
      */
     _text;
 
     /**
      * @type {function}
-     *
+     * Represents the function that will be called when a option is clicked. It changes the status of the option by default
      */
     _onClick;
 
@@ -50,7 +50,7 @@ export class CheckOption {
     /**
      * @method
      * _id getter
-     * @return {String}:
+     * @return {String}: The id of the option
      */
     getId(){
         return this._id;
@@ -59,7 +59,7 @@ export class CheckOption {
     /**
      * @method
      * _isChecked getter
-     * @return {boolean}:
+     * @return {boolean}: The boolean status of the option
      */
     isChecked(){
         return this._isChecked;
@@ -68,7 +68,7 @@ export class CheckOption {
     /**
      * @method
      * _text getter
-     * @return {string}:
+     * @return {string}: The text content of the option
      */
     getText(){
         return this._text;
@@ -76,20 +76,8 @@ export class CheckOption {
 
     /**
      * @method
-     * _id setter
-     * @param id {string}
-     */
-    setId(id) {
-        if(typeof(id) !== String){
-            throw new TypeError("Cannot set item's id. String value required.");
-        }
-        this._id = id;
-    }
-
-    /**
-     * @method
      * _isChecked setter
-     * @param checked {boolean}
+     * @param checked {boolean}: The boolean value that will be assigned to _isChecked
      */
     setChecked(checked) {
         if(typeof(checked) !== "boolean"){
@@ -101,7 +89,7 @@ export class CheckOption {
     /**
      * @method
      * _text setter
-     * @param text {string}
+     * @param text {string}: The text that will be replaced into _text
      */
     setText(text){
         this._text = text;
@@ -110,7 +98,7 @@ export class CheckOption {
     /**
      * @method
      * It calls the function stored in _onClick attribute and then emits an event with 'clickCheckEvent'
-     * @param event{Object}:
+     * @param event{Object}: The ClickCheckEvent object that allows to emit an event with 'clickCheckEvent'
      */
     onClick(event){
         this._onClick();
@@ -120,7 +108,7 @@ export class CheckOption {
     /**
      * @method
      * It emits an event with 'longClickCheckEvent' with the option as parameter
-     * @param event {Object}:
+     * @param event {Object}: The ClickCheckEvent object that allows to emit an event with 'longClickCheckEvent'
      */
     onLongClick(event){
         event.emitLongClickCheckEvent(this);

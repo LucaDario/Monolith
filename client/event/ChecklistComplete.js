@@ -4,7 +4,7 @@
  * to be emitted when all the checkbox of a checklist are checked.
  *
  * Created by Francesco Bazzerla on 30/03/17.
- * Version 1.0.0 - 1.0.0
+ * Version 1.0.0 - Completed
  */
 
 const EventEmitter = require('events');
@@ -23,7 +23,7 @@ export class ChecklistComplete extends EventEmitter{
     /**
      * @method
      * This method emit an event with 'checklistComplete'
-     * @param checkid {string}:
+     * @param checkid {string}: The id of the checklist that is completed
      */
     emitChecklistComplete(checkid){
         this.emit('checklistComplete',checkid);

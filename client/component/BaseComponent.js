@@ -1,6 +1,9 @@
 /**
+ * class BaseComponent
  * Base abstract class which represents a generic component that will be used inside a bubble.
- * Created by Riccardo Montagnin on 21/03/2017.
+ *
+ * Created by Riccardo Montagnin on 21/03/17.
+ * Version 1.0.1 - Completed
  */
 export class BaseComponent {
 
@@ -14,8 +17,9 @@ export class BaseComponent {
     }
 
     /**
-     * Renders the view of the component.
-     * @return {DocumentFragment} Returns the rendered view as a string.
+     * @method
+     * Generates HTML CSS JS needed to display the widget.
+     * @return {Object}: The dom fragment used to generate html of the checklist
      */
-    renderView() {}
+    renderView(){}
 }
