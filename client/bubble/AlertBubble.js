@@ -22,6 +22,8 @@ export class AlertBubble extends BaseBubble{
     constructor() {
         super();
         this._titleView = new TextWidget();
+        this._titleView.setFormatText(true);
+        this._titleView.setTextColor('#f00');
         this._messageView = new TextWidget();
         super.addComponent(this._titleView);
         super.addComponent(this._messageView);
@@ -31,24 +33,24 @@ export class AlertBubble extends BaseBubble{
      * @method
      * @param {string} value
      */
-    set titleView(title) {
-        this._titleView.setText(title);
+    setTittle(title) {
+        this._titleView.setText('**' + title + '**');
     }
 
     /**
      * @method
      * @param {string} value
      */
-    set messageView(message) {
+    setMessage(message) {
         this._messageView.setText(message);
     }
 
     /**
      * @method
      * Generates HTML CSS JS needed to display the bubble.
-     * @return {String}
+     * @return {Element}
      */
     renderView(){
-        super.layout.renderView();
+        return super.renderView();
     }
 }

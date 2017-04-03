@@ -30,7 +30,7 @@ export class BaseBubble{
     /**
      * @method
      * Generates HTML CSS JS needed to display the widget.
-     * @return {Object}
+     * @return {Element}
      */
     renderView(){
         return this._layout.renderView();
