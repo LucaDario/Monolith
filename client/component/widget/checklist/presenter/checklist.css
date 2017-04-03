@@ -1,8 +1,5 @@
 .checkbox{
     margin-top: .5em;
-    border: 1px solid black;
-    border-radius: 4px;
-    padding:.5em;
 }
 .checkbox-m {
     clear: both;

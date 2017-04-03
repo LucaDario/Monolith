@@ -1,7 +1,9 @@
 /**
+ * class CheckStyle
  * This class contains the style options for a ChecklistWidget.
+ *
  * Created by Francesco Bazzerla on 21/03/17.
- * Version 1.0.0 - 1.0.0
+ * Version 1.0.1 - Completed and instantiable
  */
 
 export class CheckStyle {
@@ -37,7 +39,7 @@ export class CheckStyle {
     /**
      * @method
      * _selectionCharacter setter
-     * @param character {string}:
+     * @param character {string}: the symbol used to check an item
      */
     setSelectionCharacter(character) {
         if(typeof(character) !== String){
@@ -49,7 +51,7 @@ export class CheckStyle {
     /**
      * @method
      * _useSelectionMark setter
-     * @param useMark {boolean}:
+     * @param useMark {boolean}: boolean value that will be assigned to _useSelectionMark
      */
     setUseSelectionMark(useMark) {
         if(typeof(useMark) !== "boolean"){
@@ -61,7 +63,7 @@ export class CheckStyle {
     /**
      * @method
      * _selectionColor setter
-     * @param color {string}:
+     * @param color {string}: It represents the color that will be assigned to _selectionColor
      */
     setSelectionColor(color){
         let pat= new RegExp('#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$');
@@ -77,7 +79,7 @@ export class CheckStyle {
     /**
      * @method
      * _selectionCharacter getter
-     * @return {string}:
+     * @return {string}: The selection character
      */
     getSelectionCharacter() {
         return this._selectionCharacter;
@@ -86,7 +88,7 @@ export class CheckStyle {
     /**
      * @method
      * _useSelectionMark getter
-     * @return {boolean}:
+     * @return {boolean}: The boolean value stored into _useSelectionMark
      */
     getUseSelectionMark() {
         return this._useSelectionMark;
@@ -95,7 +97,7 @@ export class CheckStyle {
     /**
      * @method
      * _selectionColor getter
-     * @return {string}:
+     * @return {string}: The string represents the color stored into _selectionColor
      */
     getSelectionColor(){
         return this._selectionColor;

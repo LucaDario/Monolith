@@ -3,7 +3,7 @@
  * The presenter of ChecklistWidget.
  *
  * Created by Francesco Bazzerla on 21/03/17.
- * Version 1.0.0 - 1.0.0
+ * Version 1.0.22 - Completed and instantiable
  */
 
 import {container, singleton, inject} from 'dependency-injection-es6';
@@ -15,37 +15,37 @@ export class ChecklistWidgetPresenter{
 
     /**
      * @type {string}
-     *
+     * The id of the checklist
      */
     _id;
 
     /**
      * @type {Object}
-     *
+     * The view associated to the presenter
      */
     _view;
 
     /**
      * @type {Object}
-     *
+     * The dom fragment used to generate html
      */
     _dom;
 
     /**
      * @type {Object}
-     *
+     * The CheckStyle associated to the checklist that allows to personalize the view of the checklist
      */
     _style;
 
     /**
      * @type {Array}
-     *
+     * An array that contains all the items of the checklist
      */
     _options;
 
     /**
      * @type {string}
-     *
+     * The completion message that will be shown when all the checkbox of a checklist are checked
      */
     _completionMessage;
 
@@ -84,8 +84,8 @@ export class ChecklistWidgetPresenter{
     /**
      * @method
      * It allows you to add a new item into the checklist
-     * @param optionText {string}:
-     * @param check {boolean}:
+     * @param optionText {string}: The text of the option
+     * @param check {boolean}: A boolean value that represents the status of the item: checked or not
      */
     addOption(optionText,check){
         //Create new CheckOption and set its attributes
@@ -155,9 +155,9 @@ export class ChecklistWidgetPresenter{
     }
 
     /**
-     *@method
+     * @method
      * It allows you to remove an item from a checklist
-     * @param option {Object}: The reference of the option to remove.
+     * @param option {Object}: The reference of the option to remove
      */
     removeOption(option){
         if(this._options.includes(option)) {
@@ -175,27 +175,26 @@ export class ChecklistWidgetPresenter{
             if (index == 0) {
                 this._options = this._options.slice(1, this._options.length);
             }
+            this._dom.removeChild(this._dom.childNodes[index]);
         }
-        this._dom.removeChild(this._dom.childNodes[index]);
-
         //Check if all items are checked and if all items are checked emit an EVENT representing completion of list
         this._isComplete();
     }
 
     /**
-     *@method
-     *It allows you to check an item on the checklist or to remove a tick from it.
-     * @param checked {boolean}:
-     * @param position {number}:
+     * @method
+     * It allows you to check an item on the checklist or to remove a tick from it.
+     * @param checked {boolean}: A boolean value that represents the state of the item: checked or not
+     * @param position {number}: The index of the item the index of the element to which you want to change the status
      */
     setChecked(checked,position){
         this._options[position].setChecked(checked);
     }
 
     /**
-     *@method
-     *Sets the symbol of checkmarks.
-     * @param character {String}:
+     * @method
+     * Sets the symbol of checkmarks.
+     * @param character {String}: The symbol to represent the selection
      */
     setSelectionCharacter(character){
         this._style.setSelectionCharacter(character);
@@ -203,26 +202,27 @@ export class ChecklistWidgetPresenter{
 
     /**
      * @method
-     *Sets the visualization of tick with a character or with a color.
-     * @param useMark {boolean}:
+     * Sets the visualization of tick with a character or with a color.
+     * @param useMark {boolean}: Check-mark will be shown by a symbol if this field is true; if this field is false the check-mark
+     * will be shown by a color
      */
     setUseSelectionMark(useMark){
         this._style.setUseSelectionMark(useMark);
     }
 
     /**
-     *@method
-     *Sets the color of checkmarks.
-     * @param color {String}:
+     * @method
+     * Sets the color of check-marks
+     * @param color {String}: It represents the color of the check-mark
      */
     setSelectionColor(color){
         this._style.setSelectionColor(color);
     }
 
     /**
-     *@method
-     *Sets the completion message appears when all of the list options are checked.
-     * @param message {String}:
+     * @method
+     * Sets the completion message appears when all of the list options are checked.
+     * @param message {String}: the completion message that will be replaced to the existing
      */
     setCompletionMessage(message){
         this._completionMessage = message;
@@ -231,7 +231,7 @@ export class ChecklistWidgetPresenter{
     /**
      * @method
      * It allows you to get the completion message defined in the presenter
-     * @return {string}:
+     * @return {string}: The completion message fof the checklist
      */
     getCompletionMessage(){
         return this._completionMessage;
@@ -243,9 +243,9 @@ export class ChecklistWidgetPresenter{
      * It allows you to know if checklist is completed and if it's completed emit an event with checklistComplete
      */
     _isComplete(){
-        completed = true;
+        let completed = true;
         for (let i in this._options) {
-            completed &= this._options[i].isChecked();
+            completed = completed && this._options[i].isChecked();
         }
         if (completed === true) {
             this._view.getEventComplete().emitChecklistComplete(this.getId());
@@ -255,7 +255,7 @@ export class ChecklistWidgetPresenter{
     /**
      * @method
      * Generates HTML CSS JS needed to display the widget.
-     * @return {Object}:
+     * @return {Object}: The dom fragment used to generate html
      */
     renderView() {
         return this._dom;
