@@ -6,13 +6,10 @@
 
 import {ButtonWidgetView} from '../ButtonWidgetView';
 import {ButtonWidgetPresenter} from '../presenter/ButtonWidgetPresenter';
+import {ClickButtonEvent} from '../../../../event/ClickButtonEvent';
+import {container, inject} from 'dependency-injection-es6';
 
 export class ButtonWidget extends ButtonWidgetView {
-
-    /**
-     * @type {Object} : The presenter of ButtonWidget
-     */
-    _presenter;
 
     /**
      * @constructor
@@ -23,6 +20,17 @@ export class ButtonWidget extends ButtonWidgetView {
         //noinspection JSAnnotator
         super();
         this._presenter = new ButtonWidgetPresenter(this);
+        this._event = container.resolve(ClickButtonEvent);
+
+    }
+
+    /**
+     * @method
+     * Returns the Object that handles the events of the ButtonWidget.
+     * @return {Object}
+     */
+    getEvent() {
+        return this._event;
     }
     /**
      * @method
@@ -44,6 +52,15 @@ export class ButtonWidget extends ButtonWidgetView {
 
     /**
      * @method
+     * Returns the width of the button.
+     * @return {string}
+     */
+    getWidth() {
+        return this._presenter.getWidth();
+    }
+
+    /**
+     * @method
      * Allows to set the height of the ButtonWidget
      * @param height {string}
      */
@@ -53,11 +70,29 @@ export class ButtonWidget extends ButtonWidgetView {
 
     /**
      * @method
+     * Returns the height of the button.
+     * @return {string}
+     */
+    getHeight() {
+        return this._presenter.getHeight();
+    }
+
+    /**
+     * @method
      * Allows to set the color of the ButtonWidget
      * @param color {string}
      */
     setBackgroundColor(color) {
         this._presenter.setBackgroundColor(color);
+    }
+
+    /**
+     * @method
+     * Returns the color of the button.
+     * @return {string}
+     */
+    getColor() {
+        return this._presenter.getColor();
     }
 
     /**

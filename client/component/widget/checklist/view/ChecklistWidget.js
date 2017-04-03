@@ -8,72 +8,100 @@
 import {ChecklistWidgetView} from '../ChecklistWidgetView'
 import {ChecklistWidgetPresenter} from '../presenter/ChecklistWidgetPresenter';
 import {ClickCheckEvent} from '../../../../event/ClickCheckEvent';
+import {ChecklistComplete} from '../../../../event/ChecklistComplete';
 import {container, inject} from 'dependency-injection-es6';
 export class ChecklistWidget extends ChecklistWidgetView{
 
     /**
-     * @constructor
-     * Constructor of ChecklistWidget
+     * @type {Object}
+     */
+    _presenter;
+
+    /**
+     * @type {Object}
+     */
+    _eventClick;
+
+    /**
+     * @type {Object}
+     */
+    _eventComplete;
+
+    /**
+     * Public constructor
      */
     constructor(){
         super();
         //TODO inject
         this._presenter = new ChecklistWidgetPresenter();
-        this._presenter.setView(this);
-        this._event = container.resolve(ClickCheckEvent);
+        this.setView(this);
+        this._eventClick = container.resolve(ClickCheckEvent);
+        this._eventComplete = container.resolve(ChecklistComplete);
 
-        let click = function () {
+        this._eventClick.on('clickCheckEvent', ()=>{
             this.update();
-        };
-        this._event.on('clickCheckEvent', click.bind(this));
-
-        let longClick = function(){
-            console.log('Long Click Performed!');
-        };
-        this._event.on('longClickCheckEvent',longClick.bind(this));
+        });
     }
 
     /**
      *@method
      * It allows you to add a new item into checklist
-     * @param optionText {string}
-     * @param check {boolean}
+     * @param optionText {string}:
+     * @param check {boolean}:
      */
     addOption(optionText,check = false) {
         this._presenter.addOption(optionText,check);
     }
 
     /**
-     * @method
-     * It allows you to assign to all items of the checklist the function that will be performed on normal click
-     * @param onClick {function}
+     *@method
+     * It allows you to remove an item from a checklist
+     * @param option {Object}: The reference of the option to remove.
      */
-    setOptionsOnClick(onClick){
-        this._presenter.setOptionsOnClick();
+    removeOption(option){
+        this._presenter.removeOption(option);
     }
+
     /**
      * @method
-     * It allows you to assign to all items of the checklist the function that will be performed on long click
-     * @param onLongClick {function}
+     * It returns the _id of the checklist
+     * @return {string}: The id of the checklist
      */
-    setOptionsOnLongClick(onLongClick){
-        this._presenter.setOptionsOnLongClick();
+    getId(){
+        return this._presenter.getId();
+    }
+
+    /**
+     * @method
+     * It allows you to add a reference of the view to the presenter
+     * @param view {Object}: The reference of the view that will be associated to this presenter
+     */
+    setView(view){
+        this._presenter.setView(view);
+    }
+
+    /**
+     * @method
+     * _eventClick getter
+     * @return {Object}:
+     */
+    getEventClick(){
+        return this._eventClick;
     }
 
     /**
      *@method
-     * It allows you to remove an item from a checklist
-     * @param id {String,number} If it's an Integer value the method removes the item in the specified position.
-     * If it's a String value the method removes the item with the specified id.
+     * _eventComplete getter
+     * @return {Object}:
      */
-    removeOption(id){
-        this._presenter.removeOption(id);
+    getEventComplete(){
+        return this._eventComplete;
     }
 
     /**
      *@method
      *Sets the visualization of tick with a character or with a color.
-     * @param useMark {boolean}
+     * @param useMark {boolean}:
      */
     setUseSelectionMark(useMark){
         this._presenter.setUseSelectionMark(useMark);
@@ -82,7 +110,7 @@ export class ChecklistWidget extends ChecklistWidgetView{
     /**
      *@method
      *Sets the color of checkmarks.
-     * @param color {String}
+     * @param color {string}:
      */
     setSelectionColor(color) {
         this._presenter.setSelectionColor(color);
@@ -91,7 +119,7 @@ export class ChecklistWidget extends ChecklistWidgetView{
     /**
      * @method
      *Sets the symbol of checkmarks.
-     * @param character {String}
+     * @param character {string}:
      */
     setSelectionCharacter(character){
         this._presenter.setSelectionCharacter(character);
@@ -101,7 +129,7 @@ export class ChecklistWidget extends ChecklistWidgetView{
      *@method
      *It allows you to check an item on the checklist or to remove a tick from it.
      * @param checked {boolean}
-     * @param position {Number}
+     * @param position {number}:
      */
     setChecked(checked,position){
         this._presenter.setChecked(checked,position);
@@ -110,7 +138,7 @@ export class ChecklistWidget extends ChecklistWidgetView{
     /**
      *@method
      *Sets the completion message appears when all of the list options are checked.
-     * @param message {String}
+     * @param message {string}
      */
     setCompletionMessage(message){
         this._presenter.setCompletionMessage(message);
@@ -118,13 +146,26 @@ export class ChecklistWidget extends ChecklistWidgetView{
 
     /**
      * @method
+     * _completionMessage getter
+     * @return {string}:
+     */
+    getCompletionMessage(){
+        return this._presenter.getCompletionMessage();
+    }
+
+    /**
+     * @method
      *Generates HTML CSS JS needed to display the widget.
-     * @return {Object}
+     * @return {Object}:
      */
     renderView(){
         return this._presenter.renderView();
     }
 
+    /**
+     * @method
+     * It allows you to update the html of the checklist
+     */
     update(){
         this._presenter.update();
     }

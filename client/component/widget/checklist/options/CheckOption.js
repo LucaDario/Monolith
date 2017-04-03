@@ -1,31 +1,56 @@
 /**
+ * class CheckOption
  * This class represents an item of a checklist.
+ *
  * Created by Francesco Bazzerla on 21/03/17.
- * Version 1.0.0 - 1.0.0
+ * Version 1.0.7 - CheckOption is completed
  */
 
 export class CheckOption {
 
     /**
-     * @constructor
-     * Constructor of CheckStyle
+     * @type {boolean}
+     *
+     */
+    _isChecked;
+
+    /**
+     * @type {string}
+     *
+     */
+    _id;
+
+    /**
+     * @type {string}
+     *
+     */
+    _text;
+
+    /**
+     * @type {function}
+     *
+     */
+    _onClick;
+
+    /**
+     * Public constructor
      */
     constructor(){
-        this._id = Math.round(Math.round(Number.MAX_SAFE_INTEGER)*Math.random()).toString();
+        ObjectID = Mongo.ObjectID;
+        this._id = new ObjectID().toString();
         this._isChecked = false;
 
         this._onClick = function(){
             this._isChecked = !(this._isChecked);
         };
 
-        this._onLongClick = function(){};
         this._text = '';
     }
 
     /**
      * @method
      * _id getter
-     * @return {String}
+     * @return {String}:
      */
     getId(){
         return this._id;
@@ -33,18 +58,8 @@ export class CheckOption {
 
     /**
      * @method
-     * _onClick getter
-     * @return {function}
-     */
-    onClick(event){
-        this._onClick();
-        event.emitClickCheckEvent();
-    }
-
-    /**
-     * @method
      * _isChecked getter
-     * @return {boolean}
+     * @return {boolean}:
      */
     isChecked(){
         return this._isChecked;
@@ -52,18 +67,8 @@ export class CheckOption {
 
     /**
      * @method
-     * _onLongClick getter
-     * return {function}
-     */
-    onLongClick(event){
-        this._onLongClick();
-        event.emitLongClickCheckEvent();
-    }
-
-    /**
-     * @method
      * _text getter
-     * @return {Object}
+     * @return {string}:
      */
     getText(){
         return this._text;
@@ -72,7 +77,7 @@ export class CheckOption {
     /**
      * @method
      * _id setter
-     * @param id {String}
+     * @param id {string}
      */
     setId(id) {
         if(typeof(id) !== String){
@@ -95,34 +100,29 @@ export class CheckOption {
 
     /**
      * @method
-     * _onClick setter
-     * @param action {function}
-     */
-    setOnClick(action) {
-        if(typeof(action) !== "function"){
-            throw new TypeError("Cannot set onClick function. Function required.");
-        }
-        this._onClick = action;
-    }
-
-    /**
-     * @method
-     * _onLongClick setter
-     * @param action {function}
-     */
-    setOnLongClick(action) {
-        if(typeof(action) !== "function"){
-            throw new TypeError("Cannot set onLongClick function. Function required.");
-        }
-        this._onLongClick = action;
-    }
-
-    /**
-     * @method
      * _text setter
      * @param text {string}
      */
     setText(text){
         this._text = text;
+    }
+
+    /**
+     * @method
+     * It calls the function stored in _onClick attribute and then emits an event with 'clickCheckEvent'
+     * @param event{Object}:
+     */
+    onClick(event){
+        this._onClick();
+        event.emitClickCheckEvent();
+    }
+
+    /**
+     * @method
+     * It emits an event with 'longClickCheckEvent' with the option as parameter
+     * @param event {Object}:
+     */
+    onLongClick(event){
+        event.emitLongClickCheckEvent(this);
     }
 }
