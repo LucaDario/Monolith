@@ -36,8 +36,7 @@ export class CheckOption {
      * Public constructor
      */
     constructor(){
-        ObjectID = Mongo.ObjectID;
-        this._id = new ObjectID().toString();
+        this._id = new Date().getUTCMilliseconds().toString();
         this._isChecked = false;
 
         this._onClick = function(){
