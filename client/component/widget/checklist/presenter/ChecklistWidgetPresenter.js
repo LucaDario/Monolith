@@ -53,8 +53,6 @@ export class ChecklistWidgetPresenter{
      * Public Constructor
      */
     constructor(){
-        ObjectID = Mongo.ObjectID;
-        this._id = new ObjectID().toString();
         this._view = null;
         this._dom = document.createElement('div');
         this._dom.setAttribute('class', 'checkbox');
@@ -70,15 +68,6 @@ export class ChecklistWidgetPresenter{
      */
     setView(view){
         this._view = view;
-    }
-
-    /**
-     * @method
-     * It returns the _id of the checklist
-     * @return {string}: The id of the checklist
-     */
-    getId(){
-        return this._id;
     }
 
     /**
@@ -191,6 +180,7 @@ export class ChecklistWidgetPresenter{
         let symbol = this._style.getSelectionCharacter();
         let boxbgcolor = this._style.getSelectionColor();
         if (this._options[position].isChecked()) {
+            this._dom.childNodes[position].childNodes[0].childNodes[0].setAttribute('checked','checked');
             this._dom.childNodes[position].childNodes[0].childNodes[1].setAttribute('class','spanCheckBef spanEmptyBef');
             this._dom.childNodes[position].childNodes[0].childNodes[1].childNodes[0].setAttribute('class','symbolSpanCheckBef');
             this._dom.childNodes[position].childNodes[0].childNodes[1].style.backgroundColor = boxbgcolor;
@@ -198,6 +188,7 @@ export class ChecklistWidgetPresenter{
             this._dom.childNodes[position].childNodes[0].childNodes[1].childNodes[0].innerHTML = symbol;
         }
         else{
+            this._dom.childNodes[position].childNodes[0].childNodes[0].removeAttribute('checked');
             this._dom.childNodes[position].childNodes[0].childNodes[1].setAttribute('class','spanNotCheckBef spanEmptyBef');
             this._dom.childNodes[position].childNodes[0].childNodes[1].childNodes[0].innerHTML = '';
             this._dom.childNodes[position].childNodes[0].childNodes[1].childNodes[0].removeAttribute('class');
