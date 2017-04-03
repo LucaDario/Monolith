@@ -7,21 +7,6 @@
 export class ButtonGraphics {
 
     /**
-     * @type {string} : the color of the ButtonWidget.
-     */
-    _color;
-
-    /**
-     * @type {string} : the height of the ButtonWidget.
-     */
-    _height;
-
-    /**
-     * @type {string} : the width of the ButtonWidget.
-     */
-    _width;
-
-    /**
      * @constructor
      * Constructor of ButtonGraphics.
      * @return {Object}

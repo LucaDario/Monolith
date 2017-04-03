@@ -1,5 +1,7 @@
 /**
+ * class ChecklistWidgetView
  * The view for ChecklistWidget.
+ *
  * Created by Francesco Bazzerla on 21/03/17.
  * Version 1.0.0 - 1.0.0
 */
@@ -28,77 +30,46 @@ export class ChecklistWidgetView extends BaseWidget{
     addOption(optionText,check){}
 
     /**
-     * @method
-     * It allows you to assign to all items of the checklist the function that will be performed on normal click
-     * @param onClick {function}
-     */
-    setOptionsOnClick(onClick){}
-    /**
-     * @method
-     * It allows you to assign to all items of the checklist the function that will be performed on long click
-     * @param onLongClick {function}
-     */
-    setOptionsOnLongClick(onLongClick){}
-
-    /**
      *@method
      * It allows you to remove an item from a checklist
-     * @param id {String,number} If it's an Integer value the method removes the item in the specified position.
-     * If it's a String value the method removes the item with the specified id.
+     * @param option {Object}:
      */
-    removeOption(id){}
+    removeOption(option){}
 
     /**
      *@method
      *Sets the visualization of tick with a character or with a color.
-     * @param useMark {Boolean}
+     * @param useMark {boolean}:
      */
     setUseSelectionMark(useMark){}
 
     /**
      *@method
      *Sets the color of checkmarks.
-     * @param color {String}
+     * @param color {string}:
      */
     setSelectionColor(color){}
 
     /**
      * @method
      *Sets the symbol of checkmarks.
-     * @param character {String}
+     * @param character {string}:
      */
     setSelectionCharacter(character){}
 
     /**
      *@method
      *It allows you to check an item on the checklist or to remove a tick from it.
-     * @param checked {Boolean}
-     * @param position {Number}
+     * @param checked {boolean}:
+     * @param position {number}:
      */
     setChecked(checked,position){}
 
     /**
      *@method
      *Sets the completion message appears when all of the list options are checked.
-     * @param message {String}
+     * @param message {string}:
      */
     setCompletionMessage(message){}
-
-    /**
-     * @method
-     *It allows you to emit the event onListCompleted().
-     */
-    emitOnListCompletedEvent(){}
-
-    /**
-     * Events
-     */
-
-    onItemClicked(itemId){}
-    onItemLongClicked(itemId){}
-
-    // TODO : IMPLEMENT EVENT
-
-    onListCompleted(){}
 
 }

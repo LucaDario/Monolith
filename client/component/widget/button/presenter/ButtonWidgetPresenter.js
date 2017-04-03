@@ -9,46 +9,6 @@ import {ButtonGraphics} from "../options/ButtonGraphics"
 export class ButtonWidgetPresenter {
 
     /**
-     * @type {Object}: DOM element that allows to change CSS
-     */
-    _dom;
-
-    /**
-     * @type {Object}: DefineMap element that allows to update view
-     */
-    _map;
-
-    /**
-     * @type {Object} : the ButtonWidgetView element for the presenter
-     */
-    _view;
-
-    /**
-     * @type {string} : the text contained by the ButtonWidget.
-     */
-    _text;
-
-    /**
-     * @type {Object} : the function to be performed on the click of the ButtonWidget
-     */
-    _onClickAction;
-
-    /**
-     * @type {Object} : the function to be performed on the extended click of the ButtonWidget
-     */
-    _onLongClickAction;
-
-    /**
-     * @type {number} : the number of milliseconds that are needed to keep the ButtonWidget clicked before the long click action triggers
-     */
-    _millisecondsBeforeOnLongClickActs;
-
-    /**
-     * @type {Object} : the object that contains the style options of the ButtonWidget
-     */
-    _graphics;
-
-    /**
      * @constructor
      * Constructor of ButtonWidgetPresenter
      * @param {Object} view
@@ -87,6 +47,7 @@ export class ButtonWidgetPresenter {
         return this._text;
     }
 
+
     /**
      * @method
      * Allows to set the width of the ButtonWidget
@@ -96,6 +57,15 @@ export class ButtonWidgetPresenter {
         this._graphics.setWidth(width);
         this._dom.style.width = width;
 
+    }
+
+    /**
+     * @method
+     * Returns the width of the button.
+     * @return {string}
+     */
+    getWidth() {
+        return this._graphics.getWidth();
     }
 
     /**
@@ -110,12 +80,30 @@ export class ButtonWidgetPresenter {
 
     /**
      * @method
+     * Returns the height of the button.
+     * @return {string}
+     */
+    getHeight() {
+        return this._graphics.getHeight();
+    }
+
+    /**
+     * @method
      * Allows to set the color of the ButtonWidget
      * @param color {string}
      */
     setBackgroundColor(color) {
         this._graphics.setColor(color);
         this._dom.style.backgroundColor = color;
+    }
+
+    /**
+     * @method
+     * Returns the color of the button.
+     * @return {string}
+     */
+    getColor() {
+        return this._graphics.getColor();
     }
 
     /**
@@ -157,11 +145,11 @@ export class ButtonWidgetPresenter {
         ldom.className= "button btn";
         ldom.innerHTML = _this.getText();
 
-        ldom.style.width= _this._graphics.getWidth();
-        ldom.style.height= _this._graphics.getHeight();
+        ldom.style.width= _this.getWidth();
+        ldom.style.height= _this.getHeight();
 
         //this is the only way to make it work
-        let c = _this._graphics.getColor().split("");
+        let c = _this.getColor().split("");
         //two options for 3 or 6 hex number for color
         if (c.length === 7) {
             ldom.style.backgroundColor = c[0] + c[1] + c[2] + c[3] + c[4] + c[5] + c[6];
@@ -193,6 +181,7 @@ export class ButtonWidgetPresenter {
                 longpress = false;
                 if (_this._onClickAction!==null) {
                     _this._onClickAction();
+                    _this._view.getEvent().emitClickButtonEvent();
                 }
             }
 
@@ -200,6 +189,7 @@ export class ButtonWidgetPresenter {
                 longpress = true;
                 if (_this._onLongClickAction!==null) {
                     _this._onLongClickAction();
+                    _this._view.getEvent().emitLongClickButtonEvent();
                 }
 
             }
