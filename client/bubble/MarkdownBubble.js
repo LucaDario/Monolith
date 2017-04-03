@@ -34,4 +34,8 @@ export class MarkdownBubble extends BaseBubble{
     setText(text){
         this._textView.setText(text);
     }
+
+    renderView() {
+        return super.renderView();
+    }
 }
