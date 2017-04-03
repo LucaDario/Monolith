@@ -42,10 +42,13 @@ export class CheckStyle {
      * @param character {string}: the symbol used to check an item
      */
     setSelectionCharacter(character) {
-        if(typeof(character) !== String){
+        if(typeof(character) !== "string"){
             throw new TypeError("Cannot set select character. String value required.");
         }
-        this._selectionCharacter = character;
+        if(this.getUseSelectionMark()) {
+            this._selectionCharacter = character;
+            this._selectionColor = '#fff';
+        }
     }
 
     /**
@@ -56,6 +59,14 @@ export class CheckStyle {
     setUseSelectionMark(useMark) {
         if(typeof(useMark) !== "boolean"){
             throw new TypeError("Cannot set select mark. Boolean value required.");
+        }
+        if(useMark === true){
+            this._selectionCharacter = '&#x2713';
+            this._selectionColor = '#fff';
+        }
+        else{
+            this._selectionCharacter = '';
+            this._selectionColor = '#060';
         }
         this._useSelectionMark = useMark;
     }
@@ -68,8 +79,10 @@ export class CheckStyle {
     setSelectionColor(color){
         let pat= new RegExp('#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$');
         if (typeof color === "string" && pat.test(color)) {
-            this._selectionColor = color;
-            this._selectionCharacter = '';
+                if(!this.getUseSelectionMark()) {
+                    this._selectionColor = color;
+                    this._selectionCharacter = '';
+                }
         }
         else {
             throw new TypeError("Parameter color type must be a string that represents a hex color code");
