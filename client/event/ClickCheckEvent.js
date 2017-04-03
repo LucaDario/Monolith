@@ -20,16 +20,18 @@ export class ClickCheckEvent extends EventEmitter{
     /**
      * @method
      * This method emit an event with 'clickCheckEvent'
+     * @param status {boolean}: The value of the option that emitted the event
+     * @param index {index}: The index of the option that emitted the event
      */
 
-    emitClickCheckEvent(){
-        this.emit('clickCheckEvent');
+    emitClickCheckEvent(status,index){
+        this.emit('clickCheckEvent',status,index);
     }
 
     /**
      * @method
      * This method emit an event with 'longClickCheckEvent'
-     * @param index {number}: the index of the option that will emit the event
+     * @param index {number}: The index of the option that emitted the event
      */
 
     emitLongClickCheckEvent(index){

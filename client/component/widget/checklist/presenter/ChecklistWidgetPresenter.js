@@ -124,6 +124,9 @@ export class ChecklistWidgetPresenter{
         }
         else {
             box.setAttribute('class', 'spanNotCheckBef spanEmptyBef');
+            box.style.backgroundColor = '#fff';
+            symbolCheck.style.backgroundColor = '#fff';
+            symbolCheck.innerHTML = '';
         }
 
         label.appendChild(input);
@@ -139,12 +142,12 @@ export class ChecklistWidgetPresenter{
             startTime = new Date().getTime();
         };
         label.onmouseup = ()=>{
+            let index = this._options.indexOf(opt);
             endTime = new Date().getTime();
             if (endTime - startTime < 350) {
-                opt.onClick(this._view._eventClick);
+                opt.onClick(this._view._eventClick,index);
             }
             else {
-                let index = this._options.indexOf(opt);
                 opt.onLongClick(this._view._eventClick,index);
             }
         };
@@ -185,6 +188,23 @@ export class ChecklistWidgetPresenter{
      */
     setChecked(checked,position){
         this._options[position].setChecked(checked);
+        let symbol = this._style.getSelectionCharacter();
+        let boxbgcolor = this._style.getSelectionColor();
+        if (this._options[position].isChecked()) {
+            this._dom.childNodes[position].childNodes[0].childNodes[1].setAttribute('class','spanCheckBef spanEmptyBef');
+            this._dom.childNodes[position].childNodes[0].childNodes[1].childNodes[0].setAttribute('class','symbolSpanCheckBef');
+            this._dom.childNodes[position].childNodes[0].childNodes[1].style.backgroundColor = boxbgcolor;
+            this._dom.childNodes[position].childNodes[0].childNodes[1].childNodes[0].style.backgroundColor = boxbgcolor;
+            this._dom.childNodes[position].childNodes[0].childNodes[1].childNodes[0].innerHTML = symbol;
+        }
+        else{
+            this._dom.childNodes[position].childNodes[0].childNodes[1].setAttribute('class','spanNotCheckBef spanEmptyBef');
+            this._dom.childNodes[position].childNodes[0].childNodes[1].childNodes[0].innerHTML = '';
+            this._dom.childNodes[position].childNodes[0].childNodes[1].childNodes[0].removeAttribute('class');
+            this._dom.childNodes[position].childNodes[0].childNodes[1].style.backgroundColor = '#fff';
+            this._dom.childNodes[position].childNodes[0].childNodes[1].childNodes[0].style.backgroundColor = '#fff';
+        }
+        this._isComplete();
     }
 
     /**
@@ -255,32 +275,5 @@ export class ChecklistWidgetPresenter{
      */
     renderView() {
         return this._dom;
-    }
-
-    /**
-     * @method
-     * It allows you to update the html of the checklist
-     */
-    update() {
-        for (let i in this._options) {
-            let symbol = this._style.getSelectionCharacter();
-            let boxbgcolor = this._style.getSelectionColor();
-            if (this._options[i].isChecked()) {
-                this._dom.childNodes[i].childNodes[0].childNodes[1].setAttribute('class','spanCheckBef spanEmptyBef');
-                this._dom.childNodes[i].childNodes[0].childNodes[1].childNodes[0].setAttribute('class','symbolSpanCheckBef');
-                this._dom.childNodes[i].childNodes[0].childNodes[1].style.backgroundColor = boxbgcolor;
-                this._dom.childNodes[i].childNodes[0].childNodes[1].childNodes[0].style.backgroundColor = boxbgcolor;
-                this._dom.childNodes[i].childNodes[0].childNodes[1].childNodes[0].innerHTML = symbol;
-            }
-            else{
-                this._dom.childNodes[i].childNodes[0].childNodes[1].setAttribute('class','spanNotCheckBef spanEmptyBef');
-                this._dom.childNodes[i].childNodes[0].childNodes[1].childNodes[0].innerHTML = '';
-                this._dom.childNodes[i].childNodes[0].childNodes[1].style.backgroundColor = '#fff';
-                this._dom.childNodes[i].childNodes[0].childNodes[1].childNodes[0].style.backgroundColor = '#fff';
-            }
-        }
-
-        //Check if all items are checked and if all items are checked emit an EVENT representing completion of list
-        this._isComplete();
     }
 }

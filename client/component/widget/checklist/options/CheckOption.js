@@ -98,11 +98,13 @@ export class CheckOption {
     /**
      * @method
      * It calls the function stored in _onClick attribute and then emits an event with 'clickCheckEvent'
-     * @param event{Object}: The ClickCheckEvent object that allows to emit an event with 'clickCheckEvent'
+     * @param event {Object}: The ClickCheckEvent object that allows to emit an event with 'clickCheckEvent'
+     * @param index {number}: The index of the option with normal click performed
      */
-    onClick(event){
+    onClick(event,index){
         this._onClick();
-        event.emitClickCheckEvent();
+        let status = this.isChecked();
+        event.emitClickCheckEvent(status,index);
     }
 
     /**

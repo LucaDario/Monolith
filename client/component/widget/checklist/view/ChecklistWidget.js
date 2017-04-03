@@ -42,8 +42,8 @@ export class ChecklistWidget extends ChecklistWidgetView{
         this._eventClick = new ClickCheckEvent();
         this._eventComplete = new ChecklistComplete();
 
-        this._eventClick.on('clickCheckEvent', ()=>{
-            this.update();
+        this._eventClick.on('clickCheckEvent', (status,index)=>{
+            this.setChecked(status,index);
         });
     }
 
