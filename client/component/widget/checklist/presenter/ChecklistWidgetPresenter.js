@@ -145,8 +145,7 @@ export class ChecklistWidgetPresenter{
             }
             else {
                 let index = this._options.indexOf(opt);
-                optRem = this._options[index];
-                opt.onLongClick(this._view._eventClick);
+                opt.onLongClick(this._view._eventClick,index);
             }
         };
 
@@ -157,26 +156,23 @@ export class ChecklistWidgetPresenter{
     /**
      * @method
      * It allows you to remove an item from a checklist
-     * @param option {Object}: The reference of the option to remove
+     * @param index {number}: The index of the option to remove
      */
-    removeOption(option){
-        if(this._options.includes(option)) {
-            let index = this._options.indexOf(option,this._options);
-            if (index >= 1) {
-                if (index === this._options.length - 1) {
-                    this._options = this._options.slice(0, this._options.length - 1);
-                }
-                else {
-                    let optionsFirstSlice = this._options.slice(0, index - 1);
-                    let optionsSecondSlice = this._options.slice(index + 1, this._options.length);
-                    this._options = optionsFirstSlice.concat(optionsSecondSlice);
-                }
+    removeOption(index){
+        if (index >= 1) {
+            if (index === this._options.length - 1) {
+                this._options = this._options.slice(0, this._options.length - 1);
             }
-            if (index == 0) {
-                this._options = this._options.slice(1, this._options.length);
+            else {
+                let optionsFirstSlice = this._options.slice(0, index - 1);
+                let optionsSecondSlice = this._options.slice(index + 1, this._options.length);
+                this._options = optionsFirstSlice.concat(optionsSecondSlice);
             }
-            this._dom.removeChild(this._dom.childNodes[index]);
         }
+        if (index == 0) {
+            this._options = this._options.slice(1, this._options.length);
+        }
+        this._dom.removeChild(this._dom.childNodes[index]);
         //Check if all items are checked and if all items are checked emit an EVENT representing completion of list
         this._isComplete();
     }
@@ -248,7 +244,7 @@ export class ChecklistWidgetPresenter{
             completed = completed && this._options[i].isChecked();
         }
         if (completed === true) {
-            this._view.getEventComplete().emitChecklistComplete(this.getId());
+            this._view.getEventComplete().emitChecklistComplete();
         }
     }
 

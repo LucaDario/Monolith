@@ -8,9 +8,6 @@
  */
 
 const EventEmitter = require('events');
-
-import {container, singleton, inject} from 'dependency-injection-es6';
-
 export class ClickCheckEvent extends EventEmitter{
 
     /**
@@ -32,12 +29,10 @@ export class ClickCheckEvent extends EventEmitter{
     /**
      * @method
      * This method emit an event with 'longClickCheckEvent'
-     * @param option {Object}: the reference to the CheckOption object that will be notified
+     * @param index {number}: the index of the option that will emit the event
      */
 
-    emitLongClickCheckEvent(option){
-        this.emit('longClickCheckEvent',option);
+    emitLongClickCheckEvent(index){
+        this.emit('longClickCheckEvent',index);
     }
 }
-// Register the class as a singleton so that each instance that is injected is always the same
-container.registerAsSingleton(ClickCheckEvent);

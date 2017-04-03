@@ -109,8 +109,9 @@ export class CheckOption {
      * @method
      * It emits an event with 'longClickCheckEvent' with the option as parameter
      * @param event {Object}: The ClickCheckEvent object that allows to emit an event with 'longClickCheckEvent'
+     * @param index {number}: The index of the option with longClick performed
      */
-    onLongClick(event){
-        event.emitLongClickCheckEvent(this);
+    onLongClick(event,index){
+        event.emitLongClickCheckEvent(index);
     }
 }

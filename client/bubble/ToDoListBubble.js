@@ -35,14 +35,12 @@ export class ToDoListBubble extends BaseBubble{
         super.addComponent(this._textView);
         super.addComponent(this._checklist);
 
-        this._checklist.getEventClick().on('longClickCheckEvent',(optRem)=>{
-            this.removeItem(optRem);
+        this._checklist.getEventClick().on('longClickCheckEvent',(index)=>{
+            this.removeItem(index);
         });
 
-        this._checklist.getEventComplete().on('checklistComplete', (checkid) => {
-            if(checkid === this._checklist.getId()) {
-                alert(this._checklist.getCompletionMessage());
-            }
+        this._checklist.getEventComplete().on('checklistComplete', () => {
+            alert(this._checklist.getCompletionMessage());
         });
     }
 
@@ -59,10 +57,10 @@ export class ToDoListBubble extends BaseBubble{
     /**
      * @method
      * It allows you to remove an item into checklist.
-     * @param item {Object}: The reference of the item that will be removed from the checklist
+     * @param index {number}: The index of the item that will be removed from the checklist
      */
-    removeItem(item) {
-        this._checklist.removeOption(item);
+    removeItem(index) {
+        this._checklist.removeOption(index);
     }
 
     /**

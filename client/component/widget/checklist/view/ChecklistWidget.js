@@ -11,7 +11,6 @@ import {ChecklistWidgetView} from '../ChecklistWidgetView'
 import {ChecklistWidgetPresenter} from '../presenter/ChecklistWidgetPresenter';
 import {ClickCheckEvent} from '../../../../event/ClickCheckEvent';
 import {ChecklistComplete} from '../../../../event/ChecklistComplete';
-import {container, inject} from 'dependency-injection-es6';
 export class ChecklistWidget extends ChecklistWidgetView{
 
     /**
@@ -40,8 +39,8 @@ export class ChecklistWidget extends ChecklistWidgetView{
         //TODO inject
         this._presenter = new ChecklistWidgetPresenter();
         this.setView(this);
-        this._eventClick = container.resolve(ClickCheckEvent);
-        this._eventComplete = container.resolve(ChecklistComplete);
+        this._eventClick = new ClickCheckEvent();
+        this._eventComplete = new ChecklistComplete();
 
         this._eventClick.on('clickCheckEvent', ()=>{
             this.update();
@@ -61,10 +60,10 @@ export class ChecklistWidget extends ChecklistWidgetView{
     /**
      * @method
      * It allows you to remove an item from a checklist
-     * @param option {Object}: The reference of the option to remove
+     * @param index {number}: The index of the option to remove
      */
-    removeOption(option){
-        this._presenter.removeOption(option);
+    removeOption(index){
+        this._presenter.removeOption(index);
     }
 
     /**
