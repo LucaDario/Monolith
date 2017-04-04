@@ -12,6 +12,7 @@ Npm.depends({
     "es6-event-emitter" : "1.8.2",
     "bootstrap-jquery" : "3.3.2",
     "marked": "0.3.6",
+    "vue" : "2.2.6"
 });
 
 Package.onUse(function(api) {

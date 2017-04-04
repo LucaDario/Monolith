@@ -27,22 +27,11 @@ export class CheckOption {
     _text;
 
     /**
-     * @type {function}
-     * Represents the function that will be called when a option is clicked. It changes the status of the option by default
-     */
-    _onClick;
-
-    /**
      * Public constructor
      */
     constructor(){
         this._id = new Date().getUTCMilliseconds().toString();
         this._isChecked = false;
-
-        this._onClick = function(){
-            this._isChecked = !(this._isChecked);
-        };
-
         this._text = '';
     }
 
@@ -96,23 +85,11 @@ export class CheckOption {
 
     /**
      * @method
-     * It calls the function stored in _onClick attribute and then emits an event with 'clickCheckEvent'
-     * @param event {Object}: The ClickCheckEvent object that allows to emit an event with 'clickCheckEvent'
-     * @param index {number}: The index of the option with normal click performed
+     * It allows you to change the status of _isChecked
+     * @return {boolean}: The value of _isChecked after changing status
      */
-    onClick(event,index){
-        this._onClick();
-        let status = this.isChecked();
-        event.emitClickCheckEvent(status,index);
-    }
-
-    /**
-     * @method
-     * It emits an event with 'longClickCheckEvent' with the option as parameter
-     * @param event {Object}: The ClickCheckEvent object that allows to emit an event with 'longClickCheckEvent'
-     * @param index {number}: The index of the option with longClick performed
-     */
-    onLongClick(event,index){
-        event.emitLongClickCheckEvent(index);
+    changeStatus(){
+        this._isChecked = !(this._isChecked);
+        return this.isChecked();
     }
 }

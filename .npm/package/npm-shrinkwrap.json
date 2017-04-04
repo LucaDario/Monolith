@@ -373,6 +373,11 @@
       "version": "0.11.1",
       "resolved": "https://registry.npmjs.org/validate.js/-/validate.js-0.11.1.tgz",
       "from": "validate.js@>=0.11.1 <0.12.0"
+    },
+    "vue": {
+      "version": "2.2.6",
+      "resolved": "https://registry.npmjs.org/vue/-/vue-2.2.6.tgz",
+      "from": "vue@2.2.6"
     }
   }
 }

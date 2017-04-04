@@ -26,6 +26,12 @@ export class ToDoListBubble extends BaseBubble{
     _checklist;
 
     /**
+     * @type {function}
+     * The function that will be called when an event ChecklistUpdate is emitted
+     */
+    _update;
+
+    /**
      * Public constructor
      */
     constructor() {
@@ -34,13 +40,15 @@ export class ToDoListBubble extends BaseBubble{
         this._checklist = new ChecklistWidget();
         super.addComponent(this._textView);
         super.addComponent(this._checklist);
-
-        this._checklist.getEventClick().on('longClickCheckEvent',(index)=>{
-            this.removeItem(index);
+        this._update = ()=>{};
+        this._checklist.getChecklistUpdate().on('checklistUpdate',(index)=>{
+            this._update();
         });
 
-        this._checklist.getEventComplete().on('checklistComplete', () => {
-            alert(this._checklist.getCompletionMessage());
+        this._checklist.getEventComplete().on('checklistComplete', (index) => {
+            if(this._checklist.getId() === index) {
+                alert(this._checklist.getCompletionMessage());
+            }
         });
     }
 
@@ -65,6 +73,15 @@ export class ToDoListBubble extends BaseBubble{
 
     /**
      * @method
+     * It allows you to change the function that will be called when a longClick on an option is performed
+     * @param event {function}: function that will be called when a longClick on an option is performed
+     */
+    setOnLongOptionClick(event){
+        this._checklist.setOnLongOptionClick(event);
+    }
+
+    /**
+     * @method
      * Sets the visualization of tick with a character or with a color.
      * @param useMark {boolean}: Check-mark will be shown by a symbol if this field is true; if this field is false the check-mark
      * will be shown by a color
@@ -80,6 +97,15 @@ export class ToDoListBubble extends BaseBubble{
      */
     setSelectionColor(color) {
         this._checklist.setSelectionColor(color);
+    }
+
+    /**
+     * @method
+     * It allows you to change the function that will be called when an event with checklistUpdate is emitted
+     * @param event {function}: The function that will be called when an event with checklistUpdate is emitted
+     */
+    setOnUpdateEvent(event){
+        this._update = event;
     }
 
     /**

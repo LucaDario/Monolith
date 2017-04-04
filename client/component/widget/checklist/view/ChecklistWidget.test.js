@@ -105,6 +105,7 @@ describe('ChecklistWidget', function () {
 
     it('[TU30] Check if an event \'clickCheckEvent\' is emitted correctly and then does the expected operations', function () {
         const cWidget = new ChecklistWidget();
+
         cWidget.addOption('test');
         cWidget.addOption('test2',true);
 
@@ -115,8 +116,8 @@ describe('ChecklistWidget', function () {
         const box2 = cWidget.renderView().childNodes[1].childNodes[0].childNodes[1];
         const symbol2 = cWidget.renderView().childNodes[1].childNodes[0].childNodes[1].childNodes[0];
 
-        cWidget._presenter._options[0].onClick(cWidget._eventClick,0);
-        cWidget._presenter._options[1].onClick(cWidget._eventClick,1);
+        cWidget.renderView().childNodes[0].childNodes[0].click();
+        cWidget.renderView().childNodes[1].childNodes[0].click();
 
         expect(input.getAttribute('checked')).to.be.eq('checked');
         expect(box.getAttribute('class')).to.be.eq('spanCheckBef spanEmptyBef');

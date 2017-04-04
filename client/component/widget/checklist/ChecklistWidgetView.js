@@ -37,6 +37,13 @@ export class ChecklistWidgetView extends BaseWidget{
 
     /**
      * @method
+     * It allows you to change the function that will be called when a longClick on an option is performed
+     * @param event {function}
+     */
+    setOnLongOptionClick(event){}
+
+    /**
+     * @method
      * It returns the _id of the checklist
      * @return {string}: The id of the checklist
      */
@@ -106,11 +113,5 @@ export class ChecklistWidgetView extends BaseWidget{
      * @return {string}: The completion message associated to the checklist
      */
     getCompletionMessage(){}
-
-    /**
-     * @method
-     * It allows you to update the html of the checklist after a selection
-     */
-    update(){}
 
 }

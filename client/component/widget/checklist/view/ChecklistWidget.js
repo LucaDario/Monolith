@@ -6,11 +6,11 @@
  * Version 1.0.8 - Completed and instantiable
  */
 
-
+import {container,inject,singleton} from 'dependency-injection-es6';
 import {ChecklistWidgetView} from '../ChecklistWidgetView'
 import {ChecklistWidgetPresenter} from '../presenter/ChecklistWidgetPresenter';
-import {ClickCheckEvent} from '../../../../event/ClickCheckEvent';
-import {ChecklistComplete} from '../../../../event/ChecklistComplete';
+import {ChecklistUpdateEmitter} from '../../../../event/ChecklistUpdateEmitter';
+import {ChecklistCompleteEmitter} from '../../../../event/ChecklistCompleteEmitter';
 export class ChecklistWidget extends ChecklistWidgetView{
 
     /**
@@ -23,7 +23,7 @@ export class ChecklistWidget extends ChecklistWidgetView{
      * @type {Object}
      * The ClickCheckEvent object that allows you to handle the events clickCheckEvent and longClickCheckEvent
      */
-    _eventClick;
+    _checklistUpdate;
 
     /**
      * @type {Object}
@@ -36,15 +36,10 @@ export class ChecklistWidget extends ChecklistWidgetView{
      */
     constructor(){
         super();
-        //TODO inject
         this._presenter = new ChecklistWidgetPresenter();
         this.setView(this);
-        this._eventClick = new ClickCheckEvent();
-        this._eventComplete = new ChecklistComplete();
-
-        this._eventClick.on('clickCheckEvent', (status,index)=>{
-            this.setChecked(status,index);
-        });
+        this._checklistUpdate = container.resolve(ChecklistUpdateEmitter);
+        this._eventComplete = container.resolve(ChecklistCompleteEmitter);
     }
 
     /**
@@ -64,6 +59,15 @@ export class ChecklistWidget extends ChecklistWidgetView{
      */
     removeOption(index){
         this._presenter.removeOption(index);
+    }
+
+    /**
+     * @method
+     * It allows you to change the function that will be called when a longClick on an option is performed
+     * @param event {function}: function that will be called when a longClick on an option is performed
+     */
+    setOnLongOptionClick(event){
+        this._presenter.setOnLongOptionClick(event);
     }
 
     /**
@@ -89,8 +93,8 @@ export class ChecklistWidget extends ChecklistWidgetView{
      * _eventClick getter
      * @return {Object}: The ClickCheckEvent object associated to the checklist
      */
-    getEventClick(){
-        return this._eventClick;
+    getChecklistUpdate(){
+        return this._checklistUpdate;
     }
 
     /**
@@ -165,13 +169,5 @@ export class ChecklistWidget extends ChecklistWidgetView{
      */
     renderView(){
         return this._presenter.renderView();
-    }
-
-    /**
-     * @method
-     * It allows you to update the html of the checklist after a selection
-     */
-    update(){
-        this._presenter.update();
     }
 }

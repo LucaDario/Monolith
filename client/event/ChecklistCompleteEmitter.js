@@ -8,7 +8,10 @@
  */
 
 const EventEmitter = require('events');
-export class ChecklistComplete extends EventEmitter{
+
+import {container,inject,singleton} from 'dependency-injection-es6';
+
+export class ChecklistCompleteEmitter extends EventEmitter{
 
     /**
      * Public constructor
@@ -20,8 +23,10 @@ export class ChecklistComplete extends EventEmitter{
     /**
      * @method
      * This method emit an event with 'checklistComplete'
+     * @param id {string}: The id of the checklist that will emit the event
      */
-    emitChecklistComplete(){
-        this.emit('checklistComplete');
+    emitChecklistComplete(id){
+        this.emit('checklistComplete',id);
     }
 }
+container.registerAsSingleton(ChecklistCompleteEmitter);

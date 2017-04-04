@@ -6,7 +6,6 @@
  * Version 1.0.22 - Completed and instantiable
  */
 
-import {container, singleton, inject} from 'dependency-injection-es6';
 import {CheckStyle} from '../style/CheckStyle';
 import {CheckOption} from '../options/CheckOption';
 import './checklist.css';
@@ -50,14 +49,22 @@ export class ChecklistWidgetPresenter{
     _completionMessage;
 
     /**
+     * @type {function}
+     * The function that will be execute when a longClick is performed on an option
+     */
+    _onLongOptionClick;
+
+    /**
      * Public Constructor
      */
     constructor(){
+        this._id = new Date().getUTCMilliseconds().toString();
         this._view = null;
         this._dom = document.createElement('div');
         this._dom.setAttribute('class', 'checkbox');
         this._options = [];
         this._style = new CheckStyle();
+        this._onLongOptionClick =()=>{};
         this._completionMessage = 'Checklist Completed!';
     }
 
@@ -134,15 +141,39 @@ export class ChecklistWidgetPresenter{
             let index = this._options.indexOf(opt);
             endTime = new Date().getTime();
             if (endTime - startTime < 350) {
-                opt.onClick(this._view._eventClick,index);
+                this.setChecked(opt.changeStatus(),index);
+                this._view.getChecklistUpdate().emitOnUpdate(this.getId());
             }
             else {
-                opt.onLongClick(this._view._eventClick,index);
+                let _this = this;
+                _this._onLongOptionClick(index);
+                this._view.getChecklistUpdate().emitOnUpdate(this.getId());
             }
         };
 
         //Check if all items are checked and if all items are checked emit an EVENT representing completion of list
         this._isComplete();
+    }
+
+    /**
+     * @method
+     * It allows you to retrieve the checklist's id
+     * @return {string}
+     */
+    getId(){
+        return this._id;
+    }
+
+    /**
+     * @method
+     * It allows you to change the function that will be called when a longClick on an option is performed
+     * @param event {function}: function that will be called when a longClick on an option is performed
+     */
+    setOnLongOptionClick(event){
+        if(typeof(event) !== "function"){
+            throw new TypeError("Cannot set item's check. Function required.");
+        }
+        this._onLongOptionClick = event;
     }
 
     /**
@@ -255,7 +286,7 @@ export class ChecklistWidgetPresenter{
             completed = completed && this._options[i].isChecked();
         }
         if (completed === true) {
-            this._view.getEventComplete().emitChecklistComplete();
+            this._view.getEventComplete().emitChecklistComplete(this.getId());
         }
     }
 
