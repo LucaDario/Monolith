@@ -31,9 +31,9 @@ export class ChecklistWidgetView extends BaseWidget{
     /**
      * @method
      * It allows you to remove an item from a checklist
-     * @param option {Object}: The reference of the option to remove
+     * @param index {number}: The index of the option to remove
      */
-    removeOption(option){}
+    removeOption(index){}
 
     /**
      * @method

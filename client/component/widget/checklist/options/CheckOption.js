@@ -36,8 +36,7 @@ export class CheckOption {
      * Public constructor
      */
     constructor(){
-        ObjectID = Mongo.ObjectID;
-        this._id = new ObjectID().toString();
+        this._id = new Date().getUTCMilliseconds().toString();
         this._isChecked = false;
 
         this._onClick = function(){
@@ -98,19 +97,22 @@ export class CheckOption {
     /**
      * @method
      * It calls the function stored in _onClick attribute and then emits an event with 'clickCheckEvent'
-     * @param event{Object}: The ClickCheckEvent object that allows to emit an event with 'clickCheckEvent'
+     * @param event {Object}: The ClickCheckEvent object that allows to emit an event with 'clickCheckEvent'
+     * @param index {number}: The index of the option with normal click performed
      */
-    onClick(event){
+    onClick(event,index){
         this._onClick();
-        event.emitClickCheckEvent();
+        let status = this.isChecked();
+        event.emitClickCheckEvent(status,index);
     }
 
     /**
      * @method
      * It emits an event with 'longClickCheckEvent' with the option as parameter
      * @param event {Object}: The ClickCheckEvent object that allows to emit an event with 'longClickCheckEvent'
+     * @param index {number}: The index of the option with longClick performed
      */
-    onLongClick(event){
-        event.emitLongClickCheckEvent(this);
+    onLongClick(event,index){
+        event.emitLongClickCheckEvent(index);
     }
 }
