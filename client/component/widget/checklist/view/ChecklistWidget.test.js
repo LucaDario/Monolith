@@ -103,27 +103,29 @@ describe('ChecklistWidget', function () {
         expect(symbolLogic).to.be.eq('');
     });
 
-    it('[TU30]', function () {
+    it('[TU30] Check if an event \'clickCheckEvent\' is emitted correctly and then does the expected operations', function () {
         const cWidget = new ChecklistWidget();
+        cWidget.addOption('test');
+        cWidget.addOption('test2',true);
+
+        const input = cWidget.renderView().childNodes[0].childNodes[0].childNodes[0];
+        const box = cWidget.renderView().childNodes[0].childNodes[0].childNodes[1];
+        const symbol = cWidget.renderView().childNodes[0].childNodes[0].childNodes[1].childNodes[0];
+        const input2 = cWidget.renderView().childNodes[1].childNodes[0].childNodes[0];
+        const box2 = cWidget.renderView().childNodes[1].childNodes[0].childNodes[1];
+        const symbol2 = cWidget.renderView().childNodes[1].childNodes[0].childNodes[1].childNodes[0];
+
+        cWidget._presenter._options[0].onClick(cWidget._eventClick,0);
+        cWidget._presenter._options[1].onClick(cWidget._eventClick,1);
+
+        expect(input.getAttribute('checked')).to.be.eq('checked');
+        expect(box.getAttribute('class')).to.be.eq('spanCheckBef spanEmptyBef');
+        expect(symbol.innerHTML).to.be.eq('✓');
+
+        expect(input2.getAttribute('checked')).to.be.eq(null);
+        expect(box2.getAttribute('class')).to.be.eq('spanNotCheckBef spanEmptyBef');
+        expect(symbol2.innerHTML).to.be.eq('');
     });
 
-    it('[TU31]', function () {
-        const cWidget = new ChecklistWidget();
-    });
 
-    it('[TU32]', function () {
-        const cWidget = new ChecklistWidget();
-    });
-
-    it('[TU33]', function () {
-        const cWidget = new ChecklistWidget();
-    });
-
-    it('[TU34]', function () {
-        const cWidget = new ChecklistWidget();
-    });
-
-    it('[TU35]', function () {
-        const cWidget = new ChecklistWidget();
-    });
 });
