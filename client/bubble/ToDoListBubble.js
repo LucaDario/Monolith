@@ -10,7 +10,6 @@ import {ChecklistWidget} from '../component/widget/checklist/view/ChecklistWidge
 import {TextWidget} from '../component/widget/text/view/TextWidget';
 import {BaseBubble} from './BaseBubble';
 
-
 export class ToDoListBubble extends BaseBubble{
 
     /**
@@ -46,8 +45,19 @@ export class ToDoListBubble extends BaseBubble{
         });
 
         this._checklist.getEventComplete().on('checklistComplete', (index) => {
-            if(this._checklist.getId() === index) {
-                alert(this._checklist.getCompletionMessage());
+            if (this._checklist.getId() === index) {
+                const $ = require('jquery');
+                global.jQuery = require("jquery");
+                window.$ = $;
+                const bootstrap = require('bootstrap');
+                const bootbox = require('bootbox');
+                bootbox.alert({
+                    size: "small",
+                    title: "CIAO VEZ",
+                    message: "Your message here…",
+                    show: 'true',
+                    container: '.checkbox'
+                });
             }
         });
     }
