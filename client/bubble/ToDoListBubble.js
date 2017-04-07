@@ -47,18 +47,25 @@ export class ToDoListBubble extends BaseBubble{
 
         this._checklist.getEventComplete().on('checklistComplete', (index) => {
             if (this._checklist.getId() === index) {
-                var $ = require('jquery');
                 global.jQuery = require('bootstrap-jquery');
-                global.bootbox = require('bootbox');
                 window.$ = $;
+                let title = this._textView.renderView().childNodes[0].innerHTML;
+                let message = this._checklist.getCompletionMessage();
+                global.bootbox = require('bootbox');
                 bootbox.alert({
                     size: "small",
-                    title: "MARTELLI",
-                    message: "Your message here VER MARTELLI",
-                    backdrop: "true",
-                    closeButton: "true",
-                    onEscape: "false"
+                    title: title,
+                    message: message,
+                    backdrop: true,
+                    closeButton: true,
+                    onEscape: false
                 });
+                document.getElementsByClassName('modal-dialog')[0].style.zIndex = "1500";
+                document.getElementsByClassName('modal-content')[0].style.color = "#fff";
+                document.getElementsByClassName('modal-header')[0].style.backgroundColor = "#0b406a";
+                document.getElementsByClassName('modal-body')[0].style.backgroundColor = "#044b76";
+                document.getElementsByClassName('modal-footer')[0].style.backgroundColor = "#044b76";
+                document.getElementsByClassName('bootbox-body')[0].style.opacity = "0.6";
             }
         });
     }
