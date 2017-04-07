@@ -5,10 +5,10 @@
       "resolved": "https://registry.npmjs.org/bootbox/-/bootbox-4.4.0.tgz",
       "from": "bootbox@4.4.0"
     },
-    "bootstrap": {
+    "bootstrap-jquery": {
       "version": "3.3.2",
-      "resolved": "https://registry.npmjs.org/bootstrap/-/bootstrap-3.3.2.tgz",
-      "from": "bootstrap@3.3.2"
+      "resolved": "https://registry.npmjs.org/bootstrap-jquery/-/bootstrap-jquery-3.3.2.tgz",
+      "from": "bootstrap-jquery@3.3.2"
     },
     "can": {
       "version": "3.5.1",
@@ -318,9 +318,9 @@
       "from": "he@>=1.1.0 <2.0.0"
     },
     "jquery": {
-      "version": "2.1.0",
-      "resolved": "https://registry.npmjs.org/jquery/-/jquery-2.1.0.tgz",
-      "from": "jquery@2.1.0"
+      "version": "3.2.1",
+      "resolved": "https://registry.npmjs.org/jquery/-/jquery-3.2.1.tgz",
+      "from": "jquery@>=2.0.0 <4.0.0"
     },
     "jwt-decode": {
       "version": "2.2.0",
