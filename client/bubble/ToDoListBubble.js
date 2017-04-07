@@ -51,7 +51,14 @@ export class ToDoListBubble extends BaseBubble{
                 global.jQuery = require('bootstrap-jquery');
                 global.bootbox = require('bootbox');
                 window.$ = $;
-                bootbox.alert("MARTEI");
+                bootbox.alert({
+                    size: "small",
+                    title: "MARTELLI",
+                    message: "Your message here VER MARTELLI",
+                    backdrop: "true",
+                    closeButton: "true",
+                    onEscape: "false"
+                });
             }
         });
     }
