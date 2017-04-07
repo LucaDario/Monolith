@@ -49,6 +49,7 @@ export class ToDoListBubble extends BaseBubble{
             if (this._checklist.getId() === index) {
                 var $ = require('jquery');
                 global.jQuery = require('bootstrap-jquery');
+                global.bootbox = require('bootbox');
                 window.$ = $;
                 bootbox.alert("MARTEI");
             }
