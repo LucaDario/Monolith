@@ -19,9 +19,7 @@ Npm.depends({
 Package.onUse(function(api) {
     api.versionsFrom('1.4.1.1');
     api.use([
-        //'jquery',
         'urigo:static-templates',
-        //'twbs:bootstrap',
         'coffeescript',
         'ecmascript',
         'underscore',
@@ -33,7 +31,6 @@ Package.onUse(function(api) {
     ]);
 
     api.mainModule('monolith.js', 'client');
-    // api.addFiles('monolith.js');
 
     api.addFiles([
         'client/bubble/BaseBubble.js',

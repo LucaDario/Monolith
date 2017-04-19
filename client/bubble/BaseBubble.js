@@ -5,6 +5,7 @@
  */
 
 import {VerticalLayoutView} from '../component/layout/vertical/VerticalLayoutView';
+import './bubble.less';
 
 export class BaseBubble{
     /**

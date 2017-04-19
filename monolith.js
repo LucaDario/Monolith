@@ -20,7 +20,7 @@ RocketChat.callbacks.add('renderMessage', (message) => {
 
     if(bubbleType !== null){
         let wrapper_id = 'wrapper_' + message._id;
-        message.html = '<div id="' + wrapper_id + '"></div>';
+        message.html = '<div id="' + wrapper_id + '" class="bubble round"></div>';
         renderizeBubble(message, wrapper_id, bubbleType);
     }
     return message;
