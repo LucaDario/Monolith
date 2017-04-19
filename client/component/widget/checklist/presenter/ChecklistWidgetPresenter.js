@@ -100,33 +100,34 @@ export class ChecklistWidgetPresenter{
         let label = document.createElement('label');
         let input = document.createElement('input');
         let box = document.createElement('div');
-        let symbolCheck = document.createElement('span');
+        let symbolSpan = document.createElement('span');
         let textDiv = document.createElement('div');
 
-        //set tag's attributes
+        //Set tag's attributes
         div.setAttribute('class', 'checkbox-m');
         textDiv.setAttribute('class', 'spanEmpty');
         textDiv.innerHTML = text;
         input.type = 'checkbox';
 
-        //set the attributes of the checkbox
+        //Set the css class and the content of the checkbox
         if (opt.isChecked()) {
             input.setAttribute('checked', 'checked');
             box.setAttribute('class', 'spanCheckBef spanEmptyBef');
             box.style.backgroundColor = color;
-            symbolCheck.setAttribute('class', 'symbolSpanCheckBef');
-            symbolCheck.innerHTML = symbol;
-            symbolCheck.style.backgroundColor = color;
+            symbolSpan.setAttribute('class', 'symbolSpanCheckBef');
+            symbolSpan.innerHTML = symbol;
+            symbolSpan.style.backgroundColor = color;
         }
         else {
             box.setAttribute('class', 'spanNotCheckBef spanEmptyBef');
             box.style.backgroundColor = '#fff';
-            symbolCheck.style.backgroundColor = '#fff';
-            symbolCheck.innerHTML = '';
+            symbolSpan.style.backgroundColor = '#fff';
+            symbolSpan.innerHTML = '';
         }
 
+        //Append the option to _dom
         label.appendChild(input);
-        box.appendChild(symbolCheck);
+        box.appendChild(symbolSpan);
         label.appendChild(box);
         label.appendChild(textDiv);
         div.appendChild(label);
@@ -138,8 +139,8 @@ export class ChecklistWidgetPresenter{
             startTime = new Date().getTime();
         };
         label.onmouseup = ()=>{
-            let index = this._options.indexOf(opt);
             endTime = new Date().getTime();
+            let index = this._options.indexOf(opt);
             if (endTime - startTime < 350) {
                 this.setChecked(opt.changeStatus(),index);
                 this._view.getChecklistUpdate().emitOnUpdate(this.getId());
@@ -151,14 +152,15 @@ export class ChecklistWidgetPresenter{
             }
         };
 
-        //Check if all items are checked and if all items are checked emit an EVENT representing completion of list
+        //Check if all items are checked and if all items are checked emit an EVENT
+        //representing completion of checklist
         this._isComplete();
     }
 
     /**
      * @method
      * It allows you to retrieve the checklist's id
-     * @return {string}
+     * @return {string}: The id of the checklist
      */
     getId(){
         return this._id;
@@ -192,11 +194,14 @@ export class ChecklistWidgetPresenter{
                 this._options = optionsFirstSlice.concat(optionsSecondSlice);
             }
         }
-        if (index == 0) {
+        if (index === 0) {
             this._options = this._options.slice(1, this._options.length);
         }
-        this._dom.removeChild(this._dom.childNodes[index]);
-        //Check if all items are checked and if all items are checked emit an EVENT representing completion of list
+        let itemToRemove = this._dom.childNodes[index];
+        this._dom.removeChild(itemToRemove);
+
+        //Check if all items are checked and if all items are checked emit an EVENT
+        //representing completion of checklist
         this._isComplete();
     }
 
@@ -210,21 +215,24 @@ export class ChecklistWidgetPresenter{
         this._options[position].setChecked(checked);
         let symbol = this._style.getSelectionCharacter();
         let boxbgcolor = this._style.getSelectionColor();
+        let input = this._dom.childNodes[position].childNodes[0].childNodes[0];
+        let box = this._dom.childNodes[position].childNodes[0].childNodes[1];
+        let symbolSpan = this._dom.childNodes[position].childNodes[0].childNodes[1].childNodes[0];
         if (this._options[position].isChecked()) {
-            this._dom.childNodes[position].childNodes[0].childNodes[0].setAttribute('checked','checked');
-            this._dom.childNodes[position].childNodes[0].childNodes[1].setAttribute('class','spanCheckBef spanEmptyBef');
-            this._dom.childNodes[position].childNodes[0].childNodes[1].childNodes[0].setAttribute('class','symbolSpanCheckBef');
-            this._dom.childNodes[position].childNodes[0].childNodes[1].style.backgroundColor = boxbgcolor;
-            this._dom.childNodes[position].childNodes[0].childNodes[1].childNodes[0].style.backgroundColor = boxbgcolor;
-            this._dom.childNodes[position].childNodes[0].childNodes[1].childNodes[0].innerHTML = symbol;
+            input.setAttribute('checked','checked');
+            box.setAttribute('class','spanCheckBef spanEmptyBef');
+            symbolSpan.setAttribute('class','symbolSpanCheckBef');
+            box.style.backgroundColor = boxbgcolor;
+            symbolSpan.style.backgroundColor = boxbgcolor;
+            symbolSpan.innerHTML = symbol;
         }
         else{
-            this._dom.childNodes[position].childNodes[0].childNodes[0].removeAttribute('checked');
-            this._dom.childNodes[position].childNodes[0].childNodes[1].setAttribute('class','spanNotCheckBef spanEmptyBef');
-            this._dom.childNodes[position].childNodes[0].childNodes[1].childNodes[0].innerHTML = '';
-            this._dom.childNodes[position].childNodes[0].childNodes[1].childNodes[0].removeAttribute('class');
-            this._dom.childNodes[position].childNodes[0].childNodes[1].style.backgroundColor = '#fff';
-            this._dom.childNodes[position].childNodes[0].childNodes[1].childNodes[0].style.backgroundColor = '#fff';
+            input.removeAttribute('checked');
+            box.setAttribute('class','spanNotCheckBef spanEmptyBef');
+            symbolSpan.removeAttribute('class');
+            symbolSpan.innerHTML = '';
+            box.style.backgroundColor = '#fff';
+            symbolSpan.style.backgroundColor = '#fff';
         }
         this._isComplete();
     }
