@@ -275,6 +275,16 @@ export class ToDoListBubble extends BaseBubble{
 
     /**
      * @method
+     * It allows you to modify the text of an item
+     * @param text {string}: The text that will be replaced to the existing one
+     * @param index {number}: The index of the item to be modified
+     */
+    setItemText(text,index){
+        this._checklist[index].setText(text);
+    }
+
+    /**
+     * @method
      * Sets the completion message appears when all of the list options are checked.
      * @param message {String}: the completion message that will be replaced to the existing
      */

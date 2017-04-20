@@ -50,6 +50,13 @@ export class ChecklistWidgetItemView extends BaseWidget{
 
     /**
      * @method
+     * It allows you to modify the text of an item
+     * @param text {string}: The text that will be replaced to the existing one
+     */
+    setText(text){}
+
+    /**
+     * @method
      * Sets the visualization of tick with a character or with a color.
      * @param useMark {boolean}: Check-mark will be shown by a symbol if this field is true; if this field is false the check-mark
      * wiil be shown by a color

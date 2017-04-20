@@ -82,6 +82,15 @@ export class ChecklistWidgetItem extends ChecklistWidgetItemView{
 
     /**
      * @method
+     * It allows you to modify the text of an item
+     * @param text {string}: The text that will be replaced to the existing one
+     */
+    setText(text){
+        this._presenter.setText(text);
+    }
+
+    /**
+     * @method
      * _eventClick getter
      * @return {Object}: The ClickCheckEvent object associated to the checklist
      */

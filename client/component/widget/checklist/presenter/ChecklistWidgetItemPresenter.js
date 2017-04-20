@@ -42,6 +42,7 @@ export class ChecklistWidgetItemPresenter{
     constructor(){
         this._view = null;
         this._dom = document.createElement('div');
+        this._dom.setAttribute('class', 'checkbox-m');
         this._options = new CheckOption();
         this._style = new CheckStyle();
     }
@@ -79,7 +80,6 @@ export class ChecklistWidgetItemPresenter{
         let textDiv = document.createElement('div');
 
         //Set tag's attributes
-        this._dom.setAttribute('class', 'checkbox-m');
         textDiv.setAttribute('class', 'spanEmpty');
         textDiv.innerHTML = text;
         input.type = 'checkbox';
@@ -139,7 +139,6 @@ export class ChecklistWidgetItemPresenter{
      */
     removeOption(){
         this._options = null;
-        console.log(this._dom.parentNode);
         this._dom.parentNode.removeChild(this._dom);
     }
 
@@ -150,6 +149,18 @@ export class ChecklistWidgetItemPresenter{
      */
     isChecked(){
         return this._options.isChecked();
+    }
+
+    /**
+     * @method
+     * It allows you to modify the text of an item
+     * @param text {string}: The text that will be replaced to the existing one
+     */
+    setText(text){
+        this._options.setText(text);
+        console.log(this._dom);
+        let itemText = this._dom.childNodes[0].childNodes[2];
+        itemText.innerHTML = text;
     }
 
     /**
