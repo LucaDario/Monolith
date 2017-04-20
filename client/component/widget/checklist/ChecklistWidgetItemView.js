@@ -8,39 +8,31 @@
 
 import {BaseWidget} from '../BaseWidget'
 
-export class ChecklistWidgetView extends BaseWidget{
+export class ChecklistWidgetItemView extends BaseWidget{
 
     /**
      * Public constructor
      */
     constructor(){
         super();
-        if (this.constructor ===  ChecklistWidgetView) {
+        if (this.constructor ===  ChecklistWidgetItemView) {
             throw new TypeError("Cannot construct ChecklistWidgetView instances directly");
         }
     }
 
     /**
      * @method
-     * It allows you to add a new item into the checklist
+     * It allows you to create a new checklist item
      * @param optionText {string}: The text of the option
      * @param check {boolean}: A boolean value that represents the status of the item: checked or not
      */
-    addOption(optionText,check = false){}
+    createOption(optionText,check = false){}
 
     /**
      * @method
      * It allows you to remove an item from a checklist
-     * @param index {number}: The index of the option to remove
      */
-    removeOption(index){}
-
-    /**
-     * @method
-     * It allows you to change the function that will be called when a longClick on an option is performed
-     * @param event {function}
-     */
-    setOnLongOptionClick(event){}
+    removeOption(){}
 
     /**
      * @method
@@ -55,20 +47,6 @@ export class ChecklistWidgetView extends BaseWidget{
      * @param view {Object}: The reference of the view that will be associated to this presenter
      */
     setView(view){}
-
-    /**
-     * @method
-     * _eventClick getter
-     * @return {Object}: The ClickCheckEvent object associated to the checklist
-     */
-    getEventClick(){}
-
-    /**
-     * @method
-     * _eventComplete getter
-     * @return {Object}: The ChecklistComplete object associated to the checklist
-     */
-    getEventComplete(){}
 
     /**
      * @method
@@ -96,22 +74,19 @@ export class ChecklistWidgetView extends BaseWidget{
      * @method
      * It allows you to check an item on the checklist or to remove a tick from it.
      * @param checked {boolean}: A boolean value that represents the state of the item: checked or not
-     * @param position {number}: The index of the item the index of the element to which you want to change the status
      */
-    setChecked(checked,position){}
+    setChecked(checked){}
+    /**
+     * @method
+     * _isChecked getter
+     * @return {boolean}: The boolean status of the option
+     */
+    isChecked(){}
 
     /**
      * @method
-     * Sets the completion message appears when all of the list options are checked.
-     * @param message {String}: the completion message that will be replaced to the existing
+     * _eventClick getter
+     * @return {Object}: The ClickCheckEvent object associated to the checklist
      */
-    setCompletionMessage(message){}
-
-    /**
-     * @method
-     * _completionMessage getter
-     * @return {string}: The completion message associated to the checklist
-     */
-    getCompletionMessage(){}
-
+    getChecklistUpdate(){}
 }

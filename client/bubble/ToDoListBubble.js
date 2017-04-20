@@ -6,12 +6,21 @@
  * Version 1.0.6 - Completed and instantiable
  */
 
-import {ChecklistWidget} from '../component/widget/checklist/view/ChecklistWidget';
+import {ChecklistUpdateEmitter} from '../event/ChecklistUpdateEmitter';
+import {ChecklistCompleteEmitter} from '../event/ChecklistCompleteEmitter';
+import {container,inject,singleton} from 'dependency-injection-es6';
+import {ChecklistWidgetItem} from '../component/widget/checklist/view/ChecklistWidgetItem';
 import {TextWidget} from '../component/widget/text/view/TextWidget';
 import {BaseBubble} from './BaseBubble';
 import './libraries.html';
 
 export class ToDoListBubble extends BaseBubble{
+
+    /**
+     * @type {string}
+     * The id of the ToDoListBubble
+     */
+    _id;
 
     /**
      * @type {Object}
@@ -20,37 +29,71 @@ export class ToDoListBubble extends BaseBubble{
     _textView;
 
     /**
-     * @type {Object}
-     * The ChecklistWidget object used to generate the checklist of the bubble
+     * @type {Array}
+     * The ChecklistWidgetItem object used to generate the checklist of the bubble
      */
     _checklist;
 
     /**
-     * @type {function}
-     * The function that will be called when an event ChecklistUpdate is emitted
+     * @type {Object}
+     * The ChecklistComplete object that allows you to handle the event checklistComplete
      */
-    _update;
+    _eventComplete;
+
+    /**
+     * @type {string}
+     * The completion message that will be shown when all the checkbox of a checklist are checked
+     */
+    _completionMessage;
+
+    /**
+     * @type {function}
+     * The function that will be called when longClick on a checklist item is performed
+     */
+    _onLongClick;
 
     /**
      * Public constructor
      */
     constructor() {
         super();
+        ObjectID = Mongo.ObjectID;
+        this._id = (new ObjectID()).toString();
         this._textView = new TextWidget();
-        this._checklist = new ChecklistWidget();
+        this._checklist = [];
+        this._onLongClick = ()=>{};
+        this._completionMessage = 'Checklist Completed!';
         super.addComponent(this._textView);
-        super.addComponent(this._checklist);
-        this._update = ()=>{};
-        this._checklist.getChecklistUpdate().on('checklistUpdate',(index)=>{
-            this._update();
+
+        this._checklistUpdate = container.resolve(ChecklistUpdateEmitter);
+        this._checklistUpdate.on('checklistUpdate',(itemId,string)=>{
+            if(string === 'normal'){
+                let isOwn = true;
+                for(let i=0;i<this._checklist.length && isOwn;i++){
+                    if(this._checklist[i].getId() === itemId){
+                        this._isComplete();
+                        isOwn = false;
+                    }
+                }
+            }
+            if(string === 'long'){
+                let isOwn = true;
+                for(let i=0;i<this._checklist.length && isOwn;i++){
+                    if(this._checklist[i].getId() === itemId){
+                        this._onLongClick(i);
+                        isOwn = false;
+                    }
+                }
+            }
         });
 
-        this._checklist.getEventComplete().on('checklistComplete', (index) => {
-            if (this._checklist.getId() === index) {
+        this._eventComplete = container.resolve(ChecklistCompleteEmitter);
+        this._eventComplete.on('checklistComplete', (index) => {
+            if (index === this.getId()) {
                 global.jQuery = require('bootstrap-jquery');
                 window.$ = $;
                 let title = this._textView.renderView().childNodes[0].innerHTML;
-                let message = this._checklist.getCompletionMessage();
+                let message = this.getCompletionMessage();
                 global.bootbox = require('bootbox');
                 bootbox.alert({
                     size: "small",
@@ -77,7 +120,11 @@ export class ToDoListBubble extends BaseBubble{
      * @param check {boolean}: The initial value for the item
      */
     addItem(item,check = false) {
-        this._checklist.addOption(item,check);
+        let opt = new ChecklistWidgetItem();
+        opt.createOption(item,check);
+        this._checklist.push(opt);
+        let index = this._checklist.indexOf(opt);
+        super.addComponent(this._checklist[index]);
     }
 
     /**
@@ -86,16 +133,23 @@ export class ToDoListBubble extends BaseBubble{
      * @param index {number}: The index of the item that will be removed from the checklist
      */
     removeItem(index) {
-        this._checklist.removeOption(index);
-    }
-
-    /**
-     * @method
-     * It allows you to change the function that will be called when a longClick on an option is performed
-     * @param event {function}: function that will be called when a longClick on an option is performed
-     */
-    setOnLongOptionClick(event){
-        this._checklist.setOnLongOptionClick(event);
+        this._checklist[index].removeOption();
+        if (index >= 1) {
+            if (index === this._checklist.length - 1) {
+                this._checklist = this._checklist.slice(0, this._checklist.length - 1);
+            }
+            else {
+                let optionsFirstSlice = this._checklist.slice(0, index - 1);
+                let optionsSecondSlice = this._checklist.slice(index + 1, this._checklist.length);
+                this._checklist = optionsFirstSlice.concat(optionsSecondSlice);
+            }
+        }
+        if (index === 0) {
+            this._checklist = this._checklist.slice(1, this._checklist.length);
+        }
+        //Check if all items are checked and if all items are checked emit an EVENT
+        //representing completion of checklist
+        this._isComplete();
     }
 
     /**
@@ -105,7 +159,9 @@ export class ToDoListBubble extends BaseBubble{
      * will be shown by a color
      */
     setUseSelectionMark(useMark){
-        this._checklist.setUseSelectionMark(useMark);
+        for(let i in this._checklist){
+            this._checklist[i].setUseSelectionMark(useMark);
+        }
     }
 
     /**
@@ -114,16 +170,18 @@ export class ToDoListBubble extends BaseBubble{
      * @param color {String}: It represents the color of the check-mark
      */
     setSelectionColor(color) {
-        this._checklist.setSelectionColor(color);
+        for(let i in this._checklist){
+            this._checklist[i].setSelectionColor(color);
+        }
     }
 
     /**
      * @method
-     * It allows you to change the function that will be called when an event with checklistUpdate is emitted
-     * @param event {function}: The function that will be called when an event with checklistUpdate is emitted
+     * It allows you to set the function that will be called when a longClick on a checklist item is performed
+     * @param func {function}
      */
-    setOnUpdateEvent(event){
-        this._update = event;
+    setOnLongClick(func){
+        this._onLongClick = func;
     }
 
     /**
@@ -132,7 +190,9 @@ export class ToDoListBubble extends BaseBubble{
      * @param character {String}: The symbol to represent the selection
      */
     setSelectionCharacter(character){
-        this._checklist.setSelectionCharacter(character);
+        for(let i in this._checklist){
+            this._checklist[i].setSelectionCharacter(character);
+        }
     }
 
     /**
@@ -142,16 +202,7 @@ export class ToDoListBubble extends BaseBubble{
      * @param position {number}: The index of the item the index of the element to which you want to change the status
      */
     setChecked(checked,position){
-        this._checklist.setChecked(checked,position);
-    }
-
-    /**
-     *@method
-     *Sets the completion message appears when all of the list options are checked.
-     * @param message {String}: The completion message that will be replaced to the existing
-     */
-    setCompletionMessage(message){
-        this._checklist.setCompletionMessage(message);
+        this._checklist[position].setChecked(checked);
     }
 
     /**
@@ -198,4 +249,46 @@ export class ToDoListBubble extends BaseBubble{
     setTextSize(size){
         this._textView.setTextSize(size);
     }
+
+    /**
+     * @method
+     * Bubble's _id getter
+     */
+    getId(){
+        return this._id;
+    }
+
+    /**
+     * Private
+     * @method
+     * It allows you to know if checklist is completed and if it's completed emit an event with checklistComplete
+     */
+    _isComplete(){
+        let completed = true;
+        for (let i in this._checklist) {
+            completed = completed && this._checklist[i].isChecked();
+        }
+        if (completed === true) {
+            this._eventComplete.emitChecklistComplete(this.getId());
+        }
+    }
+
+    /**
+     * @method
+     * Sets the completion message appears when all of the list options are checked.
+     * @param message {String}: the completion message that will be replaced to the existing
+     */
+    setCompletionMessage(message){
+        this._completionMessage = message;
+    }
+
+    /**
+     * @method
+     * _completionMessage getter
+     * @return {string}: The completion message associated to the checklist
+     */
+    getCompletionMessage(){
+        return this._completionMessage;
+    }
+
 }

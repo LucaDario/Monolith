@@ -7,11 +7,11 @@
  */
 
 import {container,inject,singleton} from 'dependency-injection-es6';
-import {ChecklistWidgetView} from '../ChecklistWidgetView'
-import {ChecklistWidgetPresenter} from '../presenter/ChecklistWidgetPresenter';
+import {ChecklistWidgetItemView} from '../ChecklistWidgetItemView'
+import {ChecklistWidgetItemPresenter} from '../presenter/ChecklistWidgetItemPresenter';
 import {ChecklistUpdateEmitter} from '../../../../event/ChecklistUpdateEmitter';
 import {ChecklistCompleteEmitter} from '../../../../event/ChecklistCompleteEmitter';
-export class ChecklistWidget extends ChecklistWidgetView{
+export class ChecklistWidgetItem extends ChecklistWidgetItemView{
 
     /**
      * @type {Object}
@@ -26,48 +26,31 @@ export class ChecklistWidget extends ChecklistWidgetView{
     _checklistUpdate;
 
     /**
-     * @type {Object}
-     * The ChecklistComplete object that allows you to handle the event checklistComplete
-     */
-    _eventComplete;
-
-    /**
      * Public constructor
      */
     constructor(){
         super();
-        this._presenter = new ChecklistWidgetPresenter();
+        this._presenter = new ChecklistWidgetItemPresenter();
         this.setView(this);
         this._checklistUpdate = container.resolve(ChecklistUpdateEmitter);
-        this._eventComplete = container.resolve(ChecklistCompleteEmitter);
     }
 
     /**
      * @method
-     * It allows you to add a new item into the checklist
+     * It allows you to create a new checklist item
      * @param optionText {string}: The text of the option
      * @param check {boolean}: A boolean value that represents the status of the item: checked or not
      */
-    addOption(optionText,check = false) {
-        this._presenter.addOption(optionText,check);
+    createOption(optionText,check = false) {
+        this._presenter.createOption(optionText,check);
     }
 
     /**
      * @method
      * It allows you to remove an item from a checklist
-     * @param index {number}: The index of the option to remove
      */
-    removeOption(index){
-        this._presenter.removeOption(index);
-    }
-
-    /**
-     * @method
-     * It allows you to change the function that will be called when a longClick on an option is performed
-     * @param event {function}: function that will be called when a longClick on an option is performed
-     */
-    setOnLongOptionClick(event){
-        this._presenter.setOnLongOptionClick(event);
+    removeOption(){
+        this._presenter.removeOption();
     }
 
     /**
@@ -77,6 +60,15 @@ export class ChecklistWidget extends ChecklistWidgetView{
      */
     getId(){
         return this._presenter.getId();
+    }
+
+    /**
+     * @method
+     * _isChecked getter
+     * @return {boolean}: The boolean status of the option
+     */
+    isChecked(){
+        return this._presenter.isChecked();
     }
 
     /**
@@ -95,15 +87,6 @@ export class ChecklistWidget extends ChecklistWidgetView{
      */
     getChecklistUpdate(){
         return this._checklistUpdate;
-    }
-
-    /**
-     * @method
-     * _eventComplete getter
-     * @return {Object}: The ChecklistComplete object associated to the checklist
-     */
-    getEventComplete(){
-        return this._eventComplete;
     }
 
     /**
@@ -138,28 +121,9 @@ export class ChecklistWidget extends ChecklistWidgetView{
      * @method
      * It allows you to check an item on the checklist or to remove a tick from it.
      * @param checked {boolean}: A boolean value that represents the state of the item: checked or not
-     * @param position {number}: The index of the item the index of the element to which you want to change the status
      */
-    setChecked(checked,position){
-        this._presenter.setChecked(checked,position);
-    }
-
-    /**
-     * @method
-     * Sets the completion message appears when all of the list options are checked.
-     * @param message {String}: the completion message that will be replaced to the existing
-     */
-    setCompletionMessage(message){
-        this._presenter.setCompletionMessage(message);
-    }
-
-    /**
-     * @method
-     * _completionMessage getter
-     * @return {string}: The completion message associated to the checklist
-     */
-    getCompletionMessage(){
-        return this._presenter.getCompletionMessage();
+    setChecked(checked){
+        this._presenter.setChecked(checked);
     }
 
     /**

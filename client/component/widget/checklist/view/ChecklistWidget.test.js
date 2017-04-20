@@ -1,5 +1,5 @@
 
-import {ChecklistWidget} from './ChecklistWidget'
+import {ChecklistWidget} from './ChecklistWidgetItem'
 
 describe('ChecklistWidget', function () {
     it('Check that is instantiable', function () {
