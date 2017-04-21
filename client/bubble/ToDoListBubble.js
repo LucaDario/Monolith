@@ -57,8 +57,7 @@ export class ToDoListBubble extends BaseBubble{
      */
     constructor() {
         super();
-        ObjectID = Mongo.ObjectID;
-        this._id = (new ObjectID()).toString();
+        this._id = ('_' + Math.random().toString(36).substr(2, 9)).toString();
         this._textView = new TextWidget();
         this._checklist = [];
         this._onLongClick = ()=>{};
