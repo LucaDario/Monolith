@@ -7,7 +7,7 @@ describe('MarkdownBubble', function () {
         // in the correct mode
         expect(
             () => {
-                new MarkdownBubble();
+                new MarkdownBubble('test');
             }
         ).to.not.throw();
     });
