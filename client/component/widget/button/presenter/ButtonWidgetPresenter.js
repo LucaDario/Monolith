@@ -32,6 +32,7 @@ export class ButtonWidgetPresenter {
      */
     setText(text) {
         if (typeof text === "string") {
+            this._text= text;
             this._dom.innerHTML = text;
         }
         else
