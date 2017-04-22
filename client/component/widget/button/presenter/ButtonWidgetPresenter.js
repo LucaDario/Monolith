@@ -182,6 +182,7 @@ export class ButtonWidgetPresenter {
                 if (_this._onClickAction!==null) {
                     _this._onClickAction();
                     _this._view.getEvent().emitClickButtonEvent();
+
                 }
             }
 

@@ -142,4 +142,5 @@ export class ChecklistItemWidget extends ChecklistItemWidgetView{
     renderView(){
         return this._presenter.renderView();
     }
+
 }
