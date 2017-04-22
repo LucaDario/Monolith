@@ -38,13 +38,16 @@ export class ChecklistWidgetItemPresenter{
 
     /**
      * Public Constructor
+     * @param text {string}: The text of the option
+     * @param check {boolean}: A boolean value that represents the status of the item: checked or not
      */
-    constructor(){
+    constructor(text,check){
         this._view = null;
         this._dom = document.createElement('div');
         this._dom.setAttribute('class', 'checkbox-m');
         this._options = new CheckOption();
         this._style = new CheckStyle();
+        this._createOption(text,check);
     }
 
     /**
@@ -57,12 +60,13 @@ export class ChecklistWidgetItemPresenter{
     }
 
     /**
+     * Private
      * @method
      * It allows you to create a new checklist item
      * @param optionText {string}: The text of the option
      * @param check {boolean}: A boolean value that represents the status of the item: checked or not
      */
-    createOption(optionText,check){
+    _createOption(optionText,check){
         //Create new CheckOption and set its attributes
         this._options.setText(optionText);
         this._options.setChecked(check);

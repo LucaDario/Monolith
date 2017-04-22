@@ -28,21 +28,11 @@ export class ChecklistWidgetItem extends ChecklistWidgetItemView{
     /**
      * Public constructor
      */
-    constructor(){
+    constructor(text,check = false){
         super();
-        this._presenter = new ChecklistWidgetItemPresenter();
+        this._presenter = new ChecklistWidgetItemPresenter(text,check);
         this.setView(this);
         this._checklistUpdate = container.resolve(ChecklistUpdateEmitter);
-    }
-
-    /**
-     * @method
-     * It allows you to create a new checklist item
-     * @param optionText {string}: The text of the option
-     * @param check {boolean}: A boolean value that represents the status of the item: checked or not
-     */
-    createOption(optionText,check = false) {
-        this._presenter.createOption(optionText,check);
     }
 
     /**

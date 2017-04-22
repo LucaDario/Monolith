@@ -6,13 +6,12 @@ describe('ChecklistWidgetItemItem', function () {
         // in the correct mode
         expect(
             () => {
-                new ChecklistWidgetItem();
+                new ChecklistWidgetItem('test');
             }
         ).to.not.throw();
     });
     it('[TU24] Check that the checkbox can be instantiated with "not checked" status', function () {
-        const cWidget = new ChecklistWidgetItem();
-        cWidget.createOption('test');
+        const cWidget = new ChecklistWidgetItem('test');
         const input = cWidget.renderView().childNodes[0].childNodes[0];
         const box = cWidget.renderView().childNodes[0].childNodes[1];
         const symbol = cWidget.renderView().childNodes[0].childNodes[1].childNodes[0];
@@ -26,8 +25,7 @@ describe('ChecklistWidgetItemItem', function () {
     });
 
     it('[TU25] Check that the checkbox can be instantiated with "checked" status', function () {
-        const cWidget = new ChecklistWidgetItem();
-        cWidget.createOption('test',true);
+        const cWidget = new ChecklistWidgetItem('test',true);
         const input = cWidget.renderView().childNodes[0].childNodes[0];
         const box = cWidget.renderView().childNodes[0].childNodes[1];
         const symbol = cWidget.renderView().childNodes[0].childNodes[1].childNodes[0];
@@ -39,10 +37,8 @@ describe('ChecklistWidgetItemItem', function () {
     });
 
     it('[TU26] Check that the checkbox status change correctly', function () {
-        const cWidget = new ChecklistWidgetItem();
-        const cWidget2 = new ChecklistWidgetItem();
-        cWidget.createOption('test');
-        cWidget2.createOption('test2',true);
+        const cWidget = new ChecklistWidgetItem('test');
+        const cWidget2 = new ChecklistWidgetItem('test2',true);
         cWidget.setChecked(true);
         cWidget2.setChecked(false);
 
@@ -72,16 +68,14 @@ describe('ChecklistWidgetItemItem', function () {
     });
 
     it('[TU27] Check that the checkbox check-mark is represented by ✓', function () {
-        const cWidget = new ChecklistWidgetItem();
-        cWidget.createOption('test',true);
+        const cWidget = new ChecklistWidgetItem('test',true);
         const symbol = cWidget.renderView().childNodes[0].childNodes[1].childNodes[0];
         expect(symbol.innerHTML).to.be.eq('✓');
     });
 
     it('[TU28] Check that the checkbox check-mark is represented by ✗ or another symbol', function () {
-        const cWidget = new ChecklistWidgetItem();
+        const cWidget = new ChecklistWidgetItem('test',true);
         cWidget.setSelectionCharacter('&#x2717;');
-        cWidget.createOption('test',true);
         const symbolLogic = cWidget._presenter._style.getSelectionCharacter();
         const symbol = cWidget.renderView().childNodes[0].childNodes[1].childNodes[0];
         expect(symbol.innerHTML).to.be.eq('✗');
@@ -89,10 +83,9 @@ describe('ChecklistWidgetItemItem', function () {
     });
 
     it('[TU29] Check that the type checkbox color of the selected items are displayed with the color set', function () {
-        const cWidget = new ChecklistWidgetItem();
+        const cWidget = new ChecklistWidgetItem('test',true);
         cWidget.setUseSelectionMark(false);
         cWidget.setSelectionColor('#00f');
-        cWidget.createOption('test',true);
         const symbolLogic = cWidget._presenter._style.getSelectionCharacter();
         const box = cWidget.renderView().childNodes[0].childNodes[1];
         const symbol = cWidget.renderView().childNodes[0].childNodes[1].childNodes[0];

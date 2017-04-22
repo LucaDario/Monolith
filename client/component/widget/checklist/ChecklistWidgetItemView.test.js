@@ -7,7 +7,7 @@ describe('ChecklistWidgetItemView', function () {
         // in the correct mode
         expect(
             () => {
-                new ChecklistWidgetItemView();
+                new ChecklistWidgetItemView('test');
             }
         ).to.throw();
     });

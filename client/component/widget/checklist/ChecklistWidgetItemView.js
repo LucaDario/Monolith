@@ -13,20 +13,12 @@ export class ChecklistWidgetItemView extends BaseWidget{
     /**
      * Public constructor
      */
-    constructor(){
+    constructor(text,check = false){
         super();
         if (this.constructor ===  ChecklistWidgetItemView) {
             throw new TypeError("Cannot construct ChecklistWidgetView instances directly");
         }
     }
-
-    /**
-     * @method
-     * It allows you to create a new checklist item
-     * @param optionText {string}: The text of the option
-     * @param check {boolean}: A boolean value that represents the status of the item: checked or not
-     */
-    createOption(optionText,check = false){}
 
     /**
      * @method

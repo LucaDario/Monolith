@@ -119,8 +119,7 @@ export class ToDoListBubble extends BaseBubble{
      * @param check {boolean}: The initial value for the item
      */
     addItem(item,check = false) {
-        let opt = new ChecklistWidgetItem();
-        opt.createOption(item,check);
+        let opt = new ChecklistWidgetItem(item,check);
         this._checklist.push(opt);
         let index = this._checklist.indexOf(opt);
         super.addComponent(this._checklist[index]);
