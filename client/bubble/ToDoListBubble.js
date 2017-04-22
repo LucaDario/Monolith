@@ -56,7 +56,6 @@ export class ToDoListBubble extends BaseBubble{
         this._checklist = [];
         this._completionMessage = 'Checklist Completed!';
         super.addComponent(this._textView);
-
         this._checklistUpdate = container.resolve(ChecklistUpdateEmitter);
         this._checklistUpdate.on('checklistUpdate',(itemId,string)=>{
             if(string === 'normal'){
@@ -116,6 +115,9 @@ export class ToDoListBubble extends BaseBubble{
         this._checklist.push(opt);
         let index = this._checklist.indexOf(opt);
         super.addComponent(this._checklist[index]);
+        this.setOnLongItemClick(function(item){
+            item.removeOption();
+        });
     }
 
     /**
@@ -124,7 +126,6 @@ export class ToDoListBubble extends BaseBubble{
      * @param index {number}: The index of the item that will be removed from the checklist
      */
     removeItem(index) {
-        this._checklist[index].removeOption();
         if (index >= 1) {
             if (index === this._checklist.length - 1) {
                 this._checklist = this._checklist.slice(0, this._checklist.length - 1);
@@ -171,7 +172,7 @@ export class ToDoListBubble extends BaseBubble{
      * It allows you to set the function that will be called when a longClick on a checklist item is performed
      * @param func {function}
      */
-    setOnLongClick(func){
+    setOnLongItemClick(func){
         for(let i in this._checklist) {
             this._checklist[i].setOnLongClick(func);
         }

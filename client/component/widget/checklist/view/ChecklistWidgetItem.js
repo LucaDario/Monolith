@@ -118,6 +118,24 @@ export class ChecklistWidgetItem extends ChecklistWidgetItemView{
 
     /**
      * @method
+     * It allows you to set the function that will be called when a longClick on a checklist item is performed
+     * @param func {function}
+     */
+    setOnLongClick(func){
+        this._presenter.setOnLongClick(func);
+    }
+
+    /**
+     * @method
+     * It allows you to set the function that will be called when a normal click on a checklist item is performed
+     * @param func {function}
+     */
+    setOnClick(func){
+        this._presenter.setOnClick(func);
+    }
+
+    /**
+     * @method
      * Generates HTML CSS JS needed to display the widget.
      * @return {Object}: The dom fragment used to generate html of the checklist
      */

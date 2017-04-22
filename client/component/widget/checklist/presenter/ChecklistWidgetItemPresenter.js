@@ -65,15 +65,6 @@ export class ChecklistWidgetItemPresenter{
     }
 
     /**
-     * @method
-     * It allows you to add a reference of the view to the presenter
-     * @param view {Object}: The reference of the view that will be associated to this presenter
-     */
-    setView(view){
-        this._view = view;
-    }
-
-    /**
      * Private
      * @method
      * It allows you to create a new checklist item
@@ -134,12 +125,12 @@ export class ChecklistWidgetItemPresenter{
             endTime = new Date().getTime();
             if (endTime - startTime < 1000) {
                 this.setChecked(this._options.changeStatus());
-                this._onClick();
                 this._view.getChecklistUpdate().emitOnUpdate(this.getId(),'normal');
+                this._onClick(this._view);
             }
             else {
-                this._onLongClick();
                 this._view.getChecklistUpdate().emitOnUpdate(this.getId(),'long');
+                this._onLongClick(this._view);
             }
         };
     }
@@ -176,7 +167,7 @@ export class ChecklistWidgetItemPresenter{
      * It allows you to add a reference of the view to the presenter
      * @param view {Object}: The reference of the view that will be associated to this presenter
      */
-    _setView(view){
+    setView(view){
         this._view = view;
     }
 
@@ -187,7 +178,6 @@ export class ChecklistWidgetItemPresenter{
      */
     setText(text){
         this._options.setText(text);
-        console.log(this._dom);
         let itemText = this._dom.childNodes[0].childNodes[2];
         itemText.innerHTML = text;
     }

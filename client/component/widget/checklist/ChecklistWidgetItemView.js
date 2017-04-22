@@ -64,6 +64,20 @@ export class ChecklistWidgetItemView extends BaseWidget{
 
     /**
      * @method
+     * It allows you to set the function that will be called when a longClick on a checklist item is performed
+     * @param func {function}
+     */
+    setOnLongClick(func){}
+
+    /**
+     * @method
+     * It allows you to set the function that will be called when a normal click on a checklist item is performed
+     * @param func {function}
+     */
+    setOnClick(func){}
+
+    /**
+     * @method
      * It allows you to check an item on the checklist or to remove a tick from it.
      * @param checked {boolean}: A boolean value that represents the state of the item: checked or not
      */
