@@ -8,14 +8,14 @@
 
 import {BaseWidget} from '../BaseWidget'
 
-export class ChecklistWidgetItemView extends BaseWidget{
+export class ChecklistItemWidgetView extends BaseWidget{
 
     /**
      * Public constructor
      */
     constructor(text,check = false){
         super();
-        if (this.constructor ===  ChecklistWidgetItemView) {
+        if (this.constructor ===  ChecklistItemWidgetView) {
             throw new TypeError("Cannot construct ChecklistWidgetView instances directly");
         }
     }

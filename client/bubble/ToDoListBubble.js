@@ -9,7 +9,7 @@
 import {ChecklistUpdateEmitter} from '../event/ChecklistUpdateEmitter';
 import {ChecklistCompleteEmitter} from '../event/ChecklistCompleteEmitter';
 import {container,inject,singleton} from 'dependency-injection-es6';
-import {ChecklistWidgetItem} from '../component/widget/checklist/view/ChecklistWidgetItem';
+import {ChecklistItemWidget} from '../component/widget/checklist/view/ChecklistItemWidget';
 import {TextWidget} from '../component/widget/text/view/TextWidget';
 import {BaseBubble} from './BaseBubble';
 import './libraries.html';
@@ -30,7 +30,7 @@ export class ToDoListBubble extends BaseBubble{
 
     /**
      * @type {Array}
-     * The ChecklistWidgetItem object used to generate the checklist of the bubble
+     * The ChecklistItemWidget object used to generate the checklist of the bubble
      */
     _checklist;
 
@@ -111,7 +111,7 @@ export class ToDoListBubble extends BaseBubble{
      * @param check {boolean}: The initial value for the item
      */
     addItem(item,check = false) {
-        let opt = new ChecklistWidgetItem(item,check);
+        let opt = new ChecklistItemWidget(item,check);
         this._checklist.push(opt);
         let index = this._checklist.indexOf(opt);
         super.addComponent(this._checklist[index]);
@@ -183,7 +183,7 @@ export class ToDoListBubble extends BaseBubble{
      * It allows you to set the function that will be called when a normal click on a checklist item is performed
      * @param func {function}
      */
-    setOnClick(func){
+    setOnItemClick(func){
         for(let i in this._checklist) {
             this._checklist[i].setOnClick(func);
         }

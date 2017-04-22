@@ -10,7 +10,7 @@ import {CheckStyle} from '../style/CheckStyle';
 import {CheckOption} from '../options/CheckOption';
 import './checklist.css';
 
-export class ChecklistWidgetItemPresenter{
+export class ChecklistItemWidgetPresenter{
 
     /**
      * @type {Object}
@@ -189,6 +189,15 @@ export class ChecklistWidgetItemPresenter{
      */
     setChecked(checked){
         this._options.setChecked(checked);
+        this._setDomStyle();
+    }
+
+    /**
+     * Private
+     * @method
+     * It allows you to update the DOM style
+     */
+    _setDomStyle(){
         let symbol = this._style.getSelectionCharacter();
         let boxbgcolor = this._style.getSelectionColor();
         let input = this._dom.childNodes[0].childNodes[0];
@@ -219,6 +228,7 @@ export class ChecklistWidgetItemPresenter{
      */
     setSelectionCharacter(character){
         this._style.setSelectionCharacter(character);
+        this._setDomStyle();
     }
 
     /**
@@ -229,6 +239,7 @@ export class ChecklistWidgetItemPresenter{
      */
     setUseSelectionMark(useMark){
         this._style.setUseSelectionMark(useMark);
+        this._setDomStyle();
     }
 
     /**
@@ -238,6 +249,7 @@ export class ChecklistWidgetItemPresenter{
      */
     setSelectionColor(color){
         this._style.setSelectionColor(color);
+        this._setDomStyle();
     }
 
     /**

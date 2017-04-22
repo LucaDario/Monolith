@@ -7,11 +7,11 @@
  */
 
 import {container,inject,singleton} from 'dependency-injection-es6';
-import {ChecklistWidgetItemView} from '../ChecklistWidgetItemView'
-import {ChecklistWidgetItemPresenter} from '../presenter/ChecklistWidgetItemPresenter';
+import {ChecklistItemWidgetView} from '../ChecklistItemWidgetView'
+import {ChecklistItemWidgetPresenter} from '../presenter/ChecklistItemWidgetPresenter';
 import {ChecklistUpdateEmitter} from '../../../../event/ChecklistUpdateEmitter';
 import {ChecklistCompleteEmitter} from '../../../../event/ChecklistCompleteEmitter';
-export class ChecklistWidgetItem extends ChecklistWidgetItemView{
+export class ChecklistItemWidget extends ChecklistItemWidgetView{
 
     /**
      * @type {Object}
@@ -30,7 +30,7 @@ export class ChecklistWidgetItem extends ChecklistWidgetItemView{
      */
     constructor(text,check = false){
         super();
-        this._presenter = new ChecklistWidgetItemPresenter(text,check);
+        this._presenter = new ChecklistItemWidgetPresenter(text,check);
         this._presenter.setView(this);
         this._checklistUpdate = container.resolve(ChecklistUpdateEmitter);
     }
