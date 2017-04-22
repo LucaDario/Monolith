@@ -35,13 +35,6 @@ export class ChecklistWidgetItemView extends BaseWidget{
 
     /**
      * @method
-     * It allows you to add a reference of the view to the presenter
-     * @param view {Object}: The reference of the view that will be associated to this presenter
-     */
-    setView(view){}
-
-    /**
-     * @method
      * It allows you to modify the text of an item
      * @param text {string}: The text that will be replaced to the existing one
      */

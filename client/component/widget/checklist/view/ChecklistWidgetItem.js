@@ -31,7 +31,7 @@ export class ChecklistWidgetItem extends ChecklistWidgetItemView{
     constructor(text,check = false){
         super();
         this._presenter = new ChecklistWidgetItemPresenter(text,check);
-        this.setView(this);
+        this._presenter.setView(this);
         this._checklistUpdate = container.resolve(ChecklistUpdateEmitter);
     }
 
@@ -59,15 +59,6 @@ export class ChecklistWidgetItem extends ChecklistWidgetItemView{
      */
     isChecked(){
         return this._presenter.isChecked();
-    }
-
-    /**
-     * @method
-     * It allows you to add a reference of the view to the presenter
-     * @param view {Object}: The reference of the view that will be associated to this presenter
-     */
-    setView(view){
-        this._presenter.setView(view);
     }
 
     /**

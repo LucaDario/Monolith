@@ -37,6 +37,18 @@ export class ChecklistWidgetItemPresenter{
     _options;
 
     /**
+     * @type {function}
+     * The function that will be called when normal click on a checklist item is performed
+     */
+    _onClick;
+
+    /**
+     * @type {function}
+     * The function that will be called when longClick on a checklist item is performed
+     */
+    _onLongClick;
+
+    /**
      * Public Constructor
      * @param text {string}: The text of the option
      * @param check {boolean}: A boolean value that represents the status of the item: checked or not
@@ -46,6 +58,8 @@ export class ChecklistWidgetItemPresenter{
         this._dom = document.createElement('div');
         this._dom.setAttribute('class', 'checkbox-m');
         this._options = new CheckOption();
+        this._onLongClick = ()=>{};
+        this._onClick = ()=>{};
         this._style = new CheckStyle();
         this._createOption(text,check);
     }
@@ -120,9 +134,11 @@ export class ChecklistWidgetItemPresenter{
             endTime = new Date().getTime();
             if (endTime - startTime < 1000) {
                 this.setChecked(this._options.changeStatus());
+                this._onClick();
                 this._view.getChecklistUpdate().emitOnUpdate(this.getId(),'normal');
             }
             else {
+                this._onLongClick();
                 this._view.getChecklistUpdate().emitOnUpdate(this.getId(),'long');
             }
         };
@@ -153,6 +169,15 @@ export class ChecklistWidgetItemPresenter{
      */
     isChecked(){
         return this._options.isChecked();
+    }
+
+    /**
+     * @method
+     * It allows you to add a reference of the view to the presenter
+     * @param view {Object}: The reference of the view that will be associated to this presenter
+     */
+    _setView(view){
+        this._view = view;
     }
 
     /**
@@ -232,5 +257,23 @@ export class ChecklistWidgetItemPresenter{
      */
     renderView() {
         return this._dom;
+    }
+
+    /**
+     * @method
+     * It allows you to set the function that will be called when a longClick on a checklist item is performed
+     * @param func {function}
+     */
+    setOnLongClick(func){
+        this._onLongClick = func;
+    }
+
+    /**
+     * @method
+     * It allows you to set the function that will be called when a normal click on a checklist item is performed
+     * @param func {function}
+     */
+    setOnClick(func){
+        this._onClick = func;
     }
 }

@@ -47,12 +47,6 @@ export class ToDoListBubble extends BaseBubble{
     _completionMessage;
 
     /**
-     * @type {function}
-     * The function that will be called when longClick on a checklist item is performed
-     */
-    _onLongClick;
-
-    /**
      * Public constructor
      */
     constructor() {
@@ -60,7 +54,6 @@ export class ToDoListBubble extends BaseBubble{
         this._id = ('_' + Math.random().toString(36).substr(2, 9)).toString();
         this._textView = new TextWidget();
         this._checklist = [];
-        this._onLongClick = ()=>{};
         this._completionMessage = 'Checklist Completed!';
         super.addComponent(this._textView);
 
@@ -79,7 +72,7 @@ export class ToDoListBubble extends BaseBubble{
                 let isOwn = true;
                 for(let i=0;i<this._checklist.length && isOwn;i++){
                     if(this._checklist[i].getId() === itemId){
-                        this._onLongClick(i);
+                        this.removeItem(i);
                         isOwn = false;
                     }
                 }
@@ -179,7 +172,20 @@ export class ToDoListBubble extends BaseBubble{
      * @param func {function}
      */
     setOnLongClick(func){
-        this._onLongClick = func;
+        for(let i in this._checklist) {
+            this._checklist[i].setOnLongClick(func);
+        }
+    }
+
+    /**
+     * @method
+     * It allows you to set the function that will be called when a normal click on a checklist item is performed
+     * @param func {function}
+     */
+    setOnClick(func){
+        for(let i in this._checklist) {
+            this._checklist[i].setOnClick(func);
+        }
     }
 
     /**
