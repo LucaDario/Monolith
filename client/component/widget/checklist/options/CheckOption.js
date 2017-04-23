@@ -30,9 +30,9 @@ export class CheckOption {
      * Public constructor
      * @param id {string}: the id of the new option
      */
-    constructor(id = null){
+    constructor(id){
         this._id = '';
-        if(id === null){
+        if(id === ''){
             this._id = ('_' + Math.random().toString(36).substr(2, 9)).toString();
         }
         else{
