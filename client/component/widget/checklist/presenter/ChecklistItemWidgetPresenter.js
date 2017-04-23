@@ -52,12 +52,13 @@ export class ChecklistItemWidgetPresenter{
      * Public Constructor
      * @param text {string}: The text of the option
      * @param check {boolean}: A boolean value that represents the status of the item: checked or not
+     * @param id {string}: The id of the new option
      */
-    constructor(text,check){
+    constructor(text,check,id){
         this._view = null;
         this._dom = document.createElement('div');
         this._dom.setAttribute('class', 'checkbox-m');
-        this._options = new CheckOption();
+        this._options = new CheckOption(id);
         this._onLongClick = ()=>{};
         this._onClick = ()=>{};
         this._style = new CheckStyle();

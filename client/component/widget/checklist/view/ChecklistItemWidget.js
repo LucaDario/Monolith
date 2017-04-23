@@ -28,9 +28,9 @@ export class ChecklistItemWidget extends ChecklistItemWidgetView{
     /**
      * Public constructor
      */
-    constructor(text,check = false){
+    constructor(text,check = false,id = null){
         super();
-        this._presenter = new ChecklistItemWidgetPresenter(text,check);
+        this._presenter = new ChecklistItemWidgetPresenter(text,check,id);
         this._presenter.setView(this);
         this._checklistUpdate = container.resolve(ChecklistUpdateEmitter);
     }
