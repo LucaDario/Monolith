@@ -13,9 +13,6 @@ def deployOnProduction = false
 // Branch that hold the code that will go in production.
 def productionBranch = 'master'
 
-// Modules splitted from a semicolon that will be analized from sonarqube.
-def analizedModules = 'client,lib'
-
 node(targetNode) {
 
     checkout scm
@@ -26,9 +23,7 @@ node(targetNode) {
         -Dsonar.projectKey='${projectKey}-${env.BRANCH_NAME}' \
         -Dsonar.projectName='${projectName} [${env.BRANCH_NAME}]' \
         -Dsonar.projectVersion=1.0 \
-        -Dsonar.modules='${analizedModules}' \
-        -Dsonar.sources=src \
-        -Dsonar.exclusions=src/test/**,src/androidTest/** \
+        -Dsonar.sources=client, lib \
         -Dsonar.sourceEncoding=UTF-8 \
         -Dsonar.buildbreaker.skip=false \
         -Dsonar.gitlab.project_id='${env.gitlabSourceRepoHttpUrl}' \
