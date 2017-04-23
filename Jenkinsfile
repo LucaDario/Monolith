@@ -33,5 +33,6 @@ node(targetNode) {
         -Dsonar.buildbreaker.skip=false \
         -Dsonar.gitlab.project_id='${env.gitlabSourceRepoHttpUrl}' \
         -Dsonar.language=js"
+    }
 
 }
