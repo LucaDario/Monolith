@@ -15,19 +15,22 @@ def productionBranch = 'master'
 
 node(targetNode) {
 
-    checkout scm
+    stage("fetching source"){
+        checkout scm
+    }
 
-    def scannerHome = tool 'SonarQube scanner';
-    withSonarQubeEnv('Sonar zotsell') {
-        sh "${scannerHome}/bin/sonar-scanner \
-        -Dsonar.projectKey='${projectKey}-${env.BRANCH_NAME}' \
-        -Dsonar.projectName='${projectName} [${env.BRANCH_NAME}]' \
-        -Dsonar.projectVersion=1.0 \
-        -Dsonar.sources=client,lib \
-        -Dsonar.sourceEncoding=UTF-8 \
-        -Dsonar.buildbreaker.skip=false \
-        -Dsonar.gitlab.project_id='${env.gitlabSourceRepoHttpUrl}' \
-        -Dsonar.language=js"
+    stage("Static analysis"){
+        def scannerHome = tool 'SonarQube scanner';
+        withSonarQubeEnv('Sonar zotsell') {
+            sh "${scannerHome}/bin/sonar-scanner \
+            -Dsonar.projectKey='${projectKey}-${env.BRANCH_NAME}' \
+            -Dsonar.projectName='${projectName} [${env.BRANCH_NAME}]' \
+            -Dsonar.projectVersion=1.0 \
+            -Dsonar.sources=. \
+            -Dsonar.sourceEncoding=UTF-8 \
+            -Dsonar.buildbreaker.skip=false \
+            -Dsonar.language=js"
+        }
     }
 
 }
