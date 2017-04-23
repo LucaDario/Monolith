@@ -23,7 +23,7 @@ node(targetNode) {
         -Dsonar.projectKey='${projectKey}-${env.BRANCH_NAME}' \
         -Dsonar.projectName='${projectName} [${env.BRANCH_NAME}]' \
         -Dsonar.projectVersion=1.0 \
-        -Dsonar.sources=client, lib \
+        -Dsonar.sources=client,lib \
         -Dsonar.sourceEncoding=UTF-8 \
         -Dsonar.buildbreaker.skip=false \
         -Dsonar.gitlab.project_id='${env.gitlabSourceRepoHttpUrl}' \
