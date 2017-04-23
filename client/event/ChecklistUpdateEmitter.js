@@ -26,8 +26,8 @@ export class ChecklistUpdateEmitter extends EventEmitter{
      * @param id {string}: The id of the checklist that will emit the event
      */
 
-    emitOnUpdate(id){
-        this.emit('checklistUpdate',id);
+    emitOnUpdate(id,string){
+        this.emit('checklistUpdate',id,string);
     }
 }
 container.registerAsSingleton(ChecklistUpdateEmitter);

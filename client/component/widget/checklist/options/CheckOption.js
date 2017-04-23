@@ -30,7 +30,7 @@ export class CheckOption {
      * Public constructor
      */
     constructor(){
-        this._id = new Date().getUTCMilliseconds().toString();
+        this._id = ('_' + Math.random().toString(36).substr(2, 9)).toString();
         this._isChecked = false;
         this._text = '';
     }

@@ -48,10 +48,10 @@ Package.onUse(function(api) {
         'client/component/widget/button/view/ButtonWidget.js',
         'client/component/widget/button/ButtonWidgetView.js',
         'client/component/widget/checklist/options/CheckOption.js',
-        'client/component/widget/checklist/presenter/ChecklistWidgetPresenter.js',
+        'client/component/widget/checklist/presenter/ChecklistItemWidgetPresenter.js',
         'client/component/widget/checklist/style/CheckStyle.js',
-        'client/component/widget/checklist/view/ChecklistWidget.js',
-        'client/component/widget/checklist/ChecklistWidgetView.js',
+        'client/component/widget/checklist/view/ChecklistItemWidget.js',
+        'client/component/widget/checklist/ChecklistItemWidgetView.js',
         'client/component/widget/image/presenter/ImageWidgetPresenter.js',
         'client/component/widget/image/view/ImageWidget.js',
         'client/component/widget/image/ImageWidgetView.js',
@@ -65,6 +65,7 @@ Package.onUse(function(api) {
         'client/component/widget/text/presenter/TextWidgetPresenter.js',
         'client/component/widget/text/view/TextWidget.js',
         'client/component/widget/text/TextWidgetView.js',
+        'client/bubble/libraries.html'
     ], 'client');
 
     api.export("Monolith", "client");
@@ -76,7 +77,9 @@ Package.onTest(function(api) {
         'ecmascript',
         'practicalmeteor:mocha',
         'practicalmeteor:chai',
-        'practicalmeteor:sinon'
+        'practicalmeteor:sinon',
+        'less',
+        'urigo:static-templates'
     ]);
 
     api.addFiles([
@@ -92,8 +95,8 @@ Package.onTest(function(api) {
         'client/component/widget/BaseWidget.test.js',
         'client/component/widget/button/ButtonWidgetView.test.js',
         'client/component/widget/button/view/ButtonWidget.test.js',
-        'client/component/widget/checklist/ChecklistWidgetView.test.js',
-        'client/component/widget/checklist/view/ChecklistWidget.test.js',
+        'client/component/widget/checklist/ChecklistItemWidgetView.test.js',
+        'client/component/widget/checklist/view/ChecklistItemWidget.test.js',
         'client/component/widget/image/ImageWidgetView.test.js',
         'client/component/widget/image/view/ImageWidget.test.js',
         'client/component/widget/list/ListWidgetView.test.js',
@@ -102,6 +105,8 @@ Package.onTest(function(api) {
         'client/component/widget/list/style/Indicator.js',
         'client/component/widget/text/TextWidgetView.test.js',
         'client/component/widget/text/view/TextWidget.test.js',
+        'client/bubble/bubble.less',
+        'client/bubble/libraries.html'
     ], 'client');
 
 });

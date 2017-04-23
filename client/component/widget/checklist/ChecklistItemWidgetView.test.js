@@ -1,13 +1,13 @@
 
-import {ChecklistWidgetView} from './ChecklistWidgetView'
+import {ChecklistItemWidgetView} from './ChecklistItemWidgetView'
 
-describe('ChecklistWidgetView', function () {
+describe('ChecklistItemWidgetView', function () {
     it('Check that is not instantiable', function () {
         // This code will be executed by the test driver when the app is started
         // in the correct mode
         expect(
             () => {
-                new ChecklistWidgetView();
+                new ChecklistItemWidgetView('test');
             }
         ).to.throw();
     });

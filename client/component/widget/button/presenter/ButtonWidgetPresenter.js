@@ -32,6 +32,7 @@ export class ButtonWidgetPresenter {
      */
     setText(text) {
         if (typeof text === "string") {
+            this._text= text;
             this._dom.innerHTML = text;
         }
         else
@@ -182,6 +183,7 @@ export class ButtonWidgetPresenter {
                 if (_this._onClickAction!==null) {
                     _this._onClickAction();
                     _this._view.getEvent().emitClickButtonEvent();
+
                 }
             }
 
