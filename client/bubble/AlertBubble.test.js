@@ -7,7 +7,7 @@ describe('AlertBubble', function () {
         // in the correct mode
         expect(
             () => {
-                new AlertBubble();
+                new AlertBubble(); //NOSONAR
             }
         ).to.not.throw();
     });

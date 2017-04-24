@@ -7,7 +7,7 @@ describe('HorizontalLayoutView', function () {
 		// in the correct mode
 		expect(
 			() => {
-				new HorizontalLayoutView();
+				new HorizontalLayoutView(); //NOSONAR
 			}
 			).to.not.throw();
 	});
@@ -41,7 +41,7 @@ describe('HorizontalLayoutView', function () {
         const nodes = layout.renderView().childNodes;
         let column = 0;
         for(let i = 0; i < nodes.length; ++i){
-            if(nodes[i].className == 'hl-column'){
+            if(nodes[i].className === 'hl-column'){
                 column++
             }
         }

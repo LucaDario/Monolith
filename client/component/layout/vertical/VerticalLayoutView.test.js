@@ -7,7 +7,7 @@ describe('VerticalLayoutView', function () {
 		// in the correct mode
 		expect(
 			() => {
-				new VerticalLayoutView();
+				new VerticalLayoutView();   //NOSONAR
 			}
 			).to.not.throw();
 	});
