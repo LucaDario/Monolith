@@ -5,7 +5,7 @@ String projectKey = 'swe-monolith'
 String projectName = 'Monolith'
 
 // Node where this job can run
-String targetNode = 'master'
+String targetNode = 'Rocketchat-.*'
 
 // Define if at the of the job should start the deploying procedure
 def deployOnProduction = false
