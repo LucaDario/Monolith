@@ -8,7 +8,7 @@ describe('ImageWidget', function () {
         // in the correct mode
         expect(
             () => {
-                new ImageWidget();
+                new ImageWidget(); //NOSONAR
             }
         ).to.not.throw();
     });
@@ -21,7 +21,7 @@ describe('ImageWidget', function () {
         immagine.setImage("/proof_of_error");
         immagine.renderView();
 
-        immagine._presenter._dom.firstChild.childNodes[1].addEventListener("error", function(e) {
+        immagine._presenter._dom.firstChild.childNodes[1].addEventListener("error", function(e) { //NOSONAR
             done();
         });
     });
@@ -33,7 +33,7 @@ describe('ImageWidget', function () {
         immagine.setImage("http://nemboweb.com/images/corsi/webmaster-tutorial/cicciogatto.jpg");
         immagine.renderView();
 
-        immagine._presenter._dom.firstChild.childNodes[1].addEventListener("load", function(e) {
+        immagine._presenter._dom.firstChild.childNodes[1].addEventListener("load", function(e) { //NOSONAR
             done();
         });
     });

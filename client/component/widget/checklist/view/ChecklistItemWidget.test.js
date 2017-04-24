@@ -6,7 +6,7 @@ describe('ChecklistWidgetItemItem', function () {
         // in the correct mode
         expect(
             () => {
-                new ChecklistItemWidget('test');
+                new ChecklistItemWidget('test'); //NOSONAR
             }
         ).to.not.throw();
     });

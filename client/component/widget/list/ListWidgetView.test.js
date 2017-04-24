@@ -7,7 +7,7 @@ describe('ListWidgetView', function () {
         // in the correct mode
         expect(
             () => {
-                new ListWidgetView();
+                new ListWidgetView(); //NOSONAR
             }
         ).to.throw();
     });

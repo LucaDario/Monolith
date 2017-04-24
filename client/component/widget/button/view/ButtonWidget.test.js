@@ -8,7 +8,7 @@ describe('ButtonWidget', function () {
         // in the correct mode
         expect(
             () => {
-                new ButtonWidget();
+                new ButtonWidget(); //NOSONAR
             }
         ).to.not.throw();
     });

@@ -8,7 +8,7 @@ describe('BaseComponent', function () {
 		// This code will be executed by the test driver when the app is started
 		// in the correct mode
 		expect(() => {
-		    new BaseComponent();
+		    new BaseComponent(); //NOSONAR
 		}).to.throw();
 	});
 
