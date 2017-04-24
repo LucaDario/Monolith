@@ -34,5 +34,13 @@ node(targetNode) {
             -Dsonar.language=js"
         }
     }
+    sendSlackMessage('Job terminato')
 
+}
+
+void sendSlackMessage(text) {
+    withCredentials([[$class: 'StringBinding', credentialsId: 'NpeSlackToken',
+                        variable: 'TOKEN']]) {
+        slackSend channel: '#ci', color: 'good', message: text, teamDomain: 'npedevelopers', token: '$TOKEN'
+    }
 }
