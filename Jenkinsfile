@@ -22,9 +22,10 @@ node(targetNode) {
     }
 
     stage("Static analysis"){
-        def scannerHome = tool 'SonarQube scanner';
-        withSonarQubeEnv('Sonar zotsell') {
-            sh "${scannerHome}/bin/sonar-scanner \
+        def scannerHome = tool 'SonarQube scanner'
+        try {
+            withSonarQubeEnv('Sonar zotsell') {
+                sh "${scannerHome}/bin/sonar-scanner \
             -Dsonar.projectKey='${projectKey}-${env.BRANCH_NAME}' \
             -Dsonar.projectName='${projectName} [${env.BRANCH_NAME}]' \
             -Dsonar.projectVersion=1.0 \
@@ -34,13 +35,18 @@ node(targetNode) {
             -Dsonar.sourceEncoding=UTF-8 \
             -Dsonar.buildbreaker.skip=false \
             -Dsonar.language=js"
+            }
+        }catch (exception){
+            sendSlackMessage("Job #${env.BUILD_NUMBER} ${projectName} ${env.BRANCH_NAME}\nQuality gates non suparati!", 'danger')
+            currentBuild.result='UNSTABLE'
         }
     }
 
-    sendSlackMessage("Job #${env.BUILD_NUMBER} per ${projectName} nel ramo ${env.BRANCH_NAME} terminato", 'good')
     sendSlackMessage("Esito del'analisi statica disponibile al link:\nhttp://163.172.166.135:9000/dashboard?id=${projectKey}-${env.BRANCH_NAME}",
             '#32B5C1'
     )
+
+    sendSlackMessage("Job #${env.BUILD_NUMBER} per ${projectName} nel ramo ${env.BRANCH_NAME} terminato", getStatusColor())
 
 }
 
@@ -55,4 +61,14 @@ void sendSlackMessage(GString text, String statusColor) {
                         variable: 'TOKEN']]) {
         slackSend channel: '#ci', color: statusColor, message: text, teamDomain: 'npedevelopers', token: '$TOKEN'
     }
+}
+
+String getStatusColor(){
+    String color = 'good'
+    if(currentBuild.result=='UNSTABLE'){
+        color = 'warning'
+    }else if(currentBuild.result=='FAILED'){
+        color = 'danger'
+    }
+    return color
 }
