@@ -59,8 +59,8 @@ export class ChecklistItemWidgetPresenter{
         this._dom = document.createElement('div');
         this._dom.setAttribute('class', 'checkbox-m');
         this._options = new CheckOption(id);
-        this._onLongClick = ()=>{};
-        this._onClick = ()=>{};
+        this._onLongClick = ()=>{}; //NOSONAR
+        this._onClick = ()=>{}; //NOSONAR
         this._style = new CheckStyle();
         this._createOption(text,check);
     }
@@ -78,16 +78,16 @@ export class ChecklistItemWidgetPresenter{
         this._options.setChecked(check);
 
         //Temporary variables
-        let symbol = this._style.getSelectionCharacter();
-        let color = this._style.getSelectionColor();
-        let text = this._options.getText();
+        const symbol = this._style.getSelectionCharacter();
+        const color = this._style.getSelectionColor();
+        const text = this._options.getText();
 
         //Generate html
-        let label = document.createElement('label');
-        let input = document.createElement('input');
-        let box = document.createElement('div');
-        let symbolSpan = document.createElement('span');
-        let textDiv = document.createElement('div');
+        const label = document.createElement('label');
+        const input = document.createElement('input');
+        const box = document.createElement('div');
+        const symbolSpan = document.createElement('span');
+        const textDiv = document.createElement('div');
 
         //Set tag's attributes
         textDiv.setAttribute('class', 'spanEmpty');
@@ -179,7 +179,7 @@ export class ChecklistItemWidgetPresenter{
      */
     setText(text){
         this._options.setText(text);
-        let itemText = this._dom.childNodes[0].childNodes[2];
+        const itemText = this._dom.childNodes[0].childNodes[2];
         itemText.innerHTML = text;
     }
 
@@ -199,11 +199,11 @@ export class ChecklistItemWidgetPresenter{
      * It allows you to update the DOM style
      */
     _setDomStyle(){
-        let symbol = this._style.getSelectionCharacter();
-        let boxbgcolor = this._style.getSelectionColor();
-        let input = this._dom.childNodes[0].childNodes[0];
-        let box = this._dom.childNodes[0].childNodes[1];
-        let symbolSpan = this._dom.childNodes[0].childNodes[1].childNodes[0];
+        const symbol = this._style.getSelectionCharacter();
+        const boxbgcolor = this._style.getSelectionColor();
+        const input = this._dom.childNodes[0].childNodes[0];
+        const box = this._dom.childNodes[0].childNodes[1];
+        const symbolSpan = this._dom.childNodes[0].childNodes[1].childNodes[0];
         if (this._options.isChecked()) {
             input.setAttribute('checked','checked');
             box.setAttribute('class','spanCheckBef spanEmptyBef');

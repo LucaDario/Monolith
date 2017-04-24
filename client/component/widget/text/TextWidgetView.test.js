@@ -7,7 +7,7 @@ describe('TextWidgetView', function () {
         // in the correct mode
         expect(
             () => {
-                new TextWidgetView();
+                new TextWidgetView(); //NOSONAR
             }
         ).to.throw();
     });

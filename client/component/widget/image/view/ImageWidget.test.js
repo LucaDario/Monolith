@@ -8,7 +8,7 @@ describe('ImageWidget', function () {
         // in the correct mode
         expect(
             () => {
-                new ImageWidget();
+                new ImageWidget(); //NOSONAR
             }
         ).to.not.throw();
     });
@@ -17,11 +17,11 @@ describe('ImageWidget', function () {
     it("Check if the image that don't  have a valid path launch an exception", function (done) {
         // This code will be executed by the test driver when the app is started
         // in the correct mode
-        let immagine = new ImageWidget();
+        const immagine = new ImageWidget();
         immagine.setImage("/proof_of_error");
         immagine.renderView();
 
-        immagine._presenter._dom.firstChild.childNodes[1].addEventListener("error", function(e) {
+        immagine._presenter._dom.firstChild.childNodes[1].addEventListener("error", function(e) { //NOSONAR
             done();
         });
     });
@@ -29,11 +29,11 @@ describe('ImageWidget', function () {
     it("Check if the image have a valid path", function (done) {
         // This code will be executed by the test driver when the app is started
         // in the correct mode
-        let immagine = new ImageWidget();
+        const immagine = new ImageWidget();
         immagine.setImage("http://nemboweb.com/images/corsi/webmaster-tutorial/cicciogatto.jpg");
         immagine.renderView();
 
-        immagine._presenter._dom.firstChild.childNodes[1].addEventListener("load", function(e) {
+        immagine._presenter._dom.firstChild.childNodes[1].addEventListener("load", function(e) { //NOSONAR
             done();
         });
     });
@@ -41,13 +41,13 @@ describe('ImageWidget', function () {
     it("Check if the Widget set the exact dimension of the image", function () {
         // This code will be executed by the test driver when the app is started
         // in the correct mode
-        let immagine = new ImageWidget();
+        const immagine = new ImageWidget();
         immagine.setImage("http://nemboweb.com/images/corsi/webmaster-tutorial/cicciogatto.jpg");
         immagine.setHeight(50);
         immagine.setWidth(50);
         immagine.renderView();
-        let x =immagine._presenter._dom.firstChild.childNodes[1].width;
-        let y= immagine._presenter._dom.firstChild.childNodes[1].height;
+        const x =immagine._presenter._dom.firstChild.childNodes[1].width;
+        const y= immagine._presenter._dom.firstChild.childNodes[1].height;
         expect(y).to.be.eq(50).and.to.be.eq(x);
 
 
@@ -56,15 +56,15 @@ describe('ImageWidget', function () {
     it("Check if the Widget have the default image dimension", function () {
         // This code will be executed by the test driver when the app is started
         // in the correct mode
-        let immagine = new ImageWidget();
+        const immagine = new ImageWidget();
         immagine.setImage("http://nemboweb.com/images/corsi/webmaster-tutorial/cicciogatto.jpg");
         immagine.setHeight(50);
         immagine.setWidth(50);
         immagine.renderView();
-        let x =immagine._presenter._dom.firstChild.childNodes[1].width;
-        let y= immagine._presenter._dom.firstChild.childNodes[1].height;
-        let z=immagine.getWidth();
-        let w=immagine.getHeight();
+        const x =immagine._presenter._dom.firstChild.childNodes[1].width;
+        const y= immagine._presenter._dom.firstChild.childNodes[1].height;
+        const z=immagine.getWidth();
+        const w=immagine.getHeight();
 
         expect(y).to.be.eq(50).and.to.be.eq(x).and.to.be.eq(w).and.to.be.eq(z);
 

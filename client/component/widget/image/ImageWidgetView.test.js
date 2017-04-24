@@ -8,7 +8,7 @@ describe('ImageWidgetView', function () {
         // in the correct mode
         expect(
             () => {
-                new ImageWidgetView();
+                new ImageWidgetView(); //NOSONAR
             }
         ).to.throw();
     });

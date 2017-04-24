@@ -77,7 +77,7 @@ export class CheckStyle {
      * @param color {string}: It represents the color that will be assigned to _selectionColor
      */
     setSelectionColor(color){
-        let pat= new RegExp('#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$');
+        const pat= new RegExp('#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$');
         if (typeof color === "string" && pat.test(color)) {
                 if(!this.getUseSelectionMark()) {
                     this._selectionColor = color;

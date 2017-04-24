@@ -176,9 +176,9 @@ export class ButtonWidgetPresenter {
      * @return {Object}
      */
     renderView() {
-        let _this = this;
+        const _this = this;
 
-        let ldom= _this._dom;
+        const ldom= _this._dom;
         ldom.className= "button btn";
         ldom.innerHTML = _this.getText();
 
@@ -186,7 +186,7 @@ export class ButtonWidgetPresenter {
         ldom.style.height= _this.getHeight();
 
         //this is the only way to make it work
-        let c = _this.getColor().split("");
+        const c = _this.getColor().split("");
         //two options for 3 or 6 hex number for color
         if (c.length === 7) {
             ldom.style.backgroundColor = c[0] + c[1] + c[2] + c[3] + c[4] + c[5] + c[6];

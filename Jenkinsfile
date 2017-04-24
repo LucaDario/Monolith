@@ -5,7 +5,7 @@ String projectKey = 'swe-monolith'
 String projectName = 'Monolith'
 
 // Node where this job can run
-String targetNode = 'master'
+String targetNode = 'Rocketchat-000 || Rocketchat-001'
 
 // Define if at the of the job should start the deploying procedure
 def deployOnProduction = false
@@ -30,8 +30,7 @@ node(targetNode) {
             -Dsonar.projectName='${projectName} [${env.BRANCH_NAME}]' \
             -Dsonar.projectVersion=1.0 \
             -Dsonar.sources=. \
-            -Dsonar.test.inclusions=**/.*test.js \
-            -Dsonar.exclusions=**/.*test.js \
+            -Dsonar.exclusions=**/.*test \
             -Dsonar.sourceEncoding=UTF-8 \
             -Dsonar.buildbreaker.skip=false \
             -Dsonar.language=js"

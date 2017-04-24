@@ -83,8 +83,8 @@ export class ToDoListBubble extends BaseBubble{
             if (index === this.getId()) {
                 global.jQuery = require('bootstrap-jquery');
                 window.$ = $;
-                let title = this._textView.renderView().childNodes[0].innerHTML;
-                let message = this.getCompletionMessage();
+                const title = this._textView.renderView().childNodes[0].innerHTML;
+                const message = this.getCompletionMessage();
                 global.bootbox = require('bootbox');
                 bootbox.alert({
                     size: "small",
@@ -111,9 +111,9 @@ export class ToDoListBubble extends BaseBubble{
      * @param check {boolean}: The initial value for the item
      */
     addItem(item,check = false) {
-        let opt = new ChecklistItemWidget(item,check);
+        const opt = new ChecklistItemWidget(item,check);
         this._checklist.push(opt);
-        let index = this._checklist.indexOf(opt);
+        const index = this._checklist.indexOf(opt);
         super.addComponent(this._checklist[index]);
         this.setOnLongItemClick(function(item){
             item.removeOption();
@@ -139,8 +139,10 @@ export class ToDoListBubble extends BaseBubble{
      * will be shown by a color
      */
     setUseSelectionMark(useMark){
-        for(let i in this._checklist){
-            this._checklist[i].setUseSelectionMark(useMark);
+        for(const i in this._checklist){
+            if(this._checklist.hasOwnProperty(i)) {
+                this._checklist[i].setUseSelectionMark(useMark);
+            }
         }
     }
 
@@ -150,8 +152,10 @@ export class ToDoListBubble extends BaseBubble{
      * @param color {String}: It represents the color of the check-mark
      */
     setSelectionColor(color) {
-        for(let i in this._checklist){
-            this._checklist[i].setSelectionColor(color);
+        for(const i in this._checklist){
+            if(this._checklist.hasOwnProperty(i)) {
+                this._checklist[i].setSelectionColor(color);
+            }
         }
     }
 
@@ -161,8 +165,10 @@ export class ToDoListBubble extends BaseBubble{
      * @param func {function}
      */
     setOnLongItemClick(func){
-        for(let i in this._checklist) {
-            this._checklist[i].setOnLongClick(func);
+        for(const i in this._checklist) {
+            if(this._checklist.hasOwnProperty(i)) {
+                this._checklist[i].setOnLongClick(func);
+            }
         }
     }
 
@@ -172,8 +178,10 @@ export class ToDoListBubble extends BaseBubble{
      * @param func {function}
      */
     setOnItemClick(func){
-        for(let i in this._checklist) {
-            this._checklist[i].setOnClick(func);
+        for(const i in this._checklist) {
+            if(this._checklist.hasOwnProperty(i)) {
+                this._checklist[i].setOnClick(func);
+            }
         }
     }
 
@@ -183,8 +191,10 @@ export class ToDoListBubble extends BaseBubble{
      * @param character {String}: The symbol to represent the selection
      */
     setSelectionCharacter(character){
-        for(let i in this._checklist){
-            this._checklist[i].setSelectionCharacter(character);
+        for(const i in this._checklist){
+            if(this._checklist.hasOwnProperty(i)) {
+                this._checklist[i].setSelectionCharacter(character);
+            }
         }
     }
 
@@ -258,8 +268,10 @@ export class ToDoListBubble extends BaseBubble{
      */
     _isComplete(){
         let completed = true;
-        for (let i in this._checklist) {
-            completed = completed && this._checklist[i].isChecked();
+        for (const i in this._checklist) {
+            if(this._checklist.hasOwnProperty(i)) {
+                completed = completed && this._checklist[i].isChecked();
+            }
         }
         if (completed === true) {
             this._eventComplete.emitChecklistComplete(this.getId());

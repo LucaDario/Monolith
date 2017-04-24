@@ -7,7 +7,7 @@ describe('ToDoListBubble', function () {
         // in the correct mode
         expect(
             () => {
-                new ToDoListBubble();
+                new ToDoListBubble(); //NOSONAR
             }
         ).to.not.throw();
     });

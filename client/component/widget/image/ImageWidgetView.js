@@ -26,7 +26,7 @@ export class ImageWidgetView extends BaseWidget{
      * @param imagePath {string}
      */
 
-    setImage(imagePath) {}
+    setImage(imagePath) {} //NOSONAR
 
 
     /**
@@ -35,7 +35,7 @@ export class ImageWidgetView extends BaseWidget{
      * @param width {number}
      */
 
-    setWidth(width) {}
+    setWidth(width) {} //NOSONAR
 
     /**
      * @method
@@ -43,7 +43,7 @@ export class ImageWidgetView extends BaseWidget{
      * @param width {number}
      */
 
-    setHeight(width) {}
+    setHeight(width) {} //NOSONAR
 
 
 }

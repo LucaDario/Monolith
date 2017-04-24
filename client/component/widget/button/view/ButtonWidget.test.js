@@ -8,7 +8,7 @@ describe('ButtonWidget', function () {
         // in the correct mode
         expect(
             () => {
-                new ButtonWidget();
+                new ButtonWidget(); //NOSONAR
             }
         ).to.not.throw();
     });
@@ -18,7 +18,7 @@ describe('ButtonWidget', function () {
         // in the correct mode
         expect(
             () => {
-                let button = new ButtonWidget();
+                const button = new ButtonWidget();
                 button.renderView();
                 button.setText("test");
 
@@ -34,7 +34,7 @@ describe('ButtonWidget', function () {
         // in the correct mode
         expect(
             () => {
-                let button = new ButtonWidget();
+                const button = new ButtonWidget();
                 button.renderView();
                 button.setText(123);
             }
@@ -46,7 +46,7 @@ describe('ButtonWidget', function () {
         // in the correct mode - part of TU15
         expect(
             () => {
-                let button = new ButtonWidget();
+                const button = new ButtonWidget();
                 button.renderView();
                 button.setWidth("500px");
                 button.setHeight("600px");
@@ -63,7 +63,7 @@ describe('ButtonWidget', function () {
         // in the correct mode - part of TU15
         expect(
             () => {
-                let button = new ButtonWidget();
+                const button = new ButtonWidget();
                 button.renderView();
 
                 if (button._presenter._dom.style.width === "" || button._presenter._dom.style.height === "") {
@@ -78,7 +78,7 @@ describe('ButtonWidget', function () {
         // in the correct mode - part of TU15
         expect(
             () => {
-                let button = new ButtonWidget();
+                const button = new ButtonWidget();
                 button.renderView();
 
                 button.setBackgroundColor("#ffffff");
@@ -92,7 +92,7 @@ describe('ButtonWidget', function () {
                     return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
                 }
 
-                let hex= rgb2hex(button._presenter._dom.style.backgroundColor);
+                const hex= rgb2hex(button._presenter._dom.style.backgroundColor);
 
                 if (hex !== "#ffffff") {
                     throw new Exception("error");
@@ -106,7 +106,7 @@ describe('ButtonWidget', function () {
         // in the correct mode - part of TU15
         expect(
             () => {
-                let button = new ButtonWidget();
+                const button = new ButtonWidget();
                 button.renderView();
 
                 if (button._presenter._dom.style.backgroundColor === "") {
