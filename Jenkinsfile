@@ -38,8 +38,10 @@ node(targetNode) {
     }
 
     sendSlackMessage("Job #${env.BUILD_NUMBER} per ${projectName} nel ramo ${env.BRANCH_NAME} terminato", 'good')
+    sendSonaraReport()
 
 }
+
 /**
  * Sends a message to slack
  * @param text: String representing the message that will be sended.
@@ -51,4 +53,12 @@ void sendSlackMessage(text, statusColor) {
                         variable: 'TOKEN']]) {
         slackSend channel: '#ci', color: statusColor, message: text, teamDomain: 'npedevelopers', token: '$TOKEN'
     }
+}
+
+
+void sendSonaraReport(){
+    sendSlackMessage("Esito del'analisi statica disponibile al link:\n" +
+            "http://163.172.166.135:9000/dashboard?id=${projectKey}-${env.BRANCH_NAME}",
+            "#32B5C1"
+    )
 }
