@@ -27,10 +27,13 @@ export class ChecklistItemWidget extends ChecklistItemWidgetView{
 
     /**
      * Public constructor
+     * @param text {string}: the text of the new option
+     * @param check {boolean}: the status of the new option
+     * @param id {string}: the id of the new option
      */
-    constructor(text,check = false){
+    constructor(text,check = false,id = ''){
         super();
-        this._presenter = new ChecklistItemWidgetPresenter(text,check);
+        this._presenter = new ChecklistItemWidgetPresenter(text,check,id);
         this._presenter.setView(this);
         this._checklistUpdate = container.resolve(ChecklistUpdateEmitter);
     }

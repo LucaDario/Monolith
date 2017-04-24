@@ -126,19 +126,7 @@ export class ToDoListBubble extends BaseBubble{
      * @param index {number}: The index of the item that will be removed from the checklist
      */
     removeItem(index) {
-        if (index >= 1) {
-            if (index === this._checklist.length - 1) {
-                this._checklist = this._checklist.slice(0, this._checklist.length - 1);
-            }
-            else {
-                let optionsFirstSlice = this._checklist.slice(0, index - 1);
-                let optionsSecondSlice = this._checklist.slice(index + 1, this._checklist.length);
-                this._checklist = optionsFirstSlice.concat(optionsSecondSlice);
-            }
-        }
-        if (index === 0) {
-            this._checklist = this._checklist.slice(1, this._checklist.length);
-        }
+        this._checklist.splice(index,1);
         //Check if all items are checked and if all items are checked emit an EVENT
         //representing completion of checklist
         this._isComplete();

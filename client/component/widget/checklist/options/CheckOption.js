@@ -28,9 +28,16 @@ export class CheckOption {
 
     /**
      * Public constructor
+     * @param id {string}: the id of the new option
      */
-    constructor(){
-        this._id = ('_' + Math.random().toString(36).substr(2, 9)).toString();
+    constructor(id){
+        this._id = '';
+        if(id === ''){
+            this._id = ('_' + Math.random().toString(36).substr(2, 9)).toString();
+        }
+        else{
+            this._id = id;
+        }
         this._isChecked = false;
         this._text = '';
     }
