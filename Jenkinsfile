@@ -15,7 +15,7 @@ def productionBranch = 'master'
 
 node(targetNode) {
 
-    sendSlackMessage('Inizio Job #${env.BUILD_NUMBER} per il progetto ${projectName} nel ramo ${env.BRANCH_NAME}', 'good')
+    sendSlackMessage("Inizio Job #${env.BUILD_NUMBER} per il progetto ${projectName} nel ramo ${env.BRANCH_NAME}", 'good')
 
     stage("fetching source"){
         checkout scm
@@ -37,7 +37,7 @@ node(targetNode) {
         }
     }
 
-    sendSlackMessage('Job #${env.BUILD_NUMBER} per ${projectName} nel ramo ${env.BRANCH_NAME} terminato', 'good')
+    sendSlackMessage("Job #${env.BUILD_NUMBER} per ${projectName} nel ramo ${env.BRANCH_NAME} terminato", 'good')
 
 }
 /**
