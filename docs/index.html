@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -793,7 +794,7 @@ this.activeTarget=b,this.clear();var c=this.selector+'[data-target="'+b+'"],'+th
               <span class="toc"></span>
               <ul class="nav"><li><p>User manual</p>
 <ul class="nav"><li class="active"><a href="#Introduction">Introduction</a></li><li><a href="#Contents-of-the-guide">Contents of the guide</a></li><li><a href="#Getting-started">Getting started</a></li><li><a href="#Classes-structure">Classes structure</a></li><li><a href="#Usage">Usage</a><ul class="nav"><li><a href="#Widgets-usage">Widgets</a><ul class="nav"><li><a href="#TextWidget">TextWidget</a></li><li><a href="#ButtonWidget">ButtonWidget</a></li><li><a href="#ImageWidget">ImageWidget</a></li><li><a href="#ListWidget">ListWidget</a></li><li><a href="#CheckListItemWidget">CheckListItemWidget</a></li><li><a href="#Create-a-custom-widget">Create a new widget</a></li></ul></li><li><a href="#Layouts-usage">Layouts</a><ul class="nav"><li><a href="#HorizontalLayout">HorizontalLayout</a></li><li><a href="#VerticalLayout">VerticalLayout</a></li><li><a href="#Create-a-custom-layout">Create a custom layout</a></li></ul></li><li><a href="#Bubbles-usage">Bubbles</a><ul class="nav"><li><a href="#MarkdownBubble">MarkdownBubble</a></li><li><a href="#AlertBubble">AlertBubble</a></li><li><a href="#ToDoListBubble">ToDoListBubble</a></li><li><a href="#Create-a-custom-bubble">Create a custom bubble</a></li></ul></li></ul></li></ul></li><li><p>Other</p>
-<ul class="nav"><li><a href="#Installing-Monolith-local">Installing Monolith</a></li><li><a href="#Tests">Performing tests</a></li></ul></li></ul>
+<ul class="nav"><li><a href="#Tests">Performing tests</a></li></ul></li></ul>
               
             </div>
           </div>
@@ -1186,29 +1187,15 @@ it if there&#39;s the need, and then return it.</li>
 <h5 id="note">Note</h5>
 <p>All of the written above should be made <strong>only</strong> inside the <code>client</code> directory of your Meteor project, otherwise it will
 make your application crash.</p>
-<p class="page" id="Installing-Monolith-local"></p><h1>Installing Monolith</h1>
-<p><strong>1.</strong> Creare una struttura delle cartelle come segue</p>
-<pre class="hljs">|<span class="hljs-string">- Rocket.chat
-</span>|<span class="hljs-string">    </span>|<span class="hljs-string">- Codice sorgente Rocket.chat, clonato dalla repo
-</span>|<span class="hljs-string">- Monolith
-     </span>|<span class="hljs-string">- Codice sorgente Monolith, clonato dalla repo</span></pre><p>N.B. Le cartelle devono essere esattamente figlie della stessa cartella, e in particolare la cartella che contiene il 
-codice sorgente di monolith deve chiamarsi <strong>esattamente</strong> <code>monolith</code> (<em>case insensitive</em>).</p>
-<p><strong>2.</strong> Creare una variabile d&#39;ambiente dal nome <code>METEOR_PACKAGE_DIRS</code> che punta alla cartella che contiene le cartelle 
-sopra citate (<code>Monolith</code>e <code>Rocket.chat</code>).</p>
-<p><strong>3.</strong> Recarsi nella cartella di Rocket.chat, aprire un terminale e digitare <code>meteor add monolith</code>.
-<strong>4.</strong> Una volta aggiunto il pacchetto, se tutto funziona correttamente, apparirà la scritta: </p>
-<pre class="hljs">Changes <span class="hljs-keyword">to</span> your project's package <span class="hljs-property">version</span> selections:
-
-monolith  added, <span class="hljs-property">version</span> x.y.z</pre><p><strong>4.</strong> Per avviare Rocket.chat eseguire i comandi <code>meteor reset</code> e dunque <code>meteor</code></p>
 <p class="page" id="Tests"></p><h1>Performing tests</h1>
 <ul>
-<li><a href="https://mochajs.org/">Mocha</a>: Framework nel quale vengono eseguiti i test</li>
-<li><a href="https://github.com/shouldjs/should.js">Should.js</a>: Libreria per formulare asserzioni.</li>
-<li><a href="https://github.com/LearnBoost/expect.js">Expect.js</a>: Libreria per formulare asserzioni (consigliata).</li>
-<li><a href="http://chaijs.com/">Chai.js</a>: Libreria per formulare asserzioni.</li>
+<li><a href="https://mochajs.org/">Mocha</a>: framework used to execute the tests</li>
+<li><a href="https://github.com/shouldjs/should.js">Should.js</a>: assertion library</li>
+<li><a href="https://github.com/LearnBoost/expect.js">Expect.js</a>: assertion library (suggested)</li>
+<li><a href="http://chaijs.com/">Chai.js</a>: assertion library</li>
 </ul>
-<h2 id="eseguire-i-test">Eseguire i test</h2>
-<p>Dalla cartella che contiene il codice sorgente di Rocket.Chat Eseguire quetso comando:  </p>
+<h2 id="running-the-tests">Running the tests</h2>
+<p>In order to run the tests suite, execute the following command inside the folder which contains the Rocket.chat code:</p>
 <p><code>meteor test-packages --driver-package practicalmeteor:mocha monolith</code></p>
 
         </div> <!-- /div.col-md-9 -->
