@@ -38,7 +38,9 @@ node(targetNode) {
     }
 
     sendSlackMessage("Job #${env.BUILD_NUMBER} per ${projectName} nel ramo ${env.BRANCH_NAME} terminato", 'good')
-    sendSonarReport()
+    sendSlackMessage("Esito del'analisi statica disponibile al link:\nhttp://163.172.166.135:9000/dashboard?id=${projectKey}-${env.BRANCH_NAME}",
+            '#32B5C1'
+    )
 
 }
 
@@ -53,11 +55,4 @@ void sendSlackMessage(GString text, String statusColor) {
                         variable: 'TOKEN']]) {
         slackSend channel: '#ci', color: statusColor, message: text, teamDomain: 'npedevelopers', token: '$TOKEN'
     }
-}
-
-
-void sendSonarReport(){
-    sendSlackMessage("Esito del'analisi statica disponibile al link:\nhttp://163.172.166.135:9000/dashboard?id=${projectKey}-${env.BRANCH_NAME}",
-            '#32B5C1'
-    )
 }
