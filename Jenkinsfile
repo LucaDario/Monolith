@@ -27,6 +27,8 @@ node(targetNode) {
             -Dsonar.projectName='${projectName} [${env.BRANCH_NAME}]' \
             -Dsonar.projectVersion=1.0 \
             -Dsonar.sources=. \
+            -Dsonar.test.inclusions=**/.*test.js \
+            -Dsonar.exclusions=**/.*test.js \
             -Dsonar.sourceEncoding=UTF-8 \
             -Dsonar.buildbreaker.skip=false \
             -Dsonar.language=js"

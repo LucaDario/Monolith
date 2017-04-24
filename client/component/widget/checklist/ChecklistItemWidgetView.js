@@ -24,21 +24,21 @@ export class ChecklistItemWidgetView extends BaseWidget{
      * @method
      * It allows you to remove an item from a checklist
      */
-    removeOption(){}
+    removeOption(){} //NOSONAR
 
     /**
      * @method
      * It returns the _id of the checklist
      * @return {string}: The id of the checklist
      */
-    getId(){}
+    getId(){} //NOSONAR
 
     /**
      * @method
      * It allows you to modify the text of an item
      * @param text {string}: The text that will be replaced to the existing one
      */
-    setText(text){}
+    setText(text){} //NOSONAR
 
     /**
      * @method
@@ -46,42 +46,42 @@ export class ChecklistItemWidgetView extends BaseWidget{
      * @param useMark {boolean}: Check-mark will be shown by a symbol if this field is true; if this field is false the check-mark
      * wiil be shown by a color
      */
-    setUseSelectionMark(useMark){}
+    setUseSelectionMark(useMark){} //NOSONAR
 
     /**
      * @method
      * Sets the color of checkmarks.
      * @param color {String}: It represents the color of the check-mark
      */
-    setSelectionColor(color) {}
+    setSelectionColor(color) {} //NOSONAR
 
     /**
      * @method
      * Sets the symbol of checkmarks.
      * @param character {String}: The symbol to represent the selection
      */
-    setSelectionCharacter(character){}
+    setSelectionCharacter(character){} //NOSONAR
 
     /**
      * @method
      * It allows you to set the function that will be called when a longClick on a checklist item is performed
      * @param func {function}
      */
-    setOnLongClick(func){}
+    setOnLongClick(func){} //NOSONAR
 
     /**
      * @method
      * It allows you to set the function that will be called when a normal click on a checklist item is performed
      * @param func {function}
      */
-    setOnClick(func){}
+    setOnClick(func){} //NOSONAR
 
     /**
      * @method
      * It allows you to check an item on the checklist or to remove a tick from it.
      * @param checked {boolean}: A boolean value that represents the state of the item: checked or not
      */
-    setChecked(checked){}
+    setChecked(checked){} //NOSONAR
     /**
      * @method
      * _isChecked getter

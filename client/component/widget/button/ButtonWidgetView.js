@@ -25,47 +25,47 @@ export class ButtonWidgetView extends BaseWidget {
      * Allows to set the text contained in the ButtonWidget
      * @param text {string}
      */
-    setText(text) {}
+    setText(text) {} //NOSONAR
 
     /**
      * @method
      * Allows to set the width of the ButtonWidget
      * @param width {string}
      */
-    setWidth(width) {}
+    setWidth(width) {} //NOSONAR
 
     /**
      * @method
      * Allows to set the height of the ButtonWidget
      * @param height {string}
      */
-    setHeight(height) {}
+    setHeight(height) {} //NOSONAR
 
     /**
      * @method
      * Allows to set the color of the ButtonWidget
      * @param color {string}
      */
-    setBackgroundColor(color) {}
+    setBackgroundColor(color) {} //NOSONAR
 
     /**
      * @method
      * Allows to set a function to be performed on the click of the ButtonWidget
      * @param action {Object}
      */
-    setOnClickAction(action) {}
+    setOnClickAction(action) {} //NOSONAR
 
     /**
      * @method
      * Allows to set a function to be performed on the extended click of the ButtonWidget
      * @param action {Object}
      */
-    setOnLongClickAction(action) {}
+    setOnLongClickAction(action) {} //NOSONAR
 
     /**
      * @method
      * Allows to set the number of milliseconds that is needed to keep the ButtonWidget clicked before the long click action triggers
      * @param milliseconds {number}
      */
-    setOnLongClickActionTimer(milliseconds) {}
+    setOnLongClickActionTimer(milliseconds) {} //NOSONAR
 }
