@@ -112,8 +112,8 @@ export class ImageWidgetPresenter {
         if (!this._dom) {
             this._dom = renderer(this._map);
         };
-        this._dom.firstChild.childNodes[1].onerror = function (e) {
-            console.log(" errore nel immagine");
+        this._dom.firstChild.childNodes[1].onerror = function (e) { //NOSONAR
+            throw new Exception("Error during the rendering of the image");
         };
         return this._dom;
     }

@@ -27,33 +27,33 @@ export class TextWidgetView extends BaseWidget{
      * Allows to set the text in the TextWidget
      * @param text {string}
      */
-    setText(text) {}
+    setText(text) {} //NOSONAR
 
     /**
      * @method
      * Allows to set the color of the text in the TextWidget
      * @param color {string}
      */
-    setTextColor(color) {}
+    setTextColor(color) {} //NOSONAR
 
     /**
      * @method
      * Allows to choose if format the text contained in the TextWidget with markdown or not
      * @param format {boolean}
      */
-    setFormatText(format) {}
+    setFormatText(format) {} //NOSONAR
 
     /**
      * @method
      * Allows to set the color of the URLs contained in the text of the TextWidget
      * @param color {string}
      */
-    setUrlHighlightColor(color) {}
+    setUrlHighlightColor(color) {} //NOSONAR
 
     /**
      * @method
      * Allows to set the size of the text contained in the TextWidget
      * @param size {number}
      */
-    setTextSize(size) {}
+    setTextSize(size) {} //NOSONAR
 }

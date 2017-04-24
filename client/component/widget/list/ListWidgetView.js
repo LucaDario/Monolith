@@ -12,7 +12,7 @@ export class ListWidgetView extends BaseWidget{
         }
     }
 
-    addItem(item) {};
+    addItem(item) {}; //NOSONAR
     /**
      * @method
      * It changes the indicator of the list in numbers. The result will be an ordered list.
@@ -28,7 +28,7 @@ export class ListWidgetView extends BaseWidget{
      * It changes the indicator of the list in dash. The result will be a list with dashes.
      */
     setCharacterDash() {};
-    setColor(color) {};
+    setColor(color) {}; //NOSONAR
     getColor(){}
     getOptions(){}
     getCharacter(){}

@@ -13,7 +13,7 @@ export class ChecklistItemWidgetView extends BaseWidget{
     /**
      * Public constructor
      */
-    constructor(text,check = false){
+    constructor(){
         super();
         if (this.constructor ===  ChecklistItemWidgetView) {
             throw new TypeError("Cannot construct ChecklistWidgetView instances directly");
