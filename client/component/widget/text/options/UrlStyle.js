@@ -43,7 +43,7 @@ export class UrlStyle {
      * @param color {string}
      */
     setHighlightColor(color) {
-        let pat= new RegExp('#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$');
+        const pat= new RegExp('#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$');
         if (typeof color === "string" && pat.test(color))
             this._highlightColor=color;
         else

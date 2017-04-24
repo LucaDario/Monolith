@@ -61,8 +61,7 @@ describe('TextWidget', function () {
         expect(strongNodes.length).to.be.eq(2);
         expect(strongNodes[0].innerText).to.be.eq('Strong');
         expect(strongNodes[1].innerText).to.be.eq('2Strong');
-        const notStrongNodes = tWidget.renderView().getElementsByTagName('p');
-        
+
     });
 
     it('Check that the default text color is black [TU7]', function () {
