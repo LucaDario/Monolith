@@ -1,17 +1,17 @@
 // Project key
-def projectKey = 'swe-monolith'
+String projectKey = 'swe-monolith'
 
 // Project name
-def projectName = 'Monolith'
+String projectName = 'Monolith'
 
 // Node where this job can run
-def targetNode = 'master'
+String targetNode = 'master'
 
 // Define if at the of the job should start the deploying procedure
 def deployOnProduction = false
 
 // Branch that hold the code that will go in production.
-def productionBranch = 'master'
+String productionBranch = 'master'
 
 node(targetNode) {
 
@@ -38,7 +38,7 @@ node(targetNode) {
     }
 
     sendSlackMessage("Job #${env.BUILD_NUMBER} per ${projectName} nel ramo ${env.BRANCH_NAME} terminato", 'good')
-    sendSonaraReport()
+    sendSonarReport()
 
 }
 
@@ -48,7 +48,7 @@ node(targetNode) {
  * @param statusColor:  This value is used to color the border along the left side of the message attachment,
  *          can either be one of good, warning, danger, or any hex color code (eg. #439FE0).
  */
-void sendSlackMessage(text, statusColor) {
+void sendSlackMessage(GString text, String statusColor) {
     withCredentials([[$class: 'StringBinding', credentialsId: 'NpeSlackToken',
                         variable: 'TOKEN']]) {
         slackSend channel: '#ci', color: statusColor, message: text, teamDomain: 'npedevelopers', token: '$TOKEN'
@@ -56,9 +56,8 @@ void sendSlackMessage(text, statusColor) {
 }
 
 
-void sendSonaraReport(){
-    sendSlackMessage("Esito del'analisi statica disponibile al link:\n" +
-            "http://163.172.166.135:9000/dashboard?id=${projectKey}-${env.BRANCH_NAME}",
-            "#32B5C1"
+void sendSonarReport(){
+    sendSlackMessage("Esito del'analisi statica disponibile al link:\nhttp://163.172.166.135:9000/dashboard?id=${projectKey}-${env.BRANCH_NAME}",
+            '#32B5C1'
     )
 }
