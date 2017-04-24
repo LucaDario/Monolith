@@ -792,7 +792,7 @@ this.activeTarget=b,this.clear();var c=this.selector+'[data-target="'+b+'"],'+th
             <div class="nav-inner" id="scroll-spy">
               <span class="toc"></span>
               <ul class="nav"><li><p>User manual</p>
-<ul class="nav"><li class="active"><a href="#Introduction">Introduction</a></li><li><a href="#Contents-of-the-guide">Contents of the guide</a></li><li><a href="#Getting-started">Getting started</a></li><li><a href="#Classes-structure">Classes structure</a></li><li><a href="#Usage">Usage</a><ul class="nav"><li><a href="#Widgets-usage">Widgets</a><ul class="nav"><li><a href="#TextWidget">TextWidget</a></li><li><a href="#ButtonWidget">ButtonWidget</a></li><li><a href="#ImageWidget">ImageWidget</a></li><li><a href="#ListWidget">ListWidget</a></li><li><a href="UserManual/Usage-sections/1-Widgets/1-CheckListItemWidget.md">CheckListItemWidget</a></li><li><a href="#Create-a-custom-widget">Create a new widget</a></li></ul></li><li><a href="#Layouts-usage">Layouts</a><ul class="nav"><li><a href="#HorizontalLayout">HorizontalLayout</a></li><li><a href="#VerticalLayout">VerticalLayout</a></li><li><a href="#Create-a-custom-layout">Create a custom layout</a></li></ul></li><li><a href="#Bubbles-usage">Bubbles</a><ul class="nav"><li><a href="#MarkdownBubble">MarkdownBubble</a></li><li><a href="#AlertBubble">AlertBubble</a></li><li><a href="#ToDoListBubble">ToDoListBubble</a></li><li><a href="#Create-a-custom-bubble">Create a custom bubble</a></li></ul></li></ul></li></ul></li><li><p>Other</p>
+<ul class="nav"><li class="active"><a href="#Introduction">Introduction</a></li><li><a href="#Contents-of-the-guide">Contents of the guide</a></li><li><a href="#Getting-started">Getting started</a></li><li><a href="#Classes-structure">Classes structure</a></li><li><a href="#Usage">Usage</a><ul class="nav"><li><a href="#Widgets-usage">Widgets</a><ul class="nav"><li><a href="#TextWidget">TextWidget</a></li><li><a href="#ButtonWidget">ButtonWidget</a></li><li><a href="#ImageWidget">ImageWidget</a></li><li><a href="#ListWidget">ListWidget</a></li><li><a href="#CheckListItemWidget">CheckListItemWidget</a></li><li><a href="#Create-a-custom-widget">Create a new widget</a></li></ul></li><li><a href="#Layouts-usage">Layouts</a><ul class="nav"><li><a href="#HorizontalLayout">HorizontalLayout</a></li><li><a href="#VerticalLayout">VerticalLayout</a></li><li><a href="#Create-a-custom-layout">Create a custom layout</a></li></ul></li><li><a href="#Bubbles-usage">Bubbles</a><ul class="nav"><li><a href="#MarkdownBubble">MarkdownBubble</a></li><li><a href="#AlertBubble">AlertBubble</a></li><li><a href="#ToDoListBubble">ToDoListBubble</a></li><li><a href="#Create-a-custom-bubble">Create a custom bubble</a></li></ul></li></ul></li></ul></li><li><p>Other</p>
 <ul class="nav"><li><a href="#Installing-Monolith-local">Installing Monolith</a></li><li><a href="#Tests">Performing tests</a></li></ul></li></ul>
               
             </div>
@@ -854,7 +854,7 @@ done using Monolith.</p>
 <p class="page" id="Widgets-usage"></p><h1>Widgets</h1>
 <p class="page" id="TextWidget"></p><h1>TextWidget</h1>
 <pre class="hljs"><span class="hljs-comment">// Create a TextWidget</span>
-<span class="hljs-keyword">let</span> textWidget = <span class="hljs-keyword">new</span> Monolith.Widget.TextWidget();
+<span class="hljs-keyword">let</span> textWidget = <span class="hljs-keyword">new</span> Monolith.Widget.TextWidget;
 
 <span class="hljs-comment">// Set the text. Markdown notation is also supported</span>
 textWidget.setText(<span class="hljs-string">"Foo"</span>);
@@ -873,7 +873,7 @@ textWidget.setUrlHighligthColor(<span class="hljs-string">"#EE42F4"</span>);
 textWidget.setFormatText(<span class="hljs-literal">true</span>);
 textWidget.setFormatText(<span class="hljs-literal">false</span>);</pre><p class="page" id="ButtonWidget"></p><h1>ButtonWidget</h1>
 <pre class="hljs"><span class="hljs-comment">// Create a ButtonWidget</span>
-<span class="hljs-keyword">let</span> buttonWidget = <span class="hljs-keyword">new</span> Monolith.Widget.ButtonWidget();
+<span class="hljs-keyword">let</span> buttonWidget = <span class="hljs-keyword">new</span> Monolith.Widget.ButtonWidget;
 
 <span class="hljs-comment">// Set the dimensions of the button</span>
 buttonWidget.setWidth(<span class="hljs-number">100</span>);
@@ -895,7 +895,7 @@ buttonWidget.setOnLongClickAction(<span class="hljs-function"><span class="hljs-
 <span class="hljs-comment">// Set the milliseconds that need to pass before a click is considered a long click</span>
 buttonWidget.setOnLongClickActionTimer(<span class="hljs-number">500</span>);</pre><p class="page" id="ImageWidget"></p><h1>ImageWidget</h1>
 <pre class="hljs"><span class="hljs-comment">// Create the ImageWidget</span>
-<span class="hljs-keyword">let</span> imageWidget = <span class="hljs-keyword">new</span> Monolith.Widget.ImageWidget();
+<span class="hljs-keyword">let</span> imageWidget = <span class="hljs-keyword">new</span> Monolith.Widget.ImageWidget;
 
 <span class="hljs-comment">// Set the image associated with the widget</span>
 imageWidget.setImage(<span class="hljs-string">"path/to/image.png"</span>);
@@ -904,7 +904,7 @@ imageWidget.setImage(<span class="hljs-string">"path/to/image.png"</span>);
 imageWidget.setWidth(<span class="hljs-number">200</span>);
 imageWidget.setHeight(<span class="hljs-number">50</span>);</pre><p class="page" id="ListWidget"></p><h1>ListWidget</h1>
 <pre class="hljs"><span class="hljs-comment">// Create the ListWidget</span>
-<span class="hljs-keyword">let</span> listWidget = <span class="hljs-keyword">new</span> Monolith.Widget.ListWidget();
+<span class="hljs-keyword">let</span> listWidget = <span class="hljs-keyword">new</span> Monolith.Widget.ListWidget;
 
 <span class="hljs-comment">// Add items to the list</span>
 listWidget.addItem(<span class="hljs-string">"First"</span>);
@@ -916,7 +916,47 @@ listWidget.setCharacterNumber(); <span class="hljs-comment">// Numbered list</sp
 listWidget.setCharacterCircle(); <span class="hljs-comment">// Unnumbered list</span>
 
 <span class="hljs-comment">// Set the indicator color</span>
-listWidget. setColor(<span class="hljs-string">"#292929"</span>);</pre><p class="page" id="Create-a-custom-widget"></p><h1>Create a new widget</h1>
+listWidget. setColor(<span class="hljs-string">"#292929"</span>);</pre><p class="page" id="CheckListItemWidget"></p><h1>CheckListItemWidget</h1>
+<pre class="hljs"><span class="hljs-comment">// Create a new CheckListItemWidget</span>
+<span class="hljs-keyword">let</span> checkListItemWidget = <span class="hljs-keyword">new</span> Monolith.Widget.CheckListItemWidget;
+
+<span class="hljs-comment">// Set the text associated with the item</span>
+checkListItemWidget.setText(<span class="hljs-string">"Click me!"</span>);
+
+<span class="hljs-comment">// Customize the check appereance</span>
+checkListItemWidget.setUseSelectionMark(<span class="hljs-literal">true</span>); <span class="hljs-comment">// Color the check box instead of using a check tick</span>
+checkListItemWidget.setSelectionColor(<span class="hljs-string">"#AAAAAA"</span>); <span class="hljs-comment">// Set the color that will be used to color the check box</span>
+checkListItemWidget.setUseSelectionMark(<span class="hljs-literal">false</span>); <span class="hljs-comment">// Use a check tick</span>
+checkListItemWidget.setSelectionCharacter(<span class="hljs-string">"X"</span>); <span class="hljs-comment">// Set the character used as check tick</span>
+
+<span class="hljs-comment">// Check or un-check the option</span>
+checkListItemWidget.setChecked(<span class="hljs-literal">true</span>); <span class="hljs-comment">// Checked</span>
+checkListItemWidget.setChecked(<span class="hljs-literal">false</span>); <span class="hljs-comment">// Un-checked</span>
+
+<span class="hljs-comment">// Know it the option is checked or not</span>
+<span class="hljs-keyword">let</span> isChecked = checkListItemWidget.isChecked();
+<span class="hljs-keyword">if</span> (isChecked){
+    <span class="hljs-comment">// The option is checked</span>
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-comment">// The option is not checked</span>
+}
+
+
+<span class="hljs-comment">// Set the action to perform on click</span>
+checkListItemWidget.setOnClick(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>)</span>{
+    <span class="hljs-comment">// The item parameter represents the view of the item that has been clicked</span>
+    item.setText(<span class="hljs-string">"New text after click"</span>);
+});
+
+<span class="hljs-comment">// Set the action to perform after a long click (1000 ms)</span>
+checkListItemWidget.setOnLongClick(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-comment">// The item parameter represents the view of the item that has been clicked</span>
+   item.setText(<span class="hljs-string">"New text after long click"</span>);
+});
+
+
+<span class="hljs-comment">// Delete the item</span>
+checkListItemWidget.removeOption();</pre><p class="page" id="Create-a-custom-widget"></p><h1>Create a new widget</h1>
 <p>In order to create a new custom widget and add it to Monolith so than you can use it like the default ones, you have todo 
 as follows.</p>
 <p><strong>1</strong>. Create a new class which extends from <code>BaseWidget</code></p>
@@ -954,7 +994,7 @@ bubble, so that the bubble will render it and show it to the user.</p>
 <p class="page" id="Layouts-usage"></p><h1>Layouts</h1>
 <p class="page" id="HorizontalLayout"></p><h1>HorizontalLayout</h1>
 <pre class="hljs"><span class="hljs-comment">// Create a new HorizontalLayout</span>
-<span class="hljs-keyword">let</span> horizontalLayout = <span class="hljs-keyword">new</span> Monolith.Layout.HorizontalLayout();
+<span class="hljs-keyword">let</span> horizontalLayout = <span class="hljs-keyword">new</span> Monolith.Layout.HorizontalLayout;
 
 <span class="hljs-comment">// Add a widget to the right of the layout</span>
 horizontalLayout.addComponent(myWidget);
@@ -966,7 +1006,7 @@ horizontalLayout.addComponent(myLayout);
 <span class="hljs-keyword">let</span> domElement = horizontalLayout.renderView();
 <span class="hljs-comment">// Perform operations with the returned DOMElement</span></pre><p class="page" id="VerticalLayout"></p><h1>VerticalLayout</h1>
 <pre class="hljs"><span class="hljs-comment">// Create a new VerticalLayout</span>
-<span class="hljs-keyword">let</span> verticalLayout = <span class="hljs-keyword">new</span> Monolith.Layout.VerticalLayout();
+<span class="hljs-keyword">let</span> verticalLayout = <span class="hljs-keyword">new</span> Monolith.Layout.VerticalLayout;
 
 <span class="hljs-comment">// Add a widget to the bottom of the layout</span>
 verticalLayout.addComponent(myWidget);
@@ -1009,9 +1049,143 @@ verticalLayout.addComponent(myLayout);
 
 <span class="hljs-comment">// Perform operations with the layout</span></pre><p class="page" id="Bubbles-usage"></p><h1>Bubbles</h1>
 <p class="page" id="MarkdownBubble"></p><h1>MarkdownBubble</h1>
-<p class="page" id="AlertBubble"></p><h1>AlertBubble</h1>
-<p class="page" id="ToDoListBubble"></p><h1>ToDoListBubble</h1>
-<p class="page" id="Create-a-custom-bubble"></p><h1>Create a custom bubble</h1>
+<pre class="hljs"><span class="hljs-comment">// Create the bubble</span>
+<span class="hljs-keyword">let</span> markdownBubble = <span class="hljs-keyword">new</span> Monolith.Bubble.MarkdownBubble(<span class="hljs-string">"Optional text here"</span>);
+
+<span class="hljs-comment">// Change the bubble text</span>
+markdownBubble.setText(<span class="hljs-string">"Text with **markdown** __inside__"</span>);
+
+<span class="hljs-comment">// Render the bubble</span>
+markdownBubble.renderView();</pre><p class="page" id="AlertBubble"></p><h1>AlertBubble</h1>
+<pre class="hljs"><span class="hljs-comment">// Create the bubble</span>
+<span class="hljs-keyword">let</span> alertBubble = <span class="hljs-keyword">new</span> Monolith.Bubble.AlertBubble;
+
+<span class="hljs-comment">// Set the alert title</span>
+alertBubble.setTitle(<span class="hljs-string">"Warning"</span>);
+
+<span class="hljs-comment">// Set the alert message</span>
+alertBubble.setMessage(<span class="hljs-string">"Please check your data"</span>);
+
+<span class="hljs-comment">// Build the view</span>
+alertBubble.renderView();</pre><p class="page" id="ToDoListBubble"></p><h1>ToDoListBubble</h1>
+<pre class="hljs"><span class="hljs-comment">// Create the ToDoListBubble</span>
+<span class="hljs-keyword">let</span> toDoListBubble = <span class="hljs-keyword">new</span> Monolith.Bubble.ToDoListBubble;
+
+<span class="hljs-comment">// --- GENERIC OPERATIONS ---</span>
+
+<span class="hljs-comment">// Get the id of the bubble</span>
+<span class="hljs-keyword">let</span> id = toDoListBubble.getId();
+
+<span class="hljs-comment">// Set the text associated with the bubble</span>
+toDoListBubble.setText(<span class="hljs-string">"This bubble contains a lot of items that can be checked"</span>);
+
+<span class="hljs-comment">// Set the color of the text</span>
+toDoListBubble.setTextColor(<span class="hljs-string">"#1A5418"</span>);
+
+<span class="hljs-comment">// Tell the bubble to format the text and so support the markdown notation</span>
+toDoListBubble.setFormatText(<span class="hljs-literal">true</span>);
+
+<span class="hljs-comment">// Disable text formatting</span>
+toDoListBubble.setFormatText(<span class="hljs-literal">false</span>);
+
+<span class="hljs-comment">// Set the highlight color for URLs</span>
+toDoListBubble.setUrlHighlightColor(<span class="hljs-string">"#891C15"</span>);
+
+<span class="hljs-comment">// Set the bubble's text size in pixel</span>
+toDoListBubble.setTextSize(<span class="hljs-number">15</span>);
+
+<span class="hljs-comment">// Set the message to show upon completion </span>
+toDoListBubble.setCompletionMessage(<span class="hljs-string">"The list has all been checked."</span>)
+
+
+<span class="hljs-comment">// --- ITEMS OPERATIONS ---</span>
+
+<span class="hljs-comment">// Add an item to the list</span>
+toDoListBubble.addItem(<span class="hljs-string">"First item"</span>);
+
+<span class="hljs-comment">// You can specify a second parameter which tells if the item that is being added</span>
+<span class="hljs-comment">// should be initially checked or not</span>
+toDoListBubble.addItem(<span class="hljs-string">"Second item"</span>, <span class="hljs-literal">true</span>); 
+
+<span class="hljs-comment">// Set the text of an item</span>
+toDoListBubble.setItemText(<span class="hljs-string">"New text"</span>, <span class="hljs-number">0</span>); <span class="hljs-comment">// Changes the text of the first item</span>
+
+<span class="hljs-comment">// Check an item</span>
+toDoListBubble.setChecked(<span class="hljs-literal">true</span>, <span class="hljs-number">0</span>); <span class="hljs-comment">// Checks the first item</span>
+
+<span class="hljs-comment">// Remove an item specifying the index of that item</span>
+toDoListBubble.removeItem(<span class="hljs-number">1</span>); <span class="hljs-comment">// Removes the "Second item" item, as indexes start from 0</span>
+
+
+<span class="hljs-comment">// Tell the bubble to use selection marks when ticking the options</span>
+toDoListBubble.setUseSelectionMark(<span class="hljs-literal">true</span>);
+
+<span class="hljs-comment">// Set the character to use when ticking an option</span>
+toDoListBubble.setSelectionCharacter(<span class="hljs-string">"X"</span>);
+
+<span class="hljs-comment">// Tell the bubble to color the check box when ticking the options</span>
+toDoListBubble.setUseSelectionMark(<span class="hljs-literal">false</span>);
+
+<span class="hljs-comment">// Set the color used to color the check box</span>
+toDoListBubble.setSelectionColor(<span class="hljs-string">"#1D2565"</span>);
+
+<span class="hljs-comment">// Set the function to call when clicking an item</span>
+<span class="hljs-comment">// This function will be called after the click of any of the items.</span>
+<span class="hljs-comment">// The parameter indicates the view of the item that has been clicked</span>
+toDoListBubble.setOnItemClick(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>)</span>{
+    item.setText(<span class="hljs-string">"New text after click"</span>);
+});
+
+<span class="hljs-comment">// Set the function to call when long-clicking an item</span>
+<span class="hljs-comment">// This function will be called after the long click of any of the items.</span>
+<span class="hljs-comment">// The parameter indicates the view of the item that has been long clicked</span>
+toDoListBubble.setOnItemClick(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>)</span>{
+    item.setText(<span class="hljs-string">"New text after long click"</span>);
+});</pre><p class="page" id="Create-a-custom-bubble"></p><h1>Create a custom bubble</h1>
+<p>In order to create a new bubble type you have to do as follows.</p>
+<p><strong>1</strong>. Create a new class which extends from <code>Monolith.Bubble.BaseBubble</code>.</p>
+<pre class="hljs"><span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CustomBubble</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Monolith</span>.<span class="hljs-title">Bubble</span>.<span class="hljs-title">BaseBubble</span> </span>{
+
+    constructor(params){
+        <span class="hljs-keyword">super</span>(); <span class="hljs-comment">// Always remember to call super!</span>
+
+        <span class="hljs-comment">// Do something with the params</span>
+        <span class="hljs-comment">// Setup the bubble</span>
+    }
+
+    customOperation(){
+        <span class="hljs-comment">// Perform a custom operation</span>
+    }
+
+    renderView(){
+        <span class="hljs-keyword">super</span>.renderView(); <span class="hljs-comment">// Again, necessary call</span>
+
+        <span class="hljs-comment">// Return a DOMElement object</span>
+    }
+
+}</pre><p><strong>2</strong>. Put the following code wherever you want. Thi can be done even inside the same file that contains the class
+definition, outside the definition itself.</p>
+<pre class="hljs">Monolith.Bubble.addBubble(<span class="hljs-string">"key"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">message</span>)</span>{
+    <span class="hljs-comment">// Create the bubble</span>
+    <span class="hljs-keyword">let</span> customBubble = <span class="hljs-keyword">new</span> CustomBubble(params);
+
+    <span class="hljs-comment">// Perform the operations you want</span>
+    customBubble.customOperation();
+
+    <span class="hljs-comment">// Return the setup bubble</span>
+    <span class="hljs-keyword">return</span> customBubble;
+});</pre><p>Please note that this function takes two parameters:</p>
+<ol>
+<li>A <code>string</code> which defines the unique key that identifies your custom bubble.<br>A good naming conventions for this key would be using the <a href="https://en.wikipedia.org/wiki/Reverse_domain_name_notation">reverse domain name notation</a>
+(e.g. <code>com.mycompany.bubble.custom</code>) which allows you to identify your custom bubble type among all the other bubbles 
+types.</li>
+<li>A <code>function</code> which takes as parameter a <code>message</code> object that identifies a 
+<a href="https://rocket.chat/docs/developer-guides/realtime-api/the-message-object/">Rocket.chat message</a>.<br>This function is the one that creates the bubble, taking data from the parameter object, performs operation on
+it if there&#39;s the need, and then return it.</li>
+</ol>
+<h5 id="note">Note</h5>
+<p>All of the written above should be made <strong>only</strong> inside the <code>client</code> directory of your Meteor project, otherwise it will
+make your application crash.</p>
 <p class="page" id="Installing-Monolith-local"></p><h1>Installing Monolith</h1>
 <p><strong>1.</strong> Creare una struttura delle cartelle come segue</p>
 <pre class="hljs">|<span class="hljs-string">- Rocket.chat
