@@ -9,7 +9,7 @@ RocketChat.callbacks.add('renderMessage', (message) => {
     const results = regEx.exec(message.msg);
     let bubbleType = null;
 
-    if(message.hasOwnProperty(bubbleType)){
+    if(message.hasOwnProperty('bubbleType')){
         bubbleType = message.bubbleType;
     }
     else if(results !== null){
