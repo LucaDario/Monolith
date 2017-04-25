@@ -12,7 +12,16 @@ describe('HorizontalLayoutView', function () {
 			).to.not.throw();
 	});
 
-    it("Check that can't add itself", function () {
+    it("Check items adding [TU40]", function () {
+        // This code will be executed by the test driver when the app is started
+        // in the correct mode
+        const layout = new HorizontalLayoutView();
+        layout.addItem(new HorizontalLayoutView());
+        layout.addItem(new HorizontalLayoutView());
+        expect(layout.getItems().length).to.be.eq(2);
+    });
+
+    it("Check that can't add itself [TU41]", function () {
         // This code will be executed by the test driver when the app is started
         // in the correct mode
         const layout = new HorizontalLayoutView();
@@ -21,15 +30,6 @@ describe('HorizontalLayoutView', function () {
                 layout.addItem(layout);
             }
         ).to.throw();
-    });
-
-    it("Check items adding", function () {
-        // This code will be executed by the test driver when the app is started
-        // in the correct mode
-        const layout = new HorizontalLayoutView();
-        layout.addItem(new HorizontalLayoutView());
-        layout.addItem(new HorizontalLayoutView());
-        expect(layout.getItems().length).to.be.eq(2);
     });
 
     it("Check items rendering", function () {

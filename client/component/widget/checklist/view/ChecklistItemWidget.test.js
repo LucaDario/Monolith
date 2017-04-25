@@ -95,4 +95,16 @@ describe('ChecklistWidgetItemItem', function () {
         expect(symbolLogic).to.be.eq('');
     });
 
+    it('[TU30]', function () {
+        // This code will be executed by the test driver when the app is started
+        // in the correct mode - part of TU15
+        throw new TypeError("NOT IMPLEMENTED");
+    });
+
+    it('[TU31]', function () {
+        // This code will be executed by the test driver when the app is started
+        // in the correct mode - part of TU15
+        throw new TypeError("NOT IMPLEMENTED");
+    });
+
 });

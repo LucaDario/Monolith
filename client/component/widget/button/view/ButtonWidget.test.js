@@ -115,4 +115,28 @@ describe('ButtonWidget', function () {
             }
         ).to.not.throw();
     });
+
+    it('[TU20]', function () {
+        // This code will be executed by the test driver when the app is started
+        // in the correct mode - part of TU15
+        throw new TypeError("NOT IMPLEMENTED");
+    });
+
+    it('[TU21]', function () {
+        // This code will be executed by the test driver when the app is started
+        // in the correct mode - part of TU15
+        throw new TypeError("NOT IMPLEMENTED");
+    });
+
+    it('[TU22]', function () {
+        // This code will be executed by the test driver when the app is started
+        // in the correct mode - part of TU15
+        throw new TypeError("NOT IMPLEMENTED");
+    });
+
+    it('[TU23]', function () {
+        // This code will be executed by the test driver when the app is started
+        // in the correct mode - part of TU15
+        throw new TypeError("NOT IMPLEMENTED");
+    });
 });
