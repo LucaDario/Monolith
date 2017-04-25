@@ -5,6 +5,7 @@
  */
 
 import {BaseWidget} from "../BaseWidget"
+import './TextWidget.less';
 
 export class TextWidgetView extends BaseWidget{
 

@@ -112,6 +112,7 @@ export class TextWidgetPresenter {
     renderView() {
         if(this._dom === null){
             this._dom = document.createElement('div');
+            this._dom.setAttribute('class', 'markdown');
             this._updateText();
             this._updateLinkColor();
         }
