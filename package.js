@@ -105,8 +105,6 @@ Package.onTest(function(api) {
         'client/component/widget/list/style/Indicator.js',
         'client/component/widget/text/TextWidgetView.test.js',
         'client/component/widget/text/view/TextWidget.test.js',
-        'client/bubble/bubble.less',
-        'client/component/widget/text/TextWidget.less',
         'client/bubble/libraries.html'
     ], 'client');
 
