@@ -43,11 +43,11 @@ describe('ImageWidgetPresenter', function () {
     });
 
     it("Check if the Widget set the exact dimension of the image [TU11]", function () {
-        //throw new TypeError("NOT IMPLEMENTED");
+        throw new TypeError("NOT IMPLEMENTED");
     });
 
     it("Check if the Widget have the default dimensions [TU12]", function () {
-        //throw new TypeError("NOT IMPLEMENTED");
+        throw new TypeError("NOT IMPLEMENTED");
     });
 
     it("Check if the Widget have correct dimensions [TU13]", function () {
