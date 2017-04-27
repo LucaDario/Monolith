@@ -26,7 +26,7 @@ export class ButtonWidgetPresenter {
 
         let longpress = false;
 
-        let _this=this;
+        const _this=this;
 
         /*  this function is bound to the onclick of the button
          it calls onClickAction and onLongClickAction
