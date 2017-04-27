@@ -41,7 +41,7 @@ describe('ListWidgetPresenter', function () {
         let cond = false;
         const text = dom.firstChild.textContent;
         for(let i=0; i<text.length && !cond; i++){
-            if(text[i] == 1){
+            if(text[i] === 1){
                 cond = true;
             }
         }

@@ -92,7 +92,7 @@ export class ListWidgetPresenter {
             });
         }
 
-        if(this._dom == null){
+        if(this._dom === null){
             this._dom = renderer(this._map); // DOM OBJECT    <.... style = '.classe' .../>
         }
         return this._dom;
