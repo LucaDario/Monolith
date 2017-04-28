@@ -18,7 +18,7 @@ export class ListWidget extends ListWidgetView{
     /**
      * @method
      * It adds an item in the list
-     * @param item Object : represents the item that will be added in the list
+     * @param item [string}: represents the item that will be added in the list
      */
     addItem(item) {
         this._presenter.addItem(item);
@@ -45,24 +45,49 @@ export class ListWidget extends ListWidgetView{
         this._presenter.setCharacterDash();
     }
 
+    /**
+     * @method
+     * Sets the color of the character used for the list
+     * @param color {string} : the color chosen by the user
+     */
+
     setColor(color) {
         this._presenter.setColor(color);
     }
+
+    /**
+     * @method
+     * returns the color of the character
+     * @return {string}: the color of the character
+     */
 
     getColor(){
         return this._presenter.getColor();
     }
 
+    /**
+     * @method
+     * returns the array of item in the list
+     * @return {array} : it returns the items in the list
+     */
+
     getOptions(){
         return this._presenter.getOptions();
     }
+
+    /**
+     * @method
+     * returns the character used for the list
+     * @return {string} : represents the character
+     */
 
     getCharacter(){
         return this._presenter.getCharacter();
     }
     /**
      * @method
-     * return the HTML and CSS of the ListWidget
+     * returns the HTML and CSS of the ListWidget
+     * @return {dom} : returns the dom element in which there are HTML and CSS for the list
      */
     renderView(){
         return this._presenter.renderView();

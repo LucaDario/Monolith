@@ -5,6 +5,8 @@
 
 import {ButtonWidget} from '../component/widget/button/view/ButtonWidget';
 import {TextWidget} from '../component/widget/text/view/TextWidget';
+import {ChecklistItemWidget} from '../component/widget/checklist/view/ChecklistItemWidget';
+import {ListWidget} from '../component/widget/list/view/ListWidget';
 
 describe('Integration test', function () {
     it('[TI1]', function () {
@@ -104,7 +106,6 @@ describe('Integration test', function () {
 
         //verify if the CSS changes
         const domNode = text._presenter.renderView();
-        console.log(domNode);
         expect(domNode.getElementsByTagName('p')[0].style.color).to.be.eq('rgb(255, 0, 0)');
     });
 
@@ -135,7 +136,72 @@ describe('Integration test', function () {
         text.setUrlHighlightColor('#f00');
 
         // verify the correct color of the link
-        const domNode = text._presenter.renderView().getElementsByTagName('a')[0];
+        const domNode = text.renderView().getElementsByTagName('a')[0];
         expect(domNode.style.color).to.be.eq('rgb(255, 0, 0)');
+    });
+
+    it('[TI11]', function () {
+        const text = new TextWidget();
+        text.setTextSize(4);
+
+        // verify the correct color of the link
+        const domNode = text.renderView();
+        expect(domNode.getElementsByTagName('p')[0].style.fontSize).to.be.eq('4px');
+    });
+
+    it('[TI12]', function () {
+        const check = new ChecklistItemWidget('test');
+        check.setUseSelectionMark(true);
+
+        expect(check._presenter._style._useSelectionMark).to.be.eq(true);
+    });
+
+    it('[TI13]', function () {
+        const check = new ChecklistItemWidget('test');
+        check.setUseSelectionMark(true);
+
+        check.setSelectionColor('#f00');
+
+        const box = check._presenter.renderView().childNodes[0].childNodes[1];
+        const symbol = check._presenter.renderView().childNodes[0].childNodes[1].childNodes[0];
+        expect(box.style.backgroundColor).to.be.eq('rgb(255, 255, 255)');
+        expect(symbol.style.backgroundColor).to.be.eq('rgb(255, 255, 255)');
+    });
+
+    it('[TI14]', function () {
+        const check = new ChecklistItemWidget('test');
+        check.setUseSelectionMark(true);
+        check.setSelectionCharacter('&#x2717;');
+
+        const symbolLogic = check._presenter._style.getSelectionCharacter();
+        const symbol = check.renderView();//.childNodes[0].childNodes[1].childNodes[0];
+        console.log(symbol);
+        //expect(symbol.innerHTML).to.be.eq('✗');
+        expect(symbolLogic).to.be.eq('&#x2717;');
+    });
+
+    it('[TI15]', function(){
+        const list = new ListWidget();
+        list.addItem("test");
+
+        const dom = list.renderView();
+        console.log(dom.firstChild.firstChild);
+        expect(dom.firstChild.firstChild).to.not.equal(undefined);
+    });
+
+    it('[TI16]', function(){
+        const list = new ListWidget();
+        list.addItem("test");
+        list.setCharacterCircle();
+
+        const dom = list.renderView();
+        let cond = false;
+        const text = dom.firstChild.textContent;
+        for(let i=0; i<text.length && !cond; i++){
+            if(text[i] === "•"){
+                cond = true;
+            }
+        }
+        expect(cond).to.be.eq(true);
     });
 });

@@ -48,17 +48,41 @@ export class ListWidgetPresenter {
         this._indicator.setCharacterDash();
     }
 
+    /**
+     * @method
+     * Sets the color of the character used for the list
+     * @param color {string} : the color chosen by the user
+     */
+
     setColor(color){
         this._indicator.setColor(color);
     }
+
+    /**
+     * @method
+     * returns the character used for the list
+     * @return {string} : represents the character
+     */
 
     getCharacter(){
         return this._indicator.getCharacter();
     }
 
+    /**
+     * @method
+     * returns the color of the character
+     * @return {string}: the color of the character
+     */
+
     getColor(){
         return this._indicator.getColor();
     }
+
+    /**
+     * @method
+     * returns the array of item in the list
+     * @return {array} : it returns the items in the list
+     */
 
     getOptions(){
         return this._options;
@@ -66,7 +90,8 @@ export class ListWidgetPresenter {
 
     /**
      * @method
-     * return the HTML and CSS of the ListWidget
+     * returns the HTML and CSS of the ListWidget
+     * @return {dom} : returns the dom element in which there are HTML and CSS for the list
      */
     renderView(){
         if(!this._map) {
