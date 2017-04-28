@@ -45,12 +45,31 @@ export class TextWidgetPresenter {
 
     /**
      * @method
+     * Returns the text of the widget
+     * @return {string} : text of the widget
+     */
+    getText(){
+        return this._textstyle.getText();
+    }
+
+    /**
+     * @method
+     * Returns the color of the text
+     * @return {string} : color of the text
+     */
+
+    getColor(){
+        return this._textstyle.getColor();
+    }
+
+    /**
+     * @method
      * Allows to set the text in the TextWidget
      * @param text {string}
      */
     setText(text) {
         this._textstyle.setText(text);
-        if(this._dom !== null) {
+        if (this._dom !== null) {
             this._updateText();
         }
     }
@@ -110,8 +129,9 @@ export class TextWidgetPresenter {
      * @return {Object}
      */
     renderView() {
-        if(this._dom === null){
+        if(this._dom === null || this._dom === undefined){
             this._dom = document.createElement('div');
+            this._dom.setAttribute('class', 'markdown');
             this._updateText();
             this._updateLinkColor();
         }

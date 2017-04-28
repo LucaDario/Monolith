@@ -95,18 +95,23 @@ Package.onTest(function(api) {
         'client/component/widget/BaseWidget.test.js',
         'client/component/widget/button/ButtonWidgetView.test.js',
         'client/component/widget/button/view/ButtonWidget.test.js',
+        'client/component/widget/button/presenter/ButtonWidgetPresenter.test.js',
         'client/component/widget/checklist/ChecklistItemWidgetView.test.js',
         'client/component/widget/checklist/view/ChecklistItemWidget.test.js',
+        'client/component/widget/checklist/presenter/ChecklistItemWidgetPresenter.test.js',
         'client/component/widget/image/ImageWidgetView.test.js',
         'client/component/widget/image/view/ImageWidget.test.js',
+        'client/component/widget/image/presenter/ImageWidgetPresenter.test.js',
         'client/component/widget/list/ListWidgetView.test.js',
         'client/component/widget/list/view/ListWidget.test.js',
-        'client/component/widget/list/presenter/ListWidgetPresenter.js',
-        'client/component/widget/list/style/Indicator.js',
+        'client/component/widget/list/presenter/ListWidgetPresenter.test.js',
         'client/component/widget/text/TextWidgetView.test.js',
         'client/component/widget/text/view/TextWidget.test.js',
-        'client/bubble/bubble.less',
+        'client/component/widget/text/presenter/TextWidgetPresenter.test.js',
+        'client/component/widget/list/style/Indicator.js',
         'client/bubble/libraries.html'
     ], 'client');
+
+    api.addFiles(['client/testIntegrazione/TestIntegrazione.js'], 'client');
 
 });

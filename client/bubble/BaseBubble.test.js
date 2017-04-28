@@ -7,7 +7,7 @@ describe('BaseBubble', function () {
         // in the correct mode
         expect(
             () => {
-                new BaseBubble();
+                new BaseBubble(); //NOSONAR
             }
         ).to.throw();
     });

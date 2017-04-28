@@ -28,7 +28,7 @@ export class HorizontalLayoutView extends BaseLayout{
             this._dom.setAttribute('class', 'hl');
             const childs = this.getItems();
             for(let i = 0; i < childs.length; i++){
-                let column = this._createColumn();
+                const column = this._createColumn();
                 column.appendChild(childs[i].renderView());
                 this._dom.appendChild(column);
             }
@@ -44,7 +44,7 @@ export class HorizontalLayoutView extends BaseLayout{
     addItem(component) {
         super.addItem(component);
         if(this._dom !== null){
-            let column = this._createColumn();
+            const column = this._createColumn();
             column.appendChild(component.renderView());
             this._dom.appendChild(column);
         }

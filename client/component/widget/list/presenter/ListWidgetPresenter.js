@@ -72,7 +72,7 @@ export class ListWidgetPresenter {
         if(!this._map) {
             var renderer = Monolith.can.stache('<dl>' + '{{text}}' + '</dl>');
             let html = ""; //variable that represents the html that will be returned by this function
-            if (this._indicator.getCharacter() == "decimal") {
+            if (this._indicator.getCharacter() === "decimal") {
                 for (let i = 1; i <= this._options.length; i++) {
                     //<dd> <span> 1) </span> Example </dd>
                     html = html + '<dd>' + '<span style="color:'+ this._indicator.getColor()+'">'
@@ -92,7 +92,7 @@ export class ListWidgetPresenter {
             });
         }
 
-        if(this._dom == null){
+        if(this._dom === null || this._dom === undefined){
             this._dom = renderer(this._map); // DOM OBJECT    <.... style = '.classe' .../>
         }
         return this._dom;

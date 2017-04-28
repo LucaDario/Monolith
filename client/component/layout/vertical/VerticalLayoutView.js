@@ -24,7 +24,7 @@ export class VerticalLayoutView extends BaseLayout{
     renderView(){
         if(this._dom === null) {
             this._dom = document.createElement("div");
-            let items = this.getItems();
+            const items = this.getItems();
             for(let i = 0; i < items.length; i++){
                 this._dom.append(items[i].renderView());
             }

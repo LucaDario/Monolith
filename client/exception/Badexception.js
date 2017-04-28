@@ -18,12 +18,12 @@ export class BadException  extends Exception{
 
     constructor(message,parameter){
         //noinspection JSAnnotator
-        if (message==undefined)
+        if (message===undefined)
         {
             message='';
         }
 
-        if (parameter!=undefined){
+        if (parameter!==undefined){
 
             message= message + ' il parametro che da errore è il :' + parameter;
         }

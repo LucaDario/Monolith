@@ -22,7 +22,43 @@ export class ButtonWidgetPresenter {
         this._onClickAction = null;
         this._onLongClickAction = null;
         this._map = null;
-        this._dom= null;
+        this._dom= document.createElement("div");
+
+        let longpress = false;
+
+        const _this=this;
+
+        /*  this function is bound to the onclick of the button
+         it calls onClickAction and onLongClickAction
+         */
+        this._dom.onclick= function(e) {
+                if (longpress) {
+                    e.preventDefault();
+                }
+        };
+
+        let startTime, endTime;
+        this._dom.onmousedown = function () {
+            startTime = new Date().getTime();
+        };
+
+        this._dom.onmouseup =  function () {
+            endTime = new Date().getTime();
+            if (endTime - startTime < _this._millisecondsBeforeOnLongClickActs || _this._millisecondsBeforeOnLongClickActs===0) {
+                longpress = false;
+                if (_this._onClickAction!==null) {
+                    _this._onClickAction();
+                    _this._view.getEvent().emitClickButtonEvent();
+                }
+            }
+            else {
+                longpress = true;
+                if (_this._onLongClickAction!==null) {
+                    _this._onLongClickAction();
+                    _this._view.getEvent().emitLongClickButtonEvent();
+                }
+            }
+        };
     }
 
     /**
@@ -140,9 +176,9 @@ export class ButtonWidgetPresenter {
      * @return {Object}
      */
     renderView() {
-        let _this = this;
+        const _this = this;
 
-        let ldom= document.createElement("div");
+        const ldom= _this._dom;
         ldom.className= "button btn";
         ldom.innerHTML = _this.getText();
 
@@ -150,7 +186,7 @@ export class ButtonWidgetPresenter {
         ldom.style.height= _this.getHeight();
 
         //this is the only way to make it work
-        let c = _this.getColor().split("");
+        const c = _this.getColor().split("");
         //two options for 3 or 6 hex number for color
         if (c.length === 7) {
             ldom.style.backgroundColor = c[0] + c[1] + c[2] + c[3] + c[4] + c[5] + c[6];
@@ -159,44 +195,7 @@ export class ButtonWidgetPresenter {
             ldom.style.backgroundColor = c[0] + c[1] + c[2] + c[3];
         }
 
-        let longpress = false;
 
-        /*  this function is bound to the onclick of the button
-            it calls onClickAction and onLongClickAction
-         */
-        ldom.onclick= function(e) {
-            if (longpress) {
-                e.preventDefault();
-            }
-        };
-
-        let startTime, endTime;
-        ldom.onmousedown = function () {
-            startTime = new Date().getTime();
-        };
-
-        ldom.onmouseup =  function () {
-            endTime = new Date().getTime();
-
-            if (endTime - startTime < _this._millisecondsBeforeOnLongClickActs) {
-                longpress = false;
-                if (_this._onClickAction!==null) {
-                    _this._onClickAction();
-                    _this._view.getEvent().emitClickButtonEvent();
-
-                }
-            }
-
-            else {
-                longpress = true;
-                if (_this._onLongClickAction!==null) {
-                    _this._onLongClickAction();
-                    _this._view.getEvent().emitLongClickButtonEvent();
-                }
-
-            }
-
-        };
         _this._dom = ldom;
 
         return _this._dom;
