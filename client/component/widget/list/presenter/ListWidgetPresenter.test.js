@@ -39,7 +39,6 @@ describe('ListWidgetPresenter', function () {
         list._presenter.setCharacterNumber();
         const dom = list._presenter.renderView();
         let cond = false;
-        console.log(dom);
         const text = dom.firstChild.textContent;
         for(let i=0; i<text.length && !cond; i++){
             if(text[i] === '1'){

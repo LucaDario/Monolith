@@ -25,6 +25,20 @@ export class TextWidgetView extends BaseWidget{
 
     /**
      * @method
+     * Returns the text of the widget
+     * @return {string} : text of the widget
+     */
+    getText(){}
+
+    /**
+     * @method
+     * Returns the color of the text
+     * @return {string} : color of the text
+     */
+    getColor(){}
+
+    /**
+     * @method
      * Allows to set the text in the TextWidget
      * @param text {string}
      */

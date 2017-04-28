@@ -27,6 +27,25 @@ export class TextWidget extends TextWidgetView {
 
     /**
      * @method
+     * Returns the text of the widget
+     * @return {string} : text of the widget
+     */
+    getText(){
+        return this._presenter.getText();
+    }
+
+    /**
+     * @method
+     * Returns the color of the text
+     * @return {string} : color of the text
+     */
+
+    getColor(){
+        return this._presenter.getColor();
+    }
+
+    /**
+     * @method
      * Allows to set the text in the TextWidget
      * @param text {string}
      */
