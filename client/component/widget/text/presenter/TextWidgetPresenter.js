@@ -49,10 +49,14 @@ export class TextWidgetPresenter {
      * @param text {string}
      */
     setText(text) {
-        this._textstyle.setText(text);
-        if(this._dom !== null) {
-            this._updateText();
+        if (typeof text === "string") {
+            this._textstyle.setText(text);
+            if (this._dom !== null) {
+                this._updateText();
+            }
         }
+        else
+            throw new TypeError("Parameter text type must be a string");
     }
 
     /**

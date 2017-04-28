@@ -60,7 +60,11 @@ export class ImageWidgetPresenter {
      */
 
     setImage(path) {
-        this._imageOption.setPath(path);
+        if (typeof path === "string" && path !== '') {
+            this._imageOption.setPath(path);
+        }
+        else
+            throw new TypeError("Parameter path type must be a string and mustn't be empty");
     }
 
     /**
