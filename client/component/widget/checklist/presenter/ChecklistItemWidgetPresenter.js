@@ -279,4 +279,13 @@ export class ChecklistItemWidgetPresenter{
     setOnClick(func){
         this._onClick = func;
     }
+
+    /**
+     * @method
+     * It returns the name of the itemwidget
+     * @return  {String}
+     */
+    getText(){
+        this._options.getText();
+    }
 }
