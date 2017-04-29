@@ -24,13 +24,13 @@ export class ToDoListBubble extends BaseBubble{
 
     /**
      * @type {Object}
-     * The TextWidget object used to generate the title of the bubble
+     * The TextWidgetView used to generate the title of the bubble
      */
     _textView;
 
     /**
      * @type {Array}
-     * The ChecklistItemWidget object used to generate the checklist of the bubble
+     * Array used to contains the ChecklistItemWidgets of the bubble
      */
     _checklist;
 
@@ -106,7 +106,7 @@ export class ToDoListBubble extends BaseBubble{
 
     /**
      * @method
-     * It allows you to add an item into checklist.
+     * It allows you to add an item into the list.
      * @param item {string}: The name of the item
      * @param check {boolean}: The initial value for the item
      */
@@ -256,6 +256,7 @@ export class ToDoListBubble extends BaseBubble{
     /**
      * @method
      * Bubble's _id getter
+     * @return {string}: the id of the bubble
      */
     getId(){
         return this._id;

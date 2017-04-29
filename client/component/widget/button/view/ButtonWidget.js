@@ -25,12 +25,23 @@ export class ButtonWidget extends ButtonWidgetView {
 
     /**
      * @method
+     * Returns the text contained in the ButtonWidget.
+     * @return {string}
+     */
+    getText(){
+        this._presenter.getText();
+    }
+
+
+    /**
+     * @method
      * Returns the Object that handles the events of the ButtonWidget.
      * @return {Object}
      */
     getEvent() {
         return this._eventClick;
     }
+
     /**
      * @method
      * Allows to set the text contained in the ButtonWidget

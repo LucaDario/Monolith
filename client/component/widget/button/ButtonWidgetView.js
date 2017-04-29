@@ -22,6 +22,34 @@ export class ButtonWidgetView extends BaseWidget {
 
     /**
      * @method
+     * Returns the text contained in the ButtonWidget.
+     * @return {string}
+     */
+    getText(){}
+
+    /**
+     * @method
+     * Returns the width of the button.
+     * @return {string}
+     */
+    getWidth() {}
+
+    /**
+     * @method
+     * Returns the height of the button.
+     * @return {string}
+     */
+    getHeight() {}
+
+    /**
+     * @method
+     * Returns the color of the button.
+     * @return {string}
+     */
+    getColor() {}
+
+    /**
+     * @method
      * Allows to set the text contained in the ButtonWidget
      * @param text {string}
      */

@@ -23,7 +23,7 @@ export class HorizontalLayoutView extends BaseLayout{
      * @return {DocumentFragment} Returns the rendered view as a string.
      */
     renderView(){
-        if(this._dom == null){
+        if(this._dom === null){
             this._dom = document.createElement("div");
             this._dom.setAttribute('class', 'hl');
             const childs = this.getItems();

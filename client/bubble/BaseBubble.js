@@ -24,6 +24,11 @@ export class BaseBubble{
         this._layout = new VerticalLayoutView();
     }
 
+    /**
+     * @method
+     * It allows you to add a component to the VerticalLayout of the bubble.
+     * @param component
+     */
     addComponent(component){
         this._layout.addItem(component);
     }
