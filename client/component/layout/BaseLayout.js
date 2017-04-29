@@ -1,6 +1,8 @@
 /**
  * Base abstract class which represents a generic layout.
+ *
  * Created by Riccardo Montagnin on 21/03/2017.
+ * Version 1.0.0 - Completed
  */
 
 import {BaseComponent} from "../BaseComponent"

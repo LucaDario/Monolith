@@ -1,6 +1,8 @@
 /**
+ * Concrete class that represents a VerticalLayout
+ *
  * Created by Stefano Lia on 21/03/2017
- * Version 1.0.0 - 1.0.0
+ * Version 1.0.0 - Completed and instantiable
  */
 import {BaseLayout} from "../BaseLayout"
 

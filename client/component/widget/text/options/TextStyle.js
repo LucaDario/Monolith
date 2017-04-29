@@ -1,7 +1,7 @@
 /**
  * This class contains the visual options for the text in a TextWidget
  * Created by Diego on 21/03/17
- * Version 1.0.0 -
+ * Version 1.0.0 - Completed and instantiable
  */
 
 export class TextStyle {

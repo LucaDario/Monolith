@@ -1,7 +1,8 @@
 /**
  * The view for ButtonWidget
+ *
  * Created by diego on 22/03/17.
- * Version 1.0.0 -
+ * Version 1.0.0 - Completed
  */
 
 import {BaseWidget} from '../BaseWidget';

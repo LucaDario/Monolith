@@ -1,6 +1,9 @@
 /**
+ * class MarkdownBubble
+ * Concrete bubble MarkdownBubble
+ *
  * Created by Stefano Lia on 23/03/2017
- * Version 1.0.0 -
+ * Version 1.0.0 - Completed and instantiable
  */
 
 import {TextWidget} from '../component/widget/text/view/TextWidget'

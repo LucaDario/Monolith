@@ -1,7 +1,7 @@
 /**
  * The presenter of ButtonWidget
  * Created by diego on 22/03/17.
- * Version 1.0.0 -
+ * Version 1.0.0 - Completed and instantiable
  */
 
 import {ButtonGraphics} from "../options/ButtonGraphics"
@@ -21,7 +21,6 @@ export class ButtonWidgetPresenter {
         this._millisecondsBeforeOnLongClickActs = 0;
         this._onClickAction = null;
         this._onLongClickAction = null;
-        this._map = null;
         this._dom= document.createElement("div");
 
         let longpress = false;

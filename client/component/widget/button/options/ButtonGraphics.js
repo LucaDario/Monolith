@@ -1,7 +1,8 @@
 /**
  * This class contains the style options for a ButtonWidget.
+ *
  * Created by diego on 22/03/17.
- * Version 1.0.0 -
+ * Version 1.0.0 - Completed and instantiable
  */
 
 export class ButtonGraphics {

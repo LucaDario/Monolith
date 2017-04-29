@@ -3,7 +3,7 @@
  * Concrete bubble ToDoListBubble
  *
  * Created by Francesco Bazzerla on 21/03/17.
- * Version 1.0.6 - Completed and instantiable
+ * Version 1.0.8 - Completed and instantiable
  */
 
 import {ChecklistUpdateEmitter} from '../event/ChecklistUpdateEmitter';

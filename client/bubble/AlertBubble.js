@@ -1,6 +1,9 @@
 /**
+ * class AlertBubble
+ * Concrete bubble AlertBubble
+ *
  * Created by Diego on 21/03/17
- * Version 1.0.0 -
+ * Version 1.0.0 - Completed and instantiable
  */
 
 

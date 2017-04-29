@@ -1,7 +1,7 @@
 /**
  * Abstract class represents all kind of bubble.
  * Created by Francesco Bazzerla on 23/03/2017
- * Version 1.0.0 - 1.0.0
+ * Version 1.0.0 - Completed
  */
 
 import {VerticalLayoutView} from '../component/layout/vertical/VerticalLayoutView';

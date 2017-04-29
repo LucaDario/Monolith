@@ -1,7 +1,8 @@
 /**
  * The view for TextWidget
  * Created by Diego on 21/03/17
- * Version 1.0.0 -
+ *
+ * Version 1.0.3 - Completed
  */
 
 import {BaseWidget} from "../BaseWidget"

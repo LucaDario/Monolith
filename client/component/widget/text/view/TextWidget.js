@@ -1,7 +1,8 @@
 /**
  * The concrete class of TextWidget
+ *
  * Created by Diego on 21/03/17
- * Version 1.0.0 - 
+ * Version 1.0.3 - Completed and instantiable
  */
 
 import {TextWidgetView} from '../TextWidgetView'
