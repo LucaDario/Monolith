@@ -21,7 +21,7 @@ export class ChecklistItemWidget extends ChecklistItemWidgetView{
 
     /**
      * @type {Object}
-     * The ClickCheckEvent object that allows you to handle the events clickCheckEvent and longClickCheckEvent
+     * The ChecklistUpdateEmitter object that allows you to handle the events clickCheckEvent and longClickCheckEvent
      */
     _checklistUpdate;
 
@@ -76,7 +76,7 @@ export class ChecklistItemWidget extends ChecklistItemWidgetView{
     /**
      * @method
      * _eventClick getter
-     * @return {Object}: The ClickCheckEvent object associated to the checklist
+     * @return {Object}: The ChecklistUpdateEmitter object associated to the checklist
      */
     getChecklistUpdate(){
         return this._checklistUpdate;
@@ -144,6 +144,15 @@ export class ChecklistItemWidget extends ChecklistItemWidgetView{
      */
     renderView(){
         return this._presenter.renderView();
+    }
+
+    /**
+     * @method
+     * It returns the name of the itemwidget
+     * @return  {String}
+     */
+    getText(){
+        this._presenter.getText();
     }
 
 }

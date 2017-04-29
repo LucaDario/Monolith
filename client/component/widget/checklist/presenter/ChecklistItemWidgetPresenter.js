@@ -32,7 +32,7 @@ export class ChecklistItemWidgetPresenter{
 
     /**
      * @type {Object}
-     * An array that contains all the items of the checklist
+     * A CheckOption object that represents the status of the widget
      */
     _options;
 

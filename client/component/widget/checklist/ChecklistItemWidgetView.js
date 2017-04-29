@@ -82,6 +82,7 @@ export class ChecklistItemWidgetView extends BaseWidget{
      * @param checked {boolean}: A boolean value that represents the state of the item: checked or not
      */
     setChecked(checked){} //NOSONAR
+
     /**
      * @method
      * _isChecked getter
@@ -92,7 +93,14 @@ export class ChecklistItemWidgetView extends BaseWidget{
     /**
      * @method
      * _eventClick getter
-     * @return {Object}: The ClickCheckEvent object associated to the checklist
+     * @return {Object}: The ChecklistUpdate object associated to the checklist
      */
     getChecklistUpdate(){}
+
+    /**
+     * @method
+     * It returns the name of the itemwidget
+     * @return  {String}
+     */
+    getText(){}
 }
