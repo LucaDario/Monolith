@@ -7,6 +7,9 @@ import {ButtonWidget} from '../component/widget/button/view/ButtonWidget';
 import {TextWidget} from '../component/widget/text/view/TextWidget';
 import {ChecklistItemWidget} from '../component/widget/checklist/view/ChecklistItemWidget';
 import {ListWidget} from '../component/widget/list/view/ListWidget';
+import {ImageWidget} from '../component/widget/image/view/ImageWidget';
+import {HorizontalLayoutView} from '../component/layout/horizontal/HorizontalLayoutView';
+import {VerticalLayoutView} from '../component/layout/vertical/VerticalLayoutView';
 
 describe('Integration test', function () {
     it('[TI1]', function () {
@@ -169,14 +172,13 @@ describe('Integration test', function () {
     });
 
     it('[TI14]', function () {
-        const check = new ChecklistItemWidget('test');
-        check.setUseSelectionMark(true);
-        check.setSelectionCharacter('&#x2717;');
 
-        const symbolLogic = check._presenter._style.getSelectionCharacter();
-        const symbol = check.renderView();//.childNodes[0].childNodes[1].childNodes[0];
-        console.log(symbol);
-        //expect(symbol.innerHTML).to.be.eq('✗');
+        const cWidget = new ChecklistItemWidget('test',true);
+        cWidget.setSelectionCharacter('&#x2717;');
+
+        const symbolLogic = cWidget._presenter._style.getSelectionCharacter();
+        const symbol = cWidget.renderView().childNodes[0].childNodes[1].childNodes[0];
+        expect(symbol.innerHTML).to.be.eq('✗');
         expect(symbolLogic).to.be.eq('&#x2717;');
     });
 
@@ -185,7 +187,6 @@ describe('Integration test', function () {
         list.addItem("test");
 
         const dom = list.renderView();
-        console.log(dom.firstChild.firstChild);
         expect(dom.firstChild.firstChild).to.not.equal(undefined);
     });
 
@@ -203,5 +204,55 @@ describe('Integration test', function () {
             }
         }
         expect(cond).to.be.eq(true);
+    });
+
+    it('[TI17]', function(){
+        const image = new ImageWidget();
+        image.setWidth(20);
+
+        const dom = image._presenter.renderView();
+        expect(dom.firstChild.childNodes[1].width).to.be.eq(20);
+
+    });
+
+    it('[TI18]', function(){
+        const image = new ImageWidget();
+        image.setHeight(20);
+
+        const dom = image._presenter.renderView();
+        expect(dom.firstChild.childNodes[1].height).to.be.eq(20);
+
+    });
+
+    it('[TI19]', function(done){
+        const image = new ImageWidget();
+        image.setImage("/proof_of_error");
+        image.renderView();
+
+        image._presenter._dom.firstChild.childNodes[1].addEventListener("error", function(e) { //NOSONAR
+            done();
+        });
+        done();
+    });
+
+    it('[TI20]', function(){
+       const layout = new VerticalLayoutView();
+       layout.addItem(new HorizontalLayoutView());
+       layout.addItem(new HorizontalLayoutView());
+
+       const dom = layout.renderView();
+       console.log(dom);
+       expect(dom.getElementsByTagName('div').length).to.be.eq(2);
+       expect(dom.getElementsByClassName('hl-column')[0]).to.be.eq(undefined);
+    });
+
+    it('[TI21]', function(){
+        const layout = new HorizontalLayoutView();
+        layout.addItem(new HorizontalLayoutView());
+
+        const dom = layout.renderView();
+        console.log(dom.firstChild);
+        expect(dom.firstChild).to.not.equal(undefined);
+        expect(dom.getElementsByClassName('hl-column')).to.not.equal(undefined);
     });
 });

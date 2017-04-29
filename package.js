@@ -112,6 +112,8 @@ Package.onTest(function(api) {
         'client/bubble/libraries.html'
     ], 'client');
 
-    api.addFiles(['client/test/TestIntegrazione.js'], 'client');
+    api.addFiles(['client/test/TestIntegrazione.js',
+    'client/test/TestSistema.js'], 'client');
+
 
 });
