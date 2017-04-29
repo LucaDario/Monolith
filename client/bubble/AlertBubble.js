@@ -33,7 +33,7 @@ export class AlertBubble extends BaseBubble{
      * @method
      * @param {string} value
      */
-    setTittle(title) {
+    setTitle(title) {
         this._titleView.setText('**' + title + '**');
     }
 
