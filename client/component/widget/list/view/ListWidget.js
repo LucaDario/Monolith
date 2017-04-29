@@ -1,4 +1,6 @@
 /**
+ * The concrete class ListWidget
+ *
  * Created by Riccardo Montagnin on 21/03/2017.
  * Version 1.0.2 - ListWidget is completed and instantiable
  */

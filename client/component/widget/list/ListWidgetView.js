@@ -1,4 +1,6 @@
 /**
+ * The view of ListWidget
+ *
  * Created by Riccardo Montagnin on 21/03/2017.
  * Version 1.0.2 - Completed
  */
@@ -59,12 +61,5 @@ export class ListWidgetView extends BaseWidget{
      * @return {string} : represents the character
      */
     getCharacter(){}
-
-    /**
-     * @method
-     * returns the HTML and CSS of the ListWidget
-     * @return {dom} : returns the dom element in which there are HTML and CSS for the list
-     */
-    renderView(){}
 
 }

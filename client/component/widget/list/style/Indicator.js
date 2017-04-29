@@ -1,6 +1,10 @@
 /**
+ * The concrete class that represents the indicator for the ListWidget
+ *
  * Created by Riccardo Montagnin on 21/03/2017.
+ * Version 1.0.0 - Completed
  */
+
 export class Indicator {
     /**
      * Public constructor
@@ -35,9 +39,20 @@ export class Indicator {
     setCharacterDash(){
         this._character = "&ndash;";
     }
+
+    /**
+     * @method
+     * It return the color associated to indicator
+     * @return {string}: the color associated to indicator
+     */
     getColor() {
         return this._color;
     }
+
+    /**
+     * @method
+     * It allows you to set the color associated to indicator
+     */
     setColor(color) {
         this._color = color;
     }
