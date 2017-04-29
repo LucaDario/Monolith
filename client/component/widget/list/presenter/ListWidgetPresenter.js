@@ -17,6 +17,8 @@ export class ListWidgetPresenter {
         this._view = view;
         this._options = [];
         this._indicator = new Indicator();
+        this._dom = null;
+        this._map = null;
     }
 
     /**
@@ -83,7 +85,7 @@ export class ListWidgetPresenter {
     /**
      * @method
      * returns the array of item in the list
-     * @return {array} : it returns the items in the list
+     * @return {Array} : it returns the items in the list
      */
 
     getOptions(){
@@ -96,8 +98,7 @@ export class ListWidgetPresenter {
      * @return {dom} : returns the dom element in which there are HTML and CSS for the list
      */
     renderView(){
-        if(!this._map) {
-            var renderer = Monolith.can.stache('<dl>' + '{{text}}' + '</dl>');
+            let renderer = Monolith.can.stache('<dl>' + '{{text}}' + '</dl>');
             let html = ""; //variable that represents the html that will be returned by this function
             if (this._indicator.getCharacter() === "decimal") {
                 for (let i = 1; i <= this._options.length; i++) {
@@ -117,14 +118,8 @@ export class ListWidgetPresenter {
             this._map = new Monolith.can.DefineMap({
                 text: html
             });
-        }
 
-        if(this._dom === null || this._dom === undefined){
-            this._dom = renderer(this._map); // DOM OBJECT    <.... style = '.classe' .../>
-        }
+        this._dom = renderer(this._map);
         return this._dom;
     }
-
-
-
 }

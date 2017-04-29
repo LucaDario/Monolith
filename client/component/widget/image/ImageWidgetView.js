@@ -34,18 +34,17 @@ export class ImageWidgetView extends BaseWidget{
 
     /**
      * @method
-     * Allows to set the width in the immage
+     * Allows to set the width in the image
      * @param width {number}
      */
-
     setWidth(width) {} //NOSONAR
 
     /**
      * @method
-     * Allows to set the height in the  immage
-     * @param width {number}
+     * Allows to set the height in the  image
+     * @param height {number}
      */
-    setHeight(width) {} //NOSONAR
+    setHeight(height) {} //NOSONAR
 
     /**
      * @method

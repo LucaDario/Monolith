@@ -14,6 +14,11 @@ export class Indicator {
         this._color = '#000';
     }
 
+    /**
+     * @method
+     * _character getter
+     * @return {string} : represents the character
+     */
     getCharacter(){
         return this._character;
     }

@@ -23,9 +23,11 @@ export class ImageWidgetPresenter {
     /**
      * @type {Object}
      */
-
     _map;
 
+    /**
+     * @type {Object}
+     */
     _dom;
 
     constructor(view) {
