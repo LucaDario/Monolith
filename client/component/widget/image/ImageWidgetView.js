@@ -1,5 +1,8 @@
 /**
- * Created by nicolo on 25/03/17.
+ * The view of ImageWidget
+ *
+ * Created by Nicolo on 24/03/17
+ * Version 1.0.4 - Completed and instantiable
  */
 
 
@@ -42,8 +45,27 @@ export class ImageWidgetView extends BaseWidget{
      * Allows to set the height in the  immage
      * @param width {number}
      */
-
     setHeight(width) {} //NOSONAR
 
+    /**
+     * @method
+     * path's image getter
+     * @return {string}: The path of the image
+     */
+    getPath () {}   //NOSONAR
+
+    /**
+     * @method
+     * this method return the width of the image
+     * @return {string}
+     */
+    getWidth () {}  //NOSONAR
+
+    /**
+     * @method
+     * this method return the height of the image
+     * @return {string}
+     */
+    getHeight () {} //NOSONAR
 
 }

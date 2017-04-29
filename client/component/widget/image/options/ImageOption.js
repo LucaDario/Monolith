@@ -1,6 +1,8 @@
 /**
+ * The option for ImageWidget
+ *
  * Created by Nicolo on 23/03/17
- * Version 1.0.0 -
+ * Version 1.0.2 - Completed and instantiable
  */
 
 

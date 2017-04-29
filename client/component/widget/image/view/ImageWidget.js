@@ -1,5 +1,8 @@
 /**
- * Created by nicolo on 25/03/17.
+ * The concrete class ImageWidget
+ *
+ * Created by Nicolo on 25/03/17
+ * Version 1.0.4 - Completed and instantiable
  */
 
 import {ImageWidgetView} from '../ImageWidgetView'
@@ -9,8 +12,7 @@ import {Exception} from '../../../../exception/Exception'
 
 export class ImageWidget extends ImageWidgetView {
     /**
-     * @constructor
-     * The constructor of TextWidget
+     * Public constructor
      */
     constructor(){
         super();
@@ -44,7 +46,11 @@ export class ImageWidget extends ImageWidgetView {
         this._presenter.setHeight(height);
     }
 
-
+    /**
+     * @method
+     * path's image getter
+     * @return {string}: The path of the image
+     */
     getPath () {
         return this._presenter.getPath();
     }
@@ -74,7 +80,6 @@ export class ImageWidget extends ImageWidgetView {
      * Returns the HTML, CSS and JS needed to render the ImageView
      * @return {object}
      */
-
     renderView() {
         return this._presenter.renderView();
     }
