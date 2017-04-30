@@ -4,6 +4,7 @@
 
 RocketChat.callbacks.add('renderMessage', (message) => {
     // Parse the message
+    console.log('id='+message._id+' msg='+message.msg);
 
     const regEx = /\[\S+\]/g;
     const results = regEx.exec(message.msg);

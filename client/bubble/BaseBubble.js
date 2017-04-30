@@ -41,4 +41,13 @@ export class BaseBubble{
     renderView(){
         return this._layout.renderView();
     }
+
+    /**
+     * @method
+     * Return a main Layout
+     * @returns {Layout}
+     */
+    getLayout(){
+        return this._layout;
+    }
 }
