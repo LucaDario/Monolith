@@ -79,7 +79,8 @@ Package.onTest(function(api) {
         'practicalmeteor:chai',
         'practicalmeteor:sinon',
         'less',
-        'urigo:static-templates'
+        'urigo:static-templates',
+        'practicalmeteor:sinon'
     ]);
 
     api.addFiles([

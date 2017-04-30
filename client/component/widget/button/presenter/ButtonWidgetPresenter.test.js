@@ -6,6 +6,7 @@
 import {ButtonWidget} from '../view/ButtonWidget';
 import {ButtonWidgetPresenter} from './ButtonWidgetPresenter';
 import {Exception} from '../../../../exception/Exception';
+import { sinon } from 'meteor/practicalmeteor:sinon';
 
 describe('ButtonWidgetPresenter', function () {
     it('Check that is instantiable', function () {
@@ -100,23 +101,41 @@ describe('ButtonWidgetPresenter', function () {
         ).to.not.throw();
     });
     it('[TU20]', function () {
-        // This code will be executed by the test driver when the app is started
-        // in the correct mode - part of TU15
         throw new TypeError("NOT IMPLEMENTED");
     });
-    it('[TU21]', function () {
-        // This code will be executed by the test driver when the app is started
-        // in the correct mode - part of TU15
-        throw new TypeError("NOT IMPLEMENTED");
+    it('Check that is called the action when pressed [TU21]', function () {
+        const button = new ButtonWidget();
+        const view = button.renderView();
+        const mockAction = sinon.spy();
+        button.setOnClickAction(mockAction);
+        view.onmousedown();
+        view.onmouseup();
+        expect(mockAction.called).to.be.ok;
     });
-    it('[TU22]', function () {
-        // This code will be executed by the test driver when the app is started
-        // in the correct mode - part of TU15
-        throw new TypeError("NOT IMPLEMENTED");
+    it('Check that is called the action when long pressed [TU22]', function () {
+        const button = new ButtonWidget();
+        const view = button.renderView();
+        const mockAction = sinon.spy();
+        button.setOnLongClickAction(mockAction);
+        button.setOnLongClickActionTimer(100);
+
+        // Simulate a small click
+        view.onmousedown();
+        let start = new Date().getTime();
+        while ((new Date().getTime() - start) <= 10);
+        view.onmouseup();
+        expect(mockAction.called).to.not.be.ok;
+
+        // Simulate a long click
+        view.onmousedown();
+        start = new Date().getTime();
+        while ((new Date().getTime() - start) <= 100);
+        view.onmouseup();
+        expect(mockAction.called).to.be.ok;
     });
-    it('[TU23]', function () {
-        // This code will be executed by the test driver when the app is started
-        // in the correct mode - part of TU15
-        throw new TypeError("NOT IMPLEMENTED");
+    it('Check the correct configuration for the long press threshold [TU23]', function () {
+        const button = new ButtonWidget();
+        button.setOnLongClickActionTimer(100);
+        expect(button._presenter._millisecondsBeforeOnLongClickActs).to.be.eq(100);
     });
 });
