@@ -45,7 +45,7 @@ export class ImageWidgetPresenter {
      * this method allows to set the path where is present the image
      * @param {number} width
      */
-    setWidth(width) {
+    setWidth(width = 0) {
         this._imageOption.setWidth(width);
     }
 
@@ -54,7 +54,7 @@ export class ImageWidgetPresenter {
      * this method allows to set the path where is present the image
      * @param {number} height
      */
-    setHeight(height) {
+    setHeight(height = 0) {
         this._imageOption.setHeight(height);
     }
 
