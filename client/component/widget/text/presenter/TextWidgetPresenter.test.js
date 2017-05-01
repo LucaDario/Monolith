@@ -69,7 +69,13 @@ describe('TextWidgetPresenter', function () {
 
     });
 
-    it('Check that the default text color is black [TU7]', function () {
+    it('Check that the text color is setted correctly [TU7]', function () {
+        const tWidget = new TextWidget();
+        tWidget.setTextColor("#123");
+        expect(tWidget._presenter._textstyle.getColor()).to.be.eq('#123');
+    });
+
+    it('Check that the default text color is black [TU8]', function () {
         const tWidget = new TextWidget();
         expect(tWidget._presenter._textstyle.getColor()).to.be.eq('#000');
     });

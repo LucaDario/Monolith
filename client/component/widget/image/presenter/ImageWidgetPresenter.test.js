@@ -8,8 +8,6 @@ import {ImageWidgetPresenter} from './ImageWidgetPresenter';
 
 describe('ImageWidgetPresenter', function () {
     it('Check that is instantiable', function () {
-        // This code will be executed by the test driver when the app is started
-        // in the correct mode
         expect(
             () => {
                 new ImageWidgetPresenter(new ImageWidget()); //NOSONAR
@@ -18,50 +16,53 @@ describe('ImageWidgetPresenter', function () {
     });
 
     it("Check if the image have a valid path [TU9]", function (done) {
-        // This code will be executed by the test driver when the app is started
-        // in the correct mode
-        const immagine = new ImageWidget();
-        immagine._presenter.setImage("http://nemboweb.com/images/corsi/webmaster-tutorial/cicciogatto.jpg");
-        immagine._presenter.renderView();
+        const image = new ImageWidget();
+        image._presenter.setImage("http://nemboweb.com/images/corsi/webmaster-tutorial/cicciogatto.jpg");
+        image._presenter.renderView();
 
-        immagine._presenter._dom.firstChild.childNodes[1].addEventListener("load", function(e) { //NOSONAR
+        image._presenter._dom.firstChild.childNodes[1].addEventListener("load", function(e) { //NOSONAR
             done();
         });
     });
 
     it("Check if the image that don't  have a valid path launch an exception [TU10]", function (done) {
-        // This code will be executed by the test driver when the app is started
-        // in the correct mode
-        const immagine = new ImageWidget();
-        immagine._presenter.setImage("/proof_of_error");
-        immagine._presenter.renderView();
+        const image = new ImageWidget();
+        image._presenter.setImage("/proof_of_error");
+        image._presenter.renderView();
 
-        immagine._presenter._dom.firstChild.childNodes[1].addEventListener("error", function(e) { //NOSONAR
+        image._presenter._dom.firstChild.childNodes[1].addEventListener("error", function(e) { //NOSONAR
             done();
         });
         done();
     });
 
     it("Check if the Widget set the exact dimension of the image [TU11]", function () {
-        throw new TypeError("NOT IMPLEMENTED");
+        const image = new ImageWidget();
+        image.setWidth(100);
+        image.setHeight(100);
+        const view = image.renderView().firstChild.childNodes[1];
+        expect(view.width).to.be.eq(100);
+        expect(view.height).to.be.eq(100);
     });
 
     it("Check if the Widget have the default dimensions [TU12]", function () {
-        throw new TypeError("NOT IMPLEMENTED");
+        const image = new ImageWidget();
+        const view = image.renderView().firstChild.childNodes[1];
+        expect(view.width).to.be.eq(250);
+        expect(view.height).to.be.eq(210);
     });
 
     it("Check if the Widget have correct dimensions [TU13]", function () {
-        // This code will be executed by the test driver when the app is started
-        // in the correct mode
-        const immagine = new ImageWidget();
-        immagine._presenter.setImage("http://nemboweb.com/images/corsi/webmaster-tutorial/cicciogatto.jpg");
-        immagine._presenter.setHeight(50);
-        immagine._presenter.setWidth(50);
-        immagine._presenter.renderView();
-        const x =immagine._presenter._dom.firstChild.childNodes[1].width;
-        const y= immagine._presenter._dom.firstChild.childNodes[1].height;
-        const z=immagine._presenter.getWidth();
-        const w=immagine._presenter.getHeight();
+
+        const image = new ImageWidget();
+        image._presenter.setImage("http://nemboweb.com/images/corsi/webmaster-tutorial/cicciogatto.jpg");
+        image._presenter.setHeight(50);
+        image._presenter.setWidth(50);
+        image._presenter.renderView();
+        const x =image._presenter._dom.firstChild.childNodes[1].width;
+        const y= image._presenter._dom.firstChild.childNodes[1].height;
+        const z=image._presenter.getWidth();
+        const w=image._presenter.getHeight();
 
         expect(y).to.be.eq(50).and.to.be.eq(x).and.to.be.eq(w).and.to.be.eq(z);
 

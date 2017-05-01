@@ -34,7 +34,9 @@ export class ImageWidgetPresenter {
         this._view= view;
         this._imageOption= new ImageOption();
         this._map = new Monolith.can.DefineMap({
-            width: '',height: '', path:''
+            width: this._imageOption.getWidth(),
+            height: this._imageOption.getHeight(),
+            path: this._imageOption.getPath()
         });
         this._dom = null;
     }
@@ -47,6 +49,7 @@ export class ImageWidgetPresenter {
      */
     setWidth(width = 0) {
         this._imageOption.setWidth(width);
+        this._map.width = width;
     }
 
     /**
@@ -56,6 +59,7 @@ export class ImageWidgetPresenter {
      */
     setHeight(height = 0) {
         this._imageOption.setHeight(height);
+        this._map.height = height;
     }
 
     /**
@@ -66,6 +70,7 @@ export class ImageWidgetPresenter {
     setImage(path) {
         if (typeof path === "string" && path !== '') {
             this._imageOption.setPath(path);
+            this._map.path = path;
         }
         else
             throw new TypeError("Parameter path type must be a string and mustn't be empty");
@@ -101,7 +106,7 @@ export class ImageWidgetPresenter {
     /**
      * @method
      * Returns the HTML, CSS and JS needed to render the ImageWidget
-     * @return {object}
+     * @return {DocumentFragment}
      */
     renderView() {
         //.can.stache dovrebbe avere il path del file html MA js non ce la fa a farlo
