@@ -6,6 +6,9 @@
 
 import {ChecklistItemWidgetPresenter} from './ChecklistItemWidgetPresenter'
 import {ChecklistItemWidget} from '../view/ChecklistItemWidget'
+import { sinon } from 'meteor/practicalmeteor:sinon';
+
+
 describe('ChecklistItemWidgetPresenter', function () {
     it('Check that is instantiable', function () {
         // This code will be executed by the test driver when the app is started
@@ -89,14 +92,33 @@ describe('ChecklistItemWidgetPresenter', function () {
         expect(symbol.innerHTML).to.be.eq('');
         expect(symbolLogic).to.be.eq('');
     });
-    it('[TU30]', function () {
-        // This code will be executed by the test driver when the app is started
-        // in the correct mode - part of TU15
-        throw new TypeError("NOT IMPLEMENTED");
+    it('Check that is called the action when long pres an item [TU30]', function () {
+        const cWidget = new ChecklistItemWidget('test',true);
+        const mockAction = sinon.spy();
+        cWidget.setOnLongClick(mockAction);
+        const label = cWidget.renderView().childNodes[0];
+        label.onmousedown();
+        const start = (new Date()).getTime();
+        while ((new Date().getTime() - start) <= 1000);
+        label.onmouseup();
+        expect(mockAction.called).to.be.ok;
     });
-    it('[TU31]', function () {
-        // This code will be executed by the test driver when the app is started
-        // in the correct mode - part of TU15
-        throw new TypeError("NOT IMPLEMENTED");
+    it('Check the long pressure threshold [TU31]', function () {
+        const cWidget = new ChecklistItemWidget('test',true);
+        const mockAction = sinon.spy();
+        cWidget.setOnLongClick(mockAction);
+        const label = cWidget.renderView().childNodes[0];
+
+        label.onmousedown();
+        let start = (new Date()).getTime();
+        while ((new Date().getTime() - start) <= 100);
+        label.onmouseup();
+        expect(mockAction.called).to.not.be.ok;
+
+        label.onmousedown();
+        start = (new Date()).getTime();
+        while ((new Date().getTime() - start) <= 1000);
+        label.onmouseup();
+        expect(mockAction.called).to.be.ok;
     });
 });

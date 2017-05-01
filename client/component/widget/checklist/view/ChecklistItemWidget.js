@@ -140,7 +140,7 @@ export class ChecklistItemWidget extends ChecklistItemWidgetView{
     /**
      * @method
      * Generates HTML CSS JS needed to display the widget.
-     * @return {Object}: The dom fragment used to generate html of the checklist
+     * @return {HTMLElement}: The dom fragment used to generate html of the checklist
      */
     renderView(){
         return this._presenter.renderView();

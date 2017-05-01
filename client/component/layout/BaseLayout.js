@@ -34,6 +34,9 @@ export class BaseLayout extends BaseComponent{
         if(component === this){
             throw new Exception("Can't add itself");
         }
+        if(!(component instanceof BaseComponent)){
+            throw new Exception("Can't add item that don't implements BaseComponent interface");
+        }
         this._items.push(component);
     }
 

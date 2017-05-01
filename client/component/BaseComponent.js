@@ -19,7 +19,7 @@ export class BaseComponent {
     /**
      * @method
      * Generates HTML CSS JS needed to display the widget.
-     * @return {Object}: The dom fragment used to generate html of the checklist
+     * @return {HTMLElement}: The dom fragment used to generate html of the checklist
      */
     renderView(){}
 }
