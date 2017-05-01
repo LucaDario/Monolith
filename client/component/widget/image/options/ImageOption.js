@@ -24,13 +24,22 @@ export class ImageOption {
     _height;
 
     /**
+     * @type {boolean}
+     */
+
+    _visibility;
+
+    /**
      * @return {Object}
      */
+
+
 
     constructor(){
         this._path= "/prova.jpg";
         this._width= 250;
         this._height= 210;
+        this._visibility = true;
     }
 
     /**
@@ -93,5 +102,13 @@ export class ImageOption {
 
     getHeight () {
         return this._height;
+    }
+
+    getVisibility(){
+        return this._visibility;
+    }
+
+    setVisibility(value){
+        this._visibility = value;
     }
 }

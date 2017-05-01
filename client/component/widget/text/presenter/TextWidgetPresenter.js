@@ -136,6 +136,10 @@ export class TextWidgetPresenter {
             this._updateText();
             this._updateLinkColor();
         }
+
+        if(!this._textstyle.getVisibility()){
+            this._dom.style.display = "none";
+        }
         return this._dom;
     }
 
@@ -187,6 +191,24 @@ export class TextWidgetPresenter {
                 // Sets the url color.
                 links[i].style.color = this._urlstyle.getHighlighColor();
             }
+        }
+    }
+
+
+    getVisibility(){
+        return this._textstyle.getVisibility();
+    }
+
+    setVisibility(value){
+        let visibility = "none";
+        if(!value){
+            visibility = "block";
+        }
+
+        this._textstyle.setVisibility(value);
+
+        if(this._dom != null){
+            this._dom.style.display = visibility;
         }
     }
 }
