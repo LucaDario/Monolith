@@ -27,6 +27,11 @@ export class TextStyle {
     _formatted;
 
     /**
+     * @type {boolean}
+     */
+    _visibility;
+
+    /**
      * @return {Object}
      * The constructor of TextStyle
      * @return {Object}
@@ -36,6 +41,7 @@ export class TextStyle {
         this._color = "#000";
         this._text = '';
         this._formatted = false;
+        this._visibility = true;
     }
 
     /**
@@ -122,4 +128,14 @@ export class TextStyle {
     isFormatted() {
         return this._formatted;
     }
+
+    getVisibility(){
+        return this._visibility;
+    }
+
+    setVisibility(value){
+        this._visibility = value;
+    }
+
+
 }

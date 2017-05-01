@@ -18,9 +18,9 @@ export class BaseBubble{
      * Constructor of BaseBubble
      */
     constructor(){
-        //if(this.constructor === BaseBubble){
-        //    throw new TypeError("Cannot construct BaseBubble instances directly");
-        //}
+        if(this.constructor === BaseBubble){
+            throw new TypeError("Cannot construct BaseBubble instances directly");
+        }
         this._layout = new VerticalLayoutView();
     }
 
@@ -40,5 +40,14 @@ export class BaseBubble{
      */
     renderView(){
         return this._layout.renderView();
+    }
+
+    /**
+     * @method
+     * Return a main Layout
+     * @returns {Layout}
+     */
+    getLayout(){
+        return this._layout;
     }
 }

@@ -83,4 +83,10 @@ export class ImageWidget extends ImageWidgetView {
     renderView() {
         return this._presenter.renderView();
     }
+
+    setVisibility(value){
+        this._presenter.setVisibility(value);
+    }
+
+
 }

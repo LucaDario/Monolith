@@ -56,9 +56,15 @@ export class Indicator {
 
     /**
      * @method
-     * It allows you to set the color associated to indicator
+     * It allows to set the color of the list's indicator. However it checks that the string you pass it's a
+     * color (written in HTML's form)
+     * @param color {string} : represents the color which the user wants to set
      */
     setColor(color) {
-        this._color = color;
+        const pat= new RegExp('#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$');
+        if (typeof color === "string" && pat.test(color))
+            this._color=color;
+        else
+            throw new TypeError("Parameter color type must be a string that represents a hex color code");
     }
 }

@@ -45,7 +45,7 @@ export class ImageWidgetPresenter {
      * this method allows to set the path where is present the image
      * @param {number} width
      */
-    setWidth(width) {
+    setWidth(width = 0) {
         this._imageOption.setWidth(width);
     }
 
@@ -54,7 +54,7 @@ export class ImageWidgetPresenter {
      * this method allows to set the path where is present the image
      * @param {number} height
      */
-    setHeight(height) {
+    setHeight(height = 0) {
         this._imageOption.setHeight(height);
     }
 
@@ -113,6 +113,38 @@ export class ImageWidgetPresenter {
         this._dom.firstChild.childNodes[1].onerror = function (e) { //NOSONAR
             throw new Exception("Error during the rendering of the image");
         };
+
+        if(!this.getVisibility()){
+            this._dom.firstChild.style.display = "none";
+        }
+
         return this._dom;
     }
+
+    getVisibility(){
+        return this._imageOption.getVisibility();
+    }
+
+    setVisibility(value){
+        let visibility = "none";
+        if(value == true){
+            visibility = "block";
+        }
+
+        this._imageOption.setVisibility(value);
+
+        if(this._dom != null) {
+            this._dom.firstChild.style.display = visibility;
+
+        }
+
+    }
+
+
+
+
+
+
+
+
 }
