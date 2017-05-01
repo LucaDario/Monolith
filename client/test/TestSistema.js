@@ -180,22 +180,47 @@ describe('System test', function () {
 
     it('[TSF15]', function () {
         expect(() => {
-            //verify if all methods throw an error correctly
+            //verify all methods
             const bubble = new Monolith.bubble.AlertBubble;
+            bubble.setTitle('Title');
+            bubble.setMessage('Message');
+            bubble.renderView();
         }).to.not.throw();
     });
 
     it('[TSF16]', function () {
         expect(() => {
-            //verify if all methods throw an error correctly
+            //verify all methods
             const bubble = new Monolith.bubble.MarkdownBubble('test');
+            bubble.setText('text');
+            bubble.renderView();
         }).to.not.throw();
     });
 
     it('[TSF17]', function () {
         expect(() => {
-            //verify if all methods throw an error correctly
+            //verify all methods
             const bubble = new Monolith.bubble.ToDoListBubble;
+            bubble.addItem(Monolith.widgets.ListWidget);
+            bubble.setChecked(true,0);
+            bubble.setItemText('test',0);
+            bubble.setText('test');
+            bubble.setSelectionColor('#FFFFFF');
+            bubble.removeItem(0);
+            bubble.setUseSelectionMark(true);
+            let f = function () {}
+            bubble.setOnLongItemClick(f);
+            bubble.setOnItemClick(f);
+            bubble.setSelectionCharacter('ab');
+            bubble.setTextColor('#FFFFFF');
+            bubble.setText("[Google](https://www.google.com)");
+            bubble.setFormatText(true);
+            bubble.setUrlHighlightColor('#FFFFFF');
+            bubble.setTextSize(2);
+            bubble.setCompletionMessage('test');
+            bubble.getCompletionMessage();
+            bubble.getId();
+            bubble.renderView();
         }).to.not.throw();
     });
 });
