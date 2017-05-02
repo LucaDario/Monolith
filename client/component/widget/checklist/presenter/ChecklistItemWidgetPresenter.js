@@ -259,6 +259,7 @@ export class ChecklistItemWidgetPresenter{
      * @return {Object}: The dom fragment used to generate html
      */
     renderView() {
+        this._setDomStyle();
         return this._dom;
     }
 
