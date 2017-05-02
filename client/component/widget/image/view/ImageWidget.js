@@ -88,5 +88,7 @@ export class ImageWidget extends ImageWidgetView {
         this._presenter.setVisibility(value);
     }
 
-
+    getVisibility(){
+        return this._presenter.getVisibility();
+    }
 }

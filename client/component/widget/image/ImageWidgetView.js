@@ -46,6 +46,8 @@ export class ImageWidgetView extends BaseWidget{
      */
     setHeight(height) {} //NOSONAR
 
+    setVisibility(value){} //NOSONAR
+
     /**
      * @method
      * path's image getter
@@ -67,4 +69,6 @@ export class ImageWidgetView extends BaseWidget{
      */
     getHeight () {} //NOSONAR
 
+
+    getVisibility(){} //NOSONAR
 }

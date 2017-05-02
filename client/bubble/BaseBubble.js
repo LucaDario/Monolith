@@ -45,7 +45,7 @@ export class BaseBubble{
     /**
      * @method
      * Return a main Layout
-     * @returns {Layout}
+     * @returns {BaseLayout}
      */
     getLayout(){
         return this._layout;
