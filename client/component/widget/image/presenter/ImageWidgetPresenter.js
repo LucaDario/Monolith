@@ -142,24 +142,16 @@ export class ImageWidgetPresenter {
      */
     setVisibility(value){
         let visibility = "none";
-        if(value == true){
+        if(value === true){
             visibility = "block";
         }
 
         this._imageOption.setVisibility(value);
 
-        if(this._dom != null) {
+        if(this._dom !== null) {
             this._dom.firstChild.style.display = visibility;
 
         }
 
     }
-
-
-
-
-
-
-
-
 }
