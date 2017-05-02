@@ -6,7 +6,7 @@
 
 import {ButtonWidgetView} from '../ButtonWidgetView';
 import {ButtonWidgetPresenter} from '../presenter/ButtonWidgetPresenter';
-import {ClickButtonEvent} from '../../../../event/ClickButtonEvent';
+import {ClickButtonEvent} from '../../../../event/ClickButtonEventEmitter';
 
 export class ButtonWidget extends ButtonWidgetView {
 
