@@ -129,10 +129,20 @@ export class TextStyle {
         return this._formatted;
     }
 
+    /**
+     * @method
+     * _visibility getter
+     * @return {boolean}
+     */
     getVisibility(){
         return this._visibility;
     }
 
+    /**
+     * @method
+     * _visibility setter
+     * @param value {boolean}
+     */
     setVisibility(value){
         this._visibility = value;
     }

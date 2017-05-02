@@ -72,4 +72,17 @@ export class TextWidgetView extends BaseWidget{
      * @param size {number}
      */
     setTextSize(size) {} //NOSONAR
+
+    /**
+     * @method
+     * It allows you to set the visibility value of the TextStyle
+     * @param value {boolean}
+     */
+    setVisibility(value){}
+
+    /**
+     * @method
+     * It allows you to get the visibility value of the TextStyle
+     */
+    getVisibility(){}
 }

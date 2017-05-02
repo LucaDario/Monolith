@@ -99,8 +99,20 @@ export class TextWidget extends TextWidgetView {
         return this._presenter.renderView();
     }
 
-
+    /**
+     * @method
+     * It allows you to set the visibility value of the TextStyle
+     * @param value {boolean}
+     */
     setVisibility(value){
         this._presenter.setVisibility(value);
+    }
+
+    /**
+     * @method
+     * It allows you to get the visibility value of the TextStyle
+     */
+    getVisibility(){
+        return this._presenter.getVisibility();
     }
 }

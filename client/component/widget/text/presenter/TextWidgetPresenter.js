@@ -194,11 +194,19 @@ export class TextWidgetPresenter {
         }
     }
 
-
+    /**
+     * @method
+     * It allows you to get the visibility value of the TextStyle
+     */
     getVisibility(){
         return this._textstyle.getVisibility();
     }
 
+    /**
+     * @method
+     * It allows you to set the visibility value of the TextStyle
+     * @param value {boolean}
+     */
     setVisibility(value){
         let visibility = "none";
         if(!value){
@@ -207,7 +215,7 @@ export class TextWidgetPresenter {
 
         this._textstyle.setVisibility(value);
 
-        if(this._dom != null){
+        if(this._dom !== null){
             this._dom.style.display = visibility;
         }
     }
