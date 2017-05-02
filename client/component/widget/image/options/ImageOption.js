@@ -32,9 +32,6 @@ export class ImageOption {
     /**
      * @return {Object}
      */
-
-
-
     constructor(){
         this._path= "/prova.jpg";
         this._width= 250;
@@ -104,10 +101,20 @@ export class ImageOption {
         return this._height;
     }
 
+    /**
+     * @method
+     * Returns the visibility of the widget
+     * @return {boolean}
+     */
     getVisibility(){
         return this._visibility;
     }
 
+    /**
+     * @method
+     * Sets the visibility of the widget.
+     * @param value: the boolean value you want to set as visibility
+     */
     setVisibility(value){
         this._visibility = value;
     }

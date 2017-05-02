@@ -126,10 +126,20 @@ export class ImageWidgetPresenter {
         return this._dom;
     }
 
+    /**
+     * @method
+     * Returns the visibility of the widget
+     * @return {boolean}
+     */
     getVisibility(){
         return this._imageOption.getVisibility();
     }
 
+    /**
+     * @method
+     * Sets the visibility of the widget.
+     * @param value: the boolean value you want to set as visibility
+     */
     setVisibility(value){
         let visibility = "none";
         if(value == true){

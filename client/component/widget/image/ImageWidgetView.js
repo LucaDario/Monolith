@@ -46,6 +46,11 @@ export class ImageWidgetView extends BaseWidget{
      */
     setHeight(height) {} //NOSONAR
 
+    /**
+     * @method
+     * Sets the visibility of the widget.
+     * @param value: the boolean value you want to set as visibility
+     */
     setVisibility(value){} //NOSONAR
 
     /**
@@ -69,6 +74,10 @@ export class ImageWidgetView extends BaseWidget{
      */
     getHeight () {} //NOSONAR
 
-
+    /**
+     * @method
+     * Returns the visibility of the widget
+     * @return {boolean}
+     */
     getVisibility(){} //NOSONAR
 }
