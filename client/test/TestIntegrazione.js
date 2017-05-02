@@ -11,8 +11,15 @@ import {ImageWidget} from '../component/widget/image/view/ImageWidget';
 import {HorizontalLayoutView} from '../component/layout/horizontal/HorizontalLayoutView';
 import {VerticalLayoutView} from '../component/layout/vertical/VerticalLayoutView';
 
-describe('Integration test', function () {
-    it('[TI1]', function () {
+class Test extends Monolith.bubble.BaseBubble{
+    constructor(){
+        super();
+    }
+}
+
+describe('Integration tests', function () {
+    it('Verify that setText goes through the Presenter and sets the text of the button correctly' +
+        ' [TI1]', function () {
         const button = new ButtonWidget();
         button.setText('test');
 
@@ -23,7 +30,8 @@ describe('Integration test', function () {
         expect(button._presenter._dom.innerHTML).to.be.eq('test');
     });
 
-    it('[TI2]', function () {
+    it('Verify that setHeight goes through the Presenter and sets the height of the button ' +
+        'correctly [TI2]', function () {
         const button = new ButtonWidget();
         button.setHeight("200px");
 
@@ -34,7 +42,8 @@ describe('Integration test', function () {
         expect(button._presenter._dom.style.height === "200px");
     });
 
-    it('[TI3]', function () {
+    it('Verify that setHeight goes through the Presenter and sets the width of the button correctly ' +
+        '[TI3]', function () {
         const button = new ButtonWidget();
         button.setWidth("200px");
 
@@ -45,7 +54,8 @@ describe('Integration test', function () {
         expect(button._presenter._dom.style.width === "200px");
     });
 
-    it('[TI4]', function () {
+    it('Verify that setBackgroundColor goes through the Presenter and sets the background color of the ' +
+        'button correctly [TI4]', function () {
         const button = new ButtonWidget();
         button.setBackgroundColor('#FFFFFF');
 
@@ -56,7 +66,8 @@ describe('Integration test', function () {
         expect(button._presenter._dom.style.backgroundColor === "#FFFFFF");
     });
 
-    it('[TI5]', function () {
+    it('Verify that setOnClickAction goes through the Presenter and sets the action ' +
+        'after a simple click of the button by the user correctly [TI5]', function () {
         const button = new ButtonWidget();
         let action = function () {
             return "TEST";
@@ -70,7 +81,8 @@ describe('Integration test', function () {
         expect("TEST").to.satisfy(button._presenter._onClickAction);
     });
 
-    it('[TI6]', function () {
+    it('Verify that setOnLongClickAction goes through the Presenter and sets the action of the ' +
+        'button after a long click by the developer [TI6]', function () {
         const button = new ButtonWidget();
         let action = function () {
             return "TEST";
@@ -84,7 +96,8 @@ describe('Integration test', function () {
         expect("TEST").to.satisfy(button._presenter._onLongClickAction);
     });
 
-    it('[TI7]', function () {
+    it('Verify that setText goes through the Presenter and sets the text of a TextWidget correctly ' +
+        '[TI7]', function () {
         const text = new TextWidget();
 
         text.setFormatText(true);
@@ -98,7 +111,8 @@ describe('Integration test', function () {
         expect(domNode.getElementsByTagName('em')[0].innerText).to.be.eq('TEST');
     });
 
-    it('[TI8]', function () {
+    it('Verify that setTextColor goes through the Presenter and sets the color of the' +
+        ' text of a TextWidget correctly [TI8]', function () {
         const text = new TextWidget();
 
         text.setText("test");
@@ -112,7 +126,8 @@ describe('Integration test', function () {
         expect(domNode.getElementsByTagName('p')[0].style.color).to.be.eq('rgb(255, 0, 0)');
     });
 
-    it('[TI9]', function () {
+    it('Verify that setFormatText goes through the Presenter and allows the user to write text' +
+        'using the markdown method [TI9]', function () {
         const text = new TextWidget();
 
         text.setFormatText(true);
@@ -132,7 +147,8 @@ describe('Integration test', function () {
         expect(domNode2.getElementsByTagName('em')[1]).to.be.eq(undefined);
     });
 
-    it('[TI10]', function () {
+    it('Verify that setUrlHighlightColor goes through the Presenter and shows the link inside of a ' +
+        'TextWidget with the color chosen by the developer [TI10]', function () {
         const text = new TextWidget();
         text.setText("[Google](https://www.google.com)");
         text.setFormatText(true);
@@ -143,7 +159,8 @@ describe('Integration test', function () {
         expect(domNode.style.color).to.be.eq('rgb(255, 0, 0)');
     });
 
-    it('[TI11]', function () {
+    it('Verify that setTextSize goes through the Presenter and sets the text size of the text' +
+        'shown in a TextWidget correctly [TI11]', function () {
         const text = new TextWidget();
         text.setTextSize(4);
 
@@ -152,14 +169,16 @@ describe('Integration test', function () {
         expect(domNode.getElementsByTagName('p')[0].style.fontSize).to.be.eq('4px');
     });
 
-    it('[TI12]', function () {
+    it('Verify that setUseSelectionMark goes through the Presenter and sets the variable which' +
+        'allows the user to use character or color for checking the CheckListItemWidget [TI12]', function () {
         const check = new ChecklistItemWidget('test');
         check.setUseSelectionMark(true);
 
         expect(check._presenter._style._useSelectionMark).to.be.eq(true);
     });
 
-    it('[TI13]', function () {
+    it('Verify that setSelectionColor goes through the Presenter and shows the selection of list' +
+        'with a color, which was chosen by the developer in a CheckListItemWidget [TI13]', function () {
         const check = new ChecklistItemWidget('test');
         check.setUseSelectionMark(true);
 
@@ -171,7 +190,8 @@ describe('Integration test', function () {
         expect(symbol.style.backgroundColor).to.be.eq('rgb(255, 255, 255)');
     });
 
-    it('[TI14]', function () {
+    it('Verify that setSelectionCharacter goes through the Presenter and shows the selection of list' +
+        'with a character, which was chosen by the developer in a CheckListItemWidget [TI14]', function () {
 
         const cWidget = new ChecklistItemWidget('test',true);
         cWidget.setSelectionCharacter('&#x2717;');
@@ -182,7 +202,7 @@ describe('Integration test', function () {
         expect(symbolLogic).to.be.eq('&#x2717;');
     });
 
-    it('[TI15]', function(){
+    it('Verify that addItem goes through the Presenter and adds an item correctly in a ListWidget [TI15]', function(){
         const list = new ListWidget();
         list.addItem("test");
 
@@ -190,7 +210,8 @@ describe('Integration test', function () {
         expect(dom.firstChild.firstChild).to.not.equal(undefined);
     });
 
-    it('[TI16]', function(){
+    it('Verify that the setting of the character goes through the Presenter and shows the list' +
+        'with the correct indicator indicator the items of the list correctly in a ListWidget [TI16]', function(){
         const list = new ListWidget();
         list.addItem("test");
         list.setCharacterCircle();
@@ -203,10 +224,32 @@ describe('Integration test', function () {
                 cond = true;
             }
         }
+
+        list.setCharacterDash();
+        const dom2 = list.renderView();
+        let cond2 = false;
+        const text2 = dom2.firstChild.textContent;
+        for(let i=0; i<text2.length && !cond2; i++){
+            if(text2[i] === "–"){
+                cond2 = true;
+            }
+        }
+
+        list.setCharacterNumber();
+        const dom3 = list.renderView();
+        let cond3 = false;
+        const text3 = dom3.firstChild.textContent;
+        for(let i=0; i<text3.length && !cond3; i++){
+            if(text3[i] === '1'){
+                cond3 = true;
+            }
+        }
+        expect(cond3).to.be.eq(true);
+        expect(cond2).to.be.eq(true);
         expect(cond).to.be.eq(true);
     });
 
-    it('[TI17]', function(){
+    it('Verify that setWidth goes through the Presenter and sets the width of the imageWidget correctly [TI17]', function(){
         const image = new ImageWidget();
         image.setWidth(20);
 
@@ -215,7 +258,7 @@ describe('Integration test', function () {
 
     });
 
-    it('[TI18]', function(){
+    it('Verify that setHeight goes through the Presenter and sets the height of the imageWidget correctly [TI18]', function(){
         const image = new ImageWidget();
         image.setHeight(20);
 
@@ -224,7 +267,8 @@ describe('Integration test', function () {
 
     });
 
-    it('[TI19]', function(done){
+    it('Verify that setImage goes through the Presenter and sets the path of an image of the imageWidget ' +
+        'correctly [TI19]', function(done){
         const image = new ImageWidget();
         image.setImage("/proof_of_error");
         image.renderView();
@@ -235,23 +279,27 @@ describe('Integration test', function () {
         done();
     });
 
-    it('[TI20]', function(){
+    it('Verify the correct adding of a VerticalLayout and verify the showing of the items correctly [TI20]', function(){
+       const bubble = new Test();
        const layout = new VerticalLayoutView();
        layout.addItem(new HorizontalLayoutView());
        layout.addItem(new HorizontalLayoutView());
 
-       const dom = layout.renderView();
-       console.log(dom);
-       expect(dom.getElementsByTagName('div').length).to.be.eq(2);
+       bubble.addComponent(layout);
+
+       const dom = bubble.renderView();
+       expect(dom.firstChild.getElementsByTagName('div').length).to.be.eq(2);
        expect(dom.getElementsByClassName('hl-column')[0]).to.be.eq(undefined);
     });
 
-    it('[TI21]', function(){
+    it('Verify the correct adding of a HorizontalLayout and verify the showing of the items correctly [TI21]', function(){
+        const bubble = new Test();
         const layout = new HorizontalLayoutView();
         layout.addItem(new HorizontalLayoutView());
 
+        bubble.addComponent(layout);
+
         const dom = layout.renderView();
-        console.log(dom.firstChild);
         expect(dom.firstChild).to.not.equal(undefined);
         expect(dom.getElementsByClassName('hl-column')).to.not.equal(undefined);
     });

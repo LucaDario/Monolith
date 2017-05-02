@@ -9,9 +9,9 @@ class Test extends Monolith.bubble.BaseBubble{
     }
 }
 
-describe('System test', function () {
+describe('System tests', function () {
 
-    it('[TSFO1]', function () {
+    it('Verify that is possible to add every Widget in Monolith in a generic bubble [TSFO1]', function () {
         const bubble = new Test();
         const text = new Monolith.widgets.TextWidget;
         const button = new Monolith.widgets.ButtonWidget;
@@ -26,7 +26,7 @@ describe('System test', function () {
         expect(bubble._layout._items.length).to.be.eq(5);
     });
 
-    it('[TSFO2]', function () {
+    it('Verify that is possible to add every Layout in Monolith in a generic bubble [TSFO2]', function () {
         const bubble = new Test();
         const hLayout = new Monolith.layout.HorizontalLayoutView;
         const vLayout = new Monolith.layout.VerticalLayoutView;
@@ -38,7 +38,7 @@ describe('System test', function () {
         expect(bubble._layout._items.length).to.be.eq(2);
     });
 
-    it('[TSFO3]', function () {
+    it('Verify that is possible to use TextWidget in all its functions [TSFO3]', function () {
         expect(() => {
             const text = new Monolith.widgets.TextWidget;
             text.setFormatText(true);
@@ -50,7 +50,7 @@ describe('System test', function () {
         }).to.not.throw();
     });
 
-    it('[TSFO4]', function () {
+    it('Verify that TextWidget reports error correctly [TSFO4]', function () {
         expect(() => {
             const text = new Monolith.widgets.TextWidget;
             text.setText(44).to.throw(TypeError, "Parameter text type must be a string");
@@ -61,7 +61,7 @@ describe('System test', function () {
         });
     });
 
-    it('[TSFO5]', function () {
+    it('Verify that is possible to use ImageWidget in all its functions [TSFO5]', function () {
         expect(() => {
             const image = new Monolith.widgets.ImageWidget;
             image.setWidth(40);
@@ -69,14 +69,14 @@ describe('System test', function () {
         }).to.not.throw();
     });
 
-    it('[TSFO6]', function () {
+    it('Verify that ImageWidget reports error correctly [TSFO6]', function () {
         expect(() => {
             const image = new Monolith.widgets.ImageWidget;
             image.setPath('');
         }).to.throw();
     });
 
-    it('[TSFO7]', function () {
+    it('Verify that is possible to use ButtonWidget in all its functions [TSFO7]', function () {
         expect(() => {
             const button = new Monolith.widgets.ButtonWidget;
             button.setText('test');
@@ -87,7 +87,7 @@ describe('System test', function () {
         }).to.not.throw();
     });
 
-    it('[TSFO8]', function () {
+    it('Verify that ButtonWidget reports error correctly [TSFO8]', function () {
         expect(() => {
             const button = new Monolith.widgets.ButtonWidget;
             button.setText(44).to.throw(TypeError, "Parameter text type must be a string");
@@ -98,7 +98,7 @@ describe('System test', function () {
         });
     });
 
-    it('[TSFO9]', function () {
+    it('Verify that is possible to use ChecklistWidgetItem in all its functions [TSFO9]', function () {
         expect(() => {
             const bubble = new Test();
             //verify all methods
@@ -118,7 +118,7 @@ describe('System test', function () {
         }).to.not.throw();
     });
 
-    it('[TSF10]', function () {
+    it('Verify that ChecklistWidgetItem reports error correctly [TSFO10]', function () {
         expect(() => {
             //verify if all methods throw an error correctly
             const check = new Monolith.widgets.checklist.ChecklistWidgetItem('text');
@@ -132,7 +132,7 @@ describe('System test', function () {
         });
     });
 
-    it('[TSF11]', function () {
+    it('Verify that is possible to use ListWidget in all its functions [TSF011]', function () {
         expect(() => {
             const bubble = new Test();
             //verify all methods
@@ -151,7 +151,7 @@ describe('System test', function () {
         }).to.not.throw();
     });
 
-    it('[TSF12]', function () {
+    it('Verify that ListWidget reports error correctly [TSF012]', function () {
         expect(() => {
             //verify if all methods throw an error correctly
             const list = new Monolith.widgets.ListWidget;
@@ -160,7 +160,7 @@ describe('System test', function () {
         });
     });
 
-    it('[TSF13]', function () {
+    it('Verify that is possible to use VerticalLayoutView in all its functions [TSF013]', function () {
         expect(() => {
             //verify if all methods throw an error correctly
             const layout = new Monolith.layout.VerticalLayoutView;
@@ -169,7 +169,7 @@ describe('System test', function () {
         }).to.not.throw();
     });
 
-    it('[TSF14]', function () {
+    it('Verify that is possible to use HorizontalLayoutView in all its functions [TSF014]', function () {
         expect(() => {
             //verify if all methods throw an error correctly
             const layout = new Monolith.layout.HorizontalLayoutView;
@@ -178,7 +178,7 @@ describe('System test', function () {
         }).to.not.throw();
     });
 
-    it('[TSF15]', function () {
+    it('Verify that is possible to use AlertBubble in all its functions [TSF015]', function () {
         expect(() => {
             //verify all methods
             const bubble = new Monolith.bubble.AlertBubble;
@@ -188,7 +188,7 @@ describe('System test', function () {
         }).to.not.throw();
     });
 
-    it('[TSF16]', function () {
+    it('Verify that is possible to use MarkdownBubble in all its functions [TSF016]', function () {
         expect(() => {
             //verify all methods
             const bubble = new Monolith.bubble.MarkdownBubble('test');
@@ -197,7 +197,7 @@ describe('System test', function () {
         }).to.not.throw();
     });
 
-    it('[TSF17]', function () {
+    it('Verify that is possible to use ToDoListBubble in all its functions [TSF017]', function () {
         expect(() => {
             //verify all methods
             const bubble = new Monolith.bubble.ToDoListBubble;

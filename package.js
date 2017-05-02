@@ -116,5 +116,6 @@ Package.onTest(function(api) {
     api.addFiles(['client/test/TestIntegrazione.js',
     'client/test/TestSistema.js'], 'client');
 
+    api.export("Monolith", "client");
 
 });
