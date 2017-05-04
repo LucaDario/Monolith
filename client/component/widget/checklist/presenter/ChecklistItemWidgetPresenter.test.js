@@ -19,7 +19,7 @@ describe('ChecklistItemWidgetPresenter', function () {
             }
         ).to.not.throw();
     });
-    it('[TU24] Check that the checkbox can be instantiated with "not checked" status', function () {
+    it('[TU23] Check that the checkbox can be instantiated with "not checked" status', function () {
         const cWidget = new ChecklistItemWidget('test');
         const input = cWidget._presenter.renderView().childNodes[0].childNodes[0];
         const box = cWidget._presenter.renderView().childNodes[0].childNodes[1];
@@ -32,7 +32,7 @@ describe('ChecklistItemWidgetPresenter', function () {
         expect(box.style.backgroundColor).to.be.eq('rgb(255, 255, 255)');
         expect(symbol.style.backgroundColor).to.be.eq('rgb(255, 255, 255)');
     });
-    it('[TU25] Check that the checkbox can be instantiated with "checked" status', function () {
+    it('[TU24] Check that the checkbox can be instantiated with "checked" status', function () {
         const cWidget = new ChecklistItemWidget('test',true);
         const input = cWidget._presenter.renderView().childNodes[0].childNodes[0];
         const box = cWidget._presenter.renderView().childNodes[0].childNodes[1];
@@ -43,7 +43,7 @@ describe('ChecklistItemWidgetPresenter', function () {
         expect(box.getAttribute('class')).to.be.eq('spanCheckBef spanEmptyBef');
         expect(symbol.innerHTML).to.be.eq('✓');
     });
-    it('[TU26] Check that the checkbox status change correctly', function () {
+    it('[TU25] Check that the checkbox status change correctly', function () {
         const cWidget = new ChecklistItemWidget('test');
         const cWidget2 = new ChecklistItemWidget('test2',true);
         cWidget._presenter.setChecked(true);
@@ -67,12 +67,12 @@ describe('ChecklistItemWidgetPresenter', function () {
         expect(box2.getAttribute('class')).to.be.eq('spanNotCheckBef spanEmptyBef');
         expect(symbol2.innerHTML).to.be.eq('');
     });
-    it('[TU27] Check that the checkbox check-mark is represented by ✓', function () {
+    it('[TU26] Check that the checkbox check-mark is represented by ✓', function () {
         const cWidget = new ChecklistItemWidget('test',true);
         const symbol = cWidget._presenter.renderView().childNodes[0].childNodes[1].childNodes[0];
         expect(symbol.innerHTML).to.be.eq('✓');
     });
-    it('[TU28] Check that the checkbox check-mark is represented by ✗ or another symbol', function () {
+    it('[TU27] Check that the checkbox check-mark is represented by ✗ or another symbol', function () {
         const cWidget = new ChecklistItemWidget('test',true);
         cWidget._presenter.setSelectionCharacter('&#x2717;');
         const symbolLogic = cWidget._presenter._style.getSelectionCharacter();
@@ -80,7 +80,7 @@ describe('ChecklistItemWidgetPresenter', function () {
         expect(symbol.innerHTML).to.be.eq('✗');
         expect(symbolLogic).to.be.eq('&#x2717;');
     });
-    it('[TU29] Check that the type checkbox color of the selected items are displayed with the color set', function () {
+    it('[TU28] Check that the type checkbox color of the selected items are displayed with the color set', function () {
         const cWidget = new ChecklistItemWidget('test',true);
         cWidget._presenter.setUseSelectionMark(false);
         cWidget._presenter.setSelectionColor('#00f');
@@ -92,7 +92,7 @@ describe('ChecklistItemWidgetPresenter', function () {
         expect(symbol.innerHTML).to.be.eq('');
         expect(symbolLogic).to.be.eq('');
     });
-    it('Check that is called the action when long pres an item [TU30]', function () {
+    it('Check that is called the action when long pres an item [TU29]', function () {
         const cWidget = new ChecklistItemWidget('test',true);
         const mockAction = sinon.spy();
         cWidget.setOnLongClick(mockAction);
@@ -103,7 +103,7 @@ describe('ChecklistItemWidgetPresenter', function () {
         label.onmouseup();
         expect(mockAction.called).to.be.ok;
     });
-    it('Check the long pressure threshold [TU31]', function () {
+    it('Check the long pressure threshold [TU30]', function () {
         const cWidget = new ChecklistItemWidget('test',true);
         const mockAction = sinon.spy();
         cWidget.setOnLongClick(mockAction);

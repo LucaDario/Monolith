@@ -100,10 +100,8 @@ describe('ButtonWidgetPresenter', function () {
             }
         ).to.not.throw();
     });
-    it('[TU20]', function () {
-        throw new TypeError("NOT IMPLEMENTED");
-    });
-    it('Check that is called the action when pressed [TU21]', function () {
+
+    it('Check that is called the action when pressed [TU20]', function () {
         const button = new ButtonWidget();
         const view = button.renderView();
         const mockAction = sinon.spy();
@@ -112,7 +110,7 @@ describe('ButtonWidgetPresenter', function () {
         view.onmouseup();
         expect(mockAction.called).to.be.ok;
     });
-    it('Check that is called the action when long pressed [TU22]', function () {
+    it('Check that is called the action when long pressed [TU21]', function () {
         const button = new ButtonWidget();
         const view = button.renderView();
         const mockAction = sinon.spy();
@@ -133,7 +131,7 @@ describe('ButtonWidgetPresenter', function () {
         view.onmouseup();
         expect(mockAction.called).to.be.ok;
     });
-    it('Check the correct configuration for the long press threshold [TU23]', function () {
+    it('Check the correct configuration for the long press threshold [TU22]', function () {
         const button = new ButtonWidget();
         button.setOnLongClickActionTimer(100);
         expect(button._presenter._millisecondsBeforeOnLongClickActs).to.be.eq(100);
