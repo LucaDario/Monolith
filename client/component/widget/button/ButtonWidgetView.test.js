@@ -1,4 +1,8 @@
-
+/**
+ * Created by Diego Cavestro on 21/03/2017.
+ * Version 1.0.0 - Completed
+ * Unit tests for ButtonWidgetView
+ */
 import {ButtonWidgetView} from './ButtonWidgetView'
 
 describe('ButtonWidgetView', function () {

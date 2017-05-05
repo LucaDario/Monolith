@@ -1,6 +1,6 @@
 /**
  * Created by Diego Cavestro on 27/04/2017
- * Version 1.0.2 - Lack the TU20, TU21, TU22 and TU23
+ * Version 1.0.3 - Completed
  */
 
 import {ButtonWidget} from '../view/ButtonWidget';

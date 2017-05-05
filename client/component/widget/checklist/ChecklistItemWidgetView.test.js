@@ -1,4 +1,8 @@
-
+/**
+ * Created by Francesco Bazzerla on 21/03/2017.
+ * Version 1.0.0 - Completed
+ * Unit tests for ChecklistItemWidgetView
+ */
 import {ChecklistItemWidgetView} from './ChecklistItemWidgetView'
 
 describe('ChecklistItemWidgetView', function () {
