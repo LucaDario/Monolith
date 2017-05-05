@@ -60,6 +60,8 @@ describe('ButtonWidgetPresenter', function () {
         expect(() => {
                 const button = new ButtonWidget();
                 button._presenter.renderView();
+                button._presenter.setWidth("500px");
+                button._presenter.setHeight("600px");
                 if (button._presenter._dom.style.width === "" || button._presenter._dom.style.height === "") {
                     throw new Exception("error");
                 }
