@@ -1,4 +1,8 @@
-
+/**
+ * Created by Manuel Turetta on 21/03/2017.
+ * Version 1.0.0 - Completed
+ * Unit tests for BaseComponent
+ */
 import {BaseComponent} from './BaseComponent.js'
 
 describe('BaseComponent', function () {

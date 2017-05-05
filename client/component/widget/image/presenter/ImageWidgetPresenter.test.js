@@ -1,6 +1,6 @@
 /**
  * Created by Nicolò Dovico on 27/04/2017
- * Version 1.0.1 - Lack tte TU9 TU11 TU12 tests
+ * Version 1.0.2 - Completed
  */
 
 import {ImageWidget} from '../view/ImageWidget'

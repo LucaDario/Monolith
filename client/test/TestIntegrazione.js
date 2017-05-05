@@ -1,6 +1,7 @@
 /**
  * Created by Stefano Lia on 28/04/2017
  * Version 1.0.0 - Initial version
+ * Integration tests of various components in Monolith
  */
 
 import {ButtonWidget} from '../component/widget/button/view/ButtonWidget';

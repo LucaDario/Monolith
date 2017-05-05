@@ -1,4 +1,8 @@
-
+/**
+ * Created by Manuel Turetta on 26/03/2017.
+ * Version 1.0.0 - Completed
+ * Unit tests for BaseWidget
+ */
 import {BaseWidget} from './BaseWidget.js'
 
 

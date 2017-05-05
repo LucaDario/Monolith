@@ -1,4 +1,8 @@
-
+/**
+ * Created by Stefano Lia on 24/03/2017.
+ * Version 1.0.2 - Completed
+ * Unit tests for ListWidget
+ */
 import {ListWidget} from './ListWidget'
 
 describe('ListWidget', function () {

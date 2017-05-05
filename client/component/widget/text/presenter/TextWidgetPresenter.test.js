@@ -1,6 +1,7 @@
 /**
  * Created by Manuel Turetta on 27/04/2017
  * Version 1.0.2 - Completed
+ * Unit tests for TextWidgetPresenter
  */
 
 import {TextWidgetPresenter} from './TextWidgetPresenter.js';

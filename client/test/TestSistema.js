@@ -1,6 +1,7 @@
 /**
  * Created by Stefano Lia on 29/04/2017
  * Version 1.0.0 - Initial version
+ * System tests of Monolith
  */
 
 class Test extends Monolith.bubble.BaseBubble{

@@ -1,4 +1,8 @@
-
+/**
+ * Created by Manuel Turetta on 26/03/2017.
+ * Version 1.0.2 - Completed
+ * Unit tests for AlertBubble
+ */
 import {AlertBubble} from './AlertBubble'
 
 describe('AlertBubble', function () {

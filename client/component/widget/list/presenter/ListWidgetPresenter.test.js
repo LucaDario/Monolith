@@ -1,6 +1,7 @@
 /**
  * Created by Stefano Lia on 27/04/2017
  * Version 1.0.2 - Completed
+ * Unit tests for ListWidgetPresenter
  */
 
 
