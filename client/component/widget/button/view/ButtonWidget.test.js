@@ -3,7 +3,7 @@
  * Version 1.0.0 - Completed
  * Unit tests for ButtonWidget
  */
-import {ButtonWidget} from './ButtonWidget'
+import {ButtonWidget} from './ButtonWidget';
 
 describe('ButtonWidget', function () {
     it('Check that is instantiable', function () {
