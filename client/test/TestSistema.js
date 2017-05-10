@@ -111,9 +111,7 @@ describe('System tests', function () {
             check.setUseSelectionMark(true);
             check.setSelectionColor('#FFFFFF');
             check.setSelectionCharacter('a');
-            let f = function () {
-                console.log('TSF09');
-            }
+            let f = function () {}
             check.setOnLongClick(f);
             check.setOnClick(f);
         }).to.not.throw();
