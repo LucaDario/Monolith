@@ -1,17 +1,14 @@
 /**
  * The concrete class of ButtonWidget
  * Created by diego on 22/03/17.
- * Version 1.0.0 -
+ * Version 1.0.0 - Completed and instantiable
  */
 
 import {ButtonWidgetView} from '../ButtonWidgetView';
+import {ButtonWidgetPresenter} from '../presenter/ButtonWidgetPresenter';
+import {ClickButtonEvent} from '../../../../event/ClickButtonEventEmitter';
 
 export class ButtonWidget extends ButtonWidgetView {
-
-    /**
-     * @type {Object} : The presenter of ButtonWidget
-     */
-    _presenter;
 
     /**
      * @constructor
@@ -22,7 +19,29 @@ export class ButtonWidget extends ButtonWidgetView {
         //noinspection JSAnnotator
         super();
         this._presenter = new ButtonWidgetPresenter(this);
+
+        this._eventClick = new ClickButtonEvent();
     }
+
+    /**
+     * @method
+     * Returns the text contained in the ButtonWidget.
+     * @return {string}
+     */
+    getText(){
+        this._presenter.getText();
+    }
+
+
+    /**
+     * @method
+     * Returns the Object that handles the events of the ButtonWidget.
+     * @return {Object}
+     */
+    getEvent() {
+        return this._eventClick;
+    }
+
     /**
      * @method
      * Allows to set the text contained in the ButtonWidget
@@ -35,7 +54,7 @@ export class ButtonWidget extends ButtonWidgetView {
     /**
      * @method
      * Allows to set the width of the ButtonWidget
-     * @param width {number}
+     * @param width {string}
      */
     setWidth(width) {
         this._presenter.setWidth(width);
@@ -43,8 +62,17 @@ export class ButtonWidget extends ButtonWidgetView {
 
     /**
      * @method
+     * Returns the width of the button.
+     * @return {string}
+     */
+    getWidth() {
+        return this._presenter.getWidth();
+    }
+
+    /**
+     * @method
      * Allows to set the height of the ButtonWidget
-     * @param height {number}
+     * @param height {string}
      */
     setHeight(height) {
         this._presenter.setHeight(height);
@@ -52,11 +80,29 @@ export class ButtonWidget extends ButtonWidgetView {
 
     /**
      * @method
+     * Returns the height of the button.
+     * @return {string}
+     */
+    getHeight() {
+        return this._presenter.getHeight();
+    }
+
+    /**
+     * @method
      * Allows to set the color of the ButtonWidget
-     * @param color {number}
+     * @param color {string}
      */
     setBackgroundColor(color) {
         this._presenter.setBackgroundColor(color);
+    }
+
+    /**
+     * @method
+     * Returns the color of the button.
+     * @return {string}
+     */
+    getColor() {
+        return this._presenter.getColor();
     }
 
     /**
@@ -94,4 +140,6 @@ export class ButtonWidget extends ButtonWidgetView {
     renderView() {
         return this._presenter.renderView();
     }
+
+
 }

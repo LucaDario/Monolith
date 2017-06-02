@@ -1,5 +1,9 @@
-
-import {ButtonWidget} from './ButtonWidget'
+/**
+ * Created by Diego Cavestro on 21/03/2017.
+ * Version 1.0.0 - Completed
+ * Unit tests for ButtonWidget
+ */
+import {ButtonWidget} from './ButtonWidget';
 
 describe('ButtonWidget', function () {
     it('Check that is instantiable', function () {
@@ -7,9 +11,8 @@ describe('ButtonWidget', function () {
         // in the correct mode
         expect(
             () => {
-                new ButtonWidget();
+                new ButtonWidget(); //NOSONAR
             }
         ).to.not.throw();
     });
-
 });

@@ -48,4 +48,4 @@ fabric.properties
 .iml
 
 # NPM
-.npm
+.npm/package/node_modules

@@ -1,5 +1,8 @@
 /**
- * Created by nicolo on 25/03/17.
+ * The view of ImageWidget
+ *
+ * Created by Nicolo on 24/03/17
+ * Version 1.0.4 - Completed and instantiable
  */
 
 
@@ -26,24 +29,55 @@ export class ImageWidgetView extends BaseWidget{
      * @param imagePath {string}
      */
 
-    setImage(imagePath) {}
+    setImage(imagePath) {} //NOSONAR
 
 
     /**
      * @method
-     * Allows to set the width in the immage
+     * Allows to set the width in the image
      * @param width {number}
      */
-
-    setWidth(width) {}
+    setWidth(width) {} //NOSONAR
 
     /**
      * @method
-     * Allows to set the height in the  immage
-     * @param width {number}
+     * Allows to set the height in the  image
+     * @param height {number}
      */
+    setHeight(height) {} //NOSONAR
 
-    setHeight(width) {}
+    /**
+     * @method
+     * Sets the visibility of the widget.
+     * @param value: the boolean value you want to set as visibility
+     */
+    setVisibility(value){} //NOSONAR
 
+    /**
+     * @method
+     * path's image getter
+     * @return {string}: The path of the image
+     */
+    getPath () {}   //NOSONAR
 
+    /**
+     * @method
+     * this method return the width of the image
+     * @return {string}
+     */
+    getWidth () {}  //NOSONAR
+
+    /**
+     * @method
+     * this method return the height of the image
+     * @return {string}
+     */
+    getHeight () {} //NOSONAR
+
+    /**
+     * @method
+     * Returns the visibility of the widget
+     * @return {boolean}
+     */
+    getVisibility(){} //NOSONAR
 }

@@ -1,6 +1,8 @@
 /**
+ * The option for ImageWidget
+ *
  * Created by Nicolo on 23/03/17
- * Version 1.0.0 -
+ * Version 1.0.2 - Completed and instantiable
  */
 
 
@@ -12,23 +14,29 @@ export class ImageOption {
     _path;
 
     /**
-     * @type {number}
+     * @type {string}
      */
     _width;
     /**
-     * @type {number}
+     * @type {string}
      */
 
     _height;
 
     /**
-     * @return {Object}
+     * @type {boolean}
      */
 
+    _visibility;
+
+    /**
+     * @return {Object}
+     */
     constructor(){
-        this._path= "/";
-        this._width= 0;
-        this._height= 0;
+        this._path= "/prova.jpg";
+        this._width= 250;
+        this._height= 210;
+        this._visibility = true;
     }
 
     /**
@@ -64,13 +72,50 @@ export class ImageOption {
 
     /**
      * @method
-     * this method allows to set the height of the image
-     * @param {number} height
+     * this method return the path of the image
      * @return {string}
      */
 
 
-    returnPath () {
+    getPath () {
         return this._path;
+    }
+
+    /**
+     * @method
+     * this method return the width of the image
+     * @return {string}
+     */
+
+    getWidth () {
+        return this._width;
+    }
+
+    /**
+     * @method
+     * this method return the height of the image
+     * @return {string}
+     */
+
+    getHeight () {
+        return this._height;
+    }
+
+    /**
+     * @method
+     * Returns the visibility of the widget
+     * @return {boolean}
+     */
+    getVisibility(){
+        return this._visibility;
+    }
+
+    /**
+     * @method
+     * Sets the visibility of the widget.
+     * @param value: the boolean value you want to set as visibility
+     */
+    setVisibility(value){
+        this._visibility = value;
     }
 }

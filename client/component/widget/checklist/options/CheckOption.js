@@ -1,52 +1,51 @@
 /**
+ * class CheckOption
  * This class represents an item of a checklist.
+ *
  * Created by Francesco Bazzerla on 21/03/17.
- * Version 1.0.0 - 1.0.0
+ * Version 1.0.7 - CheckOption is completed
  */
 
 export class CheckOption {
-    /**
-     * @type {String}: Item's id of a checklist
-     */
-    _id;
 
     /**
-     * @type {boolean}: It represents if an item is checked
+     * @type {boolean}
+     * Represents the status of the option
      */
     _isChecked;
 
     /**
-     * @type {function}: It's a function that will be executed after a normal click on item
+     * @type {string}
+     * Represents the id of the option
      */
-    _onClick;
+    _id;
 
     /**
-     * @type {function}: It's a function that will be executed after a long click on item
-     */
-    _onLongClick;
-
-    /**
-     * @type {String}: It represents the text associated to an item of a checklist
+     * @type {string}
+     * Represents the text content
      */
     _text;
 
-
     /**
-     * @constructor
-     * Constructor of CheckStyle
+     * Public constructor
+     * @param id {string}: the id of the new option
      */
-    constructor(){
-        this._id = Math.round(Math.round(Number.MAX_SAFE_INTEGER)*Math.random()).toString();
+    constructor(id){
+        this._id = '';
+        if(id === ''){
+            this._id = ('_' + Math.random().toString(36).substr(2, 9)).toString();
+        }
+        else{
+            this._id = id;
+        }
         this._isChecked = false;
-        this._onClick = function(){};
-        this._onLongClick = function(){};
-        this._text ="";
+        this._text = '';
     }
 
     /**
      * @method
      * _id getter
-     * @return {String}
+     * @return {String}: The id of the option
      */
     getId(){
         return this._id;
@@ -54,17 +53,8 @@ export class CheckOption {
 
     /**
      * @method
-     * _onClick getter
-     * @return {function}
-     */
-    getOnClick(){
-        return this._onClick;
-    }
-
-    /**
-     * @method
      * _isChecked getter
-     * @return {boolean}
+     * @return {boolean}: The boolean status of the option
      */
     isChecked(){
         return this._isChecked;
@@ -72,17 +62,8 @@ export class CheckOption {
 
     /**
      * @method
-     * _onLongClick getter
-     * return {function}
-     */
-    getOnLongClick(){
-        return this._onLongClick;
-    }
-
-    /**
-     * @method
      * _text getter
-     * @return {String}
+     * @return {string}: The text content of the option
      */
     getText(){
         return this._text;
@@ -90,20 +71,8 @@ export class CheckOption {
 
     /**
      * @method
-     * _id setter
-     * @param id {String}
-     */
-    setId(id) {
-        if(typeof(id) !== String){
-            throw new TypeError("Cannot set item's id. String value required.");
-        }
-        this._id = id;
-    }
-
-    /**
-     * @method
      * _isChecked setter
-     * @param checked {boolean}
+     * @param checked {boolean}: The boolean value that will be assigned to _isChecked
      */
     setChecked(checked) {
         if(typeof(checked) !== "boolean"){
@@ -114,37 +83,20 @@ export class CheckOption {
 
     /**
      * @method
-     * _onClick setter
-     * @param action {function}
-     */
-    setOnClick(action) {
-        if(typeof(action) !== "function"){
-            throw new TypeError("Cannot set onClick function. Function required.");
-        }
-        this._onClick = action;
-    }
-
-    /**
-     * @method
-     * _onLongClick setter
-     * @param action {function}
-     */
-    setOnLongClick(action) {
-        if(typeof(action) !== "function"){
-            throw new TypeError("Cannot set onLongClick function. Function required.");
-        }
-        this._onLongClick = action;
-    }
-
-    /**
-     * @method
      * _text setter
-     * @param text {String}
+     * @param text {string}: The text that will be replaced into _text
      */
     setText(text){
-        if(typeof(text) !== String){
-            throw new TypeError("Cannot set item's text. String value required.");
-        }
         this._text = text;
+    }
+
+    /**
+     * @method
+     * It allows you to change the status of _isChecked
+     * @return {boolean}: The value of _isChecked after changing status
+     */
+    changeStatus(){
+        this._isChecked = !(this._isChecked);
+        return this.isChecked();
     }
 }

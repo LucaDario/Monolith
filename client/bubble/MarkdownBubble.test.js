@@ -1,4 +1,8 @@
-
+/**
+ * Created by Manuel Turetta on 26/03/2017.
+ * Version 1.0.2 - Completed
+ * Unit tests for MarkdownBubble
+ */
 import {MarkdownBubble} from './MarkdownBubble'
 
 describe('MarkdownBubble', function () {
@@ -7,7 +11,7 @@ describe('MarkdownBubble', function () {
         // in the correct mode
         expect(
             () => {
-                new MarkdownBubble();
+                new MarkdownBubble('test'); //NOSONAR
             }
         ).to.not.throw();
     });

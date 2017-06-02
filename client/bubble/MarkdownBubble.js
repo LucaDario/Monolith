@@ -1,10 +1,13 @@
 /**
+ * class MarkdownBubble
+ * Concrete bubble MarkdownBubble
+ *
  * Created by Stefano Lia on 23/03/2017
- * Version 1.0.0 - 1.0.0
+ * Version 1.0.0 - Completed and instantiable
  */
 
-import {TextWidgetView} from "../component/widget/text/TextWidgetView";
-import {BaseBubble} from "./BaseBubble"
+import {TextWidget} from '../component/widget/text/view/TextWidget'
+import {BaseBubble} from './BaseBubble'
 
 export class MarkdownBubble extends BaseBubble{
     /**
@@ -13,33 +16,29 @@ export class MarkdownBubble extends BaseBubble{
     _textView;
 
     /**
-     * @constructor
-     * Constructor of MarkdownBubble
+     * Public constructor
+     * @param text {string}: represents the string which has to be set in the Widget.
      */
-    constructor(){
+    constructor(text){
         super();
-        this._textView = new TextWidgetView();
+        //textView is widget widget of formatted text
+        this._textView = new TextWidget();
+        this._textView.setFormatText(true);
+        this.setText(text);
+        //add the widget in the Bubble's Layout
+        this.addComponent(this._textView);
     }
 
     /**
      * @method
      * Set the text for a MarkdownBubble.
-     * @param (String): represents the string which has to be set in the Widget.
-     * @return
+     * @param text {string}: represents the string which has to be set in the Widget.
      */
     setText(text){
         this._textView.setText(text);
     }
 
-    /**
-     * @method
-     * Generates HTML CSS JS needed to display the bubble.
-     * @param
-     * @return (String) which represents the HTML and CSS for the bubble.
-     */
-
-    renderView(){
-        super.layout.renderView();
+    renderView() {
+        return super.renderView();
     }
 }
-

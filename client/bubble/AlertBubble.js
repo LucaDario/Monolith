@@ -1,11 +1,14 @@
 /**
+ * class AlertBubble
+ * Concrete bubble AlertBubble
+ *
  * Created by Diego on 21/03/17
- * Version 1.0.0 -
+ * Version 1.0.0 - Completed and instantiable
  */
 
 
 import {BaseBubble} from "./BaseBubble"
-import {TextWidgetView} from "../component/widget/text/TextWidgetView";
+import {TextWidget} from "../component/widget/text/view/TextWidget";
 
 export class AlertBubble extends BaseBubble{
 
@@ -21,30 +24,36 @@ export class AlertBubble extends BaseBubble{
 
     constructor() {
         super();
-        this._titleView = new TextWidgetView();
-        this._messageView = new TextWidgetView();
+        this._titleView = new TextWidget();
+        this._titleView.setFormatText(true);
+        this._titleView.setTextColor('#f00');
+        this._messageView = new TextWidget();
+        super.addComponent(this._titleView);
+        super.addComponent(this._messageView);
     }
 
     /**
+     * @method
      * @param {string} value
      */
-    set titleView(title) {
-        this._titleView.setText(title);
+    setTitle(title) {
+        this._titleView.setText('**' + title + '**');
     }
 
     /**
+     * @method
      * @param {string} value
      */
-    set messageView(message) {
+    setMessage(message) {
         this._messageView.setText(message);
     }
 
     /**
      * @method
      * Generates HTML CSS JS needed to display the bubble.
-     * @return {String}
+     * @return {Element}
      */
     renderView(){
-        super.layout.renderView();
+        return super.renderView();
     }
 }

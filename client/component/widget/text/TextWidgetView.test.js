@@ -1,4 +1,8 @@
-
+/**
+ * Created by Manuel Turetta on 26/03/2017.
+ * Version 1.0.2 - Completed
+ * Unit tests for TextWidgetView
+ */
 import {TextWidgetView} from './TextWidgetView'
 
 describe('TextWidgetView', function () {
@@ -7,7 +11,7 @@ describe('TextWidgetView', function () {
         // in the correct mode
         expect(
             () => {
-                new TextWidgetView();
+                new TextWidgetView(); //NOSONAR
             }
         ).to.throw();
     });

@@ -1,0 +1,27 @@
+@bubble-color-1: #2cb5e8;
+@bubble-color-2: #1fc8db;
+@bubble-color-3: #0fb8ad;
+
+.bubble {
+  padding: 1em;
+  display: inline-block;
+  position: relative;
+  max-width: 80%;
+  /* For browsers that do not support gradients */
+  background: @bubble-color-1;
+  /* For Safari 5.1 to 6.0 */
+  background: -webkit-linear-gradient(top, @bubble-color-1 , @bubble-color-3);
+  /* For Opera 11.1 to 12.0 */
+  background: -o-linear-gradient(top, @bubble-color-1, @bubble-color-3);
+  /* For Firefox 3.6 to 15 */
+  background: -moz-linear-gradient(top, @bubble-color-1, @bubble-color-3);
+  /* Default syntax */
+  background: linear-gradient(to bottom right, @bubble-color-1 0%, @bubble-color-2 51%, @bubble-color-3 75%);
+}
+
+@bubble-border: 30px;
+.round {
+  border-radius: @bubble-border;
+  -webkit-border-radius: @bubble-border;
+  -moz-border-radius: @bubble-border;
+}

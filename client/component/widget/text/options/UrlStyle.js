@@ -1,7 +1,7 @@
 /**
  * This class contains the visual options for the URLs contained in the text in a TextWidget
  * Created by Diego on 21/03/17
- * Version 1.0.0 -
+ * Version 1.0.0 - Completed and instantiable
  */
 
 export class UrlStyle {
@@ -21,7 +21,9 @@ export class UrlStyle {
      * The constructor of UrlStyle
      * @return {Object}
      */
-    constructor() {}
+    constructor() {
+        this._highlight = false;
+    }
 
     /**
      * @method
@@ -30,7 +32,7 @@ export class UrlStyle {
      */
     setHighligh(highlight) {
         if (typeof highlight === "boolean")
-            this._highlight=highlight;
+            this._highlight = highlight;
         else
             throw new TypeError("Parameter highlight type must be a boolean");
     }
@@ -41,7 +43,7 @@ export class UrlStyle {
      * @param color {string}
      */
     setHighlightColor(color) {
-        let pat= new RegExp('#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$');
+        const pat= new RegExp('#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$');
         if (typeof color === "string" && pat.test(color))
             this._highlightColor=color;
         else
@@ -54,7 +56,7 @@ export class UrlStyle {
      * @return {boolean}
      */
     isHighlightEnabled() {
-        return _highlight;
+        return this._highlight;
     }
 
     /**
@@ -63,6 +65,6 @@ export class UrlStyle {
      * @return {string}
      */
     getHighlighColor() {
-        return _highlightColor;
+        return this._highlightColor;
     }
 }

@@ -1,16 +1,17 @@
 /**
  * Abstract class represents all kind of bubble.
  * Created by Francesco Bazzerla on 23/03/2017
- * Version 1.0.0 - 1.0.0
+ * Version 1.0.0 - Completed
  */
 
 import {VerticalLayoutView} from '../component/layout/vertical/VerticalLayoutView';
+import './bubble.less';
 
 export class BaseBubble{
     /**
      * @type {Object}: VerticalLayout which contains and place component on bubble.
      */
-    layout;
+    _layout;
 
     /**
      * @constructor
@@ -20,19 +21,33 @@ export class BaseBubble{
         if(this.constructor === BaseBubble){
             throw new TypeError("Cannot construct BaseBubble instances directly");
         }
-        layout = new VerticalLayoutView();
+        this._layout = new VerticalLayoutView();
     }
 
+    /**
+     * @method
+     * It allows you to add a component to the VerticalLayout of the bubble.
+     * @param component
+     */
     addComponent(component){
-        this.layout.addItem(component);
+        this._layout.addItem(component);
     }
 
     /**
      * @method
      * Generates HTML CSS JS needed to display the widget.
-     * @return {String}
+     * @return {Element}
      */
     renderView(){
-        this.layout.renderView();
+        return this._layout.renderView();
+    }
+
+    /**
+     * @method
+     * Return a main Layout
+     * @returns {BaseLayout}
+     */
+    getLayout(){
+        return this._layout;
     }
 }

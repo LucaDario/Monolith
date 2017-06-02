@@ -1,4 +1,8 @@
-
+/**
+ * Created by Stefano Lia on 24/03/2017.
+ * Version 1.0.2 - Completed
+ * Unit tests for ListWidgetView
+ */
 import {ListWidgetView} from './ListWidgetView'
 
 describe('ListWidgetView', function () {
@@ -7,7 +11,7 @@ describe('ListWidgetView', function () {
         // in the correct mode
         expect(
             () => {
-                new ListWidgetView();
+                new ListWidgetView(); //NOSONAR
             }
         ).to.throw();
     });

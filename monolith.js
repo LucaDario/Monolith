@@ -2,34 +2,37 @@
  * Monolith an interactive bubble provider.
  */
 
-
 RocketChat.callbacks.add('renderMessage', (message) => {
-    let wrapper_id = 'wrapper_' + message._id;
-    message.html = '<div id="' + wrapper_id +  '"></div>';
-    renderize(message, wrapper_id);
+    // Parse the message
+    //console.log('id='+message._id+' msg='+message.msg);
+
+    const regEx = /\[\S+\]/g;
+    const results = regEx.exec(message.msg);
+    let bubbleType = null;
+
+    if(message.hasOwnProperty('bubbleType')){
+        bubbleType = message.bubbleType;
+    }
+    else if(results !== null){
+        bubbleType = results[0].replace(']', '').replace('[', '');
+        message.msg = message.msg.replace(results[0], '');
+    }
+
+    if(bubbleType !== null){
+        const wrapper_id = 'wrapper_' + message._id;
+        message.html = '<div id="' + wrapper_id + '" class="bubble round"></div>';
+        renderizeBubble(message, wrapper_id, bubbleType);
+    }
     return message;
 }, RocketChat.callbacks.priority.LOW, 'monolith');
 
-function delay(ms){
-    let start = new Date().getTime();
-    let end = start;
-    while(end < start + ms) {
-        end = new Date().getTime();
-    }
-}
-
-function renderize(message, wrapper_id) {
-    setTimeout(() => {
-        let renderized = false;
-        for(let i = 0; i < 5 && !renderized; i++) {
-            let element = document.getElementById(wrapper_id);
-            if (element !== null && element.children.length === 0) {
-                console.log(Monolith);
-                let test = new Monolith.widgets.TextWidget();
-                test.setText("Test TextWidget " + wrapper_id);
-                element.appendChild(test.renderView());
-                renderized = true;
-            }
+function renderizeBubble(message, wrapper_id, bubbleName) {
+    const intervalId = setInterval(() => {
+        const element = document.getElementById(wrapper_id);
+        if (element !== null && element.children.length === 0) {
+            const bubble = Monolith.bubble.getBubble(bubbleName, message);
+            element.appendChild(bubble.renderView());
+            clearInterval(intervalId);
         }
     }, 200);
 }

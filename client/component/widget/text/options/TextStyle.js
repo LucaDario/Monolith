@@ -1,7 +1,7 @@
 /**
  * This class contains the visual options for the text in a TextWidget
  * Created by Diego on 21/03/17
- * Version 1.0.0 -
+ * Version 1.0.0 - Completed and instantiable
  */
 
 export class TextStyle {
@@ -27,12 +27,21 @@ export class TextStyle {
     _formatted;
 
     /**
+     * @type {boolean}
+     */
+    _visibility;
+
+    /**
      * @return {Object}
      * The constructor of TextStyle
      * @return {Object}
      */
     constructor() {
+        this._size = 0;
+        this._color = "#000";
+        this._text = '';
         this._formatted = false;
+        this._visibility = true;
     }
 
     /**
@@ -53,7 +62,7 @@ export class TextStyle {
      * @param color {string}
      */
     setColor(color) {
-        let pat= new RegExp('#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$');
+        const pat= new RegExp('#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$');
         if (typeof color === "string" && pat.test(color))
             this._color=color;
         else
@@ -119,4 +128,24 @@ export class TextStyle {
     isFormatted() {
         return this._formatted;
     }
+
+    /**
+     * @method
+     * _visibility getter
+     * @return {boolean}
+     */
+    getVisibility(){
+        return this._visibility;
+    }
+
+    /**
+     * @method
+     * _visibility setter
+     * @param value {boolean}
+     */
+    setVisibility(value){
+        this._visibility = value;
+    }
+
+
 }

@@ -1,4 +1,8 @@
-
+/**
+ * Created by Manuel Turetta on 26/03/2017.
+ * Version 1.0.2 - Completed
+ * Unit tests for BaseBubble
+ */
 import {BaseBubble} from './BaseBubble'
 
 describe('BaseBubble', function () {
@@ -7,7 +11,7 @@ describe('BaseBubble', function () {
         // in the correct mode
         expect(
             () => {
-                new BaseBubble();
+                new BaseBubble(); //NOSONAR
             }
         ).to.throw();
     });

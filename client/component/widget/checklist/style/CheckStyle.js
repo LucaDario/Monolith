@@ -1,57 +1,72 @@
 /**
+ * class CheckStyle
  * This class contains the style options for a ChecklistWidget.
+ *
  * Created by Francesco Bazzerla on 21/03/17.
- * Version 1.0.0 - 1.0.0
+ * Version 1.0.1 - Completed and instantiable
  */
 
 export class CheckStyle {
     /**
-     * @type {String}: It represents the symbol used to check an item
+     * @type {string}
+     * It represents the symbol used to check an item
      */
     _selectionCharacter;
 
     /**
-     * @type {boolean}: Check-mark will be shown by a symbol if this field is true; if this field is false the check-mark
+     * @type {boolean}
+     * Check-mark will be shown by a symbol if this field is true; if this field is false the check-mark
      * wiil be shown by a color
      */
     _useSelectionMark;
 
     /**
-     * @type {String}: It represents the color of the check-mark if _useSelectionMark is false
+     * @type {string}
+     * It represents the color of the check-mark if _useSelectionMark is false
      */
     _selectionColor;
 
 
     /**
-     * @constructor
-     * Constructor of CheckStyle
+     * Public constructor
      */
     constructor(){
         this._useSelectionMark = true;
-        this._selectionColor = "green";
-        this._selectionCharacter = "\\2714";
+        this._selectionColor = '#fff';
+        this._selectionCharacter = '&#x2713;';
     }
 
     /**
      * @method
      * _selectionCharacter setter
-     * @param character {String}
+     * @param character {string}: the symbol used to check an item
      */
     setSelectionCharacter(character) {
-        if(typeof(character) !== String){
+        if(typeof(character) !== "string"){
             throw new TypeError("Cannot set select character. String value required.");
         }
-        this._selectionCharacter = character;
+        if(this.getUseSelectionMark()) {
+            this._selectionCharacter = character;
+            this._selectionColor = '#fff';
+        }
     }
 
     /**
      * @method
      * _useSelectionMark setter
-     * @param useMark {boolean}
+     * @param useMark {boolean}: boolean value that will be assigned to _useSelectionMark
      */
     setUseSelectionMark(useMark) {
         if(typeof(useMark) !== "boolean"){
             throw new TypeError("Cannot set select mark. Boolean value required.");
+        }
+        if(useMark === true){
+            this._selectionCharacter = '&#x2713';
+            this._selectionColor = '#fff';
+        }
+        else{
+            this._selectionCharacter = '';
+            this._selectionColor = '#060';
         }
         this._useSelectionMark = useMark;
     }
@@ -59,12 +74,15 @@ export class CheckStyle {
     /**
      * @method
      * _selectionColor setter
-     * @param color {String}
+     * @param color {string}: It represents the color that will be assigned to _selectionColor
      */
     setSelectionColor(color){
-        let pat= new RegExp('#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$');
+        const pat= new RegExp('#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$');
         if (typeof color === "string" && pat.test(color)) {
-            this._selectionColor = color;
+                if(!this.getUseSelectionMark()) {
+                    this._selectionColor = color;
+                    this._selectionCharacter = '';
+                }
         }
         else {
             throw new TypeError("Parameter color type must be a string that represents a hex color code");
@@ -74,7 +92,7 @@ export class CheckStyle {
     /**
      * @method
      * _selectionCharacter getter
-     * @return {String}
+     * @return {string}: The selection character
      */
     getSelectionCharacter() {
         return this._selectionCharacter;
@@ -83,7 +101,7 @@ export class CheckStyle {
     /**
      * @method
      * _useSelectionMark getter
-     * @return {boolean}
+     * @return {boolean}: The boolean value stored into _useSelectionMark
      */
     getUseSelectionMark() {
         return this._useSelectionMark;
@@ -92,7 +110,7 @@ export class CheckStyle {
     /**
      * @method
      * _selectionColor getter
-     * @return {String}
+     * @return {string}: The string represents the color stored into _selectionColor
      */
     getSelectionColor(){
         return this._selectionColor;

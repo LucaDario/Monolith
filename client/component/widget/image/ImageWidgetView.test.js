@@ -1,4 +1,8 @@
-
+/**
+ * Created by Nicolò Dovico on 25/03/2017.
+ * Version 1.0.0 - Completed
+ * Unit tests for ImageWidgetView
+ */
 import {ImageWidgetView} from './ImageWidgetView'
 
 
@@ -8,9 +12,10 @@ describe('ImageWidgetView', function () {
         // in the correct mode
         expect(
             () => {
-                new ImageWidgetView();
+                new ImageWidgetView(); //NOSONAR
             }
         ).to.throw();
     });
 
 });
+

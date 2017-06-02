@@ -1,9 +1,12 @@
 /**
  * Base abstract class which represents a generic layout.
+ *
  * Created by Riccardo Montagnin on 21/03/2017.
+ * Version 1.0.0 - Completed
  */
 
 import {BaseComponent} from "../BaseComponent"
+import {Exception} from "../../exception/Exception"
 
 export class BaseLayout extends BaseComponent{
 
@@ -25,9 +28,23 @@ export class BaseLayout extends BaseComponent{
 
     /**
      * Adds an item to the layout.
-     * @param {Object} component: Component to be added to the layout.
+     * @param {BaseComponent} component: Component to be added to the layout.
      */
     addItem (component) {
+        if(component === this){
+            throw new Exception("Can't add itself");
+        }
+        if(!(component instanceof BaseComponent)){
+            throw new Exception("Can't add item that don't implements BaseComponent interface");
+        }
         this._items.push(component);
+    }
+
+    /**
+     * Gets the current items inside the layout.
+     * @returns {Array} components: Components added in the layout.
+     */
+    getItems(){
+        return this._items;
     }
 }

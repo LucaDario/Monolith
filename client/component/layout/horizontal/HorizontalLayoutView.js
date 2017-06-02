@@ -1,8 +1,12 @@
 /**
+ * Concrete class that represents an HorizontalLayout
+ *
  * Created by Stefano Lia on 21/03/2017
- * Version 1.0.0 - 1.0.0
+ * Version 1.0.0 - Completed and instantiable
  * */
-import {BaseLayout} from '../BaseLayout'
+import {BaseLayout} from '../BaseLayout';
+
+import './HorizontalLayout.css';
 
 export class HorizontalLayoutView extends BaseLayout{
 
@@ -12,19 +16,50 @@ export class HorizontalLayoutView extends BaseLayout{
      */
     constructor(){
         super();
+        this._dom = null;
     }
 
     /**
      * @method
      * This function create HTML to render an Horizontal Layout for a Bubble.
-     * @return {String} Returns the rendered view as a string.
+     * @return {DocumentFragment} Returns the rendered view as a string.
      */
     renderView(){
-
-        var text = "";
-        for (var i = 0; i < this._items.length; i++) {
-            text += "<li>" + this._items[i].renderView() + "</li>"
+        if(this._dom === null){
+            this._dom = document.createElement("div");
+            this._dom.setAttribute('class', 'hl');
+            const childs = this.getItems();
+            for(let i = 0; i < childs.length; i++){
+                const column = this._createColumn();
+                column.appendChild(childs[i].renderView());
+                this._dom.appendChild(column);
+            }
         }
-        return "<ul class='list-inline list-unstyled'>" + text + "</ul>";
+        return this._dom;
+    }
+
+    /**
+     *
+     * @param component
+     * @returns {*}
+     */
+    addItem(component) {
+        super.addItem(component);
+        if(this._dom !== null){
+            const column = this._createColumn();
+            column.appendChild(component.renderView());
+            this._dom.appendChild(column);
+        }
+    }
+
+    /**
+     *
+     * @returns {Element}
+     * @private
+     */
+    _createColumn(){
+        const item = document.createElement("div");
+        item.setAttribute('class', 'hl-column');
+        return item;
     }
 }

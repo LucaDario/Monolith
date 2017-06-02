@@ -1,7 +1,8 @@
 /**
  * The concrete class of TextWidget
+ *
  * Created by Diego on 21/03/17
- * Version 1.0.0 - 
+ * Version 1.0.3 - Completed and instantiable
  */
 
 import {TextWidgetView} from '../TextWidgetView'
@@ -23,6 +24,25 @@ export class TextWidget extends TextWidgetView {
         //noinspection JSAnnotator
         super();
         this._presenter = new TextWidgetPresenter(this);
+    }
+
+    /**
+     * @method
+     * Returns the text of the widget
+     * @return {string} : text of the widget
+     */
+    getText(){
+        return this._presenter.getText();
+    }
+
+    /**
+     * @method
+     * Returns the color of the text
+     * @return {string} : color of the text
+     */
+
+    getColor(){
+        return this._presenter.getColor();
     }
 
     /**
@@ -73,9 +93,26 @@ export class TextWidget extends TextWidgetView {
     /**
      * @method
      * Returns the HTML, CSS and JS needed to render the TextWidget
-     * @return {Object}
+     * @return {Element}
      */
     renderView() {
         return this._presenter.renderView();
+    }
+
+    /**
+     * @method
+     * It allows you to set the visibility value of the TextStyle
+     * @param value {boolean}
+     */
+    setVisibility(value){
+        this._presenter.setVisibility(value);
+    }
+
+    /**
+     * @method
+     * It allows you to get the visibility value of the TextStyle
+     */
+    getVisibility(){
+        return this._presenter.getVisibility();
     }
 }
