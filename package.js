@@ -1,6 +1,6 @@
 Package.describe({
-    name: 'monolith',
-    version: '0.0.1',
+    name: 'npedevelopers:monolith',
+    version: '1.0.0',
     summary: 'An interactive bubble provider',
     git: 'https://github.com/NPE-Developers/monolith'
 });
@@ -25,9 +25,7 @@ Package.onUse(function(api) {
         'underscore',
         'session',
         'less',
-        'random',
-        'rocketchat:lib',
-        'rocketchat:ui-message'
+        'random'
     ]);
 
     api.mainModule('monolith.js', 'client');
