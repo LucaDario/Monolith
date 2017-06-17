@@ -40,6 +40,9 @@ export class BaseLayout extends BaseComponent{
         this._items.push(component);
     }
 
+    /**
+     * Adds the last item from the layout.
+     */
     removeLast(){
         this._items.pop();
     }
