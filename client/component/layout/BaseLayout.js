@@ -40,6 +40,10 @@ export class BaseLayout extends BaseComponent{
         this._items.push(component);
     }
 
+    removeLast(){
+        this._items.pop();
+    }
+
     /**
      * Gets the current items inside the layout.
      * @returns {Array} components: Components added in the layout.

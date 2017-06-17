@@ -9,9 +9,10 @@
     width: 100%;
     vertical-align: top;
     height:1.6em;
-    font-weight: normal;
+    font-weight: bold;
     display:inline-block;
     cursor: pointer;
+    color:#000;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -25,10 +26,11 @@ label input[type="checkbox"]:empty {
 
 .spanEmpty{
     height:100%;
+    color:#000;
     padding-left: .5em;
     cursor: pointer;
     display: inline-block;
-    vertical-align: top;
+    vertical-align: bottom;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -40,22 +42,28 @@ label input[type="checkbox"]:empty {
     font-size: 1em;
     width: 1.5em;
     height:1.5em;
-    background: #fff;
     display:inline-block;
-    vertical-align: top;
-    border:1px solid #333;
-    border-radius: 4px;
+    vertical-align: bottom;
+    border:1.5px solid #000;
+    border-radius: 5px;
 }
 .spanNotCheckBef {
     color: #fff;
 }
 .spanCheckBef {
-    text-indent: .3em;
+    text-indent: .1em;
     overflow: hidden;
-    background-color: #fff;
 }
 .symbolSpanCheckBef{
-    color: #333;
+    width: 1.2em;
+    height: 1.2em;
+    border-radius: 5px;
+    display: flex;
+    text-indent: .2em;
+    justify-content: center;
+    flex-direction: column;
+    font-weight: bold;
+    color: #000;
     background-color: inherit;
 }
 

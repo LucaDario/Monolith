@@ -121,6 +121,24 @@ export class ChecklistItemWidget extends ChecklistItemWidgetView{
 
     /**
      * @method
+     * Sets the color of checkbox when it's not selected.
+     * @param color {string}: It represents the color that will be assigned to checkbox when it's not selected.
+     */
+    setNotSelectedColor(color){
+        this._presenter.setNotSelectedColor(color);
+    }
+
+    /**
+     * @method
+     * _notSelectedColor getter
+     * @return {string}: The string represents the color stored into _notSelectedColor
+     */
+    getNotSelectedColor(){
+        return this._presenter.getNotSelectedColor();
+    }
+
+    /**
+     * @method
      * It allows you to set the function that will be called when a longClick on a checklist item is performed
      * @param func {function}
      */
@@ -135,6 +153,24 @@ export class ChecklistItemWidget extends ChecklistItemWidgetView{
      */
     setOnClick(func){
         this._presenter.setOnClick(func);
+    }
+
+    /**
+     * @method
+     * Sets the color of text
+     * @param color {String}: It represents the color of text
+     */
+    setTextColor(color){
+        this._presenter.setTextColor(color);
+    }
+
+    /**
+     * @method
+     * _textColor getter
+     * @return {string}: The string represents the color stored into _textColor
+     */
+    getTextColor(){
+        return this._presenter.getTextColor();
     }
 
     /**

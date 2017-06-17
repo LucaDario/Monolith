@@ -26,6 +26,19 @@ export class CheckStyle {
      */
     _selectionColor;
 
+    /**
+     * @type {string}
+     * It represents the color of the check-mark if _useSelectionMark is false
+     */
+    _notSelectedColor;
+
+    /**
+     * @type {string}
+     * It represents the color of text
+     */
+    _textColor;
+
+
 
     /**
      * Public constructor
@@ -34,6 +47,38 @@ export class CheckStyle {
         this._useSelectionMark = true;
         this._selectionColor = '#fff';
         this._selectionCharacter = '&#x2713;';
+        this._notSelectedColor = '#fff';
+        this._textColor = '#000';
+    }
+
+    /**
+     * @method
+     * _selectionColor setter
+     * @param color {string}: It represents the color that will be assigned to _notSelectedColor
+     */
+    setNotSelectedColor(color){
+        const pat= new RegExp('#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$');
+        if (typeof color === "string" && pat.test(color)) {
+            this._notSelectedColor = color;
+        }
+        else {
+            throw new TypeError("Parameter color type must be a string that represents a hex color code");
+        }
+    }
+
+    /**
+     * @method
+     * _selectionColor setter
+     * @param color {string}: It represents the color that will be assigned to _textColor
+     */
+    setTextColor(color){
+        const pat= new RegExp('#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$');
+        if (typeof color === "string" && pat.test(color)) {
+            this._textColor = color;
+        }
+        else {
+            throw new TypeError("Parameter color type must be a string that represents a hex color code");
+        }
     }
 
     /**
@@ -47,7 +92,6 @@ export class CheckStyle {
         }
         if(this.getUseSelectionMark()) {
             this._selectionCharacter = character;
-            this._selectionColor = '#fff';
         }
     }
 
@@ -62,11 +106,9 @@ export class CheckStyle {
         }
         if(useMark === true){
             this._selectionCharacter = '&#x2713';
-            this._selectionColor = '#fff';
         }
         else{
             this._selectionCharacter = '';
-            this._selectionColor = '#060';
         }
         this._useSelectionMark = useMark;
     }
@@ -79,10 +121,7 @@ export class CheckStyle {
     setSelectionColor(color){
         const pat= new RegExp('#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$');
         if (typeof color === "string" && pat.test(color)) {
-                if(!this.getUseSelectionMark()) {
-                    this._selectionColor = color;
-                    this._selectionCharacter = '';
-                }
+            this._selectionColor = color;
         }
         else {
             throw new TypeError("Parameter color type must be a string that represents a hex color code");
@@ -114,5 +153,23 @@ export class CheckStyle {
      */
     getSelectionColor(){
         return this._selectionColor;
+    }
+
+    /**
+     * @method
+     * _textColor getter
+     * @return {string}: The string represents the color stored into _textColor
+     */
+    getTextColor(){
+        return this._textColor;
+    }
+
+    /**
+     * @method
+     * _notSelectedColor getter
+     * @return {string}: The string represents the color stored into _notSelectedColor
+     */
+    getNotSelectedColor(){
+        return this._notSelectedColor;
     }
 }

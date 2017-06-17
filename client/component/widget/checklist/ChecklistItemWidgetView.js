@@ -50,10 +50,24 @@ export class ChecklistItemWidgetView extends BaseWidget{
 
     /**
      * @method
+     * Sets the color of checkbox when it's not selected.
+     * @param color {string}: It represents the color that will be assigned to checkbox when it's not selected.
+     */
+    setNotSelectedColor(color){}//NOSONAR
+
+    /**
+     * @method
      * Sets the color of checkmarks.
      * @param color {String}: It represents the color of the check-mark
      */
     setSelectionColor(color) {} //NOSONAR
+
+    /**
+     * @method
+     * _notSelectedColor getter
+     * @return {string}: The string represents the color stored into _notSelectedColor
+     */
+    getNotSelectedColor(){}
 
     /**
      * @method
@@ -68,6 +82,20 @@ export class ChecklistItemWidgetView extends BaseWidget{
      * @param func {function}
      */
     setOnLongClick(func){} //NOSONAR
+
+    /**
+     * @method
+     * _textColor getter
+     * @return {string}: The string represents the color stored into _textColor
+     */
+    getTextColor(){}
+
+    /**
+     * @method
+     * Sets the color of text
+     * @param color {String}: It represents the color of text
+     */
+    setTextColor(color){}
 
     /**
      * @method

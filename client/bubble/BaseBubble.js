@@ -35,6 +35,14 @@ export class BaseBubble{
 
     /**
      * @method
+     * It allows you to add a component to the VerticalLayout of the bubble.
+     */
+    removeLastComponent(){
+        this._layout.removeLast();
+    }
+
+    /**
+     * @method
      * Generates HTML CSS JS needed to display the widget.
      * @return {Element}
      */
