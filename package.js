@@ -1,5 +1,5 @@
 Package.describe({
-    name: 'npedevelopers:monolith',
+    name: 'monolith',
     version: '1.0.0',
     summary: 'An interactive bubble provider',
     git: 'https://github.com/NPE-Developers/monolith'
