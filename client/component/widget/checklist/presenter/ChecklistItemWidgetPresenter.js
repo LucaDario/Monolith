@@ -201,6 +201,9 @@ export class ChecklistItemWidgetPresenter{
     _setDomStyle(){
         const symbol = this._style.getSelectionCharacter();
         const boxbgcolor = this._style.getSelectionColor();
+        const notSboxbgcolor = this._style.getNotSelectedColor();
+        const textColor = this._style.getTextColor();
+        const itemText = this._dom.childNodes[0].childNodes[2];
         const input = this._dom.childNodes[0].childNodes[0];
         const box = this._dom.childNodes[0].childNodes[1];
         const symbolSpan = this._dom.childNodes[0].childNodes[1].childNodes[0];
@@ -209,16 +212,22 @@ export class ChecklistItemWidgetPresenter{
             box.setAttribute('class','spanCheckBef spanEmptyBef');
             symbolSpan.setAttribute('class','symbolSpanCheckBef');
             box.style.backgroundColor = boxbgcolor;
+            box.style.border = '1.5px solid' + textColor;
+            itemText.style.color = textColor;
             symbolSpan.style.backgroundColor = boxbgcolor;
             symbolSpan.innerHTML = symbol;
+            symbolSpan.style.color = textColor;
         }
         else{
             input.removeAttribute('checked');
             box.setAttribute('class','spanNotCheckBef spanEmptyBef');
             symbolSpan.removeAttribute('class');
             symbolSpan.innerHTML = '';
-            box.style.backgroundColor = '#fff';
-            symbolSpan.style.backgroundColor = '#fff';
+            itemText.style.color = textColor;
+            box.style.border = '1.5px solid' + textColor;
+            box.style.backgroundColor = boxbgcolor;
+            symbolSpan.style.color = textColor;
+            symbolSpan.style.backgroundColor = notSboxbgcolor;
         }
     }
 
@@ -245,11 +254,31 @@ export class ChecklistItemWidgetPresenter{
 
     /**
      * @method
+     * Sets the color of text
+     * @param color {String}: It represents the color of text
+     */
+    setTextColor(color){
+        this._style.setTextColor(color);
+        this._setDomStyle();
+    }
+
+    /**
+     * @method
      * Sets the color of check-marks
      * @param color {String}: It represents the color of the check-mark
      */
     setSelectionColor(color){
         this._style.setSelectionColor(color);
+        this._setDomStyle();
+    }
+
+    /**
+     * @method
+     * Sets the color of checkbox when it's not selected.
+     * @param color {string}: It represents the color that will be assigned to checkbox when it's not selected.
+     */
+    setNotSelectedColor(color){
+        this._style.setNotSelectedColor(color);
         this._setDomStyle();
     }
 
@@ -288,5 +317,23 @@ export class ChecklistItemWidgetPresenter{
      */
     getText(){
         this._options.getText();
+    }
+
+    /**
+     * @method
+     * _textColor getter
+     * @return {string}: The string represents the color stored into _textColor
+     */
+    getTextColor(){
+        return this._style.getTextColor();
+    }
+
+    /**
+     * @method
+     * _notSelectedColor getter
+     * @return {string}: The string represents the color stored into _notSelectedColor
+     */
+    getNotSelectedColor(){
+        return this._style.getNotSelectedColor();
     }
 }
