@@ -98,26 +98,28 @@ export class ListWidgetPresenter {
      * @return {dom} : returns the dom element in which there are HTML and CSS for the list
      */
     renderView(){
-            let renderer = Monolith.can.stache('<dl>' + '{{text}}' + '</dl>');
-            let html = ""; //variable that represents the html that will be returned by this function
-            if (this._indicator.getCharacter() === "decimal") {
-                for (let i = 1; i <= this._options.length; i++) {
-                    //<dd> <span> 1) </span> Example </dd>
-                    html = html + '<dd>' + '<span style="color:'+ this._indicator.getColor()+'">'
-                        + i + ') ' + '</span>' + this._options[i-1] + '</dd>';
-                }
+        global.jQuery = require('bootstrap-jquery');
+        window.$ = $;
+        let renderer = Monolith.can.stache('<dl>' + '{{text}}' + '</dl>');
+        let html = ""; //variable that represents the html that will be returned by this function
+        if (this._indicator.getCharacter() === "decimal") {
+            for (let i = 1; i <= this._options.length; i++) {
+                //<dd> <span> 1) </span> Example </dd>
+                html = html + '<dd>' + '<span style="color:'+ this._indicator.getColor()+'">'
+                    + i + ') ' + '</span>' + this._options[i-1] + '</dd>';
             }
-            else {
-                for (let i = 0; i < this._options.length; i++) {
-                    //<dd> <span style="color:..."> indicatore </span> Example </dd>
-                    html = html + '<dd>' + '<span style="color:'+ this._indicator.getColor()+'">'
-                       + this._indicator.getCharacter() + ' ' + '</span>' + this._options[i] + '</dd>';
-                }
+        }
+        else {
+            for (let i = 0; i < this._options.length; i++) {
+                //<dd> <span style="color:..."> indicatore </span> Example </dd>
+                html = html + '<dd>' + '<span style="color:'+ this._indicator.getColor()+'">'
+                    + this._indicator.getCharacter() + ' ' + '</span>' + this._options[i] + '</dd>';
             }
-            html = $(html); //remove the escape included by can.js
-            this._map = new Monolith.can.DefineMap({
-                text: html
-            });
+        }
+        html = $(html); //remove the escape included by can.js
+        this._map = new Monolith.can.DefineMap({
+            text: html
+        });
 
         this._dom = renderer(this._map);
         return this._dom;
